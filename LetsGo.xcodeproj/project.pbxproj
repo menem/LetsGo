@@ -12,9 +12,11 @@
 		4850E1B51F28EE00004D85A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4850E1B31F28EE00004D85A7 /* Main.storyboard */; };
 		4850E1B71F28EE00004D85A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4850E1B61F28EE00004D85A7 /* Assets.xcassets */; };
 		4850E1BA1F28EE00004D85A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4850E1B81F28EE00004D85A7 /* LaunchScreen.storyboard */; };
+		4C3B67DF2BC822FFDB07F9C5 /* Pods_LetsGo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14E8FA497D650EDF3219475A /* Pods_LetsGo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		14E8FA497D650EDF3219475A /* Pods_LetsGo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LetsGo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4850E1AC1F28EE00004D85A7 /* LetsGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LetsGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4850E1AF1F28EE00004D85A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4850E1B11F28EE00004D85A7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +24,8 @@
 		4850E1B61F28EE00004D85A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4850E1B91F28EE00004D85A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4850E1BB1F28EE00004D85A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C1CAB1FD870C4C22C7A8CB9 /* Pods-LetsGo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetsGo.release.xcconfig"; path = "Pods/Target Support Files/Pods-LetsGo/Pods-LetsGo.release.xcconfig"; sourceTree = "<group>"; };
+		E8418AE36AB7D1935CE2EE43 /* Pods-LetsGo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetsGo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LetsGo/Pods-LetsGo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C3B67DF2BC822FFDB07F9C5 /* Pods_LetsGo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				4850E1AE1F28EE00004D85A7 /* LetsGo */,
 				4850E1AD1F28EE00004D85A7 /* Products */,
+				C9E617E4E9D8BD48646E3892 /* Pods */,
+				AE2D2CAFEACC99BF8E823CA6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +71,23 @@
 			path = LetsGo;
 			sourceTree = "<group>";
 		};
+		AE2D2CAFEACC99BF8E823CA6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				14E8FA497D650EDF3219475A /* Pods_LetsGo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C9E617E4E9D8BD48646E3892 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E8418AE36AB7D1935CE2EE43 /* Pods-LetsGo.debug.xcconfig */,
+				5C1CAB1FD870C4C22C7A8CB9 /* Pods-LetsGo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4850E1BE1F28EE00004D85A7 /* Build configuration list for PBXNativeTarget "LetsGo" */;
 			buildPhases = (
+				6FE67E191373302EEE677CD1 /* [CP] Check Pods Manifest.lock */,
 				4850E1A81F28EE00004D85A7 /* Sources */,
 				4850E1A91F28EE00004D85A7 /* Frameworks */,
 				4850E1AA1F28EE00004D85A7 /* Resources */,
+				B60620B56B59E4474187551A /* [CP] Embed Pods Frameworks */,
+				E34B04BC62249F50AB4D7A43 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,6 +158,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6FE67E191373302EEE677CD1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B60620B56B59E4474187551A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LetsGo/Pods-LetsGo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E34B04BC62249F50AB4D7A43 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LetsGo/Pods-LetsGo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4850E1A81F28EE00004D85A7 /* Sources */ = {
@@ -259,6 +334,7 @@
 		};
 		4850E1BF1F28EE00004D85A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8418AE36AB7D1935CE2EE43 /* Pods-LetsGo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = WSYEN229M9;
@@ -272,6 +348,7 @@
 		};
 		4850E1C01F28EE00004D85A7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C1CAB1FD870C4C22C7A8CB9 /* Pods-LetsGo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = WSYEN229M9;

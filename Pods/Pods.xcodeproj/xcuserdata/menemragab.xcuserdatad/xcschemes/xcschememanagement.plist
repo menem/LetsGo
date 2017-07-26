@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>HGCircularSlider.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>KYNavigationProgress.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MZTimerLabel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-LetsGo.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>01E9FE51F89215D0FFFCF2A90DD7B4B8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0A2E50C24B03143F1418B06D739A8001</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2FAF0EFB26F0B57F93F98FD82AA2E74E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>41E06DE5D199D8FCA40EF22C1A0E51F6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
