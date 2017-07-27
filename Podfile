@@ -8,4 +8,5 @@ target ‘LetsGo’ do
 pod 'MZTimerLabel'
 pod 'HGCircularSlider', '~> 1.0.3'
 pod 'KYNavigationProgress'
+pod "CDFlipView"
 end
