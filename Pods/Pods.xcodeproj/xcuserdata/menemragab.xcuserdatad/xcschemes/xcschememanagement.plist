@@ -9,7 +9,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>HGCircularSlider.xcscheme</key>
+		<key>CircleSlider.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -32,22 +32,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>01E9FE51F89215D0FFFCF2A90DD7B4B8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>08EA1EA14D738468244150977BA90585</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>0A2E50C24B03143F1418B06D739A8001</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>1D6EA7FFE0AA4C1522DE136BAC3E2134</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2FAF0EFB26F0B57F93F98FD82AA2E74E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>65480E8269EF99F5740EA9F8091DEF51</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -6,7 +6,7 @@ use_frameworks!
 target ‘LetsGo’ do
 
 pod 'MZTimerLabel'
-pod 'HGCircularSlider', '~> 1.0.3'
+pod "CircleSlider"
 pod 'KYNavigationProgress'
 pod "CDFlipView"
 end
