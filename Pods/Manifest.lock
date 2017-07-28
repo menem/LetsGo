@@ -1,21 +1,21 @@
 PODS:
   - CDFlipView (1.0.1)
-  - CircleSlider (0.5.0)
+  - CircularSlider (1.1.2)
   - KYNavigationProgress (2.0.1)
   - MZTimerLabel (0.5.4)
 
 DEPENDENCIES:
   - CDFlipView
-  - CircleSlider
+  - CircularSlider
   - KYNavigationProgress
   - MZTimerLabel
 
 SPEC CHECKSUMS:
   CDFlipView: 71e92149d7ed98828f9df98288bc81a2f8d596a8
-  CircleSlider: c6eca7297b40e3a638395a938d1b16b8c4710821
+  CircularSlider: 448f9f7723b845ccd470dac41981feb192e20c50
   KYNavigationProgress: 7f979e79f6e57b1ee33d3de89d6b705a1f4e266a
   MZTimerLabel: cd9bfb9304540ef2a9e163384fca9c978f0dbf83
 
-PODFILE CHECKSUM: 2b207d3d50012e8743015674a22d4df353cb6867
+PODFILE CHECKSUM: 2c92a57779773bcc19ff0e253f2c47009d6a9ad1
 
 COCOAPODS: 1.2.1

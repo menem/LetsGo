@@ -9,10 +9,20 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>SiriHandler.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>4850E1AB1F28EE00004D85A7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4850E1C51F2A8865004D85A7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

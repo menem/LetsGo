@@ -6,7 +6,7 @@ use_frameworks!
 target ‘LetsGo’ do
 
 pod 'MZTimerLabel'
-pod "CircleSlider"
 pod 'KYNavigationProgress'
 pod "CDFlipView"
+pod 'CircularSlider'
 end

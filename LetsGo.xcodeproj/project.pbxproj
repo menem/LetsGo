@@ -12,8 +12,34 @@
 		4850E1B51F28EE00004D85A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4850E1B31F28EE00004D85A7 /* Main.storyboard */; };
 		4850E1B71F28EE00004D85A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4850E1B61F28EE00004D85A7 /* Assets.xcassets */; };
 		4850E1BA1F28EE00004D85A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4850E1B81F28EE00004D85A7 /* LaunchScreen.storyboard */; };
+		4850E1C91F2A8865004D85A7 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4850E1C81F2A8865004D85A7 /* IntentHandler.swift */; };
+		4850E1CD1F2A8865004D85A7 /* SiriHandler.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4850E1C61F2A8865004D85A7 /* SiriHandler.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4C3B67DF2BC822FFDB07F9C5 /* Pods_LetsGo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14E8FA497D650EDF3219475A /* Pods_LetsGo.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4850E1CB1F2A8865004D85A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4850E1A41F28EDFF004D85A7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4850E1C51F2A8865004D85A7;
+			remoteInfo = SiriHandler;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4850E1D11F2A8865004D85A7 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				4850E1CD1F2A8865004D85A7 /* SiriHandler.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		14E8FA497D650EDF3219475A /* Pods_LetsGo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LetsGo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,6 +50,10 @@
 		4850E1B61F28EE00004D85A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4850E1B91F28EE00004D85A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4850E1BB1F28EE00004D85A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4850E1C11F2A8552004D85A7 /* LetsGo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LetsGo.entitlements; sourceTree = "<group>"; };
+		4850E1C61F2A8865004D85A7 /* SiriHandler.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SiriHandler.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4850E1C81F2A8865004D85A7 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		4850E1CA1F2A8865004D85A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C1CAB1FD870C4C22C7A8CB9 /* Pods-LetsGo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetsGo.release.xcconfig"; path = "Pods/Target Support Files/Pods-LetsGo/Pods-LetsGo.release.xcconfig"; sourceTree = "<group>"; };
 		E8418AE36AB7D1935CE2EE43 /* Pods-LetsGo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetsGo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LetsGo/Pods-LetsGo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -37,6 +67,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4850E1C31F2A8865004D85A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -44,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				4850E1AE1F28EE00004D85A7 /* LetsGo */,
+				4850E1C71F2A8865004D85A7 /* SiriHandler */,
 				4850E1AD1F28EE00004D85A7 /* Products */,
 				C9E617E4E9D8BD48646E3892 /* Pods */,
 				AE2D2CAFEACC99BF8E823CA6 /* Frameworks */,
@@ -54,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				4850E1AC1F28EE00004D85A7 /* LetsGo.app */,
+				4850E1C61F2A8865004D85A7 /* SiriHandler.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,6 +100,7 @@
 		4850E1AE1F28EE00004D85A7 /* LetsGo */ = {
 			isa = PBXGroup;
 			children = (
+				4850E1C11F2A8552004D85A7 /* LetsGo.entitlements */,
 				4850E1AF1F28EE00004D85A7 /* AppDelegate.swift */,
 				4850E1B11F28EE00004D85A7 /* ViewController.swift */,
 				4850E1B31F28EE00004D85A7 /* Main.storyboard */,
@@ -69,6 +109,15 @@
 				4850E1BB1F28EE00004D85A7 /* Info.plist */,
 			);
 			path = LetsGo;
+			sourceTree = "<group>";
+		};
+		4850E1C71F2A8865004D85A7 /* SiriHandler */ = {
+			isa = PBXGroup;
+			children = (
+				4850E1C81F2A8865004D85A7 /* IntentHandler.swift */,
+				4850E1CA1F2A8865004D85A7 /* Info.plist */,
+			);
+			path = SiriHandler;
 			sourceTree = "<group>";
 		};
 		AE2D2CAFEACC99BF8E823CA6 /* Frameworks */ = {
@@ -101,15 +150,34 @@
 				4850E1AA1F28EE00004D85A7 /* Resources */,
 				B60620B56B59E4474187551A /* [CP] Embed Pods Frameworks */,
 				E34B04BC62249F50AB4D7A43 /* [CP] Copy Pods Resources */,
+				4850E1D11F2A8865004D85A7 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4850E1CC1F2A8865004D85A7 /* PBXTargetDependency */,
 			);
 			name = LetsGo;
 			productName = LetsGo;
 			productReference = 4850E1AC1F28EE00004D85A7 /* LetsGo.app */;
 			productType = "com.apple.product-type.application";
+		};
+		4850E1C51F2A8865004D85A7 /* SiriHandler */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4850E1CE1F2A8865004D85A7 /* Build configuration list for PBXNativeTarget "SiriHandler" */;
+			buildPhases = (
+				4850E1C21F2A8865004D85A7 /* Sources */,
+				4850E1C31F2A8865004D85A7 /* Frameworks */,
+				4850E1C41F2A8865004D85A7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SiriHandler;
+			productName = SiriHandler;
+			productReference = 4850E1C61F2A8865004D85A7 /* SiriHandler.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -122,6 +190,16 @@
 				ORGANIZATIONNAME = "Phoenix fitness";
 				TargetAttributes = {
 					4850E1AB1F28EE00004D85A7 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = WSYEN229M9;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Siri = {
+								enabled = 1;
+							};
+						};
+					};
+					4850E1C51F2A8865004D85A7 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = WSYEN229M9;
 						ProvisioningStyle = Automatic;
@@ -142,6 +220,7 @@
 			projectRoot = "";
 			targets = (
 				4850E1AB1F28EE00004D85A7 /* LetsGo */,
+				4850E1C51F2A8865004D85A7 /* SiriHandler */,
 			);
 		};
 /* End PBXProject section */
@@ -154,6 +233,13 @@
 				4850E1BA1F28EE00004D85A7 /* LaunchScreen.storyboard in Resources */,
 				4850E1B71F28EE00004D85A7 /* Assets.xcassets in Resources */,
 				4850E1B51F28EE00004D85A7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4850E1C41F2A8865004D85A7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,7 +303,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4850E1C21F2A8865004D85A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4850E1C91F2A8865004D85A7 /* IntentHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4850E1CC1F2A8865004D85A7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4850E1C51F2A8865004D85A7 /* SiriHandler */;
+			targetProxy = 4850E1CB1F2A8865004D85A7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4850E1B31F28EE00004D85A7 /* Main.storyboard */ = {
@@ -336,7 +438,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E8418AE36AB7D1935CE2EE43 /* Pods-LetsGo.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LetsGo/LetsGo.entitlements;
 				DEVELOPMENT_TEAM = WSYEN229M9;
 				INFOPLIST_FILE = LetsGo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -350,12 +454,40 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5C1CAB1FD870C4C22C7A8CB9 /* Pods-LetsGo.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LetsGo/LetsGo.entitlements;
 				DEVELOPMENT_TEAM = WSYEN229M9;
 				INFOPLIST_FILE = LetsGo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.phoenixfitnesshub.LetsGo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		4850E1CF1F2A8865004D85A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = WSYEN229M9;
+				INFOPLIST_FILE = SiriHandler/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.phoenixfitnesshub.LetsGo.SiriHandler;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		4850E1D01F2A8865004D85A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = WSYEN229M9;
+				INFOPLIST_FILE = SiriHandler/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.phoenixfitnesshub.LetsGo.SiriHandler;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -377,6 +509,15 @@
 			buildConfigurations = (
 				4850E1BF1F28EE00004D85A7 /* Debug */,
 				4850E1C01F28EE00004D85A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4850E1CE1F2A8865004D85A7 /* Build configuration list for PBXNativeTarget "SiriHandler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4850E1CF1F2A8865004D85A7 /* Debug */,
+				4850E1D01F2A8865004D85A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

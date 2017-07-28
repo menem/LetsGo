@@ -7,128 +7,132 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		018E7747790439C735D15A94FE4FF029 /* MZTimerLabel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 98E046CACD2AFD2CEDDF13B764210843 /* MZTimerLabel-dummy.m */; };
-		04EAB9232B47418384955D4D9F65AF89 /* MZTimerLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = A6B4B82D67BD58AE8115DE83628F5AF6 /* MZTimerLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0B0507CF1C631475B9C2BB54DAE5A2DF /* CircleSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497ED519E8D178AA8CB3A7795CF55CA5 /* CircleSlider.swift */; };
-		0D34C9925F86C07C4F21F2B6B41A2BFF /* CircleSlider-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 588E510D7AEC980ED4A4EB87AD97A81B /* CircleSlider-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1208CB78980A9F17835163A9D05F4235 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E8499BBB8FBC6A5F2FA6FFF03A2774 /* Math.swift */; };
-		2014260C3EF410662C1D658F67A1201E /* KYNavigationProgress-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A64DE92626F439C7C860E88305EBD1A /* KYNavigationProgress-dummy.m */; };
-		21EDDDB10455790634B336BC49E6F0C0 /* MZTimerLabel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C12E00036103C4DAAAD224A0EE0F5C3A /* MZTimerLabel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3818E07EF1F41B99C756A4F1A99BE29C /* CDFlipView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 99E588640E3A583EE42C70FD25F7BD45 /* CDFlipView-dummy.m */; };
-		5980862852F0E80291EFCE3C1D171E24 /* KYNavigationProgress-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D349BCA1E10F152936BED2192F0D9AD5 /* KYNavigationProgress-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		616FACAA169A0AE1351C7FB52D4E74A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		6B546FB9381C4E1F1F83E8E7967E071D /* CDFlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9A759B39676EB35A23D0E20E82A941 /* CDFlipView.swift */; };
-		716EFBC33F0C14064932E3EC01C0AC72 /* UINavigationController+Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DF00A7AF4BA6FE5AA2563138F3AA6D /* UINavigationController+Progress.swift */; };
-		72B69A01CFB19D7C70CC0ED723330834 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		74882E6121B3296E2958AC91D0FF73CF /* TrackLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3FCF5CD103A98D30A4BF21CDCFE33 /* TrackLayer.swift */; };
-		74D82C136DB108DDBD5F0BB370B215E6 /* Pods-LetsGo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C9222BE4AC9B91949BCDE0F03BEC24AD /* Pods-LetsGo-dummy.m */; };
-		78588C2E0F75CA10F733277F64303045 /* MZTimerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B559A9954B25C6EB6A89C86C63A726C1 /* MZTimerLabel.m */; };
-		94EF36AB83E5B25DC59016B909C229A1 /* CDFlipView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C68C716D71EB2AAA90BD8E1DBD7D3D69 /* CDFlipView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B97AF88B9CEAF49738BC35CB49E435B1 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCF65F46FCBC3D22166CFCA091D2E5E /* ProgressView.swift */; };
-		C27E506873A72BE2CB1C0F7B394DBAAA /* Pods-LetsGo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E0C6FF71173A39E608636BA668661821 /* Pods-LetsGo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C7E99D50DB6E6CB4A48BF1276A633DBC /* CircleSlider-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FB42B5A96F8D499B4103B0ED6AE0CE97 /* CircleSlider-dummy.m */; };
-		E113286DF709E35DE1BB6D460C8DA40D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		E146CBD5E9DA4FBB404B9946AEEF61A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		FD75197C62AE481D958456225E86690F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		017E05A764DE234F3D46FCA87E100C0B /* CircularSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C19976EC0E5C19837FC7730E91C000 /* CircularSlider.swift */; };
+		018E7747790439C735D15A94FE4FF029 /* MZTimerLabel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F20465AD157F5C9BFF4D911560188882 /* MZTimerLabel-dummy.m */; };
+		04EAB9232B47418384955D4D9F65AF89 /* MZTimerLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AEF09FC8A3A546917E0289CDBFEE4B0 /* MZTimerLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2014260C3EF410662C1D658F67A1201E /* KYNavigationProgress-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CF33CD9DD7982F26162E549232ACD4 /* KYNavigationProgress-dummy.m */; };
+		21EDDDB10455790634B336BC49E6F0C0 /* MZTimerLabel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 58C747224D344AF63AF10ED58BEF3803 /* MZTimerLabel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3818E07EF1F41B99C756A4F1A99BE29C /* CDFlipView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C24E366122B4A44131F608B8361D2CB /* CDFlipView-dummy.m */; };
+		5980862852F0E80291EFCE3C1D171E24 /* KYNavigationProgress-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FAD167789F559B846055BF2AA6A39F7 /* KYNavigationProgress-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5BA7BFA560D9A6A013CE1B42F9234085 /* CircularSlider-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FCCA3912BB694B2005F539DB98C9C8B /* CircularSlider-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5D04168E4723F77353C0B5AC90457D63 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
+		608AB4AC5D9264F749493B0F6B706E90 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */; };
+		616FACAA169A0AE1351C7FB52D4E74A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
+		6B546FB9381C4E1F1F83E8E7967E071D /* CDFlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF454C9E15694B393744B1F4A342D19 /* CDFlipView.swift */; };
+		716EFBC33F0C14064932E3EC01C0AC72 /* UINavigationController+Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7655DFBC23538CE9AECEA20D76AA853A /* UINavigationController+Progress.swift */; };
+		72B69A01CFB19D7C70CC0ED723330834 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
+		78588C2E0F75CA10F733277F64303045 /* MZTimerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA43E0C86601DBED9EB8478F90B0CB4 /* MZTimerLabel.m */; };
+		94EF36AB83E5B25DC59016B909C229A1 /* CDFlipView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3640EAF01CBAC850C9E913081FDB482A /* CDFlipView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9DF7088DB76C202FA2C787F91785A057 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
+		A513FB5E59878750E77B8A3BB6798188 /* Pods-LetsGo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E0C6FF71173A39E608636BA668661821 /* Pods-LetsGo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5FAAB847C09C9CF8DB79966D9BBEF0C /* CircularSlider.xib in Sources */ = {isa = PBXBuildFile; fileRef = E3C0920CEE5DC77117EA600A3D6CF2CB /* CircularSlider.xib */; };
+		B97AF88B9CEAF49738BC35CB49E435B1 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CA7D7F1D3B40FF096EB14F8F781A8B /* ProgressView.swift */; };
+		BFF6037953BFE863DA68BE4313EEC39A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52296E0770B3C478F4CF71292F2D72F2 /* Utils.swift */; };
+		C2482CB8430EB90B0458ED035B7BBF79 /* RotationGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD329716AA6D7E5A625026019E3E74CE /* RotationGesture.swift */; };
+		CF6ECB96AA9B9A6C45AB1480BAD04010 /* CircularSlider-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E6189FF099705F8E94AEE9D9C86C4F /* CircularSlider-dummy.m */; };
+		DF57AC25A0EF19F126C2BB58496F4332 /* Pods-LetsGo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C9222BE4AC9B91949BCDE0F03BEC24AD /* Pods-LetsGo-dummy.m */; };
+		E113286DF709E35DE1BB6D460C8DA40D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		97F91F0000E310494AA08781C0615597 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1D6EA7FFE0AA4C1522DE136BAC3E2134;
-			remoteInfo = CircleSlider;
-		};
-		B872FAE6573028F002E51A8AE1641A05 /* PBXContainerItemProxy */ = {
+		10AD8E6A022FDAC5F9883D2833CB91DE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D77943227C8DAE62F24EE2A6C5076CC6;
 			remoteInfo = CDFlipView;
 		};
-		C9E4E64156B052C433C26FE4730B87BB /* PBXContainerItemProxy */ = {
+		16D53E8C074F75FC78AD2659869214FD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0A2E50C24B03143F1418B06D739A8001;
-			remoteInfo = MZTimerLabel;
+			remoteGlobalIDString = AF09DB055935BD941846539935605A14;
+			remoteInfo = CircularSlider;
 		};
-		CA5730A75D234E3D2DEB40DA5987D436 /* PBXContainerItemProxy */ = {
+		79964822242D4024476EA6833880C4E6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2FAF0EFB26F0B57F93F98FD82AA2E74E;
 			remoteInfo = KYNavigationProgress;
 		};
+		941E28C4DC7FAC70E3EF6DC68F68DCCA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0A2E50C24B03143F1418B06D739A8001;
+			remoteInfo = MZTimerLabel;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		00CEBE05B9C254C2445267FD7C58461E /* Pods-LetsGo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LetsGo.debug.xcconfig"; sourceTree = "<group>"; };
-		04C86FA6F7D758507D42F8C36EB3497C /* CircleSlider-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CircleSlider-prefix.pch"; sourceTree = "<group>"; };
 		09B1340F01519EE818E0C666BD8B12AF /* Pods-LetsGo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LetsGo.release.xcconfig"; sourceTree = "<group>"; };
-		16FE2A75418F769BB020F4EE46E4C2FD /* KYNavigationProgress.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = KYNavigationProgress.modulemap; sourceTree = "<group>"; };
-		1AD9036C9A4089EF608B2D55E1EE81A7 /* MZTimerLabel.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MZTimerLabel.xcconfig; sourceTree = "<group>"; };
+		0AEF09FC8A3A546917E0289CDBFEE4B0 /* MZTimerLabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MZTimerLabel.h; path = MZTimerLabel/MZTimerLabel.h; sourceTree = "<group>"; };
+		0E52D35056C6E756B8619946A325302A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0FA550577288AC8224A3BFFC81A3C3CE /* MZTimerLabel-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MZTimerLabel-prefix.pch"; sourceTree = "<group>"; };
+		1A93FCFF9C7A50A87689D1FE6B5599B6 /* MZTimerLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MZTimerLabel.framework; path = MZTimerLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F1A6168B155DDFA297E90E455778BB4 /* Pods-LetsGo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LetsGo-resources.sh"; sourceTree = "<group>"; };
-		253BE8933DCCD5F3ADA120E89A43B680 /* KYNavigationProgress.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KYNavigationProgress.xcconfig; sourceTree = "<group>"; };
-		2711FACDE6C677A543602A5DE7C2DB92 /* CircleSlider.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = CircleSlider.modulemap; sourceTree = "<group>"; };
-		27B3FCF5CD103A98D30A4BF21CDCFE33 /* TrackLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TrackLayer.swift; path = Pod/Classes/TrackLayer.swift; sourceTree = "<group>"; };
-		3A64DE92626F439C7C860E88305EBD1A /* KYNavigationProgress-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KYNavigationProgress-dummy.m"; sourceTree = "<group>"; };
-		47628E0BDA18CA3D20745DF352B89F6C /* Pods_LetsGo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_LetsGo.framework; path = "Pods-LetsGo.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		492F43C63935CC2ADC2C687537534B5B /* MZTimerLabel-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MZTimerLabel-prefix.pch"; sourceTree = "<group>"; };
-		497ED519E8D178AA8CB3A7795CF55CA5 /* CircleSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CircleSlider.swift; path = Pod/Classes/CircleSlider.swift; sourceTree = "<group>"; };
-		4E02EFDCE1E02443ABE93E2DAEAAF176 /* MZTimerLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MZTimerLabel.framework; path = MZTimerLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		51F2518BB2D2641F15E31A96B9FBBC78 /* CDFlipView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = CDFlipView.modulemap; sourceTree = "<group>"; };
-		53AC9E53C4B2C99C0ACACE8121DEBE33 /* CircleSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CircleSlider.framework; path = CircleSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		588E510D7AEC980ED4A4EB87AD97A81B /* CircleSlider-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CircleSlider-umbrella.h"; sourceTree = "<group>"; };
-		5996C4D98D9A50D664929E08C7E76F60 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5AB9A6F23B23394711A5280EB6BECF97 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63D114F8A7D7C73AA741D90141B16697 /* KYNavigationProgress-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KYNavigationProgress-prefix.pch"; sourceTree = "<group>"; };
-		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		67DF00A7AF4BA6FE5AA2563138F3AA6D /* UINavigationController+Progress.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UINavigationController+Progress.swift"; path = "KYNavigationProgress/UINavigationController+Progress.swift"; sourceTree = "<group>"; };
+		3640EAF01CBAC850C9E913081FDB482A /* CDFlipView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CDFlipView-umbrella.h"; sourceTree = "<group>"; };
+		406B45A2D66A347ED9601A36175C8F8D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C24E366122B4A44131F608B8361D2CB /* CDFlipView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CDFlipView-dummy.m"; sourceTree = "<group>"; };
+		4FAD167789F559B846055BF2AA6A39F7 /* KYNavigationProgress-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KYNavigationProgress-umbrella.h"; sourceTree = "<group>"; };
+		52296E0770B3C478F4CF71292F2D72F2 /* Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = CircularSlider/Classes/Utils.swift; sourceTree = "<group>"; };
+		56AF3ACCA69FA597EB8950A26681C15F /* KYNavigationProgress.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = KYNavigationProgress.modulemap; sourceTree = "<group>"; };
+		58C747224D344AF63AF10ED58BEF3803 /* MZTimerLabel-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MZTimerLabel-umbrella.h"; sourceTree = "<group>"; };
+		5DA2A9709031ED6F16B756577EF72F77 /* CircularSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CircularSlider.framework; path = CircularSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B227345B75BA3E62021E6F252504C3E /* KYNavigationProgress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = KYNavigationProgress.framework; path = KYNavigationProgress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		70F9C5C47BE3F32E95D7F82D880417A0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74E6189FF099705F8E94AEE9D9C86C4F /* CircularSlider-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CircularSlider-dummy.m"; sourceTree = "<group>"; };
+		7655DFBC23538CE9AECEA20D76AA853A /* UINavigationController+Progress.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UINavigationController+Progress.swift"; path = "KYNavigationProgress/UINavigationController+Progress.swift"; sourceTree = "<group>"; };
 		7F33FE85E827F611CF450F57236C3714 /* Pods-LetsGo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LetsGo-acknowledgements.markdown"; sourceTree = "<group>"; };
-		85444746B45C946B7A7F60C2F77FEF12 /* CircleSlider.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CircleSlider.xcconfig; sourceTree = "<group>"; };
-		895F00A2B17C5B013283598AD514A205 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8C9538AFF9C43D741B57137D2AC14C13 /* KYNavigationProgress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = KYNavigationProgress.framework; path = KYNavigationProgress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8962FB98A4F4058787D1C908A1DD4C2A /* KYNavigationProgress-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KYNavigationProgress-prefix.pch"; sourceTree = "<group>"; };
+		91CF33CD9DD7982F26162E549232ACD4 /* KYNavigationProgress-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KYNavigationProgress-dummy.m"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		98E046CACD2AFD2CEDDF13B764210843 /* MZTimerLabel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MZTimerLabel-dummy.m"; sourceTree = "<group>"; };
-		99E588640E3A583EE42C70FD25F7BD45 /* CDFlipView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CDFlipView-dummy.m"; sourceTree = "<group>"; };
-		A1CDAD9F65E8FCFD7E510FBE4B13B608 /* CDFlipView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CDFlipView.framework; path = CDFlipView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A30E38BE0ACDE3485AC6EB4494C06AC3 /* CDFlipView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CDFlipView-prefix.pch"; sourceTree = "<group>"; };
-		A40A1B5C885D16C334EC3CB68D2BDC9D /* CDFlipView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CDFlipView.xcconfig; sourceTree = "<group>"; };
-		A6B4B82D67BD58AE8115DE83628F5AF6 /* MZTimerLabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MZTimerLabel.h; path = MZTimerLabel/MZTimerLabel.h; sourceTree = "<group>"; };
-		B559A9954B25C6EB6A89C86C63A726C1 /* MZTimerLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MZTimerLabel.m; path = MZTimerLabel/MZTimerLabel.m; sourceTree = "<group>"; };
-		C12E00036103C4DAAAD224A0EE0F5C3A /* MZTimerLabel-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MZTimerLabel-umbrella.h"; sourceTree = "<group>"; };
-		C68C716D71EB2AAA90BD8E1DBD7D3D69 /* CDFlipView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CDFlipView-umbrella.h"; sourceTree = "<group>"; };
+		9C1E8806C46F2B7A01B66169860DE167 /* CircularSlider.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CircularSlider.xcconfig; sourceTree = "<group>"; };
+		9FB939A41B32EDA8BBBC690AEEF2DA3F /* CDFlipView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CDFlipView.xcconfig; sourceTree = "<group>"; };
+		9FCCA3912BB694B2005F539DB98C9C8B /* CircularSlider-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CircularSlider-umbrella.h"; sourceTree = "<group>"; };
+		A3EC7E3D3EBC1C0EC2BD425E6975FA48 /* Pods_LetsGo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_LetsGo.framework; path = "Pods-LetsGo.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B30D7FBCD4E1AF8952B17FE8E46FB6FA /* CDFlipView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CDFlipView-prefix.pch"; sourceTree = "<group>"; };
+		B5FB4776AD9704EF373D9DE44E1D4249 /* MZTimerLabel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MZTimerLabel.modulemap; sourceTree = "<group>"; };
+		B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		BEE016DC5B827E86353D432D6EEC622B /* CDFlipView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CDFlipView.framework; path = CDFlipView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9222BE4AC9B91949BCDE0F03BEC24AD /* Pods-LetsGo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LetsGo-dummy.m"; sourceTree = "<group>"; };
-		CC824ACB23C504925911C77C471484C4 /* MZTimerLabel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MZTimerLabel.modulemap; sourceTree = "<group>"; };
-		CCCF65F46FCBC3D22166CFCA091D2E5E /* ProgressView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProgressView.swift; path = KYNavigationProgress/ProgressView.swift; sourceTree = "<group>"; };
+		C9C19976EC0E5C19837FC7730E91C000 /* CircularSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CircularSlider.swift; path = CircularSlider/Classes/CircularSlider.swift; sourceTree = "<group>"; };
 		CF4C9E303E63AF875108D0D226963D29 /* Pods-LetsGo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LetsGo-frameworks.sh"; sourceTree = "<group>"; };
-		D349BCA1E10F152936BED2192F0D9AD5 /* KYNavigationProgress-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KYNavigationProgress-umbrella.h"; sourceTree = "<group>"; };
-		DA9A759B39676EB35A23D0E20E82A941 /* CDFlipView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CDFlipView.swift; path = CDFlipView/Classes/CDFlipView.swift; sourceTree = "<group>"; };
+		D7AD2CFB8E62C04195AE2B66DE6B9C95 /* KYNavigationProgress.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KYNavigationProgress.xcconfig; sourceTree = "<group>"; };
+		D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		DC4DFAB5391A47BECF96C0654CC9CA1F /* CDFlipView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = CDFlipView.modulemap; sourceTree = "<group>"; };
+		DCC851B3219EFDE26B5EEF3A87AEDBFB /* CircularSlider.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = CircularSlider.modulemap; sourceTree = "<group>"; };
+		DD329716AA6D7E5A625026019E3E74CE /* RotationGesture.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RotationGesture.swift; path = CircularSlider/Classes/RotationGesture.swift; sourceTree = "<group>"; };
+		DED62184665A18020C7A32C208BC3074 /* CircularSlider-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CircularSlider-prefix.pch"; sourceTree = "<group>"; };
 		E0C6FF71173A39E608636BA668661821 /* Pods-LetsGo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-LetsGo-umbrella.h"; sourceTree = "<group>"; };
+		E3C0920CEE5DC77117EA600A3D6CF2CB /* CircularSlider.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = CircularSlider.xib; path = CircularSlider/Classes/CircularSlider.xib; sourceTree = "<group>"; };
 		E6BEE005CCF0AB4B9DA999D2329C6C92 /* Pods-LetsGo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LetsGo-acknowledgements.plist"; sourceTree = "<group>"; };
-		F0DBFB2D42527FB4654F000D3E97AAB3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F8E8499BBB8FBC6A5F2FA6FFF03A2774 /* Math.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Math.swift; path = Pod/Classes/Math.swift; sourceTree = "<group>"; };
-		FB42B5A96F8D499B4103B0ED6AE0CE97 /* CircleSlider-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CircleSlider-dummy.m"; sourceTree = "<group>"; };
+		E9CA7D7F1D3B40FF096EB14F8F781A8B /* ProgressView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProgressView.swift; path = KYNavigationProgress/ProgressView.swift; sourceTree = "<group>"; };
+		EEA43E0C86601DBED9EB8478F90B0CB4 /* MZTimerLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MZTimerLabel.m; path = MZTimerLabel/MZTimerLabel.m; sourceTree = "<group>"; };
+		EFF454C9E15694B393744B1F4A342D19 /* CDFlipView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CDFlipView.swift; path = CDFlipView/Classes/CDFlipView.swift; sourceTree = "<group>"; };
+		F1DA48E937E0ED31629641D03F261ECE /* MZTimerLabel.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MZTimerLabel.xcconfig; sourceTree = "<group>"; };
+		F20465AD157F5C9BFF4D911560188882 /* MZTimerLabel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MZTimerLabel-dummy.m"; sourceTree = "<group>"; };
+		F936BF5142D999435FD6027CDA9F0629 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD5089E8453015AEEEEB556E930F1DC1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF59BF48501AAE25444D2FA5ADB36EC5 /* Pods-LetsGo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-LetsGo.modulemap"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		37FE54068CD6FB55835B259476CFF372 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D04168E4723F77353C0B5AC90457D63 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5DB18A5342C67A8AEF673AE4EF56BA4E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E113286DF709E35DE1BB6D460C8DA40D /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		608FC1757D7726A8FBE0EBA4D4CFD400 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FD75197C62AE481D958456225E86690F /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +144,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9050E6D280CE66B4A19B8FF05FE78353 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DF7088DB76C202FA2C787F91785A057 /* Foundation.framework in Frameworks */,
+				608AB4AC5D9264F749493B0F6B706E90 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C4E2FF30A91A1C4F1AFA4FF0A32C8F99 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -148,89 +161,81 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DFC2B55F42F1A9AB889E441B5D7B0899 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E146CBD5E9DA4FBB404B9946AEEF61A7 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		27E5A61A4964915B2AE92D4CB97DB67F /* Support Files */ = {
+		05FE4B2F07E13F5383F224584DA82235 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				51F2518BB2D2641F15E31A96B9FBBC78 /* CDFlipView.modulemap */,
-				A40A1B5C885D16C334EC3CB68D2BDC9D /* CDFlipView.xcconfig */,
-				99E588640E3A583EE42C70FD25F7BD45 /* CDFlipView-dummy.m */,
-				A30E38BE0ACDE3485AC6EB4494C06AC3 /* CDFlipView-prefix.pch */,
-				C68C716D71EB2AAA90BD8E1DBD7D3D69 /* CDFlipView-umbrella.h */,
-				F0DBFB2D42527FB4654F000D3E97AAB3 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/CDFlipView";
-			sourceTree = "<group>";
-		};
-		3C65F48448F5B977C34E3042DC7ABA70 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				2711FACDE6C677A543602A5DE7C2DB92 /* CircleSlider.modulemap */,
-				85444746B45C946B7A7F60C2F77FEF12 /* CircleSlider.xcconfig */,
-				FB42B5A96F8D499B4103B0ED6AE0CE97 /* CircleSlider-dummy.m */,
-				04C86FA6F7D758507D42F8C36EB3497C /* CircleSlider-prefix.pch */,
-				588E510D7AEC980ED4A4EB87AD97A81B /* CircleSlider-umbrella.h */,
-				5996C4D98D9A50D664929E08C7E76F60 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/CircleSlider";
-			sourceTree = "<group>";
-		};
-		4856EC117E8F6FB07839D03934416B73 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				5AB9A6F23B23394711A5280EB6BECF97 /* Info.plist */,
-				16FE2A75418F769BB020F4EE46E4C2FD /* KYNavigationProgress.modulemap */,
-				253BE8933DCCD5F3ADA120E89A43B680 /* KYNavigationProgress.xcconfig */,
-				3A64DE92626F439C7C860E88305EBD1A /* KYNavigationProgress-dummy.m */,
-				63D114F8A7D7C73AA741D90141B16697 /* KYNavigationProgress-prefix.pch */,
-				D349BCA1E10F152936BED2192F0D9AD5 /* KYNavigationProgress-umbrella.h */,
+				F936BF5142D999435FD6027CDA9F0629 /* Info.plist */,
+				56AF3ACCA69FA597EB8950A26681C15F /* KYNavigationProgress.modulemap */,
+				D7AD2CFB8E62C04195AE2B66DE6B9C95 /* KYNavigationProgress.xcconfig */,
+				91CF33CD9DD7982F26162E549232ACD4 /* KYNavigationProgress-dummy.m */,
+				8962FB98A4F4058787D1C908A1DD4C2A /* KYNavigationProgress-prefix.pch */,
+				4FAD167789F559B846055BF2AA6A39F7 /* KYNavigationProgress-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/KYNavigationProgress";
 			sourceTree = "<group>";
 		};
-		514830D7F0880F1FB1603A4ACD054524 /* Pods */ = {
+		14819046BCA1A0D036EB780A1877661D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F9E76E2B7A4A38E6D0BE3D9869D7383F /* CDFlipView */,
-				70B0E1C6171DEE692DE1CAE0FEF4BE16 /* CircleSlider */,
-				FBAF6D7B717ECF3CC6A32D7422F95EB1 /* KYNavigationProgress */,
-				CF550728EFEBEC3AE25EE8DEC1A83D95 /* MZTimerLabel */,
+				BEE016DC5B827E86353D432D6EEC622B /* CDFlipView.framework */,
+				5DA2A9709031ED6F16B756577EF72F77 /* CircularSlider.framework */,
+				6B227345B75BA3E62021E6F252504C3E /* KYNavigationProgress.framework */,
+				1A93FCFF9C7A50A87689D1FE6B5599B6 /* MZTimerLabel.framework */,
+				A3EC7E3D3EBC1C0EC2BD425E6975FA48 /* Pods_LetsGo.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		244D9294E41A61C9DB8D104460342EBA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D66505D385F6A2FD65F6CE2114D004D8 /* CDFlipView */,
+				F9D384C6051CB87E2B0C9E5FE23B27EE /* CircularSlider */,
+				2BE05261B4DCF71C735840EFE229CE4B /* KYNavigationProgress */,
+				F3652D8BE81E0D8A778DD1DE5841DA7F /* MZTimerLabel */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		70B0E1C6171DEE692DE1CAE0FEF4BE16 /* CircleSlider */ = {
+		2BE05261B4DCF71C735840EFE229CE4B /* KYNavigationProgress */ = {
 			isa = PBXGroup;
 			children = (
-				497ED519E8D178AA8CB3A7795CF55CA5 /* CircleSlider.swift */,
-				F8E8499BBB8FBC6A5F2FA6FFF03A2774 /* Math.swift */,
-				27B3FCF5CD103A98D30A4BF21CDCFE33 /* TrackLayer.swift */,
-				3C65F48448F5B977C34E3042DC7ABA70 /* Support Files */,
+				E9CA7D7F1D3B40FF096EB14F8F781A8B /* ProgressView.swift */,
+				7655DFBC23538CE9AECEA20D76AA853A /* UINavigationController+Progress.swift */,
+				05FE4B2F07E13F5383F224584DA82235 /* Support Files */,
 			);
-			name = CircleSlider;
-			path = CircleSlider;
+			name = KYNavigationProgress;
+			path = KYNavigationProgress;
+			sourceTree = "<group>";
+		};
+		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				438B396F6B4147076630CAEFE34282C1 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		438B396F6B4147076630CAEFE34282C1 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */,
+				B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */,
+			);
+			name = iOS;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				514830D7F0880F1FB1603A4ACD054524 /* Pods */,
-				A09F36A7A419C48A27F4438CC44F80DD /* Products */,
+				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
+				244D9294E41A61C9DB8D104460342EBA /* Pods */,
+				14819046BCA1A0D036EB780A1877661D /* Products */,
 				95787B8CA37B16488B3596B0FB58206E /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -243,78 +248,66 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		A09F36A7A419C48A27F4438CC44F80DD /* Products */ = {
+		960DE79AB42EDF10CF9278AFF7859891 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				A1CDAD9F65E8FCFD7E510FBE4B13B608 /* CDFlipView.framework */,
-				53AC9E53C4B2C99C0ACACE8121DEBE33 /* CircleSlider.framework */,
-				8C9538AFF9C43D741B57137D2AC14C13 /* KYNavigationProgress.framework */,
-				4E02EFDCE1E02443ABE93E2DAEAAF176 /* MZTimerLabel.framework */,
-				47628E0BDA18CA3D20745DF352B89F6C /* Pods_LetsGo.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		B4667F17A980DF875CF7B27E5F7D336B /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				895F00A2B17C5B013283598AD514A205 /* Info.plist */,
-				CC824ACB23C504925911C77C471484C4 /* MZTimerLabel.modulemap */,
-				1AD9036C9A4089EF608B2D55E1EE81A7 /* MZTimerLabel.xcconfig */,
-				98E046CACD2AFD2CEDDF13B764210843 /* MZTimerLabel-dummy.m */,
-				492F43C63935CC2ADC2C687537534B5B /* MZTimerLabel-prefix.pch */,
-				C12E00036103C4DAAAD224A0EE0F5C3A /* MZTimerLabel-umbrella.h */,
+				DC4DFAB5391A47BECF96C0654CC9CA1F /* CDFlipView.modulemap */,
+				9FB939A41B32EDA8BBBC690AEEF2DA3F /* CDFlipView.xcconfig */,
+				4C24E366122B4A44131F608B8361D2CB /* CDFlipView-dummy.m */,
+				B30D7FBCD4E1AF8952B17FE8E46FB6FA /* CDFlipView-prefix.pch */,
+				3640EAF01CBAC850C9E913081FDB482A /* CDFlipView-umbrella.h */,
+				70F9C5C47BE3F32E95D7F82D880417A0 /* Info.plist */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/MZTimerLabel";
+			path = "../Target Support Files/CDFlipView";
 			sourceTree = "<group>";
 		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+		C52EEEECFE2FECEAF196049A0230202A /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
+				DCC851B3219EFDE26B5EEF3A87AEDBFB /* CircularSlider.modulemap */,
+				9C1E8806C46F2B7A01B66169860DE167 /* CircularSlider.xcconfig */,
+				74E6189FF099705F8E94AEE9D9C86C4F /* CircularSlider-dummy.m */,
+				DED62184665A18020C7A32C208BC3074 /* CircularSlider-prefix.pch */,
+				9FCCA3912BB694B2005F539DB98C9C8B /* CircularSlider-umbrella.h */,
+				0E52D35056C6E756B8619946A325302A /* Info.plist */,
 			);
-			name = Frameworks;
+			name = "Support Files";
+			path = "../Target Support Files/CircularSlider";
 			sourceTree = "<group>";
 		};
-		CF550728EFEBEC3AE25EE8DEC1A83D95 /* MZTimerLabel */ = {
+		D66505D385F6A2FD65F6CE2114D004D8 /* CDFlipView */ = {
 			isa = PBXGroup;
 			children = (
-				A6B4B82D67BD58AE8115DE83628F5AF6 /* MZTimerLabel.h */,
-				B559A9954B25C6EB6A89C86C63A726C1 /* MZTimerLabel.m */,
-				B4667F17A980DF875CF7B27E5F7D336B /* Support Files */,
-			);
-			name = MZTimerLabel;
-			path = MZTimerLabel;
-			sourceTree = "<group>";
-		};
-		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		F9E76E2B7A4A38E6D0BE3D9869D7383F /* CDFlipView */ = {
-			isa = PBXGroup;
-			children = (
-				DA9A759B39676EB35A23D0E20E82A941 /* CDFlipView.swift */,
-				27E5A61A4964915B2AE92D4CB97DB67F /* Support Files */,
+				EFF454C9E15694B393744B1F4A342D19 /* CDFlipView.swift */,
+				960DE79AB42EDF10CF9278AFF7859891 /* Support Files */,
 			);
 			name = CDFlipView;
 			path = CDFlipView;
 			sourceTree = "<group>";
 		};
-		FBAF6D7B717ECF3CC6A32D7422F95EB1 /* KYNavigationProgress */ = {
+		F3652D8BE81E0D8A778DD1DE5841DA7F /* MZTimerLabel */ = {
 			isa = PBXGroup;
 			children = (
-				CCCF65F46FCBC3D22166CFCA091D2E5E /* ProgressView.swift */,
-				67DF00A7AF4BA6FE5AA2563138F3AA6D /* UINavigationController+Progress.swift */,
-				4856EC117E8F6FB07839D03934416B73 /* Support Files */,
+				0AEF09FC8A3A546917E0289CDBFEE4B0 /* MZTimerLabel.h */,
+				EEA43E0C86601DBED9EB8478F90B0CB4 /* MZTimerLabel.m */,
+				FF93CB6EB0CA5C38AE487E2EB50591F7 /* Support Files */,
 			);
-			name = KYNavigationProgress;
-			path = KYNavigationProgress;
+			name = MZTimerLabel;
+			path = MZTimerLabel;
+			sourceTree = "<group>";
+		};
+		F9D384C6051CB87E2B0C9E5FE23B27EE /* CircularSlider */ = {
+			isa = PBXGroup;
+			children = (
+				C9C19976EC0E5C19837FC7730E91C000 /* CircularSlider.swift */,
+				E3C0920CEE5DC77117EA600A3D6CF2CB /* CircularSlider.xib */,
+				DD329716AA6D7E5A625026019E3E74CE /* RotationGesture.swift */,
+				52296E0770B3C478F4CF71292F2D72F2 /* Utils.swift */,
+				C52EEEECFE2FECEAF196049A0230202A /* Support Files */,
+			);
+			name = CircularSlider;
+			path = CircularSlider;
 			sourceTree = "<group>";
 		};
 		FC84D0BB61C7F4E19C51F247541D5A99 /* Pods-LetsGo */ = {
@@ -335,22 +328,36 @@
 			path = "Target Support Files/Pods-LetsGo";
 			sourceTree = "<group>";
 		};
+		FF93CB6EB0CA5C38AE487E2EB50591F7 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				406B45A2D66A347ED9601A36175C8F8D /* Info.plist */,
+				B5FB4776AD9704EF373D9DE44E1D4249 /* MZTimerLabel.modulemap */,
+				F1DA48E937E0ED31629641D03F261ECE /* MZTimerLabel.xcconfig */,
+				F20465AD157F5C9BFF4D911560188882 /* MZTimerLabel-dummy.m */,
+				0FA550577288AC8224A3BFFC81A3C3CE /* MZTimerLabel-prefix.pch */,
+				58C747224D344AF63AF10ED58BEF3803 /* MZTimerLabel-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/MZTimerLabel";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		116523D4CD5B7214C7C75BD1DAC0BA3C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A513FB5E59878750E77B8A3BB6798188 /* Pods-LetsGo-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2E972C227EAA5FC01650BC073E3AA2EB /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				5980862852F0E80291EFCE3C1D171E24 /* KYNavigationProgress-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		366109DBF8FD0D800E1925CFCA030A2D /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C27E506873A72BE2CB1C0F7B394DBAAA /* Pods-LetsGo-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,11 +369,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C836D216CE18B579ECE90ECC1EBBD79A /* Headers */ = {
+		B279D74C0F68E344F405223FEBCFC51A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D34C9925F86C07C4F21F2B6B41A2BFF /* CircleSlider-umbrella.h in Headers */,
+				5BA7BFA560D9A6A013CE1B42F9234085 /* CircularSlider-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,24 +403,7 @@
 			);
 			name = MZTimerLabel;
 			productName = MZTimerLabel;
-			productReference = 4E02EFDCE1E02443ABE93E2DAEAAF176 /* MZTimerLabel.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		1D6EA7FFE0AA4C1522DE136BAC3E2134 /* CircleSlider */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4681955EC24A011E9997ACF49D99E409 /* Build configuration list for PBXNativeTarget "CircleSlider" */;
-			buildPhases = (
-				06EF85485E9150FEF472F3CE759B3F47 /* Sources */,
-				608FC1757D7726A8FBE0EBA4D4CFD400 /* Frameworks */,
-				C836D216CE18B579ECE90ECC1EBBD79A /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = CircleSlider;
-			productName = CircleSlider;
-			productReference = 53AC9E53C4B2C99C0ACACE8121DEBE33 /* CircleSlider.framework */;
+			productReference = 1A93FCFF9C7A50A87689D1FE6B5599B6 /* MZTimerLabel.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		2FAF0EFB26F0B57F93F98FD82AA2E74E /* KYNavigationProgress */ = {
@@ -430,28 +420,45 @@
 			);
 			name = KYNavigationProgress;
 			productName = KYNavigationProgress;
-			productReference = 8C9538AFF9C43D741B57137D2AC14C13 /* KYNavigationProgress.framework */;
+			productReference = 6B227345B75BA3E62021E6F252504C3E /* KYNavigationProgress.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		65480E8269EF99F5740EA9F8091DEF51 /* Pods-LetsGo */ = {
+		8D8ADFE91ECB716AC1E8D0A3DBC35ABE /* Pods-LetsGo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1145B026D1CCD4A866E8B042D644B1DF /* Build configuration list for PBXNativeTarget "Pods-LetsGo" */;
+			buildConfigurationList = A5BEAC8585E9EE11B20ADFD90C79BD24 /* Build configuration list for PBXNativeTarget "Pods-LetsGo" */;
 			buildPhases = (
-				F258F7E3ED3DFFB9C85CB04D55F46BCC /* Sources */,
-				DFC2B55F42F1A9AB889E441B5D7B0899 /* Frameworks */,
-				366109DBF8FD0D800E1925CFCA030A2D /* Headers */,
+				B9FA9B8DE19E6AB05A09CE52A9640CC8 /* Sources */,
+				37FE54068CD6FB55835B259476CFF372 /* Frameworks */,
+				116523D4CD5B7214C7C75BD1DAC0BA3C /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				6F2F1602F24BF3B855420FE4EFCCDDD0 /* PBXTargetDependency */,
-				7A90DAE7F472DD3229F8DBE0D6A90E4A /* PBXTargetDependency */,
-				6C790FBC07530EBBEAF2E3F02492044D /* PBXTargetDependency */,
-				A75B8489A423433B616084016C061141 /* PBXTargetDependency */,
+				40E392B093AC8515C16BB930B67F8982 /* PBXTargetDependency */,
+				CB006DA908241EA9B1F91DC3DE1887BA /* PBXTargetDependency */,
+				D3F2049ACB4E624E9701953DEAF23882 /* PBXTargetDependency */,
+				D235DB1E701837CCA9A17EFA08735297 /* PBXTargetDependency */,
 			);
 			name = "Pods-LetsGo";
 			productName = "Pods-LetsGo";
-			productReference = 47628E0BDA18CA3D20745DF352B89F6C /* Pods_LetsGo.framework */;
+			productReference = A3EC7E3D3EBC1C0EC2BD425E6975FA48 /* Pods_LetsGo.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		AF09DB055935BD941846539935605A14 /* CircularSlider */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3E00EEF03C625F617358B2FCF3CF2678 /* Build configuration list for PBXNativeTarget "CircularSlider" */;
+			buildPhases = (
+				9BDF5BFB776A4FD8A410794E775A128E /* Sources */,
+				9050E6D280CE66B4A19B8FF05FE78353 /* Frameworks */,
+				B279D74C0F68E344F405223FEBCFC51A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CircularSlider;
+			productName = CircularSlider;
+			productReference = 5DA2A9709031ED6F16B756577EF72F77 /* CircularSlider.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		D77943227C8DAE62F24EE2A6C5076CC6 /* CDFlipView */ = {
@@ -468,7 +475,7 @@
 			);
 			name = CDFlipView;
 			productName = CDFlipView;
-			productReference = A1CDAD9F65E8FCFD7E510FBE4B13B608 /* CDFlipView.framework */;
+			productReference = BEE016DC5B827E86353D432D6EEC622B /* CDFlipView.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -488,31 +495,20 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = A09F36A7A419C48A27F4438CC44F80DD /* Products */;
+			productRefGroup = 14819046BCA1A0D036EB780A1877661D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				D77943227C8DAE62F24EE2A6C5076CC6 /* CDFlipView */,
-				1D6EA7FFE0AA4C1522DE136BAC3E2134 /* CircleSlider */,
+				AF09DB055935BD941846539935605A14 /* CircularSlider */,
 				2FAF0EFB26F0B57F93F98FD82AA2E74E /* KYNavigationProgress */,
 				0A2E50C24B03143F1418B06D739A8001 /* MZTimerLabel */,
-				65480E8269EF99F5740EA9F8091DEF51 /* Pods-LetsGo */,
+				8D8ADFE91ECB716AC1E8D0A3DBC35ABE /* Pods-LetsGo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		06EF85485E9150FEF472F3CE759B3F47 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C7E99D50DB6E6CB4A48BF1276A633DBC /* CircleSlider-dummy.m in Sources */,
-				0B0507CF1C631475B9C2BB54DAE5A2DF /* CircleSlider.swift in Sources */,
-				1208CB78980A9F17835163A9D05F4235 /* Math.swift in Sources */,
-				74882E6121B3296E2958AC91D0FF73CF /* TrackLayer.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		1ABFB37BF8C5AE4D0262FF9945040E61 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -532,6 +528,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9BDF5BFB776A4FD8A410794E775A128E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF6ECB96AA9B9A6C45AB1480BAD04010 /* CircularSlider-dummy.m in Sources */,
+				017E05A764DE234F3D46FCA87E100C0B /* CircularSlider.swift in Sources */,
+				B5FAAB847C09C9CF8DB79966D9BBEF0C /* CircularSlider.xib in Sources */,
+				C2482CB8430EB90B0458ED035B7BBF79 /* RotationGesture.swift in Sources */,
+				BFF6037953BFE863DA68BE4313EEC39A /* Utils.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9FA9B8DE19E6AB05A09CE52A9640CC8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF57AC25A0EF19F126C2BB58496F4332 /* Pods-LetsGo-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C6FBF4D2A930E4BE141C519E00F5DFF7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -541,47 +557,39 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F258F7E3ED3DFFB9C85CB04D55F46BCC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				74D82C136DB108DDBD5F0BB370B215E6 /* Pods-LetsGo-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6C790FBC07530EBBEAF2E3F02492044D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = KYNavigationProgress;
-			target = 2FAF0EFB26F0B57F93F98FD82AA2E74E /* KYNavigationProgress */;
-			targetProxy = CA5730A75D234E3D2DEB40DA5987D436 /* PBXContainerItemProxy */;
-		};
-		6F2F1602F24BF3B855420FE4EFCCDDD0 /* PBXTargetDependency */ = {
+		40E392B093AC8515C16BB930B67F8982 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CDFlipView;
 			target = D77943227C8DAE62F24EE2A6C5076CC6 /* CDFlipView */;
-			targetProxy = B872FAE6573028F002E51A8AE1641A05 /* PBXContainerItemProxy */;
+			targetProxy = 10AD8E6A022FDAC5F9883D2833CB91DE /* PBXContainerItemProxy */;
 		};
-		7A90DAE7F472DD3229F8DBE0D6A90E4A /* PBXTargetDependency */ = {
+		CB006DA908241EA9B1F91DC3DE1887BA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = CircleSlider;
-			target = 1D6EA7FFE0AA4C1522DE136BAC3E2134 /* CircleSlider */;
-			targetProxy = 97F91F0000E310494AA08781C0615597 /* PBXContainerItemProxy */;
+			name = CircularSlider;
+			target = AF09DB055935BD941846539935605A14 /* CircularSlider */;
+			targetProxy = 16D53E8C074F75FC78AD2659869214FD /* PBXContainerItemProxy */;
 		};
-		A75B8489A423433B616084016C061141 /* PBXTargetDependency */ = {
+		D235DB1E701837CCA9A17EFA08735297 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MZTimerLabel;
 			target = 0A2E50C24B03143F1418B06D739A8001 /* MZTimerLabel */;
-			targetProxy = C9E4E64156B052C433C26FE4730B87BB /* PBXContainerItemProxy */;
+			targetProxy = 941E28C4DC7FAC70E3EF6DC68F68DCCA /* PBXContainerItemProxy */;
+		};
+		D3F2049ACB4E624E9701953DEAF23882 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = KYNavigationProgress;
+			target = 2FAF0EFB26F0B57F93F98FD82AA2E74E /* KYNavigationProgress */;
+			targetProxy = 79964822242D4024476EA6833880C4E6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		29E9CA2B2477B77C17E6FD08B84FE346 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1AD9036C9A4089EF608B2D55E1EE81A7 /* MZTimerLabel.xcconfig */;
+			baseConfigurationReference = F1DA48E937E0ED31629641D03F261ECE /* MZTimerLabel.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -605,75 +613,6 @@
 				PRODUCT_NAME = MZTimerLabel;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		2CCD1F67FA1DE8DA08AB53D7AEB40926 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 85444746B45C946B7A7F60C2F77FEF12 /* CircleSlider.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/CircleSlider/CircleSlider-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/CircleSlider/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/CircleSlider/CircleSlider.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = CircleSlider;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		3B4B6F345EB0604863F005F100F34C44 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 85444746B45C946B7A7F60C2F77FEF12 /* CircleSlider.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/CircleSlider/CircleSlider-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/CircleSlider/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/CircleSlider/CircleSlider.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = CircleSlider;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -729,7 +668,75 @@
 			};
 			name = Debug;
 		};
-		55209C6EAF3C19FF98B665B8AC8F1974 /* Release */ = {
+		5F86DAAE962E08B6C30127A7B50AABAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FB939A41B32EDA8BBBC690AEEF2DA3F /* CDFlipView.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/CDFlipView/CDFlipView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CDFlipView/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/CDFlipView/CDFlipView.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = CDFlipView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5F9C3708C2BDB47A2B6EE9592CC6A825 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1DA48E937E0ED31629641D03F261ECE /* MZTimerLabel.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/MZTimerLabel/MZTimerLabel-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MZTimerLabel/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MZTimerLabel/MZTimerLabel.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = MZTimerLabel;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A26E488B5C0E2D2CF9754717157359A8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 09B1340F01519EE818E0C666BD8B12AF /* Pods-LetsGo.release.xcconfig */;
 			buildSettings = {
@@ -767,77 +774,9 @@
 			};
 			name = Release;
 		};
-		5F86DAAE962E08B6C30127A7B50AABAA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A40A1B5C885D16C334EC3CB68D2BDC9D /* CDFlipView.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/CDFlipView/CDFlipView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/CDFlipView/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/CDFlipView/CDFlipView.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = CDFlipView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		5F9C3708C2BDB47A2B6EE9592CC6A825 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1AD9036C9A4089EF608B2D55E1EE81A7 /* MZTimerLabel.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/MZTimerLabel/MZTimerLabel-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MZTimerLabel/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/MZTimerLabel/MZTimerLabel.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = MZTimerLabel;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		B20DAB4856FE512379A41369253442BD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 253BE8933DCCD5F3ADA120E89A43B680 /* KYNavigationProgress.xcconfig */;
+			baseConfigurationReference = D7AD2CFB8E62C04195AE2B66DE6B9C95 /* KYNavigationProgress.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -859,45 +798,6 @@
 				MODULEMAP_FILE = "Target Support Files/KYNavigationProgress/KYNavigationProgress.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = KYNavigationProgress;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		B9FAFEBDCD4D959EBFEF33AC9985E424 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 00CEBE05B9C254C2445267FD7C58461E /* Pods-LetsGo.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-LetsGo/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-LetsGo/Pods-LetsGo.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_LetsGo;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -953,9 +853,48 @@
 			};
 			name = Release;
 		};
+		C51D9BE61BAEB306EE7A065AD71D1B86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00CEBE05B9C254C2445267FD7C58461E /* Pods-LetsGo.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-LetsGo/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-LetsGo/Pods-LetsGo.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_LetsGo;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		CA38A693322CD9FD4E44654E109C90E0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A40A1B5C885D16C334EC3CB68D2BDC9D /* CDFlipView.xcconfig */;
+			baseConfigurationReference = 9FB939A41B32EDA8BBBC690AEEF2DA3F /* CDFlipView.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -989,7 +928,7 @@
 		};
 		CF96131DCE8901EA8324E40FFDF6D121 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 253BE8933DCCD5F3ADA120E89A43B680 /* KYNavigationProgress.xcconfig */;
+			baseConfigurationReference = D7AD2CFB8E62C04195AE2B66DE6B9C95 /* KYNavigationProgress.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1021,18 +960,78 @@
 			};
 			name = Release;
 		};
+		E27831C07659F6336A664E04E0BFB333 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C1E8806C46F2B7A01B66169860DE167 /* CircularSlider.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/CircularSlider/CircularSlider-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CircularSlider/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/CircularSlider/CircularSlider.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = CircularSlider;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E3408162340772B64BD3D8835300AE94 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C1E8806C46F2B7A01B66169860DE167 /* CircularSlider.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/CircularSlider/CircularSlider-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CircularSlider/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/CircularSlider/CircularSlider.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = CircularSlider;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1145B026D1CCD4A866E8B042D644B1DF /* Build configuration list for PBXNativeTarget "Pods-LetsGo" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B9FAFEBDCD4D959EBFEF33AC9985E424 /* Debug */,
-				55209C6EAF3C19FF98B665B8AC8F1974 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		141C7A327508D59D25B8C4CF1F8AED38 /* Build configuration list for PBXNativeTarget "MZTimerLabel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1060,11 +1059,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4681955EC24A011E9997ACF49D99E409 /* Build configuration list for PBXNativeTarget "CircleSlider" */ = {
+		3E00EEF03C625F617358B2FCF3CF2678 /* Build configuration list for PBXNativeTarget "CircularSlider" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2CCD1F67FA1DE8DA08AB53D7AEB40926 /* Debug */,
-				3B4B6F345EB0604863F005F100F34C44 /* Release */,
+				E27831C07659F6336A664E04E0BFB333 /* Debug */,
+				E3408162340772B64BD3D8835300AE94 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1074,6 +1073,15 @@
 			buildConfigurations = (
 				B20DAB4856FE512379A41369253442BD /* Debug */,
 				CF96131DCE8901EA8324E40FFDF6D121 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5BEAC8585E9EE11B20ADFD90C79BD24 /* Build configuration list for PBXNativeTarget "Pods-LetsGo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C51D9BE61BAEB306EE7A065AD71D1B86 /* Debug */,
+				A26E488B5C0E2D2CF9754717157359A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

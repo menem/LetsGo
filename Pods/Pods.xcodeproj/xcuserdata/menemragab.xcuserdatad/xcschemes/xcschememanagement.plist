@@ -8,26 +8,36 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
-		<key>CircleSlider.xcscheme</key>
+		<key>CircularSlider.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>KYNavigationProgress.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>MZTimerLabel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>Pods-LetsGo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -37,17 +47,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1D6EA7FFE0AA4C1522DE136BAC3E2134</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>2FAF0EFB26F0B57F93F98FD82AA2E74E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>65480E8269EF99F5740EA9F8091DEF51</key>
+		<key>8D8ADFE91ECB716AC1E8D0A3DBC35ABE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AF09DB055935BD941846539935605A14</key>
 		<dict>
 			<key>primary</key>
 			<true/>
