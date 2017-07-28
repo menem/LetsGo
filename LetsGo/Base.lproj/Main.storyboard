@@ -33,10 +33,12 @@
                                     <action selector="resetIntervalPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uyS-nk-tZD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ycv-O9-7EC">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ycv-O9-7EC">
                                 <rect key="frame" x="155" y="583" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="ErX-0r-uzg"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="64" id="baI-F0-1Yb"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="d7r-jc-dTY"/>
                                     <constraint firstAttribute="width" constant="64" id="mCJ-8j-WYL"/>
                                 </constraints>
                                 <state key="normal" title="Start" image="icn_play"/>
@@ -74,8 +76,11 @@
                         <constraints>
                             <constraint firstItem="WgN-uV-rHf" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" constant="-16" id="OBu-az-Rs9"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="wbY-ym-ky6" secondAttribute="bottom" constant="20" id="Rrw-KJ-jD0"/>
+                            <constraint firstItem="WgN-uV-rHf" firstAttribute="leading" secondItem="Ycv-O9-7EC" secondAttribute="trailing" constant="76" id="Zrp-pE-9pY"/>
+                            <constraint firstItem="Ycv-O9-7EC" firstAttribute="leading" secondItem="wbY-ym-ky6" secondAttribute="trailing" constant="75" id="bua-RT-8hS"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ycv-O9-7EC" secondAttribute="bottom" constant="20" id="fCy-KZ-wid"/>
                             <constraint firstItem="wbY-ym-ky6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="nIA-Wl-hYp"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ycv-O9-7EC" secondAttribute="bottom" constant="20" id="pF6-fl-e0c"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="WgN-uV-rHf" secondAttribute="bottom" constant="20" id="v1V-wp-rPe"/>
                         </constraints>
                     </view>

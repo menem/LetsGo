@@ -14,7 +14,7 @@ import CircularSlider
 import Intents
 
 class ViewController: UIViewController {
-
+    
     var intervals = 0
     var timer: MZTimerLabel!
     var intervalsLabel: UILabel!
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     @IBAction func resetIntervalPressed(_ sender: Any) {
         timer.reset()
     }
-
+    
     @IBAction func pauseIntervalPressed(_ sender: Any) {
         timer.pause()
     }
@@ -40,62 +40,74 @@ class ViewController: UIViewController {
     
     @IBAction func switchCounterType(_ sender: Any) {
         if(isIntervals.isOn){
-        timer?.setCountDownTime(60)
+            timer?.setCountDownTime(60)
         }else{
             let totalTime = intervals * 60
-        timer?.setCountDownTime(TimeInterval(totalTime))
+            timer?.setCountDownTime(TimeInterval(totalTime))
         }
     }
-   
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    
+        
         INPreferences.requestSiriAuthorization { (status) in
             
         }
         INVocabulary.shared().setVocabularyStrings(["interval","emom","time cap", "wod", "timer", "tabata", "amrap", "stopwatch"], of: .workoutActivityName)
+        intervals = 1
+        makeUserInterface()
         if ((userIntent) != nil){
-            makeUserInterface()
-            
             let minute = userIntent.goalValue!/60
             intervals = Int(minute)
-            intervalsLabel.text = "Intervals = \(intervals)"
-           configuretimer()
+            configuretimer()
             startInterval()
         }else{
-        intervals = 1
-            makeUserInterface()
+
+            configuretimer()
         }
+        intervalsLabel.text = "Intervals = \(intervals)"
         
     }
     
     func configuretimer() {
+  
         switch String(describing: userIntent.workoutName).lowercased() {
         case "interval":
             let minute = userIntent.goalValue!/60
             intervals = Int(minute)
-            intervalsLabel.text = "Intervals = \(intervals)"
-            case "time cap":
-//                let minute = userIntent.goalValue!/60
-//                intervals = Int(minute)
+//            intervalsLabel.text = "Intervals = \(intervals)"
+            timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
+                    timer?.delegate = self
+        case "time cap":
+            timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeStopWatch)
             timer.setStopWatchTime(userIntent.goalValue!)
-            case "amrap":
-                timer.setStopWatchTime(userIntent.goalValue!)
-            
+                    timer?.delegate = self
+        case "amrap":
+            timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeStopWatch)
+            timer.setStopWatchTime(userIntent.goalValue!)
+                    timer?.delegate = self
+        case "stopwatch":
+            timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeStopWatch)
+                    timer?.delegate = self
         default:
-            let minute = userIntent.goalValue!/60
-            intervals = Int(minute)
-            intervalsLabel.text = "Intervals = \(intervals)"
+//            intervals = 1
+//            intervalsLabel.text = "Intervals = \(intervals)"
+            timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
+            timer?.setCountDownTime(60)
+            timer?.resetTimerAfterFinish = true
+                    timer?.delegate = self
         }
-    }
+        
 
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     func startInterval(){
         let systemSoundID: SystemSoundID = 1304
         AudioServicesPlaySystemSound (systemSoundID)
@@ -125,21 +137,15 @@ class ViewController: UIViewController {
         intervalsLabel.textAlignment = .center
         intervalsLabel.font = UIFont (name: "Avenir-Book", size: 21)
         intervalsLabel.textColor = UIColor(red:0.83, green:0.00, blue:0.00, alpha:1.00)
-        intervalsLabel.text = "Intervals = \(intervals)"
-        
-        
-        timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
-        timer?.setCountDownTime(60)
-        timer?.resetTimerAfterFinish = true
+//        intervalsLabel.text = "Intervals = \(intervals)"
         
         self.navigationController?.progressTintColor = UIColor(red:0.83, green:0.00, blue:0.00, alpha:1.00)
-        timer?.delegate = self
         
         clockLabel = UILabel(frame: CGRect(x: 0, y: 60, width: self.view.frame.size.width, height: 40))
         clockLabel.textAlignment = .center
         clockLabel.font = UIFont (name: "Avenir-Book", size: 21)
         clockLabel.textColor = UIColor(red:0.83, green:0.00, blue:0.00, alpha:1.00)
-   
+        
         
         self.view.addSubview(timeLabel)
         self.view.addSubview(intervalsLabel)
@@ -147,19 +153,19 @@ class ViewController: UIViewController {
         self.view.addSubview(clockLabel)
         
         clockTimer = Timer.scheduledTimer(timeInterval: 1.0,
-            target: self,
-            selector: #selector(tick),
-            userInfo: nil,
-            repeats: true)
-
+                                          target: self,
+                                          selector: #selector(tick),
+                                          userInfo: nil,
+                                          repeats: true)
+        
     }
     
     @objc func tick() {
         clockLabel.text = DateFormatter.localizedString(from: NSDate() as Date,
-                                                                        dateStyle: .none,
-                                                                        timeStyle: .medium)
+                                                        dateStyle: .none,
+                                                        timeStyle: .medium)
     }
-
+    
 }
 extension ViewController: MZTimerLabelDelegate {
     func timerLabel(_ timerLabel: MZTimerLabel!, countingTo time: TimeInterval, timertype timerType: MZTimerLabelType){
@@ -170,14 +176,14 @@ extension ViewController: MZTimerLabelDelegate {
     
     func timerLabel(_ timerLabel: MZTimerLabel!, finshedCountDownTimerWithTime countTime: TimeInterval){
         if (intervals > 0){
-        startInterval()
+            startInterval()
         }
     }
 }
 
 extension ViewController: CircularSliderDelegate {
     func circularSlider(_ circularSlider: CircularSlider, valueForValue value: Float) -> Float {
-       
+        
         if ((userIntent) != nil){
             let minute = userIntent.goalValue!/60
             intervals = Int(minute)
@@ -188,9 +194,9 @@ extension ViewController: CircularSliderDelegate {
             intervalsLabel.text = "Intervals = \(intervals)"
             return floorf(value)
         }
-
+        
     }
-   
-//    func circularSlider(circularSlider: CircularSlider, didBeginEditing textfield: UITextField){}
-//    func circularSlider(circularSlider: CircularSlider, didEndEditing textfield: UITextField){}
+    
+    //    func circularSlider(circularSlider: CircularSlider, didBeginEditing textfield: UITextField){}
+    //    func circularSlider(circularSlider: CircularSlider, didEndEditing textfield: UITextField){}
 }
