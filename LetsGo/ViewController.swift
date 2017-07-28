@@ -23,7 +23,9 @@ class ViewController: UIViewController {
     var userIntent: INStartWorkoutIntent!
     var clockLabel: UILabel!
     var clockTimer = Timer()
-    
+    let modes = ["Timer", "Stop Watch", "Tabata"]
+    var selectedIndex = 0
+    var titleView: UILabel!
     @IBAction func startIntervalPressed(_ sender: Any) {
         startInterval()
     }
@@ -50,7 +52,26 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Timer"
+//        self.title = "Timer"
+        
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(switchMode))
+//        tapGesture.delegate = self.view
+//        self.navigationItem.titleView?.isUserInteractionEnabled = true
+        
+        titleView = UILabel()
+//        titleView.text = "Hello World"
+        let selectedMode = modes[selectedIndex]
+        titleView.text = String(selectedMode)
+        titleView.font = UIFont(name: "HelveticaNeue-Medium", size: 17)
+        let width = titleView.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)).width
+        titleView.frame = CGRect(origin:CGPoint.zero, size:CGSize(width: width, height: 40))
+        titleView.isUserInteractionEnabled = true
+        titleView.addGestureRecognizer(tapGesture)
+        self.navigationItem.titleView = titleView
+        
+
+        
         
         INPreferences.requestSiriAuthorization { (status) in
             
@@ -96,14 +117,16 @@ class ViewController: UIViewController {
             timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeStopWatch)
                     timer?.delegate = self
         default:
-//            intervals = 1
-//            intervalsLabel.text = "Intervals = \(intervals)"
+            intervals = 1
+            intervalsLabel.text = "Intervals = \(intervals)"
             timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
             timer?.setCountDownTime(60)
             timer?.resetTimerAfterFinish = true
                     timer?.delegate = self
         }
               }else{
+                intervals = 1
+                intervalsLabel.text = "Intervals = \(intervals)"
                 timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
                 timer?.setCountDownTime(60)
                 timer?.resetTimerAfterFinish = true
@@ -115,6 +138,21 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func switchMode() {
+        if (selectedIndex >= 2){
+        selectedIndex = 0
+        let selectedMode = modes[selectedIndex]
+        titleView.text = String(selectedMode)
+        return
+        }
+        selectedIndex += 1
+        let selectedMode = modes[selectedIndex]
+        titleView.text = String(selectedMode)
+        let width = titleView.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)).width
+        titleView.frame = CGRect(origin:titleView.frame.origin, size:CGSize(width: width, height: 40))
+        
     }
     
     func startInterval(){

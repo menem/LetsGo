@@ -56,6 +56,7 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fmo-64-LsW">
                                 <rect key="frame" x="158" y="541" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="onTintColor" red="0.0" green="0.92156862750000001" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="switchCounterType:" destination="BYZ-38-t0r" eventType="valueChanged" id="lv3-29-8XH"/>
                                 </connections>
