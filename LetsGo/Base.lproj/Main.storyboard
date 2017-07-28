@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,17 +22,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbY-ym-ky6">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbY-ym-ky6">
                                 <rect key="frame" x="16" y="583" width="64" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="Nn8-Ik-vmH"/>
+                                    <constraint firstAttribute="width" constant="64" id="VdX-jl-F9R"/>
+                                </constraints>
                                 <state key="normal" title="Reset" image="icn_stop"/>
                                 <connections>
                                     <action selector="resetIntervalPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uyS-nk-tZD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ycv-O9-7EC">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ycv-O9-7EC">
                                 <rect key="frame" x="155" y="583" width="64" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="ErX-0r-uzg"/>
+                                    <constraint firstAttribute="width" constant="64" id="mCJ-8j-WYL"/>
+                                </constraints>
                                 <state key="normal" title="Start" image="icn_play"/>
                                 <connections>
                                     <action selector="startIntervalPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MU3-yg-5us"/>
@@ -51,16 +58,26 @@
                                     <action selector="switchCounterType:" destination="BYZ-38-t0r" eventType="valueChanged" id="lv3-29-8XH"/>
                                 </connections>
                             </switch>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WgN-uV-rHf">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WgN-uV-rHf">
                                 <rect key="frame" x="295" y="583" width="64" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="dxZ-Rf-2S6"/>
+                                    <constraint firstAttribute="height" constant="64" id="ssb-ii-3ow"/>
+                                </constraints>
                                 <state key="normal" title="Pause" image="icn_pause"/>
                                 <connections>
                                     <action selector="pauseIntervalPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HBT-Va-ENj"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="0.95686274510000002" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="WgN-uV-rHf" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" constant="-16" id="OBu-az-Rs9"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="wbY-ym-ky6" secondAttribute="bottom" constant="20" id="Rrw-KJ-jD0"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ycv-O9-7EC" secondAttribute="bottom" constant="20" id="fCy-KZ-wid"/>
+                            <constraint firstItem="wbY-ym-ky6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="nIA-Wl-hYp"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="WgN-uV-rHf" secondAttribute="bottom" constant="20" id="v1V-wp-rPe"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7GX-jS-Cz6"/>
                     <connections>

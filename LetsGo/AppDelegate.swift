@@ -23,15 +23,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
-        guard let intent = userActivity.interaction?.intent as? INStartWorkoutIntent else {
+        guard let endIntent = userActivity.interaction?.intent as? INEndWorkoutIntent else {
+            print("AppDelegate: end Workout Intent - FALSE")
+            return false
+        }
+        print(endIntent)
+        guard let startIntent = userActivity.interaction?.intent as? INStartWorkoutIntent else {
             print("AppDelegate: Start Workout Intent - FALSE")
             return false
         }
         print("AppDelegate: Start Workout Intent - TRUE")
-        print(intent)
+        print(startIntent)
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = mainStoryboard.instantiateViewController(withIdentifier: "timer") as! ViewController
-        viewController.userIntent = intent
+        viewController.userIntent = startIntent
         let navViewController = UINavigationController(rootViewController: viewController)
         
         window!.rootViewController = navViewController

@@ -21,6 +21,9 @@ class ViewController: UIViewController {
     var circleSlider: CircularSlider!
     var timeLabel: UILabel!
     var userIntent: INStartWorkoutIntent!
+    var clockLabel: UILabel!
+    var clockTimer = Timer()
+    
     @IBAction func startIntervalPressed(_ sender: Any) {
         startInterval()
     }
@@ -52,14 +55,14 @@ class ViewController: UIViewController {
         INPreferences.requestSiriAuthorization { (status) in
             
         }
-        INVocabulary.shared().setVocabularyStrings(["push up","emom", "sit up", "pull up"], of: .workoutActivityName)
+        INVocabulary.shared().setVocabularyStrings(["interval","emom","time cap", "wod", "timer", "tabata", "amrap", "stopwatch"], of: .workoutActivityName)
         if ((userIntent) != nil){
             makeUserInterface()
             
             let minute = userIntent.goalValue!/60
             intervals = Int(minute)
             intervalsLabel.text = "Intervals = \(intervals)"
-           
+           configuretimer()
             startInterval()
         }else{
         intervals = 1
@@ -68,15 +71,31 @@ class ViewController: UIViewController {
         
     }
     
+    func configuretimer() {
+        switch String(describing: userIntent.workoutName).lowercased() {
+        case "interval":
+            let minute = userIntent.goalValue!/60
+            intervals = Int(minute)
+            intervalsLabel.text = "Intervals = \(intervals)"
+            case "time cap":
+//                let minute = userIntent.goalValue!/60
+//                intervals = Int(minute)
+            timer.setStopWatchTime(userIntent.goalValue!)
+            case "amrap":
+                timer.setStopWatchTime(userIntent.goalValue!)
+            
+        default:
+            let minute = userIntent.goalValue!/60
+            intervals = Int(minute)
+            intervalsLabel.text = "Intervals = \(intervals)"
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-//    func startIntervalWithIntent(intent: INStartWorkoutIntent) {
-//
-//
-//    }
+
     func startInterval(){
         let systemSoundID: SystemSoundID = 1304
         AudioServicesPlaySystemSound (systemSoundID)
@@ -116,12 +135,29 @@ class ViewController: UIViewController {
         self.navigationController?.progressTintColor = UIColor(red:0.83, green:0.00, blue:0.00, alpha:1.00)
         timer?.delegate = self
         
+        clockLabel = UILabel(frame: CGRect(x: 0, y: 60, width: self.view.frame.size.width, height: 40))
+        clockLabel.textAlignment = .center
+        clockLabel.font = UIFont (name: "Avenir-Book", size: 21)
+        clockLabel.textColor = UIColor(red:0.83, green:0.00, blue:0.00, alpha:1.00)
+   
         
         self.view.addSubview(timeLabel)
         self.view.addSubview(intervalsLabel)
         self.view.addSubview(self.circleSlider)
+        self.view.addSubview(clockLabel)
         
+        clockTimer = Timer.scheduledTimer(timeInterval: 1.0,
+            target: self,
+            selector: #selector(tick),
+            userInfo: nil,
+            repeats: true)
 
+    }
+    
+    @objc func tick() {
+        clockLabel.text = DateFormatter.localizedString(from: NSDate() as Date,
+                                                                        dateStyle: .none,
+                                                                        timeStyle: .medium)
     }
 
 }

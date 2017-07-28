@@ -7,6 +7,5 @@ target ‘LetsGo’ do
 
 pod 'MZTimerLabel'
 pod 'KYNavigationProgress'
-pod "CDFlipView"
 pod 'CircularSlider'
 end
