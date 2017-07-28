@@ -50,15 +50,17 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "Timer"
         
         INPreferences.requestSiriAuthorization { (status) in
             
         }
         INVocabulary.shared().setVocabularyStrings(["interval","emom","time cap", "wod", "timer", "tabata", "amrap", "stopwatch"], of: .workoutActivityName)
         intervals = 1
-        makeUserInterface()
+
+        
         if ((userIntent) != nil){
+           
             let minute = userIntent.goalValue!/60
             intervals = Int(minute)
             configuretimer()
@@ -72,7 +74,9 @@ class ViewController: UIViewController {
     }
     
     func configuretimer() {
-  
+        
+        makeUserInterface()
+              if ((userIntent) != nil){
         switch String(describing: userIntent.workoutName).lowercased() {
         case "interval":
             let minute = userIntent.goalValue!/60
@@ -99,7 +103,12 @@ class ViewController: UIViewController {
             timer?.resetTimerAfterFinish = true
                     timer?.delegate = self
         }
-        
+              }else{
+                timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
+                timer?.setCountDownTime(60)
+                timer?.resetTimerAfterFinish = true
+                timer?.delegate = self
+        }
 
     }
     
