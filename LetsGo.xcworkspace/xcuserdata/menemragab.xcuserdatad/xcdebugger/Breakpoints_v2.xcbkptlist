@@ -10,12 +10,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LetsGo/ViewController.swift"
-            timestampString = "522980778.147565"
+            timestampString = "522988767.964487"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "switchMode()"
+            startingLineNumber = "390"
+            endingLineNumber = "390"
+            landmarkName = "circularSlider(_:valueForValue:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LetsGo/ViewController.swift"
+            timestampString = "522988767.964487"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "397"
+            endingLineNumber = "397"
+            landmarkName = "circularSlider(_:valueForValue:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
