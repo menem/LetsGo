@@ -13,8 +13,6 @@ import AVFoundation
 import CircularSlider
 import Intents
 import CTSlidingUpPanel
-import AGCircularPicker
-
 
 class ViewController: UIViewController {
     
@@ -41,8 +39,7 @@ class ViewController: UIViewController {
     var panelBottomView: UIView!
     var bottomController:CTBottomSlideController?
     var istimerCounting: Bool!
-    var circularPickerView: AGCircularPickerView!
-   
+  
     func endTimer() {
         timer.pause()
         timer.reset()
@@ -68,13 +65,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         istimerCounting = false
+        let panelTitleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 40))
+        panelTitleLabel.textColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
+        panelTitleLabel.font = UIFont(name: "AvenirNext-UltraLight", size: 25)
+        panelTitleLabel.textAlignment = .center
+        panelTitleLabel.text = "Pull this up"
         
         self.navigationController?.navigationBar.barTintColor = UIColor(red:0.21, green:0.22, blue:0.27, alpha:1.00)
         
         panelBottomView = UIView(frame: CGRect(x: 0, y: self.view.frame.height/2, width: self.view.frame.width, height: 40))
-        panelBottomView.backgroundColor = #colorLiteral(red: 0.8698514104, green: 0.1220991984, blue: 0, alpha: 1)
+        panelBottomView.backgroundColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         panelBottomView.layer.cornerRadius = 15.0
         self.view.addSubview(panelBottomView)
+        panelBottomView.addSubview(panelTitleLabel)
         
         bottomController = CTBottomSlideController(parent: self.view, bottomView: panelBottomView,
                                                    tabController: nil,
@@ -281,7 +284,7 @@ class ViewController: UIViewController {
         }
     }
     func makeUserInterface(){
-        IntervalcircleSlider = CircularSlider(frame:CGRect(x: (self.view.frame.size.width/2)-125, y: 140, width: 250, height: 250))
+        IntervalcircleSlider = CircularSlider(frame:CGRect(x: (self.view.frame.size.width/2)-100, y: 80, width: 200, height: 200))
         IntervalcircleSlider.delegate = self
         IntervalcircleSlider.maximumValue = 120
         IntervalcircleSlider.minimumValue = 1
@@ -296,13 +299,6 @@ class ViewController: UIViewController {
         IntervalcircleSlider.isHidden = true
         IntervalcircleSlider.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         
-        circularPickerView = AGCircularPickerView(frame:CGRect(x: (self.view.frame.size.width/2)-125, y: 60, width: 250, height: 250))
-        let valueOption = AGCircularPickerValueOption(minValue: 1, maxValue: 120)
-        let titleOption = AGCircularPickerTitleOption(title: "Time")
-        let option = AGCircularPickerOption(valueOption: valueOption, titleOption: titleOption)
-        circularPickerView.setupPicker(delegate: self, option: option)
-        
-        
         timeLabel = UILabel(frame: CGRect(x:0, y: (self.view.frame.size.height/2)-60, width: self.view.frame.size.width, height: 120))
         timeLabel.textAlignment = .center
         timeLabel.font = UIFont (name: "Avenir-Heavy", size: 80)
@@ -314,8 +310,8 @@ class ViewController: UIViewController {
         intervalsLabel.textColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.00)
 
         self.navigationController?.progressTintColor = UIColor(red:0.83, green:0.00, blue:0.00, alpha:1.00)
-        
-        clockLabel = UILabel(frame: CGRect(x: 0, y: 60, width: self.view.frame.size.width, height: 40))
+        let panelHeight = (self.view.frame.size.height/2)-80
+        clockLabel = UILabel(frame: CGRect(x: 0, y: panelHeight, width: self.view.frame.size.width, height: 40))
         clockLabel.textAlignment = .center
         clockLabel.font = UIFont (name: "Avenir-Book", size: 21)
         clockLabel.textColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.00)
@@ -374,7 +370,7 @@ class ViewController: UIViewController {
         panelBottomView.addSubview(intervalsLabel)
         panelBottomView.addSubview(self.IntervalcircleSlider)
 //        panelBottomView.addSubview(circularPickerView)
-        self.view.addSubview(clockLabel)
+        panelBottomView.addSubview(clockLabel)
         
         clockTimer = Timer.scheduledTimer(timeInterval: 1.0,
                                           target: self,
@@ -495,37 +491,3 @@ extension ViewController: CTBottomSlideDelegate {
     
     }
 }
-
-extension ViewController:  AGCircularPickerViewDelegate {
-    
-    func circularPickerViewDidChangeValue(_ value: Int, color: UIColor, index: Int){
-        
-        
-        if ((userIntent) != nil){
-            let minute = userIntent.goalValue!/60
-            intervals = Int(minute)
-            intervalsLabel.text = "Intervals = \(intervals)"
-        }else{
-            let selectedMode = modes[selectedIndex]
-            intervals = value
-            intervalsLabel.text = "Intervals = \(intervals)"
-            if (selectedMode == "timer"){
-                let totalTime = intervals * 60
-                timer?.setCountDownTime(TimeInterval(totalTime))
-            }
-
-        }
-    
-    }
-    func circularPickerViewDidEndSetupWith(_ value: Int, color: UIColor, index: Int){
-    
-    }
-    func didBeginTracking(timePickerView: AGCircularPickerView){
-    
-    }
-    func didEndTracking(timePickerView: AGCircularPickerView){
-    
-    }
-    
-}
-
