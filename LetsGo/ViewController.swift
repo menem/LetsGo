@@ -72,8 +72,8 @@ class ViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor(red:0.21, green:0.22, blue:0.27, alpha:1.00)
         
         panelBottomView = UIView(frame: CGRect(x: 0, y: self.view.frame.height/2, width: self.view.frame.width, height: 40))
-        panelBottomView.backgroundColor = UIColor(red:1.00, green:0.36, blue:0.59, alpha:1.00)
-        
+        panelBottomView.backgroundColor = #colorLiteral(red: 0.8698514104, green: 0.1220991984, blue: 0, alpha: 1)
+        panelBottomView.layer.cornerRadius = 15.0
         self.view.addSubview(panelBottomView)
         
         bottomController = CTBottomSlideController(parent: self.view, bottomView: panelBottomView,
