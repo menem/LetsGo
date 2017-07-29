@@ -41,19 +41,8 @@ class ViewController: UIViewController {
     var panelBottomView: UIView!
     var bottomController:CTBottomSlideController?
     var istimerCounting: Bool!
-//    
-//    @IBAction func startIntervalPressed(_ sender: Any) {
-//
-//    }
-//    
-//    @IBAction func resetIntervalPressed(_ sender: Any) {
-//        stopTimer()
-//    }
-//    
-//    @IBAction func pauseIntervalPressed(_ sender: Any) {
-//        timer.pause()
-//    }
-//    
+    var circularPickerView: AGCircularPickerView!
+   
     func endTimer() {
         timer.pause()
         timer.reset()
@@ -100,6 +89,10 @@ class ViewController: UIViewController {
         
         let longStopGesture = UILongPressGestureRecognizer(target: self, action: #selector(endTimer))
         self.view.addGestureRecognizer(longStopGesture)
+        
+        let swipetoChangeMode = UISwipeGestureRecognizer(target: self, action: #selector(switchMode))
+        self.view.addGestureRecognizer(swipetoChangeMode)
+        
         
         titleView = UILabel()
         let selectedMode = modes[selectedIndex]
@@ -296,10 +289,19 @@ class ViewController: UIViewController {
         IntervalcircleSlider.knobRadius = 20
         IntervalcircleSlider.radiansOffset = 0.01
         IntervalcircleSlider.backgroundColor = .clear
-        IntervalcircleSlider.pgHighlightedColor = UIColor(red:0.83, green:0.00, blue:0.00, alpha:1.00)
-        IntervalcircleSlider.pgNormalColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.00)
+        IntervalcircleSlider.pgHighlightedColor = #colorLiteral(red: 0.8975453377, green: 0.4076307416, blue: 0.1039793417, alpha: 1)
+        IntervalcircleSlider.pgNormalColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         IntervalcircleSlider.title = "Time"
         IntervalcircleSlider.divisa = "Min"
+        IntervalcircleSlider.isHidden = true
+        IntervalcircleSlider.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        
+        circularPickerView = AGCircularPickerView(frame:CGRect(x: (self.view.frame.size.width/2)-125, y: 60, width: 250, height: 250))
+        let valueOption = AGCircularPickerValueOption(minValue: 1, maxValue: 120)
+        let titleOption = AGCircularPickerTitleOption(title: "Time")
+        let option = AGCircularPickerOption(valueOption: valueOption, titleOption: titleOption)
+        circularPickerView.setupPicker(delegate: self, option: option)
+        
         
         timeLabel = UILabel(frame: CGRect(x:0, y: (self.view.frame.size.height/2)-60, width: self.view.frame.size.width, height: 120))
         timeLabel.textAlignment = .center
@@ -371,6 +373,7 @@ class ViewController: UIViewController {
         self.view.addSubview(timeLabel)
         panelBottomView.addSubview(intervalsLabel)
         panelBottomView.addSubview(self.IntervalcircleSlider)
+//        panelBottomView.addSubview(circularPickerView)
         self.view.addSubview(clockLabel)
         
         clockTimer = Timer.scheduledTimer(timeInterval: 1.0,
@@ -491,5 +494,38 @@ extension ViewController: CTBottomSlideDelegate {
     func didPanelMove(panelOffset: CGFloat){
     
     }
+}
+
+extension ViewController:  AGCircularPickerViewDelegate {
+    
+    func circularPickerViewDidChangeValue(_ value: Int, color: UIColor, index: Int){
+        
+        
+        if ((userIntent) != nil){
+            let minute = userIntent.goalValue!/60
+            intervals = Int(minute)
+            intervalsLabel.text = "Intervals = \(intervals)"
+        }else{
+            let selectedMode = modes[selectedIndex]
+            intervals = value
+            intervalsLabel.text = "Intervals = \(intervals)"
+            if (selectedMode == "timer"){
+                let totalTime = intervals * 60
+                timer?.setCountDownTime(TimeInterval(totalTime))
+            }
+
+        }
+    
+    }
+    func circularPickerViewDidEndSetupWith(_ value: Int, color: UIColor, index: Int){
+    
+    }
+    func didBeginTracking(timePickerView: AGCircularPickerView){
+    
+    }
+    func didEndTracking(timePickerView: AGCircularPickerView){
+    
+    }
+    
 }
 
