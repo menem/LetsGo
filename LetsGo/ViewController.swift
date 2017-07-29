@@ -12,6 +12,7 @@ import KYNavigationProgress
 import AVFoundation
 import CircularSlider
 import Intents
+import CTSlidingUpPanel
 
 class ViewController: UIViewController {
     
@@ -35,6 +36,8 @@ class ViewController: UIViewController {
     var onCircleSlider: CircularSlider!
     var offCircleSlider: CircularSlider!
     var countDownTimer: MZTimerLabel!
+    var panelBottomView: UIView!
+    var bottomController:CTBottomSlideController?
     
     @IBAction func startIntervalPressed(_ sender: Any) {
         countDownTimer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
@@ -44,8 +47,6 @@ class ViewController: UIViewController {
         AudioServicesPlaySystemSound (systemSoundID)
         timeLabel.textColor = UIColor(red:0.96, green:0.93, blue:0.00, alpha:1.00)
         perform(#selector(startInterval), with: nil, afterDelay: 10)
-//        coundownTimer?.perform(#selector(), with: nil, afterDelay: 10)
-//        startInterval()
     }
     
     @IBAction func resetIntervalPressed(_ sender: Any) {
@@ -58,6 +59,15 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        panelBottomView = UIView(frame: CGRect(x: 0, y: self.view.frame.height/2, width: self.view.frame.width, height: 40))
+        panelBottomView.backgroundColor = .red
+      self.view.addSubview(panelBottomView)
+        
+        bottomController = CTBottomSlideController(parent: self.view, bottomView: panelBottomView,
+                                                   tabController: nil,
+                                                   navController: self.navigationController, visibleHeight: 64)
+        bottomController?.setAnchorPoint(anchor: 0.5)
+        bottomController?.delegate = self
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(switchMode))
 
@@ -428,3 +438,19 @@ extension ViewController: CircularSliderDelegate {
         
     }
 }
+
+extension ViewController: CTBottomSlideDelegate {
+    func didPanelCollapse(){
+    
+    }
+    func didPanelExpand(){
+    
+    }
+    func didPanelAnchor(){
+    
+    }
+    func didPanelMove(panelOffset: CGFloat){
+    
+    }
+}
+
