@@ -23,44 +23,29 @@ class ViewController: UIViewController {
     var userIntent: INStartWorkoutIntent!
     var clockLabel: UILabel!
     var clockTimer = Timer()
-    let modes = ["Timer", "Stop Watch", "Tabata"]
+    let modes = ["timer", "stopwatch", "tabata"]
     var selectedIndex = 0
     var titleView: UILabel!
+    var isInterval: Bool!
+    
     @IBAction func startIntervalPressed(_ sender: Any) {
         startInterval()
     }
     
     @IBAction func resetIntervalPressed(_ sender: Any) {
-        timer.reset()
+        stopTimer()
     }
     
     @IBAction func pauseIntervalPressed(_ sender: Any) {
         timer.pause()
     }
     
-    @IBOutlet var isIntervals: UISwitch!
-    
-    @IBAction func switchCounterType(_ sender: Any) {
-        if(isIntervals.isOn){
-            timer?.setCountDownTime(60)
-        }else{
-            let totalTime = intervals * 60
-            timer?.setCountDownTime(TimeInterval(totalTime))
-        }
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.title = "Timer"
         
-
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(switchMode))
-//        tapGesture.delegate = self.view
-//        self.navigationItem.titleView?.isUserInteractionEnabled = true
-        
+
         titleView = UILabel()
-//        titleView.text = "Hello World"
         let selectedMode = modes[selectedIndex]
         titleView.text = String(selectedMode)
         titleView.font = UIFont(name: "HelveticaNeue-Medium", size: 17)
@@ -69,70 +54,66 @@ class ViewController: UIViewController {
         titleView.isUserInteractionEnabled = true
         titleView.addGestureRecognizer(tapGesture)
         self.navigationItem.titleView = titleView
-        
 
-        
-        
         INPreferences.requestSiriAuthorization { (status) in
             
         }
         INVocabulary.shared().setVocabularyStrings(["interval","emom","time cap", "wod", "timer", "tabata", "amrap", "stopwatch"], of: .workoutActivityName)
         intervals = 1
-
-        
+        makeUserInterface()
+       
         if ((userIntent) != nil){
-           
+            
             let minute = userIntent.goalValue!/60
             intervals = Int(minute)
             configuretimer()
             startInterval()
         }else{
-
+            
             configuretimer()
         }
+        configureUserInterfaceforMode(usermode: selectedMode)
+        
         intervalsLabel.text = "Intervals = \(intervals)"
         
     }
     
     func configuretimer() {
         
-        makeUserInterface()
-              if ((userIntent) != nil){
-        switch String(describing: userIntent.workoutName).lowercased() {
-        case "interval":
-            let minute = userIntent.goalValue!/60
-            intervals = Int(minute)
-//            intervalsLabel.text = "Intervals = \(intervals)"
-            timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
-                    timer?.delegate = self
-        case "time cap":
-            timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeStopWatch)
-            timer.setStopWatchTime(userIntent.goalValue!)
-                    timer?.delegate = self
-        case "amrap":
-            timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeStopWatch)
-            timer.setStopWatchTime(userIntent.goalValue!)
-                    timer?.delegate = self
-        case "stopwatch":
-            timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeStopWatch)
-                    timer?.delegate = self
-        default:
-            intervals = 1
-            intervalsLabel.text = "Intervals = \(intervals)"
-            timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
-            timer?.setCountDownTime(60)
-            timer?.resetTimerAfterFinish = true
-                    timer?.delegate = self
-        }
-              }else{
+        
+        if ((userIntent) != nil){
+            switch String(describing: userIntent.workoutName).lowercased() {
+            case "interval":
+                let minute = userIntent.goalValue!/60
+                intervals = Int(minute)
+                timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
+                timer?.delegate = self
+            case "time cap":
+                timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeStopWatch)
+                timer.setStopWatchTime(userIntent.goalValue!)
+                timer?.delegate = self
+            case "amrap":
+                timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeStopWatch)
+                timer.setStopWatchTime(userIntent.goalValue!)
+                timer?.delegate = self
+            case "stopwatch":
+                timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeStopWatch)
+                timer?.delegate = self
+            default:
                 intervals = 1
-                intervalsLabel.text = "Intervals = \(intervals)"
                 timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
                 timer?.setCountDownTime(60)
                 timer?.resetTimerAfterFinish = true
                 timer?.delegate = self
+            }
+        }else{
+            intervals = 1
+            timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
+            timer?.setCountDownTime(60)
+            timer?.resetTimerAfterFinish = true
+            timer?.delegate = self
         }
-
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -142,17 +123,18 @@ class ViewController: UIViewController {
     
     func switchMode() {
         if (selectedIndex >= 2){
-        selectedIndex = 0
-        let selectedMode = modes[selectedIndex]
-        titleView.text = String(selectedMode)
-        return
+            selectedIndex = 0
+            let selectedMode = modes[selectedIndex]
+            titleView.text = String(selectedMode)
+                    configureUserInterfaceforMode(usermode: selectedMode)
+            return
         }
         selectedIndex += 1
         let selectedMode = modes[selectedIndex]
         titleView.text = String(selectedMode)
         let width = titleView.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)).width
         titleView.frame = CGRect(origin:titleView.frame.origin, size:CGSize(width: width, height: 40))
-        
+        configureUserInterfaceforMode(usermode: selectedMode)
     }
     
     func startInterval(){
@@ -162,11 +144,48 @@ class ViewController: UIViewController {
         intervals -= 1
     }
     
+    func stopTimer(){
+        timer.pause()
+        timer.reset()
+    }
+    func configureUserInterfaceforMode(usermode: String) {
+        stopTimer()
+        
+        switch usermode {
+        case "stopwatch":
+            print("Stop Watch Selected")
+            timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeStopWatch)
+            timer?.delegate = self
+            isInterval = false
+            circleSlider.title = "Time cap"
+            circleSlider.divisa = "Min"
+            intervalsLabel.isHidden = true
+        case "timer":
+            print("Timer Selected")
+            let totalTime = intervals * 60
+            timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
+            timer?.delegate = self
+            timer?.setCountDownTime(TimeInterval(totalTime))
+            isInterval = false
+            circleSlider.title = "Time cap"
+            circleSlider.divisa = "Min"
+            intervalsLabel.isHidden = false
+        case "tabata":
+            print("tabata Selected")
+            
+        default:
+            print("default Selected")
+            timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeStopWatch)
+            timer?.delegate = self
+            isInterval = false
+        }
+    }
     func makeUserInterface(){
         circleSlider = CircularSlider(frame:CGRect(x: (self.view.frame.size.width/2)-125, y: 140, width: 250, height: 250))
         circleSlider.delegate = self
         circleSlider.maximumValue = 120
         circleSlider.minimumValue = 1
+        circleSlider.value = 1
         circleSlider.knobRadius = 20
         circleSlider.radiansOffset = 0.01
         circleSlider.backgroundColor = .clear
@@ -184,8 +203,7 @@ class ViewController: UIViewController {
         intervalsLabel.textAlignment = .center
         intervalsLabel.font = UIFont (name: "Avenir-Book", size: 21)
         intervalsLabel.textColor = UIColor(red:0.83, green:0.00, blue:0.00, alpha:1.00)
-//        intervalsLabel.text = "Intervals = \(intervals)"
-        
+
         self.navigationController?.progressTintColor = UIColor(red:0.83, green:0.00, blue:0.00, alpha:1.00)
         
         clockLabel = UILabel(frame: CGRect(x: 0, y: 60, width: self.view.frame.size.width, height: 40))
@@ -237,13 +255,16 @@ extension ViewController: CircularSliderDelegate {
             intervalsLabel.text = "Intervals = \(intervals)"
             return Float(intervals)
         }else{
+            let selectedMode = modes[selectedIndex]
             intervals = Int(floorf(value))
             intervalsLabel.text = "Intervals = \(intervals)"
+            if (selectedMode == "timer"){
+            let totalTime = intervals * 60
+            timer?.setCountDownTime(TimeInterval(totalTime))
+            }
+
             return floorf(value)
         }
         
     }
-    
-    //    func circularSlider(circularSlider: CircularSlider, didBeginEditing textfield: UITextField){}
-    //    func circularSlider(circularSlider: CircularSlider, didEndEditing textfield: UITextField){}
 }

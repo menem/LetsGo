@@ -46,21 +46,6 @@
                                     <action selector="startIntervalPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MU3-yg-5us"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Interval " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypx-mx-NMr">
-                                <rect key="frame" x="16" y="546" width="61" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fmo-64-LsW">
-                                <rect key="frame" x="158" y="541" width="51" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="onTintColor" red="0.0" green="0.92156862750000001" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="switchCounterType:" destination="BYZ-38-t0r" eventType="valueChanged" id="lv3-29-8XH"/>
-                                </connections>
-                            </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WgN-uV-rHf">
                                 <rect key="frame" x="295" y="583" width="64" height="64"/>
                                 <constraints>
@@ -86,9 +71,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7GX-jS-Cz6"/>
-                    <connections>
-                        <outlet property="isIntervals" destination="Fmo-64-LsW" id="LQJ-fY-Eb7"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
