@@ -8,4 +8,6 @@ target ‘LetsGo’ do
 pod 'MZTimerLabel'
 pod 'KYNavigationProgress'
 pod 'CircularSlider'
+pod "CTSlidingUpPanel"
+pod "AGCircularPicker"
 end

@@ -520,6 +520,7 @@
 				4850E1D01F2A8865004D85A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
