@@ -34,14 +34,18 @@ class ViewController: UIViewController {
     var roundsCircleSlider: CircularSlider!
     var onCircleSlider: CircularSlider!
     var offCircleSlider: CircularSlider!
+    var countDownTimer: MZTimerLabel!
     
     @IBAction func startIntervalPressed(_ sender: Any) {
-        let selectedMode = modes[selectedIndex]
-        if (selectedMode == "tabata"){
-            ontimer.start()
-            return
-        }
-        startInterval()
+        countDownTimer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
+        countDownTimer?.setCountDownTime(10)
+        countDownTimer?.start()
+        let systemSoundID: SystemSoundID = 1304
+        AudioServicesPlaySystemSound (systemSoundID)
+        timeLabel.textColor = UIColor(red:0.96, green:0.93, blue:0.00, alpha:1.00)
+        perform(#selector(startInterval), with: nil, afterDelay: 10)
+//        coundownTimer?.perform(#selector(), with: nil, afterDelay: 10)
+//        startInterval()
     }
     
     @IBAction func resetIntervalPressed(_ sender: Any) {
@@ -157,10 +161,13 @@ class ViewController: UIViewController {
     }
     
     func startInterval(){
-        
-
-
-        
+        let selectedMode = modes[selectedIndex]
+        if (selectedMode == "tabata"){
+            
+            startONTimer()
+            return
+        }
+        timeLabel.textColor = UIColor(red:0.83, green:0.00, blue:0.00, alpha:1.00)
         let systemSoundID: SystemSoundID = 1304
         AudioServicesPlaySystemSound (systemSoundID)
         timer?.start()
@@ -303,7 +310,7 @@ class ViewController: UIViewController {
         offCircleSlider = CircularSlider(frame:CGRect(x: (self.view.frame.size.width)-200, y: 280, width: 180, height: 180))
         offCircleSlider.delegate = self
         offCircleSlider.maximumValue = 5
-        offCircleSlider.minimumValue = 0.1
+        offCircleSlider.minimumValue = 0
         offCircleSlider.value = 0.1
         offCircleSlider.knobRadius = 20
         offCircleSlider.radiansOffset = 0.01
@@ -341,6 +348,8 @@ class ViewController: UIViewController {
         let systemSoundID: SystemSoundID = 1304
         AudioServicesPlaySystemSound (systemSoundID)
         ontimer?.start()
+        countDownTimer.pause()
+        countDownTimer.reset()
         timeLabel.textColor = UIColor(red:0.83, green:0.00, blue:0.00, alpha:1.00)
         
 //        intervals -= 1
