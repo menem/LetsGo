@@ -89,16 +89,16 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/AGCircularPicker/AGCircularPicker.framework"
   install_framework "$BUILT_PRODUCTS_DIR/CTSlidingUpPanel/CTSlidingUpPanel.framework"
   install_framework "$BUILT_PRODUCTS_DIR/CircularSlider/CircularSlider.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/EFCircularSlider/EFCircularSlider.framework"
   install_framework "$BUILT_PRODUCTS_DIR/KYNavigationProgress/KYNavigationProgress.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MZTimerLabel/MZTimerLabel.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/AGCircularPicker/AGCircularPicker.framework"
   install_framework "$BUILT_PRODUCTS_DIR/CTSlidingUpPanel/CTSlidingUpPanel.framework"
   install_framework "$BUILT_PRODUCTS_DIR/CircularSlider/CircularSlider.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/EFCircularSlider/EFCircularSlider.framework"
   install_framework "$BUILT_PRODUCTS_DIR/KYNavigationProgress/KYNavigationProgress.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MZTimerLabel/MZTimerLabel.framework"
 fi

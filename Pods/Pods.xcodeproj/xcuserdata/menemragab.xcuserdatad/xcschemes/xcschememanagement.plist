@@ -4,17 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>AGCircularPicker.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>CTSlidingUpPanel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>CircularSlider.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>EFCircularSlider.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -52,17 +52,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>44499E3904192A6313EB1385405D20A3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>AF09DB055935BD941846539935605A14</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C050139EFCE89753A4244D07BFC56F90</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E9EE7BB5FB8B2662892F3717EBC9B381</key>
+		<key>EDFD5FF436D372F4445A07A762960EE5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

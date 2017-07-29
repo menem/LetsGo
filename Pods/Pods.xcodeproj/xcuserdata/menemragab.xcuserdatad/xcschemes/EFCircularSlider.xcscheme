@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'C050139EFCE89753A4244D07BFC56F90'
-               BlueprintName = 'AGCircularPicker'
+               BlueprintIdentifier = '44499E3904192A6313EB1385405D20A3'
+               BlueprintName = 'EFCircularSlider'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'AGCircularPicker.framework'>
+               BuildableName = 'EFCircularSlider.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

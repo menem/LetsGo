@@ -9,5 +9,6 @@ pod 'MZTimerLabel'
 pod 'KYNavigationProgress'
 pod 'CircularSlider'
 pod "CTSlidingUpPanel"
-pod "AGCircularPicker"
+pod "EFCircularSlider", "~> 0.1.0"
+
 end

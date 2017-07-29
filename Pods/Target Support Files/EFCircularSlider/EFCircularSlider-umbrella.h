@@ -10,7 +10,8 @@
 #endif
 #endif
 
+#import "EFCircularSlider.h"
 
-FOUNDATION_EXPORT double AGCircularPickerVersionNumber;
-FOUNDATION_EXPORT const unsigned char AGCircularPickerVersionString[];
+FOUNDATION_EXPORT double EFCircularSliderVersionNumber;
+FOUNDATION_EXPORT const unsigned char EFCircularSliderVersionString[];
 
