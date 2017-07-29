@@ -477,17 +477,25 @@ extension ViewController: CircularSliderDelegate {
     }
 }
 
-extension ViewController: CTBottomSlideDelegate {
+extension ViewController: CTBottomSlideDelegate,UIGestureRecognizerDelegate {
     func didPanelCollapse(){
-    
+    print("Ship collapsed")
     }
     func didPanelExpand(){
-    
+    print("Ship expand")
     }
     func didPanelAnchor(){
-    
+    print("Ship anchored")
     }
     func didPanelMove(panelOffset: CGFloat){
     
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        if (gestureRecognizer is UIPanGestureRecognizer || gestureRecognizer is UIRotationGestureRecognizer) {
+            return true
+        } else {
+            return false
+        }
     }
 }
