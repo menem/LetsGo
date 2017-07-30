@@ -489,6 +489,7 @@ extension ViewController: CTBottomSlideDelegate,UIGestureRecognizerDelegate {
     }
     func didPanelAnchor(){
         panelTitleLabel.text = "Pull this Down"
+        
     }
     func didPanelMove(panelOffset: CGFloat){
     
