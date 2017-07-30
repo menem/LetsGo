@@ -13,6 +13,7 @@ import AVFoundation
 import CircularSlider
 import Intents
 import CTSlidingUpPanel
+import EFCircularSlider
 
 class ViewController: UIViewController {
     
@@ -39,7 +40,8 @@ class ViewController: UIViewController {
     var panelBottomView: UIView!
     var bottomController:CTBottomSlideController?
     var istimerCounting: Bool!
-  
+    var testSlider: EFCircularSlider!
+    var panelTitleLabel: UILabel!
     func endTimer() {
         timer.pause()
         timer.reset()
@@ -65,7 +67,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         istimerCounting = false
-        let panelTitleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 40))
+        panelTitleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 40))
         panelTitleLabel.textColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
         panelTitleLabel.font = UIFont(name: "AvenirNext-UltraLight", size: 25)
         panelTitleLabel.textAlignment = .center
@@ -81,7 +83,7 @@ class ViewController: UIViewController {
         
         bottomController = CTBottomSlideController(parent: self.view, bottomView: panelBottomView,
                                                    tabController: nil,
-                                                   navController: self.navigationController, visibleHeight: 64)
+                                                   navController: self.navigationController, visibleHeight: 40)
         bottomController?.setAnchorPoint(anchor: 0.5)
         bottomController?.delegate = self
         
@@ -258,13 +260,13 @@ class ViewController: UIViewController {
             IntervalcircleSlider.divisa = "Min"
             intervalsLabel.isHidden = true
             IntervalcircleSlider.isHidden = false
-            if (self.view.subviews.contains(roundsCircleSlider)){
+            if (panelBottomView.subviews.contains(roundsCircleSlider)){
                 roundsCircleSlider.removeFromSuperview()
             }
-            if (self.view.subviews.contains(onCircleSlider)){
+            if (panelBottomView.subviews.contains(onCircleSlider)){
                 onCircleSlider.removeFromSuperview()
             }
-            if (self.view.subviews.contains(offCircleSlider)){
+            if (panelBottomView.subviews.contains(offCircleSlider)){
                 offCircleSlider.removeFromSuperview()
             }
         case "tabata":
@@ -272,9 +274,9 @@ class ViewController: UIViewController {
             IntervalcircleSlider.isHidden = true
             intervalsLabel.isHidden = false
 
-            self.view.addSubview(onCircleSlider)
-            self.view.addSubview(offCircleSlider)
-            self.view.addSubview(roundsCircleSlider)
+            panelBottomView.addSubview(onCircleSlider)
+            panelBottomView.addSubview(offCircleSlider)
+            panelBottomView.addSubview(roundsCircleSlider)
             
         default:
             print("default Selected")
@@ -284,20 +286,21 @@ class ViewController: UIViewController {
         }
     }
     func makeUserInterface(){
-        IntervalcircleSlider = CircularSlider(frame:CGRect(x: (self.view.frame.size.width/2)-100, y: 80, width: 200, height: 200))
+        IntervalcircleSlider = CircularSlider(frame:CGRect(x: (self.view.frame.size.width/2)-100, y: 50, width: 200, height: 200))
         IntervalcircleSlider.delegate = self
         IntervalcircleSlider.maximumValue = 120
         IntervalcircleSlider.minimumValue = 1
         IntervalcircleSlider.value = 1
         IntervalcircleSlider.knobRadius = 20
+        IntervalcircleSlider.bgColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
         IntervalcircleSlider.radiansOffset = 0.01
         IntervalcircleSlider.backgroundColor = .clear
-        IntervalcircleSlider.pgHighlightedColor = #colorLiteral(red: 0.8975453377, green: 0.4076307416, blue: 0.1039793417, alpha: 1)
-        IntervalcircleSlider.pgNormalColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        IntervalcircleSlider.pgHighlightedColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
+        IntervalcircleSlider.highlighted = true
+        IntervalcircleSlider.pgNormalColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
         IntervalcircleSlider.title = "Time"
         IntervalcircleSlider.divisa = "Min"
-        IntervalcircleSlider.isHidden = true
-        IntervalcircleSlider.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        IntervalcircleSlider.tintColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
         
         timeLabel = UILabel(frame: CGRect(x:0, y: (self.view.frame.size.height/2)-60, width: self.view.frame.size.width, height: 120))
         timeLabel.textAlignment = .center
@@ -317,7 +320,7 @@ class ViewController: UIViewController {
         clockLabel.textColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.00)
         
         
-        roundsCircleSlider = CircularSlider(frame:CGRect(x: (self.view.frame.size.width/2)-94, y: 100, width: 180, height: 180))
+        roundsCircleSlider = CircularSlider(frame:CGRect(x: (self.view.frame.size.width/2)-94, y: 50, width: 180, height: 180))
         roundsCircleSlider.delegate = self
         roundsCircleSlider.maximumValue = 60
         roundsCircleSlider.minimumValue = 1
@@ -330,7 +333,7 @@ class ViewController: UIViewController {
         roundsCircleSlider.title = "Rounds"
         roundsCircleSlider.divisa = ""
         
-        onCircleSlider = CircularSlider(frame:CGRect(x: 20, y: 280, width: 180, height: 180))
+        onCircleSlider = CircularSlider(frame:CGRect(x: 20, y: 230, width: 180, height: 180))
         onCircleSlider.delegate = self
         onCircleSlider.maximumValue = 5
         onCircleSlider.minimumValue = 0.1
@@ -348,7 +351,7 @@ class ViewController: UIViewController {
         ontimer.tag = 1
         //            timer?.setCountDownTime(TimeInterval(totalTime))
         
-        offCircleSlider = CircularSlider(frame:CGRect(x: (self.view.frame.size.width)-200, y: 280, width: 180, height: 180))
+        offCircleSlider = CircularSlider(frame:CGRect(x: (self.view.frame.size.width)-200, y: 230, width: 180, height: 180))
         offCircleSlider.delegate = self
         offCircleSlider.maximumValue = 5
         offCircleSlider.minimumValue = 0
@@ -479,13 +482,13 @@ extension ViewController: CircularSliderDelegate {
 
 extension ViewController: CTBottomSlideDelegate,UIGestureRecognizerDelegate {
     func didPanelCollapse(){
-    print("Ship collapsed")
+        panelTitleLabel.text = "Pull this up"
     }
     func didPanelExpand(){
-    print("Ship expand")
+        panelTitleLabel.text = "Pull this Down"
     }
     func didPanelAnchor(){
-    print("Ship anchored")
+        panelTitleLabel.text = "Pull this Down"
     }
     func didPanelMove(panelOffset: CGFloat){
     
