@@ -47,25 +47,37 @@ class ViewController: UIViewController {
     func endTimer() {
         timer.pause()
         timer.reset()
+        ontimer.pause()
+        ontimer.reset()
+        offtimer.pause()
+        offtimer.reset()
+        countDownTimer.pause()
+        countDownTimer.reset()
         istimerCounting = false
-        timeLabel.textColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.00)
+        timeLabel.textColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
+        self.navigationController?.progress = 0
+        self.navigationController?.progressTintColor = .clear
     }
 
     func toggleTimer() {
         if (istimerCounting){
             timer.pause()
+            countDownTimer.pause()
+            ontimer.pause()
+            offtimer.pause()
             istimerCounting = false
-            timeLabel.textColor = UIColor(red:0.95, green:0.16, blue:0.56, alpha:1.00)
+            timeLabel.textColor = #colorLiteral(red: 0.5015509129, green: 0.5780293345, blue: 0.8545677066, alpha: 1)
+            NSObject.cancelPreviousPerformRequests(withTarget: self)
+            
         }else{
-            countDownTimer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
-            countDownTimer?.setCountDownTime(10)
             countDownTimer?.start()
             
-//            perform(#selector(playSound), with: nil, afterDelay: 9)
+            istimerCounting = true
+            perform(#selector(playSound), with: nil, afterDelay: 8)
             perform(#selector(playSound), with: nil, afterDelay: 9)
-            perform(#selector(playSound), with: nil, afterDelay: 7)
             
-            timeLabel.textColor = UIColor(red:0.97, green:0.87, blue:0.39, alpha:1.00)
+            
+            timeLabel.textColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
             perform(#selector(startInterval), with: nil, afterDelay: 10)
         }
     }
@@ -115,7 +127,7 @@ class ViewController: UIViewController {
         let width = titleView.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)).width
         titleView.frame = CGRect(origin:CGPoint.zero, size:CGSize(width: width, height: 40))
         titleView.isUserInteractionEnabled = true
-        titleView.textColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.00)
+        titleView.textColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
         titleView.addGestureRecognizer(tapGesture)
         
         let leftBarButton = UIBarButtonItem(image: UIImage(named: "icn_left"), style: .plain, target: self, action: #selector(switchModeBack))
@@ -152,12 +164,15 @@ class ViewController: UIViewController {
     }
     
     func configuretimer() {
+        countDownTimer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
+        countDownTimer?.setCountDownTime(10)
+        ontimer?.delegate = self
+        
         ontimer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
-        //        timer?.setCountDownTime(60)
         ontimer?.resetTimerAfterFinish = true
         ontimer?.delegate = self
+        
         offtimer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
-        //        timer?.setCountDownTime(60)
         offtimer?.resetTimerAfterFinish = true
         offtimer?.delegate = self
         
@@ -250,30 +265,33 @@ class ViewController: UIViewController {
     func startInterval(){
         let selectedMode = modes[selectedIndex]
         if (selectedMode == "tabata"){
-            
             startONTimer()
             return
         }
-        timeLabel.textColor = UIColor(red:0.00, green:0.69, blue:0.67, alpha:1.00)
+        timeLabel.textColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
+         self.navigationController?.progressTintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
         playSound()
         timer?.start()
-        intervals -= 1
+//        intervals -= 1
     }
     
-    func stopTimer(){
-        timeLabel.textColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.00)
-        let selectedMode = modes[selectedIndex]
-        if (selectedMode == "tabata"){
-            ontimer.pause()
-            ontimer.reset()
-            offtimer.pause()
-            offtimer.reset()
-        }
-        timer.pause()
-        timer.reset()
-    }
+//    func stopTimerforSwitching(){
+//        timeLabel.textColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
+//        istimerCounting = false
+//        self.navigationController?.progress = 0
+//        self.navigationController?.progressTintColor = .clear
+//        let selectedMode = modes[selectedIndex]
+//        if (selectedMode == "tabata"){
+//            ontimer.pause()
+//            ontimer.reset()
+//            offtimer.pause()
+//            offtimer.reset()
+//        }
+//        timer.pause()
+//        timer.reset()
+//    }
     func configureUserInterfaceforMode(usermode: String) {
-        stopTimer()
+        endTimer()
         
         switch usermode {
         case "stopwatch":
@@ -288,13 +306,14 @@ class ViewController: UIViewController {
              bottomController?.setAnchorPoint(anchor: 0.5)
             let panelHeight = (self.view.frame.size.height/2)-80
             clockLabel.frame = CGRect(x: 0, y: panelHeight, width: self.view.frame.size.width, height: 40)
-            if (self.view.subviews.contains(roundsCircleSlider)){
+            bottomController?.setAnchorPoint(anchor: 0.5)
+            if (panelBottomView.subviews.contains(roundsCircleSlider)){
                 roundsCircleSlider.removeFromSuperview()
             }
-            if (self.view.subviews.contains(onCircleSlider)){
+            if (panelBottomView.subviews.contains(onCircleSlider)){
                 onCircleSlider.removeFromSuperview()
             }
-            if (self.view.subviews.contains(offCircleSlider)){
+            if (panelBottomView.subviews.contains(offCircleSlider)){
                 offCircleSlider.removeFromSuperview()
             }
             
@@ -305,7 +324,7 @@ class ViewController: UIViewController {
             timer?.delegate = self
             timer?.setCountDownTime(TimeInterval(totalTime))
             isInterval = false
-            IntervalcircleSlider.title = "Time cap"
+            IntervalcircleSlider.title = "Count Down"
             IntervalcircleSlider.divisa = "Min"
             intervalsLabel.isHidden = true
             IntervalcircleSlider.isHidden = false
@@ -360,19 +379,19 @@ class ViewController: UIViewController {
         timeLabel = UILabel(frame: CGRect(x:0, y: (self.view.frame.size.height/2)-60, width: self.view.frame.size.width, height: 120))
         timeLabel.textAlignment = .center
         timeLabel.font = UIFont (name: "Avenir-Heavy", size: 80)
-        timeLabel.textColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.00)
+        timeLabel.textColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
         
         intervalsLabel = UILabel(frame: CGRect(x: 0, y: 40, width: self.view.frame.size.width, height: 80))
         intervalsLabel.textAlignment = .center
         intervalsLabel.font = UIFont (name: "Avenir-Heavy", size: 60)
-        intervalsLabel.textColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.00)
+        intervalsLabel.textColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
 
-        self.navigationController?.progressTintColor = UIColor(red:0.83, green:0.00, blue:0.00, alpha:1.00)
+        self.navigationController?.progressTintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
         let panelHeight = (self.view.frame.size.height/2)-80
         clockLabel = UILabel(frame: CGRect(x: 0, y: panelHeight, width: self.view.frame.size.width, height: 40))
         clockLabel.textAlignment = .center
         clockLabel.font = UIFont (name: "Avenir-Book", size: 21)
-        clockLabel.textColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.00)
+        clockLabel.textColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
         
 
         
@@ -402,13 +421,14 @@ class ViewController: UIViewController {
         onCircleSlider.radiansOffset = 0.01
         onCircleSlider.lineWidth = 10
         onCircleSlider.backgroundColor = .clear
-        onCircleSlider.pgHighlightedColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
+        onCircleSlider.pgHighlightedColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
         onCircleSlider.pgNormalColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
         onCircleSlider.bgColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
-        onCircleSlider.tintColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
+        onCircleSlider.tintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
         onCircleSlider.highlighted = true
         onCircleSlider.title = "ON"
         onCircleSlider.divisa = "Min"
+        
         ontimer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
         ontimer?.delegate = self
         ontimer.tag = 1
@@ -422,23 +442,21 @@ class ViewController: UIViewController {
         offCircleSlider.knobRadius = 20
         offCircleSlider.lineWidth = 10
         offCircleSlider.backgroundColor = .clear
-        offCircleSlider.pgHighlightedColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
+        offCircleSlider.pgHighlightedColor = #colorLiteral(red: 0.5015509129, green: 0.5780293345, blue: 0.8545677066, alpha: 1)
         offCircleSlider.pgNormalColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
         offCircleSlider.bgColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
-        offCircleSlider.tintColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
+        offCircleSlider.tintColor = #colorLiteral(red: 0.5015509129, green: 0.5780293345, blue: 0.8545677066, alpha: 1)
         offCircleSlider.highlighted = true
         offCircleSlider.title = "OFF"
         offCircleSlider.divisa = "Min"
+        
         offtimer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
         offtimer?.delegate = self
         offtimer.tag = 2
-        //            offtimer?.setCountDownTime(TimeInterval(totalTime))
-        
         
         self.view.addSubview(timeLabel)
         self.view.addSubview(intervalsLabel)
         panelBottomView.addSubview(self.IntervalcircleSlider)
-//        panelBottomView.addSubview(circularPickerView)
         panelBottomView.addSubview(clockLabel)
         
         clockTimer = Timer.scheduledTimer(timeInterval: 1.0,
@@ -471,17 +489,23 @@ class ViewController: UIViewController {
     }
     func startONTimer(){
         playSound()
+        offtimer.pause()
+        offtimer.reset()
         ontimer?.start()
+        offtimer.isEnabled = false
         countDownTimer.pause()
         countDownTimer.reset()
-        timeLabel.textColor = UIColor(red:0.83, green:0.00, blue:0.00, alpha:1.00)
-        
-//        intervals -= 1
+        timeLabel.textColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
+         self.navigationController?.progressTintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
     }
     func startOFFTimer(){
         playSound()
+        ontimer.pause()
+        ontimer.reset()
+        ontimer.isEnabled = false
         offtimer?.start()
-        timeLabel.textColor = UIColor(red:0.00, green:0.92, blue:0.78, alpha:1.00)
+        timeLabel.textColor = #colorLiteral(red: 0.5015509129, green: 0.5780293345, blue: 0.8545677066, alpha: 1)
+        self.navigationController?.progressTintColor = #colorLiteral(red: 0.5015509129, green: 0.5780293345, blue: 0.8545677066, alpha: 1)
        
     }
     
@@ -498,23 +522,38 @@ extension ViewController: MZTimerLabelDelegate {
     func timerLabel(_ timerLabel: MZTimerLabel!, finshedCountDownTimerWithTime countTime: TimeInterval){
         
         istimerCounting = false
-        if (intervals > 0){
-            if (timerLabel.tag == 1){
-                ontimer.pause()
-                ontimer.reset()
-            startOFFTimer()
+        if (intervals >= 1){
+            if (!offtimer.isEnabled){
+            offtimer.isEnabled = true
+                if(offtimer.getCountDownTime() <= 0){
+                offtimer.isEnabled = false
+                intervals -= 1
+                    if (intervals == 0){
+                        endTimer()
+                        return
+                    }
+                    startONTimer()
+                return
+                }
+                startOFFTimer()
+                
             return
             }
-            if (timerLabel.tag == 2){
-                offtimer.pause()
-                offtimer.reset()
+            if (!ontimer.isEnabled){
+                offtimer.isEnabled = true
+                intervals -= 1
+                if (intervals == 0){
+                endTimer()
+                    return
+                }
             startONTimer()
-            intervals -= 1
+
                 return
             }
-            startInterval()
+//            startInterval()
+//            return
         }
-        
+        endTimer()
         
     }
 }
@@ -541,12 +580,12 @@ extension ViewController: CircularSliderDelegate {
         if ((userIntent) != nil){
             let minute = userIntent.goalValue!/60
             intervals = Int(minute)
-            intervalsLabel.text = "Rounds:\(intervals)"
+            intervalsLabel.text = "Rounds: \(intervals)"
             return Float(intervals)
         }else{
             let selectedMode = modes[selectedIndex]
             intervals = Int(floorf(value))
-            intervalsLabel.text = "Rounds \(intervals)"
+            intervalsLabel.text = "Rounds: \(intervals)"
             if (selectedMode == "timer"){
             let totalTime = intervals * 60
             timer?.setCountDownTime(TimeInterval(totalTime))
@@ -576,7 +615,7 @@ extension ViewController: CTBottomSlideDelegate,UIGestureRecognizerDelegate {
         if (gestureRecognizer is UIPanGestureRecognizer || gestureRecognizer is UIRotationGestureRecognizer) {
             return true
         } else {
-            return false
+            return true
         }
     }
 }
