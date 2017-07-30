@@ -21,26 +21,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="JCw-aR-oEl">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.20784313730000001" green="0.21960784310000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_appIcon" translatesAutoresizingMaskIntoConstraints="NO" id="5Vx-Uo-Rad">
+                                <rect key="frame" x="0.0" y="199" width="375" height="269"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="269" id="0a5-lH-2I5"/>
+                                    <constraint firstAttribute="width" constant="375" id="aiL-ss-wRG"/>
+                                </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.20784313730000001" green="0.21960784310000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="JCw-aR-oEl" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="6ET-ZK-jls"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="JCw-aR-oEl" secondAttribute="bottom" id="JAc-CV-yuh"/>
-                            <constraint firstAttribute="trailing" secondItem="JCw-aR-oEl" secondAttribute="trailing" id="RN0-JQ-dOj"/>
-                            <constraint firstItem="JCw-aR-oEl" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="pNf-Ud-tKw"/>
+                            <constraint firstItem="5Vx-Uo-Rad" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="3fa-ZY-sWk"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="5Vx-Uo-Rad" secondAttribute="bottom" constant="199" id="4tw-bh-8R8"/>
+                            <constraint firstItem="5Vx-Uo-Rad" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="179" id="d9k-zo-EM7"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+            <point key="canvasLocation" x="50.399999999999999" y="373.76311844077964"/>
         </scene>
     </scenes>
     <resources>
-        <image name="splash" width="512" height="512"/>
+        <image name="img_appIcon" width="512" height="512"/>
     </resources>
 </document>
