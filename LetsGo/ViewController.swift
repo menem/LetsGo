@@ -42,6 +42,8 @@ class ViewController: UIViewController {
     var istimerCounting: Bool!
     var testSlider: EFCircularSlider!
     var panelTitleLabel: UILabel!
+    var player: AVAudioPlayer?
+    
     func endTimer() {
         timer.pause()
         timer.reset()
@@ -58,8 +60,11 @@ class ViewController: UIViewController {
             countDownTimer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
             countDownTimer?.setCountDownTime(10)
             countDownTimer?.start()
-            let systemSoundID: SystemSoundID = 1304
-            AudioServicesPlaySystemSound (systemSoundID)
+            
+//            perform(#selector(playSound), with: nil, afterDelay: 9)
+            perform(#selector(playSound), with: nil, afterDelay: 9)
+            perform(#selector(playSound), with: nil, afterDelay: 7)
+            
             timeLabel.textColor = UIColor(red:0.97, green:0.87, blue:0.39, alpha:1.00)
             perform(#selector(startInterval), with: nil, afterDelay: 10)
         }
@@ -94,8 +99,13 @@ class ViewController: UIViewController {
         let longStopGesture = UILongPressGestureRecognizer(target: self, action: #selector(endTimer))
         self.view.addGestureRecognizer(longStopGesture)
         
-        let swipetoChangeMode = UISwipeGestureRecognizer(target: self, action: #selector(switchMode))
+        let swipetoChangeMode = UISwipeGestureRecognizer(target: self, action: #selector(switchModeBack))
+        swipetoChangeMode.direction = .left
         self.view.addGestureRecognizer(swipetoChangeMode)
+        
+        let swipeRightChangeMode = UISwipeGestureRecognizer(target: self, action: #selector(switchMode))
+        swipetoChangeMode.direction = .right
+        self.view.addGestureRecognizer(swipeRightChangeMode)
         
         
         titleView = UILabel()
@@ -108,7 +118,7 @@ class ViewController: UIViewController {
         titleView.textColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.00)
         titleView.addGestureRecognizer(tapGesture)
         
-        let leftBarButton = UIBarButtonItem(image: UIImage(named: "icn_left"), style: .plain, target: self, action: #selector(switchMode))
+        let leftBarButton = UIBarButtonItem(image: UIImage(named: "icn_left"), style: .plain, target: self, action: #selector(switchModeBack))
         self.navigationItem.leftBarButtonItem = leftBarButton
         
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "icn_right"), style: .plain, target: self, action: #selector(switchMode))
@@ -136,7 +146,7 @@ class ViewController: UIViewController {
         }
         configureUserInterfaceforMode(usermode: selectedMode)
         
-        intervalsLabel.text = "Intervals = \(intervals)"
+        intervalsLabel.text = "Rounds: \(intervals)"
         self.view.bringSubview(toFront: panelBottomView)
         
     }
@@ -192,6 +202,7 @@ class ViewController: UIViewController {
     }
     
     func switchMode() {
+        let previousWidth = titleView.frame.size.width
         if (selectedIndex >= 2){
             selectedIndex = 0
             let selectedMode = modes[selectedIndex]
@@ -203,7 +214,36 @@ class ViewController: UIViewController {
         let selectedMode = modes[selectedIndex]
         titleView.text = String(selectedMode)
         let width = titleView.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)).width
-        titleView.frame = CGRect(origin:titleView.frame.origin, size:CGSize(width: width, height: 40))
+        let widthdifference = width - previousWidth
+        let titleOriginX = Int(titleView.frame.origin.x) - Int(widthdifference/2)
+        
+        titleView.frame = CGRect(x: titleOriginX, y: Int(titleView.frame.origin.y), width: Int(width)+1, height: 40)
+        configureUserInterfaceforMode(usermode: selectedMode)
+    }
+    
+    
+    func switchModeBack() {
+        let previousWidth = titleView.frame.size.width
+        if (selectedIndex < 1){
+            selectedIndex = 2
+            let selectedMode = modes[selectedIndex]
+            titleView.text = String(selectedMode)
+            let width = titleView.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)).width
+            let widthdifference = width - previousWidth
+            let titleOriginX = Int(titleView.frame.origin.x) - Int(widthdifference/2)
+            
+            titleView.frame = CGRect(x: titleOriginX, y: Int(titleView.frame.origin.y), width: Int(width)+1, height: 40)
+            configureUserInterfaceforMode(usermode: selectedMode)
+            return
+        }
+        selectedIndex -= 1
+        let selectedMode = modes[selectedIndex]
+        titleView.text = String(selectedMode)
+        let width = titleView.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)).width
+        let widthdifference = width - previousWidth
+        let titleOriginX = Int(titleView.frame.origin.x) - Int(widthdifference/2)
+        
+        titleView.frame = CGRect(x: titleOriginX, y: Int(titleView.frame.origin.y), width: Int(width)+1, height: 40)
         configureUserInterfaceforMode(usermode: selectedMode)
     }
     
@@ -215,8 +255,7 @@ class ViewController: UIViewController {
             return
         }
         timeLabel.textColor = UIColor(red:0.00, green:0.69, blue:0.67, alpha:1.00)
-        let systemSoundID: SystemSoundID = 1304
-        AudioServicesPlaySystemSound (systemSoundID)
+        playSound()
         timer?.start()
         intervals -= 1
     }
@@ -246,6 +285,9 @@ class ViewController: UIViewController {
             IntervalcircleSlider.divisa = "Min"
             intervalsLabel.isHidden = true
             IntervalcircleSlider.isHidden = false
+             bottomController?.setAnchorPoint(anchor: 0.5)
+            let panelHeight = (self.view.frame.size.height/2)-80
+            clockLabel.frame = CGRect(x: 0, y: panelHeight, width: self.view.frame.size.width, height: 40)
             if (self.view.subviews.contains(roundsCircleSlider)){
                 roundsCircleSlider.removeFromSuperview()
             }
@@ -267,6 +309,9 @@ class ViewController: UIViewController {
             IntervalcircleSlider.divisa = "Min"
             intervalsLabel.isHidden = true
             IntervalcircleSlider.isHidden = false
+            let panelHeight = (self.view.frame.size.height/2)-80
+            clockLabel.frame = CGRect(x: 0, y: panelHeight, width: self.view.frame.size.width, height: 40)
+             bottomController?.setAnchorPoint(anchor: 0.5)
             if (panelBottomView.subviews.contains(roundsCircleSlider)){
                 roundsCircleSlider.removeFromSuperview()
             }
@@ -280,7 +325,9 @@ class ViewController: UIViewController {
             print("tabata Selected")
             IntervalcircleSlider.isHidden = true
             intervalsLabel.isHidden = false
-
+            let panelHeight = (self.view.frame.size.height)-45
+            clockLabel.frame = CGRect(x: 0, y: panelHeight, width: self.view.frame.size.width, height: 40)
+             bottomController?.setAnchorPoint(anchor: 1.0)
             panelBottomView.addSubview(onCircleSlider)
             panelBottomView.addSubview(offCircleSlider)
             panelBottomView.addSubview(roundsCircleSlider)
@@ -308,15 +355,16 @@ class ViewController: UIViewController {
         IntervalcircleSlider.title = "Time"
         IntervalcircleSlider.divisa = "Min"
         IntervalcircleSlider.tintColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
-        
+        IntervalcircleSlider.lineWidth = 10
+       
         timeLabel = UILabel(frame: CGRect(x:0, y: (self.view.frame.size.height/2)-60, width: self.view.frame.size.width, height: 120))
         timeLabel.textAlignment = .center
         timeLabel.font = UIFont (name: "Avenir-Heavy", size: 80)
         timeLabel.textColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.00)
         
-        intervalsLabel = UILabel(frame: CGRect(x: 0, y: (self.view.frame.size.height/2)+90, width: self.view.frame.size.width, height: 40))
+        intervalsLabel = UILabel(frame: CGRect(x: 0, y: 40, width: self.view.frame.size.width, height: 80))
         intervalsLabel.textAlignment = .center
-        intervalsLabel.font = UIFont (name: "Avenir-Book", size: 21)
+        intervalsLabel.font = UIFont (name: "Avenir-Heavy", size: 60)
         intervalsLabel.textColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.00)
 
         self.navigationController?.progressTintColor = UIColor(red:0.83, green:0.00, blue:0.00, alpha:1.00)
@@ -326,6 +374,7 @@ class ViewController: UIViewController {
         clockLabel.font = UIFont (name: "Avenir-Book", size: 21)
         clockLabel.textColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.00)
         
+
         
         roundsCircleSlider = CircularSlider(frame:CGRect(x: (self.view.frame.size.width/2)-94, y: 50, width: 180, height: 180))
         roundsCircleSlider.delegate = self
@@ -334,23 +383,30 @@ class ViewController: UIViewController {
         roundsCircleSlider.value = 1
         roundsCircleSlider.knobRadius = 20
         roundsCircleSlider.radiansOffset = 0.01
+        roundsCircleSlider.lineWidth = 10
         roundsCircleSlider.backgroundColor = .clear
-        roundsCircleSlider.pgHighlightedColor = UIColor(red:0.83, green:0.00, blue:0.00, alpha:1.00)
-        roundsCircleSlider.pgNormalColor = UIColor(red:0.95, green:0.95, blue:0.95, alpha:1.00)
+        roundsCircleSlider.pgHighlightedColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
+        roundsCircleSlider.pgNormalColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
+        roundsCircleSlider.bgColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
+        roundsCircleSlider.tintColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
+        roundsCircleSlider.highlighted = true
         roundsCircleSlider.title = "Rounds"
         roundsCircleSlider.divisa = ""
         
-        onCircleSlider = CircularSlider(frame:CGRect(x: 20, y: 230, width: 180, height: 180))
+        onCircleSlider = CircularSlider(frame:CGRect(x: (self.view.frame.size.width/2)-94, y: 240, width: 180, height: 180))
         onCircleSlider.delegate = self
         onCircleSlider.maximumValue = 5
         onCircleSlider.minimumValue = 0.1
         onCircleSlider.value = 0.1
-        
         onCircleSlider.knobRadius = 20
         onCircleSlider.radiansOffset = 0.01
+        onCircleSlider.lineWidth = 10
         onCircleSlider.backgroundColor = .clear
-        onCircleSlider.pgHighlightedColor = UIColor(red:0.83, green:0.00, blue:0.00, alpha:1.00)
-        onCircleSlider.pgNormalColor = UIColor(red:0.95, green:0.95, blue:0.95, alpha:1.00)
+        onCircleSlider.pgHighlightedColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
+        onCircleSlider.pgNormalColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
+        onCircleSlider.bgColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
+        onCircleSlider.tintColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
+        onCircleSlider.highlighted = true
         onCircleSlider.title = "ON"
         onCircleSlider.divisa = "Min"
         ontimer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
@@ -358,16 +414,19 @@ class ViewController: UIViewController {
         ontimer.tag = 1
         //            timer?.setCountDownTime(TimeInterval(totalTime))
         
-        offCircleSlider = CircularSlider(frame:CGRect(x: (self.view.frame.size.width)-200, y: 230, width: 180, height: 180))
+        offCircleSlider = CircularSlider(frame:CGRect(x: (self.view.frame.size.width/2)-94, y: 430, width: 180, height: 180))
         offCircleSlider.delegate = self
         offCircleSlider.maximumValue = 5
         offCircleSlider.minimumValue = 0
         offCircleSlider.value = 0.1
         offCircleSlider.knobRadius = 20
-        offCircleSlider.radiansOffset = 0.01
+        offCircleSlider.lineWidth = 10
         offCircleSlider.backgroundColor = .clear
-        offCircleSlider.pgHighlightedColor = UIColor(red:0.83, green:0.00, blue:0.00, alpha:1.00)
-        offCircleSlider.pgNormalColor = UIColor(red:0.95, green:0.95, blue:0.95, alpha:1.00)
+        offCircleSlider.pgHighlightedColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
+        offCircleSlider.pgNormalColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
+        offCircleSlider.bgColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
+        offCircleSlider.tintColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
+        offCircleSlider.highlighted = true
         offCircleSlider.title = "OFF"
         offCircleSlider.divisa = "Min"
         offtimer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
@@ -377,7 +436,7 @@ class ViewController: UIViewController {
         
         
         self.view.addSubview(timeLabel)
-        panelBottomView.addSubview(intervalsLabel)
+        self.view.addSubview(intervalsLabel)
         panelBottomView.addSubview(self.IntervalcircleSlider)
 //        panelBottomView.addSubview(circularPickerView)
         panelBottomView.addSubview(clockLabel)
@@ -395,10 +454,23 @@ class ViewController: UIViewController {
                                                         dateStyle: .none,
                                                         timeStyle: .medium)
     }
-    
+    func playSound() {
+        guard let url = Bundle.main.url(forResource: "tone", withExtension: "wav") else { return }
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            player = try AVAudioPlayer(contentsOf: url)
+            guard let player = player else { return }
+            
+            player.play()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
     func startONTimer(){
-        let systemSoundID: SystemSoundID = 1304
-        AudioServicesPlaySystemSound (systemSoundID)
+        playSound()
         ontimer?.start()
         countDownTimer.pause()
         countDownTimer.reset()
@@ -407,8 +479,7 @@ class ViewController: UIViewController {
 //        intervals -= 1
     }
     func startOFFTimer(){
-        let systemSoundID: SystemSoundID = 1304
-        AudioServicesPlaySystemSound (systemSoundID)
+        playSound()
         offtimer?.start()
         timeLabel.textColor = UIColor(red:0.00, green:0.92, blue:0.78, alpha:1.00)
        
@@ -419,7 +490,7 @@ extension ViewController: MZTimerLabelDelegate {
     func timerLabel(_ timerLabel: MZTimerLabel!, countingTo time: TimeInterval, timertype timerType: MZTimerLabelType){
         let progress = time/timerLabel.getCountDownTime()
         self.navigationController?.progress = Float(progress)
-        intervalsLabel.text = "Intervals = \(intervals)"
+        intervalsLabel.text = "Rounds:\(intervals)"
         istimerCounting = true
         
     }
@@ -470,12 +541,12 @@ extension ViewController: CircularSliderDelegate {
         if ((userIntent) != nil){
             let minute = userIntent.goalValue!/60
             intervals = Int(minute)
-            intervalsLabel.text = "Intervals = \(intervals)"
+            intervalsLabel.text = "Rounds:\(intervals)"
             return Float(intervals)
         }else{
             let selectedMode = modes[selectedIndex]
             intervals = Int(floorf(value))
-            intervalsLabel.text = "Intervals = \(intervals)"
+            intervalsLabel.text = "Rounds \(intervals)"
             if (selectedMode == "timer"){
             let totalTime = intervals * 60
             timer?.setCountDownTime(TimeInterval(totalTime))

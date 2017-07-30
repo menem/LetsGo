@@ -14,6 +14,7 @@
 		4850E1BA1F28EE00004D85A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4850E1B81F28EE00004D85A7 /* LaunchScreen.storyboard */; };
 		4850E1C91F2A8865004D85A7 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4850E1C81F2A8865004D85A7 /* IntentHandler.swift */; };
 		4850E1CD1F2A8865004D85A7 /* SiriHandler.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4850E1C61F2A8865004D85A7 /* SiriHandler.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		48E657AC1F2E1658007E649E /* tone.wav in Resources */ = {isa = PBXBuildFile; fileRef = 48E657AB1F2E1658007E649E /* tone.wav */; };
 		4C3B67DF2BC822FFDB07F9C5 /* Pods_LetsGo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14E8FA497D650EDF3219475A /* Pods_LetsGo.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		4850E1C61F2A8865004D85A7 /* SiriHandler.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SiriHandler.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		4850E1C81F2A8865004D85A7 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		4850E1CA1F2A8865004D85A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48E657AB1F2E1658007E649E /* tone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tone.wav; sourceTree = "<group>"; };
 		5C1CAB1FD870C4C22C7A8CB9 /* Pods-LetsGo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetsGo.release.xcconfig"; path = "Pods/Target Support Files/Pods-LetsGo/Pods-LetsGo.release.xcconfig"; sourceTree = "<group>"; };
 		E8418AE36AB7D1935CE2EE43 /* Pods-LetsGo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetsGo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LetsGo/Pods-LetsGo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,6 +105,7 @@
 				4850E1C11F2A8552004D85A7 /* LetsGo.entitlements */,
 				4850E1AF1F28EE00004D85A7 /* AppDelegate.swift */,
 				4850E1B11F28EE00004D85A7 /* ViewController.swift */,
+				48E657AB1F2E1658007E649E /* tone.wav */,
 				4850E1B31F28EE00004D85A7 /* Main.storyboard */,
 				4850E1B61F28EE00004D85A7 /* Assets.xcassets */,
 				4850E1B81F28EE00004D85A7 /* LaunchScreen.storyboard */,
@@ -232,6 +235,7 @@
 			files = (
 				4850E1BA1F28EE00004D85A7 /* LaunchScreen.storyboard in Resources */,
 				4850E1B71F28EE00004D85A7 /* Assets.xcassets in Resources */,
+				48E657AC1F2E1658007E649E /* tone.wav in Resources */,
 				4850E1B51F28EE00004D85A7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
