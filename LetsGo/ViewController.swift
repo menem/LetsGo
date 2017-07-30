@@ -73,7 +73,6 @@ class ViewController: UIViewController {
         panelTitleLabel.textAlignment = .center
         panelTitleLabel.text = "Pull this up"
         
-        self.navigationController?.navigationBar.barTintColor = UIColor(red:0.21, green:0.22, blue:0.27, alpha:1.00)
         
         panelBottomView = UIView(frame: CGRect(x: 0, y: self.view.frame.height/2, width: self.view.frame.width, height: 40))
         panelBottomView.backgroundColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
@@ -102,14 +101,22 @@ class ViewController: UIViewController {
         titleView = UILabel()
         let selectedMode = modes[selectedIndex]
         titleView.text = String(selectedMode)
-        titleView.font = UIFont(name: "HelveticaNeue-Medium", size: 17)
+        titleView.font = UIFont(name: "AvenirNext-UltraLight", size: 25)
         let width = titleView.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)).width
         titleView.frame = CGRect(origin:CGPoint.zero, size:CGSize(width: width, height: 40))
         titleView.isUserInteractionEnabled = true
         titleView.textColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.00)
         titleView.addGestureRecognizer(tapGesture)
+        
+        let leftBarButton = UIBarButtonItem(image: UIImage(named: "icn_left"), style: .plain, target: self, action: #selector(switchMode))
+        self.navigationItem.leftBarButtonItem = leftBarButton
+        
+        let rightBarButton = UIBarButtonItem(image: UIImage(named: "icn_right"), style: .plain, target: self, action: #selector(switchMode))
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        
         self.navigationItem.titleView = titleView
-
+        self.navigationController!.navigationBar.isTranslucent = false
+        
         INPreferences.requestSiriAuthorization { (status) in
             
         }
@@ -300,7 +307,7 @@ class ViewController: UIViewController {
         IntervalcircleSlider.pgNormalColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
         IntervalcircleSlider.title = "Time"
         IntervalcircleSlider.divisa = "Min"
-        IntervalcircleSlider.tintColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
+        IntervalcircleSlider.tintColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
         
         timeLabel = UILabel(frame: CGRect(x:0, y: (self.view.frame.size.height/2)-60, width: self.view.frame.size.width, height: 120))
         timeLabel.textAlignment = .center
@@ -489,7 +496,6 @@ extension ViewController: CTBottomSlideDelegate,UIGestureRecognizerDelegate {
     }
     func didPanelAnchor(){
         panelTitleLabel.text = "Pull this Down"
-        
     }
     func didPanelMove(panelOffset: CGFloat){
     
