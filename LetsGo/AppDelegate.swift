@@ -39,9 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("AppDelegate: Start Workout Intent - TRUE")
         print(startIntent)
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "timer") as! ViewController
-        viewController.userIntent = startIntent
-        let navViewController = UINavigationController(rootViewController: viewController)
+        let homeViewController = mainStoryboard.instantiateViewController(withIdentifier: "timer") as! HomeViewController
+        homeViewController.userIntent = startIntent
+        let navViewController = UINavigationController(rootViewController: homeViewController)
         
         window!.rootViewController = navViewController
         window!.makeKeyAndVisible()

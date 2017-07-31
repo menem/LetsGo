@@ -14,11 +14,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>EFCircularSlider.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>KYNavigationProgress.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,22 +47,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>44499E3904192A6313EB1385405D20A3</key>
+		<key>A47E26DFDF27C0916D89456F9FFC4A9F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>AF09DB055935BD941846539935605A14</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EDFD5FF436D372F4445A07A762960EE5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EF865EED71DF57CA0A42327C380D1B33</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -48,10 +48,10 @@ open class CircularSlider: UIView {
     fileprivate var backingFractionDigits: NSInteger = 2
     fileprivate let maxFractionDigits: NSInteger = 4
     fileprivate var startAngle: CGFloat {
-        return -CGFloat(M_PI_2) + radiansOffset
+        return -CGFloat(Double.pi/2) + radiansOffset
     }
     fileprivate var endAngle: CGFloat {
-        return 3 * CGFloat(M_PI_2) - radiansOffset
+        return 3 * CGFloat(Double.pi/2) - radiansOffset
     }
     fileprivate var angleRange: CGFloat {
         return endAngle - startAngle
@@ -72,7 +72,7 @@ open class CircularSlider: UIView {
         return CGFloat(normalizedValue) * angleRange + startAngle
     }
     fileprivate var knobMidAngle: CGFloat {
-        return (2 * CGFloat(M_PI) + startAngle - endAngle) / 2 + endAngle
+        return (2 * CGFloat(Double.pi) + startAngle - endAngle) / 2 + endAngle
     }
     fileprivate var knobRotationTransform: CATransform3D {
         return CATransform3DMakeRotation(knobAngle, 0.0, 0.0, 1)
@@ -393,13 +393,13 @@ open class CircularSlider: UIView {
         
         var rotationAngle = gesture.rotation
         if rotationAngle > knobMidAngle {
-            rotationAngle -= 2 * CGFloat(M_PI)
-        } else if rotationAngle < (knobMidAngle - 2 * CGFloat(M_PI)) {
-            rotationAngle += 2 * CGFloat(M_PI)
+            rotationAngle -= 2 * CGFloat(Double.pi)
+        } else if rotationAngle < (knobMidAngle - 2 * CGFloat(Double.pi)) {
+            rotationAngle += 2 * CGFloat(Double.pi)
         }
         rotationAngle = min(endAngle, max(startAngle, rotationAngle))
         
-        guard abs(Double(rotationAngle - knobAngle)) < M_PI_2 else { return }
+        guard abs(Double(rotationAngle - knobAngle)) < Double.pi/2 else { return }
         
         let valueForAngle = Float(rotationAngle - startAngle) / Float(angleRange) * valueRange + minimumValue
         setValue(valueForAngle, animated: false)

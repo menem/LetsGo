@@ -16,7 +16,7 @@ import CTSlidingUpPanel
 import EFCircularSlider
 import HealthKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
     
     @IBOutlet var heightLabel: UILabel!
     var intervals = 0
@@ -95,7 +95,7 @@ class ViewController: UIViewController {
                 self.setHeight()
             } else {
                 if error != nil {
-                    print(error)
+//                    print(error)
                 }
                 print("Permission denied.")
             }
@@ -543,7 +543,7 @@ class ViewController: UIViewController {
     }
     
 }
-extension ViewController: MZTimerLabelDelegate {
+extension HomeViewController: MZTimerLabelDelegate {
     func timerLabel(_ timerLabel: MZTimerLabel!, countingTo time: TimeInterval, timertype timerType: MZTimerLabelType){
         let progress = time/timerLabel.getCountDownTime()
         self.navigationController?.progress = Float(progress)
@@ -594,7 +594,7 @@ func round(_ value: Double, toNearest: Double) -> Double {
     return round(value / toNearest) * toNearest
 }
 
-extension ViewController: CircularSliderDelegate {
+extension HomeViewController: CircularSliderDelegate {
     func circularSlider(_ circularSlider: CircularSlider, valueForValue value: Float) -> Float {
         if (circularSlider.title == "ON"){
             onInterval = round(Double(value), toNearest:0.1)
@@ -630,7 +630,7 @@ extension ViewController: CircularSliderDelegate {
     }
 }
 
-extension ViewController: CTBottomSlideDelegate,UIGestureRecognizerDelegate {
+extension HomeViewController: CTBottomSlideDelegate,UIGestureRecognizerDelegate {
     func didPanelCollapse(){
         panelTitleLabel.text = "Pull this up"
     }
