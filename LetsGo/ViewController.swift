@@ -14,9 +14,11 @@ import CircularSlider
 import Intents
 import CTSlidingUpPanel
 import EFCircularSlider
+import HealthKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet var heightLabel: UILabel!
     var intervals = 0
     var timer: MZTimerLabel!
     var intervalsLabel: UILabel!
@@ -43,6 +45,8 @@ class ViewController: UIViewController {
     var testSlider: EFCircularSlider!
     var panelTitleLabel: UILabel!
     var player: AVAudioPlayer?
+    let healthManager:HealthKitManager = HealthKitManager()
+    var height: HKQuantitySample?
     
     func endTimer() {
         timer.pause()
@@ -81,8 +85,28 @@ class ViewController: UIViewController {
             perform(#selector(startInterval), with: nil, afterDelay: 10)
         }
     }
+    func getHealthKitPermission() {
+        
+        // Seek authorization in HealthKitManager.swift.
+        healthManager.authorizeHealthKit { (authorized,  error) -> Void in
+            if authorized {
+                
+                // Get and set the user's height.
+                self.setHeight()
+            } else {
+                if error != nil {
+                    print(error)
+                }
+                print("Permission denied.")
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        getHealthKitPermission()
+        
         istimerCounting = false
         panelTitleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 40))
         panelTitleLabel.textColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
@@ -156,8 +180,7 @@ class ViewController: UIViewController {
             
             configuretimer()
         }
-        configureUserInterfaceforMode(usermode: selectedMode)
-        
+        configureMode(selectedIndex: selectedIndex)
         intervalsLabel.text = "Rounds: \(intervals)"
         self.view.bringSubview(toFront: panelBottomView)
         
@@ -215,51 +238,56 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    func setHeight() {
+        // Create the HKSample for Height.
+        let heightSample = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.height)
+        
+        // Call HealthKitManager's getSample() method to get the user's height.
+        self.healthManager.getHeight(sampleType: heightSample!, completion: { (userHeight, error) -> Void in
+            
+            if( error != nil ) {
+                print("Error: \(String(describing: error?.localizedDescription))")
+                return
+            }
+            
+            var heightString = ""
+            
+            self.height = userHeight as? HKQuantitySample
+            
+            // The height is formatted to the user's locale.
+            if let meters = self.height?.quantity.doubleValue(for: HKUnit.meter()) {
+                let formatHeight = LengthFormatter()
+                formatHeight.isForPersonHeightUse = true
+                heightString = formatHeight.string(fromMeters: meters)
+            }
+            
+            // Set the label to reflect the user's height.
+            DispatchQueue.main.async(execute: { () -> Void in
+                self.heightLabel.text = heightString
+            })
+        })
+        
+    }
     
     func switchMode() {
-        let previousWidth = titleView.frame.size.width
         if (selectedIndex >= 2){
             selectedIndex = 0
-            let selectedMode = modes[selectedIndex]
-            titleView.text = String(selectedMode)
-                    configureUserInterfaceforMode(usermode: selectedMode)
+            configureMode(selectedIndex: selectedIndex)
             return
         }
         selectedIndex += 1
-        let selectedMode = modes[selectedIndex]
-        titleView.text = String(selectedMode)
-        let width = titleView.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)).width
-        let widthdifference = width - previousWidth
-        let titleOriginX = Int(titleView.frame.origin.x) - Int(widthdifference/2)
-        
-        titleView.frame = CGRect(x: titleOriginX, y: Int(titleView.frame.origin.y), width: Int(width)+1, height: 40)
-        configureUserInterfaceforMode(usermode: selectedMode)
+        configureMode(selectedIndex: selectedIndex)
     }
     
     
     func switchModeBack() {
-        let previousWidth = titleView.frame.size.width
         if (selectedIndex < 1){
             selectedIndex = 2
-            let selectedMode = modes[selectedIndex]
-            titleView.text = String(selectedMode)
-            let width = titleView.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)).width
-            let widthdifference = width - previousWidth
-            let titleOriginX = Int(titleView.frame.origin.x) - Int(widthdifference/2)
-            
-            titleView.frame = CGRect(x: titleOriginX, y: Int(titleView.frame.origin.y), width: Int(width)+1, height: 40)
-            configureUserInterfaceforMode(usermode: selectedMode)
+            configureMode(selectedIndex: selectedIndex)
             return
         }
         selectedIndex -= 1
-        let selectedMode = modes[selectedIndex]
-        titleView.text = String(selectedMode)
-        let width = titleView.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)).width
-        let widthdifference = width - previousWidth
-        let titleOriginX = Int(titleView.frame.origin.x) - Int(widthdifference/2)
-        
-        titleView.frame = CGRect(x: titleOriginX, y: Int(titleView.frame.origin.y), width: Int(width)+1, height: 40)
-        configureUserInterfaceforMode(usermode: selectedMode)
+        configureMode(selectedIndex: selectedIndex)
     }
     
     func startInterval(){
@@ -272,28 +300,20 @@ class ViewController: UIViewController {
          self.navigationController?.progressTintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
         playSound()
         timer?.start()
-//        intervals -= 1
     }
-    
-//    func stopTimerforSwitching(){
-//        timeLabel.textColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
-//        istimerCounting = false
-//        self.navigationController?.progress = 0
-//        self.navigationController?.progressTintColor = .clear
-//        let selectedMode = modes[selectedIndex]
-//        if (selectedMode == "tabata"){
-//            ontimer.pause()
-//            ontimer.reset()
-//            offtimer.pause()
-//            offtimer.reset()
-//        }
-//        timer.pause()
-//        timer.reset()
-//    }
-    func configureUserInterfaceforMode(usermode: String) {
+
+    func configureMode(selectedIndex: Int) {
         endTimer()
         
-        switch usermode {
+        let previousWidth = titleView.frame.size.width
+        let selectedMode = modes[selectedIndex]
+        titleView.text = String(selectedMode)
+        let width = titleView.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)).width
+        let widthdifference = width - previousWidth
+        let titleOriginX = Int(titleView.frame.origin.x) - Int(widthdifference/2)
+        titleView.frame = CGRect(x: titleOriginX, y: Int(titleView.frame.origin.y), width: Int(width)+1, height: 40)
+        
+        switch selectedMode {
         case "stopwatch":
             print("Stop Watch Selected")
             timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeStopWatch)
@@ -520,7 +540,7 @@ extension ViewController: MZTimerLabelDelegate {
     }
     
     func timerLabel(_ timerLabel: MZTimerLabel!, finshedCountDownTimerWithTime countTime: TimeInterval){
-        
+         healthManager.saveDistance(distanceRecorded: 0.1, date: NSDate())
         istimerCounting = false
         if (intervals >= 1){
             if (!offtimer.isEnabled){

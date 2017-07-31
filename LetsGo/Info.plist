@@ -35,5 +35,9 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>to calculate calories in workout</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>to calculate calories in workout</string>
 </dict>
 </plist>

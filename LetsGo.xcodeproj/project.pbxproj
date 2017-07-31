@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		483238AA1F2E7AEA006194AE /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 483238A91F2E7AEA006194AE /* HealthKit.framework */; };
+		484F0FA81F2EB4790056F1E2 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484F0FA71F2EB4790056F1E2 /* HealthKitManager.swift */; };
 		4850E1B01F28EE00004D85A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4850E1AF1F28EE00004D85A7 /* AppDelegate.swift */; };
 		4850E1B21F28EE00004D85A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4850E1B11F28EE00004D85A7 /* ViewController.swift */; };
 		4850E1B51F28EE00004D85A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4850E1B31F28EE00004D85A7 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		14E8FA497D650EDF3219475A /* Pods_LetsGo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LetsGo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		483238A91F2E7AEA006194AE /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		484F0FA71F2EB4790056F1E2 /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		4850E1AC1F28EE00004D85A7 /* LetsGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LetsGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4850E1AF1F28EE00004D85A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4850E1B11F28EE00004D85A7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			children = (
 				4850E1C11F2A8552004D85A7 /* LetsGo.entitlements */,
 				4850E1AF1F28EE00004D85A7 /* AppDelegate.swift */,
+				484F0FA71F2EB4790056F1E2 /* HealthKitManager.swift */,
 				4850E1B11F28EE00004D85A7 /* ViewController.swift */,
 				48E657AB1F2E1658007E649E /* tone.wav */,
 				4850E1B31F28EE00004D85A7 /* Main.storyboard */,
@@ -311,6 +314,7 @@
 			files = (
 				4850E1B21F28EE00004D85A7 /* ViewController.swift in Sources */,
 				4850E1B01F28EE00004D85A7 /* AppDelegate.swift in Sources */,
+				484F0FA81F2EB4790056F1E2 /* HealthKitManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
