@@ -107,6 +107,8 @@ class ViewController: UIViewController {
         
         getHealthKitPermission()
         
+       
+        
         istimerCounting = false
         panelTitleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 40))
         panelTitleLabel.textColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
@@ -183,6 +185,8 @@ class ViewController: UIViewController {
         configureMode(selectedIndex: selectedIndex)
         intervalsLabel.text = "Rounds: \(intervals)"
         self.view.bringSubview(toFront: panelBottomView)
+        
+         updateConstraints()
         
     }
     
@@ -527,6 +531,15 @@ class ViewController: UIViewController {
         timeLabel.textColor = #colorLiteral(red: 0.5015509129, green: 0.5780293345, blue: 0.8545677066, alpha: 1)
         self.navigationController?.progressTintColor = #colorLiteral(red: 0.5015509129, green: 0.5780293345, blue: 0.8545677066, alpha: 1)
        
+    }
+    
+     func updateConstraints() {
+        super.view.updateConstraints()
+        NSLayoutConstraint.activate([
+            timeLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            timeLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+            ])
+        
     }
     
 }

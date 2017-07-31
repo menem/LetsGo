@@ -20,6 +20,10 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSHealthShareUsageDescription</key>
+	<string>to calculate calories in workout</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>to calculate calories in workout</string>
 	<key>NSSiriUsageDescription</key>
 	<string>Control workout with voice</string>
 	<key>UILaunchStoryboardName</key>
@@ -34,10 +38,8 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
 	</array>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>to calculate calories in workout</string>
-	<key>NSHealthShareUsageDescription</key>
-	<string>to calculate calories in workout</string>
 </dict>
 </plist>
