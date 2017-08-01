@@ -9,14 +9,22 @@
 import Foundation
 
 class LGTimer: NSObject {
+   
+    public enum TimerType
+    {
+        case timer
+        case stopwatch
+        case tabata
+        case rest
+    }
     
     var title: String
     var duration: Double
-    var type: String
+    var type: TimerType
     var routineType: String
     var isWorkout: Bool
     
-    init(title: String, type: String, duration: Double, routineType: String, isWorkout: Bool) {
+    init(title: String, type: TimerType, duration: Double, routineType: String, isWorkout: Bool) {
         self.title = title
         self.duration = duration
         self.type = type
