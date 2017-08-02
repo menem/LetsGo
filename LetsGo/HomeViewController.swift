@@ -13,7 +13,7 @@ import AVFoundation
 import CircularSlider
 import Intents
 import CTSlidingUpPanel
-import EFCircularSlider
+//import EFCircularSlider
 import HealthKit
 
 class HomeViewController: UIViewController {
@@ -42,7 +42,7 @@ class HomeViewController: UIViewController {
     var panelBottomView: UIView!
     var bottomController:CTBottomSlideController?
     var istimerCounting: Bool!
-    var testSlider: EFCircularSlider!
+//    var testSlider: EFCircularSlider!
     var panelTitleLabel: UILabel!
     var player: AVAudioPlayer?
     let healthManager:HealthKitManager = HealthKitManager()

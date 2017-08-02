@@ -261,7 +261,7 @@
 				TargetAttributes = {
 					4850E1AB1F28EE00004D85A7 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = WSYEN229M9;
+						DevelopmentTeam = BYQ9TMRU8A;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
@@ -274,7 +274,7 @@
 					};
 					4850E1C51F2A8865004D85A7 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = WSYEN229M9;
+						DevelopmentTeam = BYQ9TMRU8A;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -519,10 +519,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = LetsGo/LetsGo.entitlements;
-				DEVELOPMENT_TEAM = WSYEN229M9;
+				DEVELOPMENT_TEAM = BYQ9TMRU8A;
 				INFOPLIST_FILE = LetsGo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.phoenixfitnesshub.LetsGo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.phoenixfitnesshub.Timer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -535,10 +535,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = LetsGo/LetsGo.entitlements;
-				DEVELOPMENT_TEAM = WSYEN229M9;
+				DEVELOPMENT_TEAM = BYQ9TMRU8A;
 				INFOPLIST_FILE = LetsGo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.phoenixfitnesshub.LetsGo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.phoenixfitnesshub.Timer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -547,10 +547,10 @@
 		4850E1CF1F2A8865004D85A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = WSYEN229M9;
+				DEVELOPMENT_TEAM = BYQ9TMRU8A;
 				INFOPLIST_FILE = SiriHandler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.phoenixfitnesshub.LetsGo.SiriHandler;
+				PRODUCT_BUNDLE_IDENTIFIER = com.phoenixfitnesshub.Timer.SiriHandler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -560,10 +560,10 @@
 		4850E1D01F2A8865004D85A7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = WSYEN229M9;
+				DEVELOPMENT_TEAM = BYQ9TMRU8A;
 				INFOPLIST_FILE = SiriHandler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.phoenixfitnesshub.LetsGo.SiriHandler;
+				PRODUCT_BUNDLE_IDENTIFIER = com.phoenixfitnesshub.Timer.SiriHandler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
