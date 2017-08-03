@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ActivityViewController.swift
 //  LetsGo
 //
 //  Created by Menem Ragab on 8/3/17.
@@ -8,19 +8,19 @@
 
 import UIKit
 
-let BannerTableViewCellIdentifier = "BannerTableViewCellIdentifier"
-let ActivityTableViewCellIdentifier = "ActivityTableViewCellIdentifier"
+//let BannerTableViewCellIdentifier = "BannerTableViewCellIdentifier"
+//let ActivityTableViewCellIdentifier = "ActivityTableViewCellIdentifier"
 
-class ActivitiesViewController: UITableViewController {
+class ActivityViewController: UITableViewController {
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.tableView.tableFooterView = UIView()
         self.tableView.backgroundColor = UIColor.white
         self.tableView.separatorStyle = .none
-        self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
+//        self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
         
     }
     
@@ -56,7 +56,7 @@ class ActivitiesViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//      This is the Sponsor cell
+        //      This is the Sponsor cell
         if (indexPath.section == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: BannerTableViewCellIdentifier, for: indexPath) as! TitleBackgroundTableViewCell
             
@@ -64,16 +64,18 @@ class ActivitiesViewController: UITableViewController {
             
             return cell
         } else {
-
+            
             self.tableView.register(ActivityTableViewCell.self, forCellReuseIdentifier: ActivityTableViewCellIdentifier)
             
             let cell = tableView.dequeueReusableCell(withIdentifier: ActivityTableViewCellIdentifier, for: indexPath) as! ActivityTableViewCell
+            
+            
             
             switch indexPath.row
             {
             case 0:
                 
-                cell.titlelabel.text = "Workout"
+                cell.titlelabel.text = "Dummy Text 1"
                 cell.activityTypeImageView.image = (UIImage (named: "icn_Level_Beginner"))
             case 1:
                 
@@ -95,8 +97,7 @@ class ActivitiesViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.section == 1) {
-            let routinesViewController = ActivityViewController()
-            self.navigationController?.pushViewController(routinesViewController, animated: true)
+            
         }
     }
     

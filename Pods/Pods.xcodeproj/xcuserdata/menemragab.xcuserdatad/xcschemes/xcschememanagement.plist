@@ -24,11 +24,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>LiquidFloatingActionButton.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>MZTimerLabel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -62,12 +57,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>62BDD710F761A9FAA74F4010A24BF66D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>97990CCB479CE7D1F319A5856B15020D</key>
+		<key>A45CA789CDAECFFDC7F4F759A9DF9884</key>
 		<dict>
 			<key>primary</key>
 			<true/>
