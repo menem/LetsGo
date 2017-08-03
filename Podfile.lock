@@ -1,21 +1,27 @@
 PODS:
   - CircularSlider (1.1.2)
   - CTSlidingUpPanel (0.1.1)
+  - HGPlaceholders (0.1.1)
   - KYNavigationProgress (2.0.1)
+  - LiquidFloatingActionButton (1.2.0)
   - MZTimerLabel (0.5.4)
 
 DEPENDENCIES:
   - CircularSlider
   - CTSlidingUpPanel
+  - HGPlaceholders
   - KYNavigationProgress
+  - LiquidFloatingActionButton
   - MZTimerLabel
 
 SPEC CHECKSUMS:
   CircularSlider: 448f9f7723b845ccd470dac41981feb192e20c50
   CTSlidingUpPanel: 4369db0938abf4b5db8d0f68cede04f6e0026062
+  HGPlaceholders: 958137083010ef0d76c182fe6f259350ab6bee3a
   KYNavigationProgress: 7f979e79f6e57b1ee33d3de89d6b705a1f4e266a
+  LiquidFloatingActionButton: 9c28961915754e08cf596ea6bdd60f9cd949f172
   MZTimerLabel: cd9bfb9304540ef2a9e163384fca9c978f0dbf83
 
-PODFILE CHECKSUM: ec21209f38e47dcd248f8f91ecfea5e3e3c706c1
+PODFILE CHECKSUM: daadd2f5e1e4e1d95944f86008df928702fa8ade
 
 COCOAPODS: 1.2.1

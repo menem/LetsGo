@@ -9,4 +9,7 @@ pod 'MZTimerLabel'
 pod 'KYNavigationProgress'
 pod 'CircularSlider'
 pod "CTSlidingUpPanel"
+pod "HGPlaceholders"
+pod "LiquidFloatingActionButton"
+
 end

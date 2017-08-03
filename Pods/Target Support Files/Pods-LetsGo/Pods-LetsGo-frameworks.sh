@@ -91,13 +91,17 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/CTSlidingUpPanel/CTSlidingUpPanel.framework"
   install_framework "$BUILT_PRODUCTS_DIR/CircularSlider/CircularSlider.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/HGPlaceholders/HGPlaceholders.framework"
   install_framework "$BUILT_PRODUCTS_DIR/KYNavigationProgress/KYNavigationProgress.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/LiquidFloatingActionButton/LiquidFloatingActionButton.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MZTimerLabel/MZTimerLabel.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/CTSlidingUpPanel/CTSlidingUpPanel.framework"
   install_framework "$BUILT_PRODUCTS_DIR/CircularSlider/CircularSlider.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/HGPlaceholders/HGPlaceholders.framework"
   install_framework "$BUILT_PRODUCTS_DIR/KYNavigationProgress/KYNavigationProgress.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/LiquidFloatingActionButton/LiquidFloatingActionButton.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MZTimerLabel/MZTimerLabel.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

@@ -14,7 +14,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>HGPlaceholders.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>KYNavigationProgress.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>LiquidFloatingActionButton.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -47,7 +57,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A47E26DFDF27C0916D89456F9FFC4A9F</key>
+		<key>59E181E1B48173E64FDF7FB603127CA4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>62BDD710F761A9FAA74F4010A24BF66D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>97990CCB479CE7D1F319A5856B15020D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
