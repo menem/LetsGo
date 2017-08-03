@@ -7,20 +7,27 @@
 //
 
 import UIKit
+import HGPlaceholders
 
 let BannerTableViewCellIdentifier = "BannerTableViewCellIdentifier"
 let ActivityTableViewCellIdentifier = "ActivityTableViewCellIdentifier"
 
 class ActivitiesViewController: UITableViewController {
     
+    var placeholderTableView: TableView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+      
         self.tableView.tableFooterView = UIView()
         self.tableView.backgroundColor = UIColor.white
         self.tableView.separatorStyle = .none
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
+        
+        placeholderTableView = tableView as? TableView
+        placeholderTableView?.placeholderDelegate = self
+        placeholderTableView?.showNoResultsPlaceholder()
+        self.placeholderTableView?.reloadData()
         
     }
     
@@ -100,5 +107,21 @@ class ActivitiesViewController: UITableViewController {
         }
     }
     
+    
+}
+
+extension ActivitiesViewController: PlaceholderDelegate {
+    
+    func tableView(_ tableView: TableView, actionButtonTappedFor placeholder: Placeholder) {
+        print(placeholder.key.value)
+        placeholderTableView?.showDefault()
+    }
+}
+
+class ProjectNameTableView: TableView {
+    
+    override func customSetup() {
+        placeholdersProvider = .basic
+    }
     
 }

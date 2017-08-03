@@ -13,6 +13,7 @@ import UIKit
 
 class ActivityViewController: UITableViewController {
     
+    var timers = [LGTimer]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +21,7 @@ class ActivityViewController: UITableViewController {
         self.tableView.tableFooterView = UIView()
         self.tableView.backgroundColor = UIColor.white
         self.tableView.separatorStyle = .none
-//        self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
+        self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
         
     }
     
@@ -35,7 +36,7 @@ class ActivityViewController: UITableViewController {
         if (section == 0) {
             return 1
         } else {
-            return 3
+            return self.timers.count
         }
     }
     
@@ -64,7 +65,7 @@ class ActivityViewController: UITableViewController {
             
             return cell
         } else {
-            
+
             self.tableView.register(ActivityTableViewCell.self, forCellReuseIdentifier: ActivityTableViewCellIdentifier)
             
             let cell = tableView.dequeueReusableCell(withIdentifier: ActivityTableViewCellIdentifier, for: indexPath) as! ActivityTableViewCell
@@ -96,7 +97,7 @@ class ActivityViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath.section == 1) {
+        if (indexPath.section == 0) {
             
         }
     }
