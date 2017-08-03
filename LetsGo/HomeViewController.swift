@@ -17,6 +17,10 @@ import CTSlidingUpPanel
 import HealthKit
 
 class HomeViewController: UIViewController {
+    @IBAction func pushActivities(_ sender: Any) {
+        let routinesViewController = ActivitiesViewController()
+        self.navigationController?.pushViewController(routinesViewController, animated: true)
+    }
     
     @IBOutlet var heightLabel: UILabel!
     var intervals = 0
