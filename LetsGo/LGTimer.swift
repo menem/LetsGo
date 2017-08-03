@@ -8,15 +8,15 @@
 
 import Foundation
 
+public enum TimerType
+{
+    case timer
+    case stopwatch
+    case tabata
+    case rest
+}
+
 class LGTimer: NSObject {
-   
-    public enum TimerType
-    {
-        case timer
-        case stopwatch
-        case tabata
-        case rest
-    }
     
     var title: String
     var duration: Double

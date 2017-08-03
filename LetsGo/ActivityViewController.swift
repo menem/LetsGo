@@ -8,8 +8,7 @@
 
 import UIKit
 
-//let BannerTableViewCellIdentifier = "BannerTableViewCellIdentifier"
-//let ActivityTableViewCellIdentifier = "ActivityTableViewCellIdentifier"
+let TimerTableViewCellIdentifier = "TimerTableViewCellIdentifier"
 
 class ActivityViewController: UITableViewController {
     
@@ -22,6 +21,8 @@ class ActivityViewController: UITableViewController {
         self.tableView.backgroundColor = UIColor.white
         self.tableView.separatorStyle = .none
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
+        
+        // load timers from NSUserdefaults
         
     }
     
@@ -66,30 +67,10 @@ class ActivityViewController: UITableViewController {
             return cell
         } else {
 
-            self.tableView.register(ActivityTableViewCell.self, forCellReuseIdentifier: ActivityTableViewCellIdentifier)
+            self.tableView.register(TimerTableViewCell.self, forCellReuseIdentifier: TimerTableViewCellIdentifier)
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: ActivityTableViewCellIdentifier, for: indexPath) as! ActivityTableViewCell
-            
-            
-            
-            switch indexPath.row
-            {
-            case 0:
-                
-                cell.titlelabel.text = "Dummy Text 1"
-                cell.activityTypeImageView.image = (UIImage (named: "icn_Level_Beginner"))
-            case 1:
-                
-                cell.titlelabel.text = "Dummy Text 2"
-                cell.activityTypeImageView.image = (UIImage (named: "icn_Level_Extreme"))
-            case 2:
-                
-                cell.titlelabel.text = "Dummy Text 3"
-                cell.activityTypeImageView.image = (UIImage (named: "icn_Level_Hardcore"))
-                
-            default:
-                break
-            }
+            let cell = tableView.dequeueReusableCell(withIdentifier: TimerTableViewCellIdentifier, for: indexPath) as! TimerTableViewCell
+            // Setup 
             return cell
         }
         

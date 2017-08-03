@@ -8,6 +8,16 @@
 import Foundation
 
 class LGActivity: NSObject {
+    var title: String
+    var timers = [LGTimer]()
+    var type: String
+    var isWorkout: Bool
     
+    init(title: String, type: String, timers: [LGTimer], isWorkout: Bool) {
+        self.title = title
+        self.timers = timers
+        self.type = type
+        self.isWorkout = isWorkout
+    }
 
 }

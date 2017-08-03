@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  NewActivityViewController.swift
 //  LetsGo
 //
 //  Created by Menem Ragab on 8/3/17.
@@ -7,28 +7,21 @@
 //
 
 import UIKit
-import HGPlaceholders
 
-let BannerTableViewCellIdentifier = "BannerTableViewCellIdentifier"
-let ActivityTableViewCellIdentifier = "ActivityTableViewCellIdentifier"
+let NewActivityTableViewCellIdentifier = "TimerTableViewCellIdentifier"
 
-class ActivitiesViewController: UITableViewController {
+class NewActivityViewController: UITableViewController {
     
-    var placeholderTableView: TableView?
-    var activities = [LGActivity]()
+    var timers = [LGTimer]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        
         self.tableView.tableFooterView = UIView()
         self.tableView.backgroundColor = UIColor.white
         self.tableView.separatorStyle = .none
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
         
-        placeholderTableView = tableView as? TableView
-        placeholderTableView?.placeholderDelegate = self
-        placeholderTableView?.showNoResultsPlaceholder()
-        self.placeholderTableView?.reloadData()
         
     }
     
@@ -43,7 +36,7 @@ class ActivitiesViewController: UITableViewController {
         if (section == 0) {
             return 1
         } else {
-            return activities.count
+            return self.timers.count
         }
     }
     
@@ -64,7 +57,7 @@ class ActivitiesViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//      This is the Sponsor cell
+        //      This is the Sponsor cell
         if (indexPath.section == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: BannerTableViewCellIdentifier, for: indexPath) as! TitleBackgroundTableViewCell
             
@@ -72,11 +65,11 @@ class ActivitiesViewController: UITableViewController {
             
             return cell
         } else {
-
-            self.tableView.register(ActivityTableViewCell.self, forCellReuseIdentifier: ActivityTableViewCellIdentifier)
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: ActivityTableViewCellIdentifier, for: indexPath) as! ActivityTableViewCell
-
+            self.tableView.register(TimerTableViewCell.self, forCellReuseIdentifier: TimerTableViewCellIdentifier)
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: TimerTableViewCellIdentifier, for: indexPath) as! TimerTableViewCell
+            // Setup
             return cell
         }
         
@@ -85,26 +78,9 @@ class ActivitiesViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.section == 0) {
-            let routinesViewController = ActivityViewController()
-            self.navigationController?.pushViewController(routinesViewController, animated: true)
+            
         }
     }
     
-    
-}
-
-extension ActivitiesViewController: PlaceholderDelegate {
-    
-    func tableView(_ tableView: TableView, actionButtonTappedFor placeholder: Placeholder) {
-        print(placeholder.key.value)
-        placeholderTableView?.showDefault()
-    }
-}
-
-class ProjectNameTableView: TableView {
-    
-    override func customSetup() {
-        placeholdersProvider = .basic
-    }
     
 }
