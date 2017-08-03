@@ -1,9 +1,9 @@
 //
-//  CategoriesTableViewCell.swift
-//  PMA
+//  TitleBackgroundTableViewCell.swift
 //
-//  Created by Fady on 5/14/17.
-//  Copyright © 2017 pyramindmartialarts. All rights reserved.
+//
+//  Created by Menem Ragab on  8/3/17.
+//  Copyright © 2017 Phoenix fitness. All rights reserved.
 //
 
 import UIKit
