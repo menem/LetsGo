@@ -8,7 +8,7 @@
 
 import UIKit
 
-let NewActivityTableViewCellIdentifier = "TimerTableViewCellIdentifier"
+let NewActivityTableViewCellIdentifier = "NewActivityTableViewCellIdentifier"
 
 class NewActivityViewController: UITableViewController {
     
