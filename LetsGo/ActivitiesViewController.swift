@@ -25,6 +25,9 @@ class ActivitiesViewController: UITableViewController {
         self.tableView.separatorStyle = .none
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
         
+        let saveBarButton  = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveActivity))
+        self.navigationController?.navigationItem.rightBarButtonItem = saveBarButton
+        
         placeholderTableView = tableView as? TableView
         placeholderTableView?.placeholderDelegate = self
         placeholderTableView?.showNoResultsPlaceholder()
@@ -33,7 +36,9 @@ class ActivitiesViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    
+    func saveActivity() {
+        
+    }
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
         
@@ -85,8 +90,8 @@ class ActivitiesViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.section == 0) {
-            let routinesViewController = ActivityViewController()
-            self.navigationController?.pushViewController(routinesViewController, animated: true)
+            let newActivityViewController = NewActivityViewController()
+            self.navigationController?.pushViewController(newActivityViewController, animated: true)
         }
     }
     

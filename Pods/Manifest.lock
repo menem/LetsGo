@@ -4,6 +4,7 @@ PODS:
   - HGPlaceholders (0.1.1)
   - KYNavigationProgress (2.0.1)
   - MZTimerLabel (0.5.4)
+  - SwiftyUserDefaults (3.0.0)
 
 DEPENDENCIES:
   - CircularSlider
@@ -11,6 +12,7 @@ DEPENDENCIES:
   - HGPlaceholders
   - KYNavigationProgress
   - MZTimerLabel
+  - SwiftyUserDefaults
 
 SPEC CHECKSUMS:
   CircularSlider: 448f9f7723b845ccd470dac41981feb192e20c50
@@ -18,7 +20,8 @@ SPEC CHECKSUMS:
   HGPlaceholders: 958137083010ef0d76c182fe6f259350ab6bee3a
   KYNavigationProgress: 7f979e79f6e57b1ee33d3de89d6b705a1f4e266a
   MZTimerLabel: cd9bfb9304540ef2a9e163384fca9c978f0dbf83
+  SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
 
-PODFILE CHECKSUM: dba9a6a6afffe6b22a058b2a0347c8298c97465f
+PODFILE CHECKSUM: 5e168a47b296732d7fed9aeb74c15e809bca9ef0
 
 COCOAPODS: 1.2.1

@@ -10,5 +10,6 @@ pod 'KYNavigationProgress'
 pod 'CircularSlider'
 pod "CTSlidingUpPanel"
 pod "HGPlaceholders"
+pod 'SwiftyUserDefaults'
 
 end
