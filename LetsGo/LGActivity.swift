@@ -7,7 +7,7 @@
 //
 import Foundation
 
-class LGActivity: NSObject {
+class LGActivity: NSObject, NSCoding {
     var title: String
 //    var timers = [LGTimer]()
     var type: String
