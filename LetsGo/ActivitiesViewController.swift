@@ -107,7 +107,13 @@ class ActivitiesViewController: UITableViewController {
         if (indexPath.section == 0) {
             let newActivityViewController = NewActivityViewController()
             self.navigationController?.pushViewController(newActivityViewController, animated: true)
+        }else{
+        let selectedActivity = activities[indexPath.row]
+        let activityViewController = ActivityViewController()
+            activityViewController.activity = selectedActivity
+            self.navigationController?.pushViewController(activityViewController, animated: true)
         }
+        
     }
     
     

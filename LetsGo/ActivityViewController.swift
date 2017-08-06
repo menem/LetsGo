@@ -13,6 +13,7 @@ let TimerTableViewCellIdentifier = "TimerTableViewCellIdentifier"
 class ActivityViewController: UITableViewController {
     
     var timers = [LGTimer]()
+    var activity: LGActivity!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,7 @@ class ActivityViewController: UITableViewController {
         self.tableView.backgroundColor = UIColor.white
         self.tableView.separatorStyle = .none
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
+        self.title = activity.title
         
         // load timers from NSUserdefaults
         
@@ -79,7 +81,8 @@ class ActivityViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.section == 0) {
-            
+            let newTimerViewController = NewTimerViewController()
+            self.navigationController?.pushViewController(newTimerViewController, animated: true)
         }
     }
     
