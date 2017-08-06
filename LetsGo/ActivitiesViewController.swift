@@ -8,12 +8,13 @@
 
 import UIKit
 import HGPlaceholders
+//import SwiftyUserDefaults
 
 let BannerTableViewCellIdentifier = "BannerTableViewCellIdentifier"
 let ActivityTableViewCellIdentifier = "ActivityTableViewCellIdentifier"
 
 class ActivitiesViewController: UITableViewController {
-    
+//        var activitiesKey = DefaultsKey<[LGActivity]>("activities")
     var placeholderTableView: TableView?
     var activities = [LGActivity]()
     
@@ -25,20 +26,32 @@ class ActivitiesViewController: UITableViewController {
         self.tableView.separatorStyle = .none
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
         
-        let saveBarButton  = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveActivity))
-        self.navigationController?.navigationItem.rightBarButtonItem = saveBarButton
         
         placeholderTableView = tableView as? TableView
         placeholderTableView?.placeholderDelegate = self
         placeholderTableView?.showNoResultsPlaceholder()
+
+        
+        let activitiesData = UserDefaults.standard.object(forKey: "activities") as? NSData
+        
+        if let activitiesData = activitiesData {
+            let activitiesArray = NSKeyedUnarchiver.unarchiveObject(with: activitiesData as Data) as? [LGActivity]
+            
+            if let activitiesArray = activitiesArray {
+                activities = activitiesArray
+                self.tableView.reloadData()
+            }
+            
+        }
+    
+        
         self.placeholderTableView?.reloadData()
         
     }
+
     
-    // MARK: - Table view data source
-    func saveActivity() {
-        
-    }
+// MARK: - Table view data source
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
         
@@ -81,6 +94,8 @@ class ActivitiesViewController: UITableViewController {
             self.tableView.register(ActivityTableViewCell.self, forCellReuseIdentifier: ActivityTableViewCellIdentifier)
             
             let cell = tableView.dequeueReusableCell(withIdentifier: ActivityTableViewCellIdentifier, for: indexPath) as! ActivityTableViewCell
+            let activity = activities[indexPath.row]
+            cell.titlelabel.text = activity.title
 
             return cell
         }

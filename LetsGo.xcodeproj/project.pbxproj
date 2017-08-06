@@ -30,6 +30,8 @@
 		48A31BC21F33A4E700E919FB /* NewTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BC11F33A4E700E919FB /* NewTimerViewController.swift */; };
 		48A31BC51F34352200E919FB /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BC31F34352200E919FB /* TextFieldTableViewCell.swift */; };
 		48A31BC61F34352200E919FB /* LGTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BC41F34352200E919FB /* LGTextField.swift */; };
+		48A31BC91F35FA5400E919FB /* LGTextField+BottomBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BC71F35FA5400E919FB /* LGTextField+BottomBorder.swift */; };
+		48A31BCA1F35FA5400E919FB /* LGTextField+PlaceholderTextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BC81F35FA5400E919FB /* LGTextField+PlaceholderTextColor.swift */; };
 		48E657AC1F2E1658007E649E /* tone.wav in Resources */ = {isa = PBXBuildFile; fileRef = 48E657AB1F2E1658007E649E /* tone.wav */; };
 		4C3B67DF2BC822FFDB07F9C5 /* Pods_LetsGo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14E8FA497D650EDF3219475A /* Pods_LetsGo.framework */; };
 /* End PBXBuildFile section */
@@ -87,6 +89,8 @@
 		48A31BC11F33A4E700E919FB /* NewTimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTimerViewController.swift; sourceTree = "<group>"; };
 		48A31BC31F34352200E919FB /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		48A31BC41F34352200E919FB /* LGTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGTextField.swift; sourceTree = "<group>"; };
+		48A31BC71F35FA5400E919FB /* LGTextField+BottomBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LGTextField+BottomBorder.swift"; sourceTree = "<group>"; };
+		48A31BC81F35FA5400E919FB /* LGTextField+PlaceholderTextColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LGTextField+PlaceholderTextColor.swift"; sourceTree = "<group>"; };
 		48E657AB1F2E1658007E649E /* tone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tone.wav; sourceTree = "<group>"; };
 		5C1CAB1FD870C4C22C7A8CB9 /* Pods-LetsGo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetsGo.release.xcconfig"; path = "Pods/Target Support Files/Pods-LetsGo/Pods-LetsGo.release.xcconfig"; sourceTree = "<group>"; };
 		E8418AE36AB7D1935CE2EE43 /* Pods-LetsGo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetsGo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LetsGo/Pods-LetsGo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 		4850E1AE1F28EE00004D85A7 /* LetsGo */ = {
 			isa = PBXGroup;
 			children = (
+				48A31BCB1F35FA8100E919FB /* Extensions */,
 				4850E1AF1F28EE00004D85A7 /* AppDelegate.swift */,
 				4825CF3C1F2FEB6F0066B40D /* Models */,
 				4825CF3D1F2FEB860066B40D /* Managers */,
@@ -236,6 +241,15 @@
 				48A31BB61F333D8600E919FB /* TitleBackgroundTableViewCell.swift */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		48A31BCB1F35FA8100E919FB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				48A31BC71F35FA5400E919FB /* LGTextField+BottomBorder.swift */,
+				48A31BC81F35FA5400E919FB /* LGTextField+PlaceholderTextColor.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		AE2D2CAFEACC99BF8E823CA6 /* Frameworks */ = {
@@ -428,6 +442,7 @@
 				48A31BC51F34352200E919FB /* TextFieldTableViewCell.swift in Sources */,
 				48A31BC21F33A4E700E919FB /* NewTimerViewController.swift in Sources */,
 				4850E1B21F28EE00004D85A7 /* HomeViewController.swift in Sources */,
+				48A31BC91F35FA5400E919FB /* LGTextField+BottomBorder.swift in Sources */,
 				4850E1B01F28EE00004D85A7 /* AppDelegate.swift in Sources */,
 				4825CF471F2FFA860066B40D /* LGInterval.swift in Sources */,
 				48A31BB01F32253500E919FB /* LGTimeManager.swift in Sources */,
@@ -436,6 +451,7 @@
 				4825CF451F2FFA5E0066B40D /* LGActivity.swift in Sources */,
 				48A31BC01F33A4CF00E919FB /* NewActivityViewController.swift in Sources */,
 				484F0FA81F2EB4790056F1E2 /* HealthKitManager.swift in Sources */,
+				48A31BCA1F35FA5400E919FB /* LGTextField+PlaceholderTextColor.swift in Sources */,
 				48A31BB51F331A4000E919FB /* ActivitiesViewController.swift in Sources */,
 				48A31BB21F32550B00E919FB /* LGSlider.swift in Sources */,
 			);
