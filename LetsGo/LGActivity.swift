@@ -9,15 +9,11 @@ import Foundation
 
 class LGActivity: NSObject, NSCoding {
     var title: String
-//    var timers = [LGTimer]()
     var type: String
-//    var isWorkout: Bool
     
     init(title: String, type: String) {
         self.title = title
-//        self.timers = timers
         self.type = type
-//        self.isWorkout = isWorkout
     }
     required init?(coder aDecoder: NSCoder) {
         
