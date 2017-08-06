@@ -24,7 +24,18 @@ class ActivityViewController: UITableViewController {
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
         self.title = activity.title
         
-        // load timers from NSUserdefaults
+         let timersKey = "\(activity.title).timers"
+        let timersData = UserDefaults.standard.object(forKey: timersKey) as? NSData
+        
+        if let timersData = timersData {
+            let timersArray = NSKeyedUnarchiver.unarchiveObject(with: timersData as Data) as? [LGTimer]
+            
+            if let timersArray = timersArray {
+                timers = timersArray
+                self.tableView.reloadData()
+            }
+            
+        }
         
     }
     
@@ -72,7 +83,8 @@ class ActivityViewController: UITableViewController {
             self.tableView.register(TimerTableViewCell.self, forCellReuseIdentifier: TimerTableViewCellIdentifier)
             
             let cell = tableView.dequeueReusableCell(withIdentifier: TimerTableViewCellIdentifier, for: indexPath) as! TimerTableViewCell
-            // Setup 
+            let timer = timers[indexPath.row]
+            cell.titlelabel.text = timer.title
             return cell
         }
         
@@ -82,6 +94,7 @@ class ActivityViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.section == 0) {
             let newTimerViewController = NewTimerViewController()
+            newTimerViewController.activity = activity
             self.navigationController?.pushViewController(newTimerViewController, animated: true)
         }
     }
