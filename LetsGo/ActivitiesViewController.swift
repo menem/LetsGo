@@ -32,18 +32,10 @@ class ActivitiesViewController: UITableViewController {
         placeholderTableView?.showNoResultsPlaceholder()
 
         
-        let activitiesData = UserDefaults.standard.object(forKey: "activities") as? NSData
+        let timeManager = LGTimerManager()
+        activities = timeManager.loadActivities()
+        self.tableView.reloadData()
         
-        if let activitiesData = activitiesData {
-            let activitiesArray = NSKeyedUnarchiver.unarchiveObject(with: activitiesData as Data) as? [LGActivity]
-            
-            if let activitiesArray = activitiesArray {
-                activities = activitiesArray
-                self.tableView.reloadData()
-            }
-            
-        }
-    
         
         self.placeholderTableView?.reloadData()
         

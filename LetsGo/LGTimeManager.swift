@@ -9,14 +9,6 @@
 import Foundation
 
 class LGTimerManager {
-
-//    func makeActivity (activity: LGActivity){
-//
-//        }
-//    
-//    func startTimer(timer: LGTimer) {
-//        
-//    }
     
     func saveActivity(title: String, type: String){
         
@@ -81,6 +73,36 @@ class LGTimerManager {
         let newTimersData = NSKeyedArchiver.archivedData(withRootObject: timersArray)
         UserDefaults.standard.set(newTimersData, forKey: timersKey)
         
+    }
+    
+    func loadTimers(activity: LGActivity) -> [LGTimer]{
+        
+        let timersKey = "\(activity.title).timers"
+        let timersData = UserDefaults.standard.object(forKey: timersKey) as? NSData
+        
+        if let timersData = timersData {
+            let timersArray = NSKeyedUnarchiver.unarchiveObject(with: timersData as Data) as? [LGTimer]
+            
+            if let timersArray = timersArray {
+                return timersArray
+            }
+            return []
+        }
+        return []
+    }
+    
+    func loadActivities() -> [LGActivity] {
+        let activitiesData = UserDefaults.standard.object(forKey: "activities") as? NSData
+        
+        if let activitiesData = activitiesData {
+            let activitiesArray = NSKeyedUnarchiver.unarchiveObject(with: activitiesData as Data) as? [LGActivity]
+            
+            if let activitiesArray = activitiesArray {
+                return activitiesArray
+            }
+            return []
+        }
+        return []
     }
     //MARK: Implement Load Activities
     //MARK: Implement Load Timers For Activity

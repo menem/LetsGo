@@ -24,18 +24,10 @@ class ActivityViewController: UITableViewController {
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
         self.title = activity.title
         
-         let timersKey = "\(activity.title).timers"
-        let timersData = UserDefaults.standard.object(forKey: timersKey) as? NSData
+        let timeManager = LGTimerManager()
+        timers = timeManager.loadTimers(activity: activity)
+        self.tableView.reloadData()
         
-        if let timersData = timersData {
-            let timersArray = NSKeyedUnarchiver.unarchiveObject(with: timersData as Data) as? [LGTimer]
-            
-            if let timersArray = timersArray {
-                timers = timersArray
-                self.tableView.reloadData()
-            }
-            
-        }
         
     }
     
