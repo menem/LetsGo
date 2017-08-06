@@ -77,6 +77,8 @@ class ActivityViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: TimerTableViewCellIdentifier, for: indexPath) as! TimerTableViewCell
             let timer = timers[indexPath.row]
             cell.titlelabel.text = timer.title
+            cell.Durationlabel.text = String(timer.duration)
+            cell.Intervalslabel.text = String(timer.intervals)
             return cell
         }
         

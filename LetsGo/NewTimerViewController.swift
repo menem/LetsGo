@@ -13,8 +13,13 @@ let NewTimerTableViewCellIdentifier = "NewTimerTableViewCellIdentifier"
 class NewTimerViewController: UITableViewController {
     
     var timers = [LGTimer]()
-    var activityName: String!
-    var activityNameTextField: LGTextField!
+    var timerName: String!
+//    var activityNameTextField: LGTextField!
+    var timerNameTextField: LGTextField!
+    var timerDurationTextField: LGTextField!
+    var timerIntervalTextField: LGTextField!
+    
+    
     var activity: LGActivity!
     
     override func viewDidLoad() {
@@ -31,9 +36,10 @@ class NewTimerViewController: UITableViewController {
     }
     func saveTimersForActivity() {
         let manager = LGTimerManager()
-        manager.savetimers(title: activityNameTextField.text!, type: "type", activity: activity)
-        print(activityName)
-        print(activityNameTextField?.text ?? "Workout")
+        let intervals = Int(timerIntervalTextField.text!)
+        let duration = Double(timerDurationTextField.text!)
+        let name = timerNameTextField.text!
+        manager.savetimers(title: name, duration: duration!, intervals: intervals!, activity: activity)
     }
     // MARK: - Table view data source
     
@@ -46,7 +52,7 @@ class NewTimerViewController: UITableViewController {
         if (section == 0) {
             return 1
         } else {
-            return 1
+            return 3
         }
     }
     
@@ -79,9 +85,21 @@ class NewTimerViewController: UITableViewController {
             self.tableView.register(TextFieldTableViewCell.self, forCellReuseIdentifier: TextFieldTableViewCellIdentifier)
             
             let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCellIdentifier, for: indexPath) as! TextFieldTableViewCell
-            cell.userInputTextField.placeholder = "Enter Timers Name"
-            cell.tintColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
-            activityNameTextField = cell.userInputTextField
+            switch indexPath.row {
+            case 1:
+                cell.userInputTextField.placeholder = "Enter Timers duration"
+                cell.tintColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
+                timerDurationTextField = cell.userInputTextField
+            case 2:
+                cell.userInputTextField.placeholder = "Enter Timers intervals"
+                cell.tintColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
+                timerIntervalTextField = cell.userInputTextField
+            default:
+                cell.userInputTextField.placeholder = "Enter Timers Name"
+                cell.tintColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
+                timerNameTextField = cell.userInputTextField
+            }
+
             return cell
         }
         
@@ -98,9 +116,9 @@ class NewTimerViewController: UITableViewController {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         switch textField {
-        case activityNameTextField:
-            activityNameTextField.setBottomBarToSelectedState()
-            activityNameTextField.setPlaceHolderTextColorForBeingSelected()
+        case timerNameTextField:
+            timerNameTextField.setBottomBarToSelectedState()
+            timerNameTextField.setPlaceHolderTextColorForBeingSelected()
         default:
             return
         }
@@ -108,10 +126,10 @@ class NewTimerViewController: UITableViewController {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField {
-        case activityNameTextField:
-            activityNameTextField.setBottomBarToDefaultState()
-            activityNameTextField.changePlaceHolderTextColorToDefault()
-            activityName = textField.text
+        case timerNameTextField:
+            timerNameTextField.setBottomBarToDefaultState()
+            timerNameTextField.changePlaceHolderTextColorToDefault()
+            timerName = textField.text
         default:
             return
         }
@@ -121,9 +139,9 @@ class NewTimerViewController: UITableViewController {
         
         if (textField.text != nil && !(textField.text?.isEmpty)!) {
             
-            switch activityNameTextField {
-            case activityNameTextField:
-                activityName = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+            switch timerNameTextField {
+            case timerNameTextField:
+                timerName = (textField.text! as NSString).replacingCharacters(in: range, with: string)
             default:
                 return false
             }

@@ -43,10 +43,10 @@ class LGTimerManager {
         
     }
 
-    func savetimers(title: String, type: String, activity: LGActivity){
+    func savetimers(title: String,duration: Double,intervals: Int, activity: LGActivity){
         
         let timersKey = "\(activity.title).timers"
-        let timer = LGTimer(title: title, duration: 1.0, intervals: 1, isWorkout: true)
+        let timer = LGTimer(title: title, duration: duration, intervals: intervals, isWorkout: true)
         
         guard let timersData = UserDefaults.standard.object(forKey: timersKey) as? NSData else {
             print("'places' not found in UserDefaults")
@@ -104,6 +104,4 @@ class LGTimerManager {
         }
         return []
     }
-    //MARK: Implement Load Activities
-    //MARK: Implement Load Timers For Activity
 }
