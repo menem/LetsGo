@@ -17,7 +17,7 @@ import CTSlidingUpPanel
 import HealthKit
 
 class HomeViewController: UIViewController {
-    @IBAction func pushActivities(_ sender: Any) {
+    func pushActivities() {
         let routinesViewController = ActivitiesViewController()
         self.navigationController?.pushViewController(routinesViewController, animated: true)
     }
@@ -48,7 +48,7 @@ class HomeViewController: UIViewController {
     var istimerCounting: Bool!
 //    var testSlider: EFCircularSlider!
     var panelTitleLabel: UILabel!
-    var player: AVAudioPlayer?
+//    var player: AVAudioPlayer?
     let healthManager:HealthKitManager = HealthKitManager()
     var height: HKQuantitySample?
     
@@ -81,8 +81,8 @@ class HomeViewController: UIViewController {
             countDownTimer?.start()
             
             istimerCounting = true
-            perform(#selector(playSound), with: nil, afterDelay: 8)
-            perform(#selector(playSound), with: nil, afterDelay: 9)
+//            perform(#selector(playSound), with: nil, afterDelay: 8)
+//            perform(#selector(playSound), with: nil, afterDelay: 9)
             
             
             timeLabel.textColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
@@ -160,10 +160,10 @@ class HomeViewController: UIViewController {
         titleView.textColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
         titleView.addGestureRecognizer(tapGesture)
         
-        let leftBarButton = UIBarButtonItem(image: UIImage(named: "icn_left"), style: .plain, target: self, action: #selector(switchModeBack))
-        self.navigationItem.leftBarButtonItem = leftBarButton
+//        let leftBarButton = UIBarButtonItem(image: UIImage(named: "icn_left"), style: .plain, target: self, action: #selector(switchModeBack))
+//        self.navigationItem.leftBarButtonItem = leftBarButton
         
-        let rightBarButton = UIBarButtonItem(image: UIImage(named: "icn_right"), style: .plain, target: self, action: #selector(switchMode))
+        let rightBarButton = UIBarButtonItem(image: UIImage(named: "icn_Nav_Activities"), style: .plain, target: self, action: #selector(pushActivities))
         self.navigationItem.rightBarButtonItem = rightBarButton
         
         self.navigationItem.titleView = titleView
@@ -306,7 +306,7 @@ class HomeViewController: UIViewController {
         }
         timeLabel.textColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
          self.navigationController?.progressTintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
-        playSound()
+//        playSound()
         timer?.start()
     }
 
@@ -500,23 +500,23 @@ class HomeViewController: UIViewController {
                                                         dateStyle: .none,
                                                         timeStyle: .medium)
     }
-    func playSound() {
-        guard let url = Bundle.main.url(forResource: "tone", withExtension: "wav") else { return }
-        
-        do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-            try AVAudioSession.sharedInstance().setActive(true)
-            
-            player = try AVAudioPlayer(contentsOf: url)
-            guard let player = player else { return }
-            
-            player.play()
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    }
+//    func playSound() {
+//        guard let url = Bundle.main.url(forResource: "tone", withExtension: "wav") else { return }
+//        
+//        do {
+//            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+//            try AVAudioSession.sharedInstance().setActive(true)
+//            
+//            player = try AVAudioPlayer(contentsOf: url)
+//            guard let player = player else { return }
+//            
+//            player.play()
+//        } catch let error {
+//            print(error.localizedDescription)
+//        }
+//    }
     func startONTimer(){
-        playSound()
+//        playSound()
         offtimer.pause()
         offtimer.reset()
         ontimer?.start()
@@ -527,7 +527,7 @@ class HomeViewController: UIViewController {
          self.navigationController?.progressTintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
     }
     func startOFFTimer(){
-        playSound()
+//        playSound()
         ontimer.pause()
         ontimer.reset()
         ontimer.isEnabled = false

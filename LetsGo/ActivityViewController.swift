@@ -9,7 +9,6 @@
 import UIKit
 import MZTimerLabel
 import KYNavigationProgress
-import AVFoundation
 
 let TimerTableViewCellIdentifier = "TimerTableViewCellIdentifier"
 
@@ -17,11 +16,9 @@ class ActivityViewController: UITableViewController {
     
     var timers = [LGTimer]()
     var activity: LGActivity!
-    var timer: MZTimerLabel!
-    var timeLabel: UILabel!
+    var timeContentView: LGTimerContentView!
     var currentlyPlaying: Int!
     var currentInterval: Int!
-    var player: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,45 +37,48 @@ class ActivityViewController: UITableViewController {
         let playBarButton = UIBarButtonItem(title: "Play", style: .plain, target: self, action: #selector(startActivity))
         self.navigationItem.rightBarButtonItem = playBarButton
         
-        
-        timeLabel = UILabel(frame: CGRect(x:0, y: (self.view.frame.size.height)-160, width: self.view.frame.size.width, height: 120))
-        timeLabel.textAlignment = .center
-        timeLabel.font = UIFont (name: "Avenir-Heavy", size: 80)
-        timeLabel.textColor = #colorLiteral(red: 0.340575099, green: 0.3558157086, blue: 0.4202301502, alpha: 1)
-        
-        timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
-        timer?.setCountDownTime(calculateTotalTime())
-        timer?.resetTimerAfterFinish = true
-        timer?.delegate = self
-        
-        self.view.addSubview(timeLabel)
+        timeContentView = LGTimerContentView(frame: CGRect(x:0, y: (self.view.frame.size.height)-160, width: self.view.frame.size.width, height: 120))
+        timeContentView.timer.setCountDownTime(calculateTotalTime())
+        timeContentView.timer.delegate = self
+        self.view.addSubview(timeContentView)
+
     }
     
-    // MARK: - Table view data source
+
     func startActivity(){
         
         currentlyPlaying = 0
-        timer.setCountDownTime((timers.first?.duration)!)
+        timeContentView.timer.setCountDownTime((timers.first?.duration)!)
         currentInterval = timers.first?.intervals
         self.title = timers.first?.title
-        playSound()
-        timer.start()
+        timeContentView.playSound()
+        timeContentView.timer.start()
     }
     func resumeActivity(){
         let timerDuration = timers[currentlyPlaying].duration
         currentInterval = timers[currentlyPlaying].intervals
-        timer.setCountDownTime(timerDuration)
+        timeContentView.timer.setCountDownTime(timerDuration)
         self.title = timers[currentlyPlaying].title
-        playSound()
-        timer.start()
+        timeContentView.playSound()
+        timeContentView.timer.start()
     }
     func resumeTimer(index: Int){
         let timerDuration = timers[index].duration
-        timer.setCountDownTime(timerDuration)
+        timeContentView.timer.setCountDownTime(timerDuration)
         self.title = timers[index].title
-        playSound()
-        timer.start()
+        timeContentView.playSound()
+        timeContentView.timer.start()
     }
+    func calculateTotalTime() -> Double {
+        var accumelatedTime = 0.0
+        for timer in timers {
+            
+            accumelatedTime += timer.duration.multiplied(by:Double(timer.intervals))
+        }
+        return accumelatedTime
+    }
+    
+// MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
         
@@ -109,17 +109,12 @@ class ActivityViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //      This is the Sponsor cell
         if (indexPath.section == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: BannerTableViewCellIdentifier, for: indexPath) as! TitleBackgroundTableViewCell
-            
             cell.backgroundImageView.image = UIImage(named: "icn_sponsor")
-            
             return cell
         } else {
-
             self.tableView.register(TimerTableViewCell.self, forCellReuseIdentifier: TimerTableViewCellIdentifier)
-            
             let cell = tableView.dequeueReusableCell(withIdentifier: TimerTableViewCellIdentifier, for: indexPath) as! TimerTableViewCell
             let timer = timers[indexPath.row]
             cell.titlelabel.text = timer.title
@@ -131,36 +126,11 @@ class ActivityViewController: UITableViewController {
         
     }
     
-    func calculateTotalTime() -> Double {
-        var accumelatedTime = 0.0
-        for timer in timers {
-            
-        accumelatedTime += timer.duration.multiplied(by:Double(timer.intervals))
-        }
-        return accumelatedTime
-    }
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.section == 0) {
             let newTimerViewController = NewTimerViewController()
             newTimerViewController.activity = activity
             self.navigationController?.pushViewController(newTimerViewController, animated: true)
-        }
-    }
-    
-    func playSound() {
-        guard let url = Bundle.main.url(forResource: "tone", withExtension: "wav") else { return }
-        
-        do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-            try AVAudioSession.sharedInstance().setActive(true)
-            
-            player = try AVAudioPlayer(contentsOf: url)
-            guard let player = player else { return }
-            
-            player.play()
-        } catch let error {
-            print(error.localizedDescription)
         }
     }
 }

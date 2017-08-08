@@ -28,16 +28,6 @@
                                 <color key="textColor" red="1" green="0.0" blue="0.14901961389999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="592-Qp-E96">
-                                <rect key="frame" x="292" y="88" width="63" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Activities">
-                                    <color key="titleColor" red="0.96862745100000003" green="0.87450980389999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="pushActivities:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JWw-7t-inP"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.20784313730000001" green="0.21960784310000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
