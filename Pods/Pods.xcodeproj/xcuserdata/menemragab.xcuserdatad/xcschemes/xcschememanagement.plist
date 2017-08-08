@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>HGCircularSlider.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>HGPlaceholders.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -29,6 +34,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>PARTagPicker-PARTagPicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>PARTagPicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-LetsGo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -39,25 +54,30 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>VBFPopFlatButton.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>pop.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>01E9FE51F89215D0FFFCF2A90DD7B4B8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0A2E50C24B03143F1418B06D739A8001</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>135C3D8214CAA59F176BECA81B273C7E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>171015227367C6D309F5210DFB2ACA50</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>20237DE4D69D2D3D259113F34DF3B682</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,7 +92,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>5A47D26B609C34204433EEE10AA83233</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>71AEACFF2CBD69FF6DDF68CCDFED0D92</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>817E776CCB6FA148815038E446EA2E0E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9346CA33C48EEA4EE7DC8C49897B625F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>AF09DB055935BD941846539935605A14</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B917F64844C7924E0A0368CB6EDA027F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C6143917BB6E33745A587E758719B47F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -11,5 +11,8 @@ pod 'CircularSlider'
 pod "CTSlidingUpPanel"
 pod "HGPlaceholders"
 pod 'SwiftyUserDefaults'
+pod 'PARTagPicker'
+pod 'VBFPopFlatButton'
+pod 'HGCircularSlider', '~> 1.0.3'
 
 end
