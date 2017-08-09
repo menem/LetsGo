@@ -62,7 +62,7 @@ class HomeViewController: UIViewController {
         countDownTimer.pause()
         countDownTimer.reset()
         istimerCounting = false
-        timeLabel.textColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
+        timeLabel.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         self.navigationController?.progress = 0
         self.navigationController?.progressTintColor = .clear
     }
@@ -157,7 +157,7 @@ class HomeViewController: UIViewController {
         let width = titleView.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)).width
         titleView.frame = CGRect(origin:CGPoint.zero, size:CGSize(width: width, height: 40))
         titleView.isUserInteractionEnabled = true
-        titleView.textColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
+        titleView.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         titleView.addGestureRecognizer(tapGesture)
         
 //        let leftBarButton = UIBarButtonItem(image: UIImage(named: "icn_left"), style: .plain, target: self, action: #selector(switchModeBack))
@@ -407,12 +407,12 @@ class HomeViewController: UIViewController {
         timeLabel = UILabel(frame: CGRect(x:0, y: (self.view.frame.size.height/2)-60, width: self.view.frame.size.width, height: 120))
         timeLabel.textAlignment = .center
         timeLabel.font = UIFont (name: "Avenir-Heavy", size: 80)
-        timeLabel.textColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
+        timeLabel.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         
         intervalsLabel = UILabel(frame: CGRect(x: 0, y: 40, width: self.view.frame.size.width, height: 80))
         intervalsLabel.textAlignment = .center
         intervalsLabel.font = UIFont (name: "Avenir-Heavy", size: 60)
-        intervalsLabel.textColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
+        intervalsLabel.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
 
         self.navigationController?.progressTintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
         let panelHeight = (self.view.frame.size.height/2)-80
