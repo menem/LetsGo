@@ -8,15 +8,17 @@
 
 import UIKit
 import HGPlaceholders
-//import SwiftyUserDefaults
+import RandomColorSwift
+
 
 let BannerTableViewCellIdentifier = "BannerTableViewCellIdentifier"
 let ActivityTableViewCellIdentifier = "ActivityTableViewCellIdentifier"
 
 class ActivitiesViewController: UITableViewController {
-//        var activitiesKey = DefaultsKey<[LGActivity]>("activities")
+    
     var placeholderTableView: TableView?
     var activities = [LGActivity]()
+    var colors = [UIColor]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +36,7 @@ class ActivitiesViewController: UITableViewController {
         
         let timeManager = LGTimerManager()
         activities = timeManager.loadActivities()
+        colors = randomColors(count: activities.count, hue: .random, luminosity: .light)
         self.tableView.reloadData()
         
         
@@ -88,7 +91,7 @@ class ActivitiesViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: ActivityTableViewCellIdentifier, for: indexPath) as! ActivityTableViewCell
             let activity = activities[indexPath.row]
             cell.titlelabel.text = activity.title
-
+            cell.titlelabel.textColor = colors[indexPath.row]
             return cell
         }
         
