@@ -9,7 +9,7 @@
 import UIKit
 import MZTimerLabel
 import KYNavigationProgress
-import RandomColorSwift
+
 
 let TimerTableViewCellIdentifier = "TimerTableViewCellIdentifier"
 
@@ -20,13 +20,13 @@ class ActivityViewController: UITableViewController {
     var timeContentView: LGTimerContentView!
     var currentlyPlaying: Int!
     var currentInterval: Int!
-    var colors = [UIColor]()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.tableFooterView = UIView()
-        self.tableView.backgroundColor = UIColor.white
+        self.tableView.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
         self.tableView.separatorStyle = .none
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
         self.title = activity.title
@@ -34,7 +34,6 @@ class ActivityViewController: UITableViewController {
         
         let timeManager = LGTimerManager()
         timers = timeManager.loadTimers(activity: activity)
-        colors = randomColors(count: timers.count, hue: .random, luminosity: .light)
         self.tableView.reloadData()
         
         let playBarButton = UIBarButtonItem(title: "Play", style: .plain, target: self, action: #selector(startActivity))
@@ -123,9 +122,6 @@ class ActivityViewController: UITableViewController {
             cell.titlelabel.text = timer.title
             cell.Durationlabel.text = String(timer.duration)
             cell.Intervalslabel.text = String(timer.intervals)
-            cell.titlelabel.textColor = colors[indexPath.row]
-            cell.Durationlabel.textColor = colors[indexPath.row]
-            cell.Intervalslabel.textColor = colors[indexPath.row]
             return cell
         }
         

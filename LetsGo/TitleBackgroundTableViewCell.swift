@@ -32,6 +32,7 @@ class TitleBackgroundTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.backgroundColor = .clear
         contentView.addSubview(backgroundImageView)
         contentView.addSubview(titlelabel)
         setNeedsUpdateConstraints()

@@ -20,7 +20,7 @@ class LGTimerContentView: UIView {
     lazy var timeLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 120))
         label.textAlignment = .center
-        label.font = UIFont (name: "Avenir-Heavy", size: 60)
+        label.font = UIFont (name: "BetmHairline", size: 60)
         label.textColor = #colorLiteral(red: 1, green: 0.4542224407, blue: 0.1010893807, alpha: 1)
         return label
     }()

@@ -7,21 +7,16 @@
 //
 
 import UIKit
+import RandomColorSwift
+
+let cellColor = randomColor(hue: .random, luminosity: .light)
 
 class TimerTableViewCell: UITableViewCell {
     
-//    lazy var activityTypeImageView: UIImageView = {
-//        let imageView = UIImageView()
-//        imageView.contentMode = .scaleAspectFit
-//        imageView.clipsToBounds = true
-//        imageView.translatesAutoresizingMaskIntoConstraints = false
-//        return imageView
-//    }()
-    
     lazy var titlelabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 18)
-        label.textColor = #colorLiteral(red: 0.340575099, green: 0.3558157086, blue: 0.4202301502, alpha: 1)
+        label.font = UIFont (name: "Betm-Regular3", size: 24)
+        label.textColor = cellColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -29,8 +24,8 @@ class TimerTableViewCell: UITableViewCell {
     
     lazy var Durationlabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 18)
-        label.textColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
+        label.font = UIFont (name: "Betm-Regular3", size: 24)
+        label.textColor = cellColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -38,8 +33,8 @@ class TimerTableViewCell: UITableViewCell {
     
     lazy var Intervalslabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 18)
-        label.textColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
+        label.font = UIFont (name: "Betm-Regular3", size: 24)
+        label.textColor = cellColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -49,8 +44,9 @@ class TimerTableViewCell: UITableViewCell {
         self.selectionStyle = .none
         self.separatorInset = UIEdgeInsets.zero
         self.layoutMargins = UIEdgeInsets.zero
+        self.backgroundColor = .clear
+        
         contentView.addSubview(titlelabel)
-//        contentView.addSubview(activityTypeImageView)
         contentView.addSubview(Intervalslabel)
         contentView.addSubview(Durationlabel)
         
