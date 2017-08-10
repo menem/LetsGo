@@ -18,7 +18,7 @@ import HealthKit
 
 class HomeViewController: UIViewController {
     func pushActivities() {
-        let routinesViewController = ActivitiesViewController()
+        let routinesViewController = TimerViewController()
         self.navigationController?.pushViewController(routinesViewController, animated: true)
     }
     
@@ -153,7 +153,7 @@ class HomeViewController: UIViewController {
         titleView = UILabel()
         let selectedMode = modes[selectedIndex]
         titleView.text = String(selectedMode)
-        titleView.font = UIFont(name: "Avenir-Heavy", size: 25)
+        titleView.font = UIFont(name: "Betm-Regular3", size: 25)
         let width = titleView.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)).width
         titleView.frame = CGRect(origin:CGPoint.zero, size:CGSize(width: width, height: 40))
         titleView.isUserInteractionEnabled = true
