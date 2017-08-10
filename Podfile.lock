@@ -1,6 +1,7 @@
 PODS:
   - CircularSlider (1.1.2)
   - CTSlidingUpPanel (0.1.1)
+  - Hero (0.3.6)
   - HGCircularSlider (1.0.3)
   - HGPlaceholders (0.1.1)
   - KYNavigationProgress (2.0.1)
@@ -15,6 +16,7 @@ PODS:
 DEPENDENCIES:
   - CircularSlider
   - CTSlidingUpPanel
+  - Hero
   - HGCircularSlider (~> 1.0.3)
   - HGPlaceholders
   - KYNavigationProgress
@@ -27,6 +29,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   CircularSlider: 448f9f7723b845ccd470dac41981feb192e20c50
   CTSlidingUpPanel: 4369db0938abf4b5db8d0f68cede04f6e0026062
+  Hero: d3c6f4dd80cdcdbb339be64e57ae3b5c3ab9938c
   HGCircularSlider: f3a941d52bae7833b7213b8d89c6264c5506d9ad
   HGPlaceholders: 958137083010ef0d76c182fe6f259350ab6bee3a
   KYNavigationProgress: 7f979e79f6e57b1ee33d3de89d6b705a1f4e266a
@@ -37,6 +40,6 @@ SPEC CHECKSUMS:
   SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
   VBFPopFlatButton: 39e48ab56277f3d056734a9b5ec5d0cc60d69778
 
-PODFILE CHECKSUM: ee3f3ba91e6f2c1e81f5d1f5897ffee106aa166c
+PODFILE CHECKSUM: 4c36e808bd4da969bcfd17adc771396bfc4ab728
 
 COCOAPODS: 1.2.1

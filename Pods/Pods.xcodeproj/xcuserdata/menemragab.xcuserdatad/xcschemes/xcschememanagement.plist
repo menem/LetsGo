@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Hero.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>KYNavigationProgress.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -72,6 +77,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>00E725EA989195346AB8F6D144E5B6F3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>01E9FE51F89215D0FFFCF2A90DD7B4B8</key>
 		<dict>
 			<key>primary</key>
@@ -82,17 +92,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0BAA9C6D6FC752D86B7F896CB91E3AC0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>0E0654E208B4CE2A6D4549E73FD66555</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>171015227367C6D309F5210DFB2ACA50</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>212239877F1B3D754B7D6E3E2E9FBC3A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -102,7 +107,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4C13B20C9CCAE4D41CFE383C48524143</key>
+		<key>4A3E211676B243619B026D147D272253</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -122,7 +127,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>862B006AAA65C9E6E7AD96F45DE0BB55</key>
+		<key>85DAA49BE4FCFEE33D6A68D3B70A2347</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -132,7 +137,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D888508CD323E6DB1C6F9B1C25236474</key>
+		<key>B8EBE37F3FE85C0FCF4D6E3C5FF137DB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F5AE369E659DC1D8FBB1D3E5A3CEAAB4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

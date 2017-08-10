@@ -16,10 +16,7 @@ let TimerSettingTableViewCellIdentifier = "TimerSettingTableViewCellIdentifier"
 class TimerViewController: UITableViewController {
     
     var timer: LGTimer!
-//    var activity: LGActivity!
     var timeContentView: LGTimerContentView!
-//    var currentlyPlaying: Int!
-//    var currentInterval: Int!
     
     
     override func viewDidLoad() {
@@ -29,52 +26,22 @@ class TimerViewController: UITableViewController {
         self.tableView.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
         self.tableView.separatorStyle = .none
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
-        self.title = "Timer" // activity.title
+        self.title = "Timer"
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-        
-//        let timeManager = LGTimerManager()
-//        timers = timeManager.loadTimers(activity: activity)
-//        self.tableView.reloadData()
         
         let playBarButton = UIBarButtonItem(title: "Play", style: .plain, target: self, action: #selector(startActivity))
         self.navigationItem.rightBarButtonItem = playBarButton
-        
-
-//        self.view.addSubview(timeContentView)
-        
+    
     }
     
     
     func startActivity(){
-//        currentlyPlaying = 0
-//        timeContentView.timer.setCountDownTime((timers.first?.duration)!)
-//        currentInterval = timers.first?.intervals
-//        self.title = timers.first?.title
         timeContentView.playSound()
         timeContentView.timer.start()
     }
     func resumeActivity(){
-//        let timerDuration = timers[currentlyPlaying].duration
-//        currentInterval = timers[currentlyPlaying].intervals
-//        timeContentView.timer.setCountDownTime(timerDuration)
-//        self.title = timers[currentlyPlaying].title
         timeContentView.playSound()
         timeContentView.timer.start()
-    }
-    func resumeTimer(index: Int){
-//        let timerDuration = timers[index].duration
-//        timeContentView.timer.setCountDownTime(timerDuration)
-//        self.title = timers[index].title
-        timeContentView.playSound()
-        timeContentView.timer.start()
-    }
-    func calculateTotalTime() -> Double {
-//        var accumelatedTime = 0.0
-//        for timer in timers {
-//            
-//            accumelatedTime += timer.duration.multiplied(by:Double(timer.intervals))
-//        }
-        return 60//accumelatedTime
     }
     
     // MARK: - Table view data source
@@ -150,19 +117,6 @@ extension TimerViewController: MZTimerLabelDelegate {
     }
     
     func timerLabel(_ timerLabel: MZTimerLabel!, finshedCountDownTimerWithTime countTime: TimeInterval){
-//        currentInterval! -= 1
-//        if (currentInterval > 0) {
-//            resumeTimer(index: currentlyPlaying)
-//            return
-//        }
-//        if (currentlyPlaying < timers.count){
-//            currentlyPlaying! += 1
-//            if currentlyPlaying == timers.count {
-//                return
-//            }
-//            resumeActivity()
-//            return
-//        }
-//        
+
     }
 }

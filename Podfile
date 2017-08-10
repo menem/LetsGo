@@ -15,5 +15,6 @@ pod 'PARTagPicker'
 pod 'VBFPopFlatButton'
 pod 'HGCircularSlider', '~> 1.0.3'
 pod 'RandomColorSwift'
+pod 'Hero'
 
 end
