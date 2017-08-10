@@ -24,7 +24,7 @@ class CounterTableViewCell: UITableViewCell {
         self.backgroundColor = .clear
         
         contentView.addSubview(timerContentView)
-//        timerContentView.frame = contentView.frame
+        timerContentView.frame = contentView.frame
         setNeedsUpdateConstraints()
 //        contentView.setNeedsLayout()
     }

@@ -106,7 +106,10 @@ class TimerViewController: UITableViewController {
         
         return 0
     }
-    
+    func openSettings(){
+        let routinesViewController = ActivitiesViewController()
+        self.navigationController?.pushViewController(routinesViewController, animated: true)
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.section == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: BannerTableViewCellIdentifier, for: indexPath) as! TitleBackgroundTableViewCell
@@ -117,6 +120,7 @@ class TimerViewController: UITableViewController {
             case 1:
                 self.tableView.register(TimerSettingTableViewCell.self, forCellReuseIdentifier: TimerSettingTableViewCellIdentifier)
                 let cell = tableView.dequeueReusableCell(withIdentifier: TimerSettingTableViewCellIdentifier, for: indexPath) as! TimerSettingTableViewCell
+                cell.counterSetupButton.addTarget(self, action: #selector(openSettings), for: .touchUpInside)
                 return cell
             default:
                 self.tableView.register(CounterTableViewCell.self, forCellReuseIdentifier: CounterTableViewCellIdentifier)

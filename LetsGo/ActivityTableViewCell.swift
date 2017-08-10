@@ -20,7 +20,7 @@ class ActivityTableViewCell: UITableViewCell {
     
     lazy var titlelabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.font =  UIFont (name: "Betm-Regular3", size: 24)
         label.textColor = #colorLiteral(red: 0.340575099, green: 0.3558157086, blue: 0.4202301502, alpha: 1)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

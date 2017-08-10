@@ -20,7 +20,7 @@ class TitleBackgroundTableViewCell: UITableViewCell {
     
     lazy var titlelabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 23)
+        label.font = UIFont (name: "Betm-Regular3", size: 24)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.layer.shadowColor = UIColor.black.cgColor
         label.textAlignment = .center
