@@ -128,6 +128,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		480B29C41F3C6568007743F6 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4850E1B11F28EE00004D85A7 /* HomeViewController.swift */,
+				48B3965A1F3BBF7A0084F5DC /* TimerViewController.swift */,
+				48B3965C1F3BBF970084F5DC /* StopwatchViewController.swift */,
+				48A31BB41F331A4000E919FB /* ActivitiesViewController.swift */,
+				48A31BBF1F33A4CF00E919FB /* NewActivityViewController.swift */,
+				48A31BC11F33A4E700E919FB /* NewTimerViewController.swift */,
+				48A31BBB1F3364AA00E919FB /* ActivityViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		4825CF3C1F2FEB6F0066B40D /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,8 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				484F0FA71F2EB4790056F1E2 /* HealthKitManager.swift */,
-				4850E1C71F2A8865004D85A7 /* SiriHandler */,
 				48A31BAF1F32253500E919FB /* LGTimeManager.swift */,
+				4850E1C71F2A8865004D85A7 /* SiriHandler */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -150,13 +164,7 @@
 		4825CF3E1F2FEBAB0066B40D /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				4850E1B11F28EE00004D85A7 /* HomeViewController.swift */,
-				48B3965A1F3BBF7A0084F5DC /* TimerViewController.swift */,
-				48B3965C1F3BBF970084F5DC /* StopwatchViewController.swift */,
-				48A31BB41F331A4000E919FB /* ActivitiesViewController.swift */,
-				48A31BBF1F33A4CF00E919FB /* NewActivityViewController.swift */,
-				48A31BC11F33A4E700E919FB /* NewTimerViewController.swift */,
-				48A31BBB1F3364AA00E919FB /* ActivityViewController.swift */,
+				480B29C41F3C6568007743F6 /* View Controllers */,
 				48A31BBA1F333F5500E919FB /* Cells */,
 				48A31BB31F32551600E919FB /* Views */,
 				4825CF3F1F2FEBED0066B40D /* Storyboards */,
@@ -167,7 +175,6 @@
 		4825CF3F1F2FEBED0066B40D /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				4850E1B81F28EE00004D85A7 /* LaunchScreen.storyboard */,
 				4850E1B31F28EE00004D85A7 /* Main.storyboard */,
 			);
 			name = Storyboards;
@@ -186,6 +193,7 @@
 		4825CF411F2FEC480066B40D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4850E1B81F28EE00004D85A7 /* LaunchScreen.storyboard */,
 				48B396561F3BAC000084F5DC /* Betm-Regular3.otf */,
 				48B396571F3BAC000084F5DC /* BetmHairline.otf */,
 				4850E1B61F28EE00004D85A7 /* Assets.xcassets */,
@@ -219,10 +227,10 @@
 		4850E1AE1F28EE00004D85A7 /* LetsGo */ = {
 			isa = PBXGroup;
 			children = (
-				48A31BCB1F35FA8100E919FB /* Extensions */,
 				4850E1AF1F28EE00004D85A7 /* AppDelegate.swift */,
 				4825CF3C1F2FEB6F0066B40D /* Models */,
 				4825CF3D1F2FEB860066B40D /* Managers */,
+				48A31BCB1F35FA8100E919FB /* Extensions */,
 				4825CF3E1F2FEBAB0066B40D /* UI */,
 			);
 			path = LetsGo;
