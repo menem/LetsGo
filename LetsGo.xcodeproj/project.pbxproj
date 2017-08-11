@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		480B29C61F3CA392007743F6 /* LGDurationSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480B29C51F3CA392007743F6 /* LGDurationSelection.swift */; };
+		480B29C81F3CF614007743F6 /* FlickToDismissViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480B29C71F3CF614007743F6 /* FlickToDismissViewController.swift */; };
 		4825CF431F2FEFD30066B40D /* LGTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825CF421F2FEFD30066B40D /* LGTimer.swift */; };
 		4825CF451F2FFA5E0066B40D /* LGActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825CF441F2FFA5E0066B40D /* LGActivity.swift */; };
 		483238AA1F2E7AEA006194AE /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 483238A91F2E7AEA006194AE /* HealthKit.framework */; };
@@ -69,6 +70,7 @@
 /* Begin PBXFileReference section */
 		14E8FA497D650EDF3219475A /* Pods_LetsGo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LetsGo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		480B29C51F3CA392007743F6 /* LGDurationSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGDurationSelection.swift; sourceTree = "<group>"; };
+		480B29C71F3CF614007743F6 /* FlickToDismissViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickToDismissViewController.swift; sourceTree = "<group>"; };
 		4825CF421F2FEFD30066B40D /* LGTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGTimer.swift; sourceTree = "<group>"; };
 		4825CF441F2FFA5E0066B40D /* LGActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGActivity.swift; sourceTree = "<group>"; };
 		483238A91F2E7AEA006194AE /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -164,6 +166,7 @@
 		4825CF3E1F2FEBAB0066B40D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				480B29C71F3CF614007743F6 /* FlickToDismissViewController.swift */,
 				480B29C41F3C6568007743F6 /* View Controllers */,
 				48A31BBA1F333F5500E919FB /* Cells */,
 				48A31BB31F32551600E919FB /* Views */,
@@ -475,6 +478,7 @@
 				48A31BC91F35FA5400E919FB /* LGTextField+BottomBorder.swift in Sources */,
 				4850E1B01F28EE00004D85A7 /* AppDelegate.swift in Sources */,
 				48A31BB01F32253500E919FB /* LGTimeManager.swift in Sources */,
+				480B29C81F3CF614007743F6 /* FlickToDismissViewController.swift in Sources */,
 				48A31BB91F333EB900E919FB /* ActivityTableViewCell.swift in Sources */,
 				48B3965D1F3BBF970084F5DC /* StopwatchViewController.swift in Sources */,
 				48A31BBC1F3364AA00E919FB /* ActivityViewController.swift in Sources */,

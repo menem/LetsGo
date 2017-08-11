@@ -9,7 +9,6 @@ pod 'MZTimerLabel'
 pod 'KYNavigationProgress'
 pod 'CircularSlider'
 pod "CTSlidingUpPanel"
-pod "HGPlaceholders"
 pod 'SwiftyUserDefaults'
 pod 'PARTagPicker'
 pod 'VBFPopFlatButton'

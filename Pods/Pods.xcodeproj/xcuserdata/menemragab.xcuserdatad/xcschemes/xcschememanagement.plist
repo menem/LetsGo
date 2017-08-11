@@ -19,11 +19,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>HGPlaceholders.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Hero.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -77,11 +72,6 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>00E725EA989195346AB8F6D144E5B6F3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>01E9FE51F89215D0FFFCF2A90DD7B4B8</key>
 		<dict>
 			<key>primary</key>
@@ -97,12 +87,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>212239877F1B3D754B7D6E3E2E9FBC3A</key>
+		<key>2FAF0EFB26F0B57F93F98FD82AA2E74E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2FAF0EFB26F0B57F93F98FD82AA2E74E</key>
+		<key>3FB74FA4120EB79B18982E7CEAF0CEF6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>42E0A6E1B3ACA6350A4DC2B1CFAABACF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -112,12 +107,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>59E181E1B48173E64FDF7FB603127CA4</key>
+		<key>5A47D26B609C34204433EEE10AA83233</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5A47D26B609C34204433EEE10AA83233</key>
+		<key>655D74BF28F842DE373F9A80018DA048</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -127,7 +122,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>85DAA49BE4FCFEE33D6A68D3B70A2347</key>
+		<key>93D35DF16177EFEC66A1E43EFC3959D3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -137,12 +132,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B8EBE37F3FE85C0FCF4D6E3C5FF137DB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F5AE369E659DC1D8FBB1D3E5A3CEAAB4</key>
+		<key>BEBF02A217514884F369AF1855E01266</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -10,22 +10,11 @@ import VBFPopFlatButton
 
 class TimerSettingTableViewCell: UITableViewCell {
     
-//    lazy var counterSetupButton: VBFPopFlatButton = {
-//        let button = VBFPopFlatButton()
-//        button.roundBackgroundColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
-//        button.tintColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
-//        button.lineThickness = 2
-//        button.currentButtonType = .buttonMenuType
-//        button.currentButtonStyle = .buttonRoundedStyle
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        return button
-//    }()
     
     lazy var counterSetupButton: UIButton = {
         let counterSetupButton = UIButton(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
         let buttonImage = UIImage(named: "img_appIcon")
         counterSetupButton.setImage(buttonImage, for: .normal)
-//        menuButton.addTarget(self, action: #selector(menuButtonPressed), for: .touchUpInside)
         return counterSetupButton
     }()
     

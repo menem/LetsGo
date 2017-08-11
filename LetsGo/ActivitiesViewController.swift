@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import HGPlaceholders
+//import HGPlaceholders
 import RandomColorSwift
 
 
@@ -16,7 +16,7 @@ let ActivityTableViewCellIdentifier = "ActivityTableViewCellIdentifier"
 
 class ActivitiesViewController: UITableViewController {
     
-    var placeholderTableView: TableView?
+//    var placeholderTableView: TableView?
     var activities = [LGActivity]()
     var colors = [UIColor]()
     
@@ -29,9 +29,9 @@ class ActivitiesViewController: UITableViewController {
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
         
         
-        placeholderTableView = tableView as? TableView
-        placeholderTableView?.placeholderDelegate = self
-        placeholderTableView?.showNoResultsPlaceholder()
+//        placeholderTableView = tableView as? TableView
+//        placeholderTableView?.placeholderDelegate = self
+//        placeholderTableView?.showNoResultsPlaceholder()
 
         
         let timeManager = LGTimerManager()
@@ -40,7 +40,7 @@ class ActivitiesViewController: UITableViewController {
         self.tableView.reloadData()
         
         
-        self.placeholderTableView?.reloadData()
+//        self.placeholderTableView?.reloadData()
         
     }
 
@@ -114,18 +114,18 @@ class ActivitiesViewController: UITableViewController {
     
 }
 
-extension ActivitiesViewController: PlaceholderDelegate {
-    
-    func tableView(_ tableView: TableView, actionButtonTappedFor placeholder: Placeholder) {
-        print(placeholder.key.value)
-        placeholderTableView?.showDefault()
-    }
-}
-
-class ProjectNameTableView: TableView {
-    
-    override func customSetup() {
-        placeholdersProvider = .basic
-    }
-    
-}
+//extension ActivitiesViewController: PlaceholderDelegate {
+//    
+//    func tableView(_ tableView: TableView, actionButtonTappedFor placeholder: Placeholder) {
+//        print(placeholder.key.value)
+//        placeholderTableView?.showDefault()
+//    }
+//}
+//
+//class ProjectNameTableView: TableView {
+//    
+//    override func customSetup() {
+//        placeholdersProvider = .basic
+//    }
+//    
+//}

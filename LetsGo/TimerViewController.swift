@@ -74,8 +74,17 @@ class TimerViewController: UITableViewController {
         return 0
     }
     func openSettings(){
-        let routinesViewController = ActivitiesViewController()
-        self.navigationController?.pushViewController(routinesViewController, animated: true)
+        let viewToFlick = LGDurationSelection(frame: CGRect(x: 0, y: 0, width: 280, height: 300))
+        viewToFlick.backgroundColor = .white
+    // Optional - See FlickToDismissOption for available options.
+        let options: [FlickToDismissOption] = [
+            .Animation(.Scale),
+            .BackgroundColor(UIColor(white: 0.0, alpha: 0.8))
+        ]
+        let vc = FlickToDismissViewController(flickableView: viewToFlick, options: options)
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overFullScreen
+        present(vc, animated: true, completion: nil)
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.section == 0) {
