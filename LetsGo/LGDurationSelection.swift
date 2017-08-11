@@ -74,8 +74,7 @@ class LGDurationSelection: UIView {
             minutesCircularSlider.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             minutesCircularSlider.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -20),
             minutesCircularSlider.heightAnchor.constraint(equalTo: self.heightAnchor, constant: -20),
-            
-            
+                        
             hoursCircularSlider.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             hoursCircularSlider.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             hoursCircularSlider.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -20),
