@@ -18,7 +18,7 @@ class TimerViewController: UITableViewController {
     
     var timer: LGTimer!
     var timeContentView: LGTimerContentView!
-    
+    var popupController: CNPPopupController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,13 +77,23 @@ class TimerViewController: UITableViewController {
     func openSettings(){
         let durationSelector = LGDurationSelection(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
        
-        let popupController = CNPPopupController(contents: [durationSelector])
+        let closeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
+         let buttonImage = UIImage(named: "icn_close")
+        closeButton.setImage(buttonImage, for: .normal)
+        closeButton.addTarget(self, action: #selector(dismissPopUp), for: .touchUpInside)
+        
+        popupController = CNPPopupController(contents: [closeButton, durationSelector])
         popupController.theme.popupStyle = .centered
         popupController.theme.cornerRadius = 14.0
         popupController.theme.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
         popupController.theme.shouldDismissOnBackgroundTouch = true
         popupController.present(animated: true)
         
+    }
+    
+    func dismissPopUp() {
+        self.popupController?.dismiss(animated: true)
+//        print("Block for button: \(button.titleLabel?.text)")
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.section == 0) {

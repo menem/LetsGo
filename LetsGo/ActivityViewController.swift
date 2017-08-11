@@ -36,8 +36,9 @@ class ActivityViewController: UITableViewController {
         timers = timeManager.loadTimers(activity: activity)
         self.tableView.reloadData()
         
-        let playBarButton = UIBarButtonItem(title: "Play", style: .plain, target: self, action: #selector(startActivity))
-        self.navigationItem.rightBarButtonItem = playBarButton
+        let addButtonImage = UIImage(named:"icn_add")
+        let addBarButtonItem  = UIBarButtonItem(image: addButtonImage, style: .plain, target: self, action: #selector(pushNewActivity))
+        self.navigationItem.rightBarButtonItem = addBarButtonItem
         
         timeContentView = LGTimerContentView(frame: CGRect(x:0, y: (self.view.frame.size.height)-160, width: self.view.frame.size.width, height: 120))
         timeContentView.timer.setCountDownTime(calculateTotalTime())
@@ -46,7 +47,11 @@ class ActivityViewController: UITableViewController {
 
     }
     
-
+    func pushNewActivity(){
+        let newTimerViewController = NewTimerViewController()
+        newTimerViewController.activity = activity
+        self.navigationController?.pushViewController(newTimerViewController, animated: true)
+    }
     func startActivity(){
         
         currentlyPlaying = 0
@@ -130,9 +135,7 @@ class ActivityViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.section == 0) {
-            let newTimerViewController = NewTimerViewController()
-            newTimerViewController.activity = activity
-            self.navigationController?.pushViewController(newTimerViewController, animated: true)
+            startActivity()
         }
     }
 }

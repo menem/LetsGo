@@ -15,8 +15,7 @@ let BannerTableViewCellIdentifier = "BannerTableViewCellIdentifier"
 let ActivityTableViewCellIdentifier = "ActivityTableViewCellIdentifier"
 
 class ActivitiesViewController: UITableViewController {
-    
-//    var placeholderTableView: TableView?
+
     var activities = [LGActivity]()
     var colors = [UIColor]()
     
@@ -27,24 +26,22 @@ class ActivitiesViewController: UITableViewController {
         self.tableView.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
         self.tableView.separatorStyle = .none
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
-        
-        
-//        placeholderTableView = tableView as? TableView
-//        placeholderTableView?.placeholderDelegate = self
-//        placeholderTableView?.showNoResultsPlaceholder()
 
-        
         let timeManager = LGTimerManager()
         activities = timeManager.loadActivities()
         colors = randomColors(count: activities.count, hue: .random, luminosity: .light)
         self.tableView.reloadData()
         
-        
-//        self.placeholderTableView?.reloadData()
+        let addButtonImage = UIImage(named:"icn_add")
+        let addBarButtonItem  = UIBarButtonItem(image: addButtonImage, style: .plain, target: self, action: #selector(pushNewActivity))
+        self.navigationItem.rightBarButtonItem = addBarButtonItem
         
     }
 
-    
+    func pushNewActivity(){
+        let newActivityViewController = NewActivityViewController()
+        self.navigationController?.pushViewController(newActivityViewController, animated: true)
+    }
 // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -100,8 +97,7 @@ class ActivitiesViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.section == 0) {
-            let newActivityViewController = NewActivityViewController()
-            self.navigationController?.pushViewController(newActivityViewController, animated: true)
+
         }else{
         let selectedActivity = activities[indexPath.row]
         let activityViewController = ActivityViewController()
@@ -113,19 +109,3 @@ class ActivitiesViewController: UITableViewController {
     
     
 }
-
-//extension ActivitiesViewController: PlaceholderDelegate {
-//    
-//    func tableView(_ tableView: TableView, actionButtonTappedFor placeholder: Placeholder) {
-//        print(placeholder.key.value)
-//        placeholderTableView?.showDefault()
-//    }
-//}
-//
-//class ProjectNameTableView: TableView {
-//    
-//    override func customSetup() {
-//        placeholdersProvider = .basic
-//    }
-//    
-//}

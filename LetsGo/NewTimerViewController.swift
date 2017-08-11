@@ -34,6 +34,7 @@ class NewTimerViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = saveBarButton
         
     }
+    
     func saveTimersForActivity() {
         let manager = LGTimerManager()
         let intervals = Int(timerIntervalTextField.text!)
