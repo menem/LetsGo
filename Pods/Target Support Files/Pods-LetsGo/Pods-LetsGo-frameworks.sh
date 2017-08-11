@@ -89,6 +89,7 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/CNPPopupController/CNPPopupController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/CTSlidingUpPanel/CTSlidingUpPanel.framework"
   install_framework "$BUILT_PRODUCTS_DIR/CircularSlider/CircularSlider.framework"
   install_framework "$BUILT_PRODUCTS_DIR/HGCircularSlider/HGCircularSlider.framework"
@@ -102,6 +103,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/pop/pop.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/CNPPopupController/CNPPopupController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/CTSlidingUpPanel/CTSlidingUpPanel.framework"
   install_framework "$BUILT_PRODUCTS_DIR/CircularSlider/CircularSlider.framework"
   install_framework "$BUILT_PRODUCTS_DIR/HGCircularSlider/HGCircularSlider.framework"

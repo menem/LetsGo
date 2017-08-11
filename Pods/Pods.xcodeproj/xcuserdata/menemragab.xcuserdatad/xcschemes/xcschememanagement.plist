@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>CNPPopupController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>CTSlidingUpPanel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -77,6 +82,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>056B4ACA8C80850FFC348D7A9481D092</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0A2E50C24B03143F1418B06D739A8001</key>
 		<dict>
 			<key>primary</key>
@@ -92,16 +102,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3FB74FA4120EB79B18982E7CEAF0CEF6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>42E0A6E1B3ACA6350A4DC2B1CFAABACF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>4A3E211676B243619B026D147D272253</key>
 		<dict>
 			<key>primary</key>
@@ -112,7 +112,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>655D74BF28F842DE373F9A80018DA048</key>
+		<key>5D837AD86FC7EB90CBA7485EE15A93A6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6A90BF6A07A7FF6CC0121C6D2AB59225</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -122,17 +127,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>93D35DF16177EFEC66A1E43EFC3959D3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>AF09DB055935BD941846539935605A14</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BEBF02A217514884F369AF1855E01266</key>
+		<key>BA1E32C73C4D84B314AF2FA977270E50</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D3469DC10D728D1E0B930FCFFF6B0F96</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E50C2BCC750E845A7C9A7851E25DE79A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

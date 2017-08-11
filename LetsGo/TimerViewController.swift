@@ -9,6 +9,7 @@
 import UIKit
 import MZTimerLabel
 import KYNavigationProgress
+import CNPPopupController
 
 let CounterTableViewCellIdentifier = "CounterTableViewCellIdentifier"
 let TimerSettingTableViewCellIdentifier = "TimerSettingTableViewCellIdentifier"
@@ -74,17 +75,15 @@ class TimerViewController: UITableViewController {
         return 0
     }
     func openSettings(){
-        let viewToFlick = LGDurationSelection(frame: CGRect(x: 0, y: 0, width: 280, height: 300))
-        viewToFlick.backgroundColor = .white
-    // Optional - See FlickToDismissOption for available options.
-        let options: [FlickToDismissOption] = [
-            .Animation(.Scale),
-            .BackgroundColor(UIColor(white: 0.0, alpha: 0.8))
-        ]
-        let vc = FlickToDismissViewController(flickableView: viewToFlick, options: options)
-        vc.modalTransitionStyle = .crossDissolve
-        vc.modalPresentationStyle = .overFullScreen
-        present(vc, animated: true, completion: nil)
+        let durationSelector = LGDurationSelection(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
+       
+        let popupController = CNPPopupController(contents: [durationSelector])
+        popupController.theme.popupStyle = .centered
+        popupController.theme.cornerRadius = 14.0
+        popupController.theme.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
+        popupController.theme.shouldDismissOnBackgroundTouch = true
+        popupController.present(animated: true)
+        
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.section == 0) {
@@ -113,8 +112,12 @@ class TimerViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if (indexPath.section == 0) {
+//
+//        }
         if (indexPath.section == 0) {
-
+            let newActivityViewController = ActivitiesViewController()
+            self.navigationController?.pushViewController(newActivityViewController, animated: true)
         }
     }
 }

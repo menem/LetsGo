@@ -1,5 +1,6 @@
 PODS:
   - CircularSlider (1.1.2)
+  - CNPPopupController (0.3.3)
   - CTSlidingUpPanel (0.1.1)
   - Hero (0.3.6)
   - HGCircularSlider (1.0.3)
@@ -14,6 +15,7 @@ PODS:
 
 DEPENDENCIES:
   - CircularSlider
+  - CNPPopupController
   - CTSlidingUpPanel
   - Hero
   - HGCircularSlider (~> 1.0.3)
@@ -26,6 +28,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   CircularSlider: 448f9f7723b845ccd470dac41981feb192e20c50
+  CNPPopupController: 59b06290762f68beab5fb0bbfa87eb4dcbefb7de
   CTSlidingUpPanel: 4369db0938abf4b5db8d0f68cede04f6e0026062
   Hero: d3c6f4dd80cdcdbb339be64e57ae3b5c3ab9938c
   HGCircularSlider: f3a941d52bae7833b7213b8d89c6264c5506d9ad
@@ -37,6 +40,6 @@ SPEC CHECKSUMS:
   SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
   VBFPopFlatButton: 39e48ab56277f3d056734a9b5ec5d0cc60d69778
 
-PODFILE CHECKSUM: 8caabe73262a3a06052b5403e68164bd94411d00
+PODFILE CHECKSUM: b4ca4c42a584b6667c5e8a3a767be602535a6080
 
 COCOAPODS: 1.2.1
