@@ -27,8 +27,6 @@
 		48A31BB91F333EB900E919FB /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BB81F333EB900E919FB /* ActivityTableViewCell.swift */; };
 		48A31BBC1F3364AA00E919FB /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BBB1F3364AA00E919FB /* ActivityViewController.swift */; };
 		48A31BBE1F3372C100E919FB /* TimerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BBD1F3372C100E919FB /* TimerTableViewCell.swift */; };
-		48A31BC01F33A4CF00E919FB /* NewActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BBF1F33A4CF00E919FB /* NewActivityViewController.swift */; };
-		48A31BC21F33A4E700E919FB /* NewTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BC11F33A4E700E919FB /* NewTimerViewController.swift */; };
 		48A31BC51F34352200E919FB /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BC31F34352200E919FB /* TextFieldTableViewCell.swift */; };
 		48A31BC61F34352200E919FB /* LGTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BC41F34352200E919FB /* LGTextField.swift */; };
 		48A31BC91F35FA5400E919FB /* LGTextField+BottomBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BC71F35FA5400E919FB /* LGTextField+BottomBorder.swift */; };
@@ -93,8 +91,6 @@
 		48A31BB81F333EB900E919FB /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		48A31BBB1F3364AA00E919FB /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		48A31BBD1F3372C100E919FB /* TimerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerTableViewCell.swift; sourceTree = "<group>"; };
-		48A31BBF1F33A4CF00E919FB /* NewActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewActivityViewController.swift; sourceTree = "<group>"; };
-		48A31BC11F33A4E700E919FB /* NewTimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTimerViewController.swift; sourceTree = "<group>"; };
 		48A31BC31F34352200E919FB /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		48A31BC41F34352200E919FB /* LGTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGTextField.swift; sourceTree = "<group>"; };
 		48A31BC71F35FA5400E919FB /* LGTextField+BottomBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LGTextField+BottomBorder.swift"; sourceTree = "<group>"; };
@@ -138,8 +134,6 @@
 				48B3965A1F3BBF7A0084F5DC /* TimerViewController.swift */,
 				48B3965C1F3BBF970084F5DC /* StopwatchViewController.swift */,
 				48A31BB41F331A4000E919FB /* ActivitiesViewController.swift */,
-				48A31BBF1F33A4CF00E919FB /* NewActivityViewController.swift */,
-				48A31BC11F33A4E700E919FB /* NewTimerViewController.swift */,
 				48A31BBB1F3364AA00E919FB /* ActivityViewController.swift */,
 			);
 			name = "View Controllers";
@@ -473,7 +467,6 @@
 				4825CF431F2FEFD30066B40D /* LGTimer.swift in Sources */,
 				48A31BBE1F3372C100E919FB /* TimerTableViewCell.swift in Sources */,
 				48A31BC51F34352200E919FB /* TextFieldTableViewCell.swift in Sources */,
-				48A31BC21F33A4E700E919FB /* NewTimerViewController.swift in Sources */,
 				4850E1B21F28EE00004D85A7 /* HomeViewController.swift in Sources */,
 				48B3965F1F3BCCCC0084F5DC /* CounterTableViewCell.swift in Sources */,
 				48A31BC91F35FA5400E919FB /* LGTextField+BottomBorder.swift in Sources */,
@@ -484,7 +477,6 @@
 				48A31BBC1F3364AA00E919FB /* ActivityViewController.swift in Sources */,
 				4825CF451F2FFA5E0066B40D /* LGActivity.swift in Sources */,
 				480B29C61F3CA392007743F6 /* LGDurationSelection.swift in Sources */,
-				48A31BC01F33A4CF00E919FB /* NewActivityViewController.swift in Sources */,
 				484F0FA81F2EB4790056F1E2 /* HealthKitManager.swift in Sources */,
 				48998BD21F396E4200F7E4AB /* LGTimerContentView.swift in Sources */,
 				48A31BCA1F35FA5400E919FB /* LGTextField+PlaceholderTextColor.swift in Sources */,
