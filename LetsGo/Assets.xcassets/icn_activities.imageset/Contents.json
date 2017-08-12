@@ -2,16 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "save.png",
+      "filename" : "renewable-energy.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "save-2.png",
+      "filename" : "renewable-energy (1).png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "renewable-energy (2).png",
       "scale" : "3x"
     }
   ],

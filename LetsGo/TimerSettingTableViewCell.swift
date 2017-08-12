@@ -13,7 +13,7 @@ class TimerSettingTableViewCell: UITableViewCell {
     
     lazy var counterSetupButton: UIButton = {
         let counterSetupButton = UIButton(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
-        let buttonImage = UIImage(named: "img_appIcon")
+        let buttonImage = UIImage(named: "icn_settings")
         counterSetupButton.setImage(buttonImage, for: .normal)
         return counterSetupButton
     }()

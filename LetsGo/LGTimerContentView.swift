@@ -21,7 +21,7 @@ class LGTimerContentView: UIView {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 250, height: 120))
         label.textAlignment = .center
         label.font = UIFont (name: "Betm-Regular3", size: 60)
-        label.textColor = #colorLiteral(red: 1, green: 0.4542224407, blue: 0.1010893807, alpha: 1)
+        label.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -39,8 +39,6 @@ class LGTimerContentView: UIView {
         self.addSubview(timeLabel)
         self.bringSubview(toFront: timeLabel)
         setNeedsUpdateConstraints()
-//        timeLabel.setNeedsLayout()
-//        timeLabel.layoutIfNeeded()
     }
     
     required init?(coder aDecoder: NSCoder) {

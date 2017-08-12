@@ -12,7 +12,7 @@ import KYNavigationProgress
 import AVFoundation
 import CircularSlider
 import Intents
-import CTSlidingUpPanel
+//import CTSlidingUpPanel
 //import EFCircularSlider
 import HealthKit
 
@@ -43,11 +43,11 @@ class HomeViewController: UIViewController {
     var onCircleSlider: CircularSlider!
     var offCircleSlider: CircularSlider!
     var countDownTimer: MZTimerLabel!
-    var panelBottomView: UIView!
-    var bottomController:CTBottomSlideController?
+//    var panelBottomView: UIView!
+//    var bottomController:CTBottomSlideController?
     var istimerCounting: Bool!
 //    var testSlider: EFCircularSlider!
-    var panelTitleLabel: UILabel!
+//    var panelTitleLabel: UILabel!
 //    var player: AVAudioPlayer?
     let healthManager:HealthKitManager = HealthKitManager()
     var height: HKQuantitySample?
@@ -114,24 +114,24 @@ class HomeViewController: UIViewController {
        
         
         istimerCounting = false
-        panelTitleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 40))
-        panelTitleLabel.textColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
-        panelTitleLabel.font = UIFont(name: "AvenirNext-UltraLight", size: 25)
-        panelTitleLabel.textAlignment = .center
-        panelTitleLabel.text = "Pull this up"
-        
-        
-        panelBottomView = UIView(frame: CGRect(x: 0, y: self.view.frame.height/2, width: self.view.frame.width, height: 40))
-        panelBottomView.backgroundColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
-        panelBottomView.layer.cornerRadius = 15.0
-        self.view.addSubview(panelBottomView)
-        panelBottomView.addSubview(panelTitleLabel)
-        
-        bottomController = CTBottomSlideController(parent: self.view, bottomView: panelBottomView,
-                                                   tabController: nil,
-                                                   navController: self.navigationController, visibleHeight: 40)
-        bottomController?.setAnchorPoint(anchor: 0.5)
-        bottomController?.delegate = self
+//        panelTitleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 40))
+//        panelTitleLabel.textColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
+//        panelTitleLabel.font = UIFont(name: "AvenirNext-UltraLight", size: 25)
+//        panelTitleLabel.textAlignment = .center
+//        panelTitleLabel.text = "Pull this up"
+//        
+//        
+//        panelBottomView = UIView(frame: CGRect(x: 0, y: self.view.frame.height/2, width: self.view.frame.width, height: 40))
+//        panelBottomView.backgroundColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+//        panelBottomView.layer.cornerRadius = 15.0
+//        self.view.addSubview(panelBottomView)
+//        panelBottomView.addSubview(panelTitleLabel)
+//        
+//        bottomController = CTBottomSlideController(parent: self.view, bottomView: panelBottomView,
+//                                                   tabController: nil,
+//                                                   navController: self.navigationController, visibleHeight: 40)
+//        bottomController?.setAnchorPoint(anchor: 0.5)
+//        bottomController?.delegate = self
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(switchMode))
         
@@ -163,7 +163,7 @@ class HomeViewController: UIViewController {
 //        let leftBarButton = UIBarButtonItem(image: UIImage(named: "icn_left"), style: .plain, target: self, action: #selector(switchModeBack))
 //        self.navigationItem.leftBarButtonItem = leftBarButton
         
-        let rightBarButton = UIBarButtonItem(image: UIImage(named: "icn_Nav_Activities"), style: .plain, target: self, action: #selector(pushActivities))
+        let rightBarButton = UIBarButtonItem(image: UIImage(named: "icn_activities"), style: .plain, target: self, action: #selector(pushActivities))
         self.navigationItem.rightBarButtonItem = rightBarButton
         
         self.navigationItem.titleView = titleView
@@ -188,7 +188,7 @@ class HomeViewController: UIViewController {
         }
         configureMode(selectedIndex: selectedIndex)
         intervalsLabel.text = "Rounds: \(intervals)"
-        self.view.bringSubview(toFront: panelBottomView)
+//        self.view.bringSubview(toFront: panelBottomView)
         
          updateConstraints()
         
@@ -331,19 +331,19 @@ class HomeViewController: UIViewController {
             IntervalcircleSlider.divisa = "Min"
             intervalsLabel.isHidden = true
             IntervalcircleSlider.isHidden = false
-             bottomController?.setAnchorPoint(anchor: 0.5)
-            let panelHeight = (self.view.frame.size.height/2)-80
-            clockLabel.frame = CGRect(x: 0, y: panelHeight, width: self.view.frame.size.width, height: 40)
-            bottomController?.setAnchorPoint(anchor: 0.5)
-            if (panelBottomView.subviews.contains(roundsCircleSlider)){
-                roundsCircleSlider.removeFromSuperview()
-            }
-            if (panelBottomView.subviews.contains(onCircleSlider)){
-                onCircleSlider.removeFromSuperview()
-            }
-            if (panelBottomView.subviews.contains(offCircleSlider)){
-                offCircleSlider.removeFromSuperview()
-            }
+//             bottomController?.setAnchorPoint(anchor: 0.5)
+//            let panelHeight = (self.view.frame.size.height/2)-80
+//            clockLabel.frame = CGRect(x: 0, y: panelHeight, width: self.view.frame.size.width, height: 40)
+//            bottomController?.setAnchorPoint(anchor: 0.5)
+//            if (panelBottomView.subviews.contains(roundsCircleSlider)){
+//                roundsCircleSlider.removeFromSuperview()
+//            }
+//            if (panelBottomView.subviews.contains(onCircleSlider)){
+//                onCircleSlider.removeFromSuperview()
+//            }
+//            if (panelBottomView.subviews.contains(offCircleSlider)){
+//                offCircleSlider.removeFromSuperview()
+//            }
             
         case "timer":
             print("Timer Selected")
@@ -356,29 +356,29 @@ class HomeViewController: UIViewController {
             IntervalcircleSlider.divisa = "Min"
             intervalsLabel.isHidden = true
             IntervalcircleSlider.isHidden = false
-            let panelHeight = (self.view.frame.size.height/2)-80
-            clockLabel.frame = CGRect(x: 0, y: panelHeight, width: self.view.frame.size.width, height: 40)
-             bottomController?.setAnchorPoint(anchor: 0.5)
-            if (panelBottomView.subviews.contains(roundsCircleSlider)){
-                roundsCircleSlider.removeFromSuperview()
-            }
-            if (panelBottomView.subviews.contains(onCircleSlider)){
-                onCircleSlider.removeFromSuperview()
-            }
-            if (panelBottomView.subviews.contains(offCircleSlider)){
-                offCircleSlider.removeFromSuperview()
-            }
+//            let panelHeight = (self.view.frame.size.height/2)-80
+//            clockLabel.frame = CGRect(x: 0, y: panelHeight, width: self.view.frame.size.width, height: 40)
+//             bottomController?.setAnchorPoint(anchor: 0.5)
+//            if (panelBottomView.subviews.contains(roundsCircleSlider)){
+//                roundsCircleSlider.removeFromSuperview()
+//            }
+//            if (panelBottomView.subviews.contains(onCircleSlider)){
+//                onCircleSlider.removeFromSuperview()
+//            }
+//            if (panelBottomView.subviews.contains(offCircleSlider)){
+//                offCircleSlider.removeFromSuperview()
+//            }
         case "tabata":
             print("tabata Selected")
             IntervalcircleSlider.isHidden = true
             intervalsLabel.isHidden = false
             let panelHeight = (self.view.frame.size.height)-45
             clockLabel.frame = CGRect(x: 0, y: panelHeight, width: self.view.frame.size.width, height: 40)
-             bottomController?.setAnchorPoint(anchor: 1.0)
-            panelBottomView.addSubview(onCircleSlider)
-            panelBottomView.addSubview(offCircleSlider)
-            panelBottomView.addSubview(roundsCircleSlider)
-            
+//             bottomController?.setAnchorPoint(anchor: 1.0)
+//            panelBottomView.addSubview(onCircleSlider)
+//            panelBottomView.addSubview(offCircleSlider)
+//            panelBottomView.addSubview(roundsCircleSlider)
+//            
         default:
             print("default Selected")
             timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeStopWatch)
@@ -484,8 +484,8 @@ class HomeViewController: UIViewController {
         
         self.view.addSubview(timeLabel)
         self.view.addSubview(intervalsLabel)
-        panelBottomView.addSubview(self.IntervalcircleSlider)
-        panelBottomView.addSubview(clockLabel)
+//        panelBottomView.addSubview(self.IntervalcircleSlider)
+//        panelBottomView.addSubview(clockLabel)
         
         clockTimer = Timer.scheduledTimer(timeInterval: 1.0,
                                           target: self,
@@ -634,25 +634,25 @@ extension HomeViewController: CircularSliderDelegate {
     }
 }
 
-extension HomeViewController: CTBottomSlideDelegate,UIGestureRecognizerDelegate {
-    func didPanelCollapse(){
-        panelTitleLabel.text = "Pull this up"
-    }
-    func didPanelExpand(){
-        panelTitleLabel.text = "Pull this Down"
-    }
-    func didPanelAnchor(){
-        panelTitleLabel.text = "Pull this Down"
-    }
-    func didPanelMove(panelOffset: CGFloat){
-    
-    }
-    
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        if (gestureRecognizer is UIPanGestureRecognizer || gestureRecognizer is UIRotationGestureRecognizer) {
-            return true
-        } else {
-            return true
-        }
-    }
-}
+//extension HomeViewController: CTBottomSlideDelegate,UIGestureRecognizerDelegate {
+//    func didPanelCollapse(){
+//        panelTitleLabel.text = "Pull this up"
+//    }
+//    func didPanelExpand(){
+//        panelTitleLabel.text = "Pull this Down"
+//    }
+//    func didPanelAnchor(){
+//        panelTitleLabel.text = "Pull this Down"
+//    }
+//    func didPanelMove(panelOffset: CGFloat){
+//    
+//    }
+//    
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        if (gestureRecognizer is UIPanGestureRecognizer || gestureRecognizer is UIRotationGestureRecognizer) {
+//            return true
+//        } else {
+//            return true
+//        }
+//    }
+//}
