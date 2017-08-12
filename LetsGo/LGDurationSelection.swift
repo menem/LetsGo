@@ -34,7 +34,6 @@ class LGDurationSelection: UIView {
         return circularSlider
     }()
     
-//    minutesCircularSlider
     lazy var minutesCircularSlider: CircularSlider = {
         let circularSlider =  CircularSlider(frame: CGRect(x: 50, y: 50, width: 190, height: 190))
         circularSlider.diskColor = .clear
@@ -84,7 +83,8 @@ class LGDurationSelection: UIView {
         self.addSubview(minutesCircularSlider)
         self.addSubview(minutesLabel)
         self.addSubview(secondsLabel)
-        
+        updateMinutes()
+        updateSeconds()
         setNeedsUpdateConstraints()
         
     }
@@ -118,11 +118,9 @@ class LGDurationSelection: UIView {
             ])
         super.updateConstraints()
     }
-    // MARK: user interaction methods
-    
+
     func updateMinutes() {
         var selectedHour = Int(minutesCircularSlider.endPointValue)
-        // TODO: use date formatter
         selectedHour = (selectedHour == 0 ? 12 : selectedHour)
         minutesLabel.text = String(format: "%02d", selectedHour)
     }
@@ -135,7 +133,6 @@ class LGDurationSelection: UIView {
     
     func updateSeconds() {
         var selectedSecond = Int(secondsCircularSlider.endPointValue)
-        // TODO: use date formatter
         selectedSecond = (selectedSecond == 60 ? 0 : selectedSecond)
         secondsLabel.text = String(format: "%02d", selectedSecond)
     }

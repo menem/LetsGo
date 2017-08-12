@@ -31,10 +31,18 @@ class LGTimerContentView: UIView {
         return timer!
     }()
     
+    lazy var timerControls: LGTimerControls = {
+        let timerControl = LGTimerControls()
+        timerControl.translatesAutoresizingMaskIntoConstraints = false
+        return timerControl
+    }()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         self.addSubview(timeLabel)
+        self.addSubview(timerControls)
         self.bringSubview(toFront: timeLabel)
         setNeedsUpdateConstraints()
     }
@@ -62,9 +70,14 @@ class LGTimerContentView: UIView {
     override func updateConstraints() {
         NSLayoutConstraint.activate([
             timeLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            timeLabel.topAnchor.constraint(equalTo:  self.topAnchor),
+            timeLabel.centerYAnchor.constraint(equalTo:  self.centerYAnchor),
             timeLabel.widthAnchor.constraint(equalTo: self.widthAnchor),
-            timeLabel.heightAnchor.constraint(equalTo: self.heightAnchor)
+            timeLabel.heightAnchor.constraint(equalToConstant: 70),
+            
+            timerControls.topAnchor.constraint(equalTo: timeLabel.bottomAnchor),
+            timerControls.centerXAnchor.constraint(equalTo: timeLabel.centerXAnchor),
+            timerControls.widthAnchor.constraint(equalTo: self.widthAnchor),
+            timerControls.heightAnchor.constraint(equalToConstant: 40)
             ])
         super.updateConstraints()
     }

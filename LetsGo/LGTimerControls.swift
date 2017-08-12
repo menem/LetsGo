@@ -41,7 +41,9 @@ class LGTimerControls: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.addSub
+        self.addSubview(playButton)
+        self.addSubview(pauseButton)
+        self.addSubview(stopButton)
         setNeedsUpdateConstraints()
     }
     
@@ -56,6 +58,17 @@ class LGTimerControls: UIView {
             playButton.rightAnchor.constraint(equalTo: self.rightAnchor),
             playButton.widthAnchor.constraint(equalToConstant: 32),
             playButton.heightAnchor.constraint(equalToConstant: 32),
+            
+            pauseButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            pauseButton.rightAnchor.constraint(equalTo: self.rightAnchor),
+            pauseButton.widthAnchor.constraint(equalToConstant: 32),
+            pauseButton.heightAnchor.constraint(equalToConstant: 32),
+            
+            stopButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            stopButton.leftAnchor.constraint(equalTo: self.leftAnchor),
+            stopButton.widthAnchor.constraint(equalToConstant: 32),
+            stopButton.heightAnchor.constraint(equalToConstant: 32)
+            
             ])
         super.updateConstraints()
     }
