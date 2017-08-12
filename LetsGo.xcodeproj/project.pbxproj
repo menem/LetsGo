@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		480B29C61F3CA392007743F6 /* LGDurationSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480B29C51F3CA392007743F6 /* LGDurationSelection.swift */; };
+		480B29CA1F3F15C7007743F6 /* LGTimerControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480B29C91F3F15C7007743F6 /* LGTimerControls.swift */; };
 		4825CF431F2FEFD30066B40D /* LGTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825CF421F2FEFD30066B40D /* LGTimer.swift */; };
 		4825CF451F2FFA5E0066B40D /* LGActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825CF441F2FFA5E0066B40D /* LGActivity.swift */; };
 		483238AA1F2E7AEA006194AE /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 483238A91F2E7AEA006194AE /* HealthKit.framework */; };
@@ -69,6 +70,7 @@
 /* Begin PBXFileReference section */
 		14E8FA497D650EDF3219475A /* Pods_LetsGo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LetsGo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		480B29C51F3CA392007743F6 /* LGDurationSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGDurationSelection.swift; sourceTree = "<group>"; };
+		480B29C91F3F15C7007743F6 /* LGTimerControls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGTimerControls.swift; sourceTree = "<group>"; };
 		4825CF421F2FEFD30066B40D /* LGTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGTimer.swift; sourceTree = "<group>"; };
 		4825CF441F2FFA5E0066B40D /* LGActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGActivity.swift; sourceTree = "<group>"; };
 		483238A91F2E7AEA006194AE /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -250,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				48998BD11F396E4200F7E4AB /* LGTimerContentView.swift */,
+				480B29C91F3F15C7007743F6 /* LGTimerControls.swift */,
 				480B29C51F3CA392007743F6 /* LGDurationSelection.swift */,
 			);
 			name = Views;
@@ -464,6 +467,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48B3965B1F3BBF7A0084F5DC /* TimerViewController.swift in Sources */,
+				480B29CA1F3F15C7007743F6 /* LGTimerControls.swift in Sources */,
 				48A31BB71F333D8600E919FB /* TitleBackgroundTableViewCell.swift in Sources */,
 				48A31BC61F34352200E919FB /* LGTextField.swift in Sources */,
 				4825CF431F2FEFD30066B40D /* LGTimer.swift in Sources */,

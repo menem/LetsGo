@@ -14,9 +14,7 @@ import MZTimerLabel
 class LGTimerContentView: UIView {
     
     var player: AVAudioPlayer?
-    
-//TODO: the timelabel requires the frame being set!!
-    
+
     lazy var timeLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center

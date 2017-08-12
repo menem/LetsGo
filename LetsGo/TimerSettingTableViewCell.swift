@@ -14,6 +14,7 @@ class TimerSettingTableViewCell: UITableViewCell {
         let counterSetupButton = UIButton()
         let buttonImage = UIImage(named: "icn_settings")
         counterSetupButton.setImage(buttonImage, for: .normal)
+        counterSetupButton.translatesAutoresizingMaskIntoConstraints = false
         return counterSetupButton
     }()
     
@@ -39,9 +40,9 @@ class TimerSettingTableViewCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             counterSetupButton.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            counterSetupButton.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -70),
-            counterSetupButton.widthAnchor.constraint(equalToConstant: 60),
-            counterSetupButton.heightAnchor.constraint(equalToConstant: 60),
+            counterSetupButton.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -10),
+            counterSetupButton.widthAnchor.constraint(equalToConstant: 32),
+            counterSetupButton.heightAnchor.constraint(equalToConstant: 32),
             
             ])
     }
