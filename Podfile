@@ -7,10 +7,9 @@ target ‘LetsGo’ do
 
 pod 'MZTimerLabel'
 pod 'KYNavigationProgress'
-pod 'PARTagPicker'
 pod 'HGCircularSlider', '~> 1.0.3'
 pod 'RandomColorSwift'
-pod 'Hero'
 pod 'CNPPopupController'
+pod 'EZSwipeController'
 
 end

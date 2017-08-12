@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double HeroVersionNumber;
-FOUNDATION_EXPORT const unsigned char HeroVersionString[];
+FOUNDATION_EXPORT double EZSwipeControllerVersionNumber;
+FOUNDATION_EXPORT const unsigned char EZSwipeControllerVersionString[];
 
