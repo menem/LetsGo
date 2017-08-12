@@ -30,21 +30,15 @@ class NewTimerViewController: UITableViewController {
         self.tableView.separatorStyle = .none
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
         
-        
-        let saveButtonImage = UIImage(named:"icn_done")
-        let saveBarButton  = UIBarButtonItem(image: saveButtonImage, style: .plain, target: self, action: #selector(saveTimersForActivity))
-        self.navigationItem.rightBarButtonItem = saveBarButton
+//        
+//        let saveButtonImage = UIImage(named:"icn_done")
+//        let saveBarButton  = UIBarButtonItem(image: saveButtonImage, style: .plain, target: self, action: #selector(saveTimersForActivity))
+//        self.navigationItem.rightBarButtonItem = saveBarButton
 
         
     }
     
-    func saveTimersForActivity() {
-        let manager = LGTimerManager()
-        let intervals = Int(timerIntervalTextField.text!)
-        let duration = Double(timerDurationTextField.text!)
-        let name = timerNameTextField.text!
-        manager.savetimers(title: name, duration: duration!, intervals: intervals!, activity: activity)
-    }
+
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {

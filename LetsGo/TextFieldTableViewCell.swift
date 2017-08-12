@@ -14,9 +14,9 @@ class TextFieldTableViewCell: UITableViewCell {
         let textField = LGTextField()
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
-        textField.tintColor = UIColor.white
+        textField.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         textField.textAlignment = .center
-        textField.textColor = UIColor(red:0.28, green:0.64, blue:0.35, alpha:1.00)
+        textField.textColor = #colorLiteral(red: 0.2333382666, green: 0.5698561072, blue: 0.8839787841, alpha: 1)
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
