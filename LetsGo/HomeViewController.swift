@@ -12,8 +12,6 @@ import KYNavigationProgress
 import AVFoundation
 import CircularSlider
 import Intents
-//import CTSlidingUpPanel
-//import EFCircularSlider
 import HealthKit
 
 class HomeViewController: UIViewController {
@@ -43,12 +41,7 @@ class HomeViewController: UIViewController {
     var onCircleSlider: CircularSlider!
     var offCircleSlider: CircularSlider!
     var countDownTimer: MZTimerLabel!
-//    var panelBottomView: UIView!
-//    var bottomController:CTBottomSlideController?
     var istimerCounting: Bool!
-//    var testSlider: EFCircularSlider!
-//    var panelTitleLabel: UILabel!
-//    var player: AVAudioPlayer?
     let healthManager:HealthKitManager = HealthKitManager()
     var height: HKQuantitySample?
     
@@ -79,27 +72,18 @@ class HomeViewController: UIViewController {
             
         }else{
             countDownTimer?.start()
-            
             istimerCounting = true
-//            perform(#selector(playSound), with: nil, afterDelay: 8)
-//            perform(#selector(playSound), with: nil, afterDelay: 9)
-            
-            
             timeLabel.textColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
             perform(#selector(startInterval), with: nil, afterDelay: 10)
         }
     }
     func getHealthKitPermission() {
-        
-        // Seek authorization in HealthKitManager.swift.
         healthManager.authorizeHealthKit { (authorized,  error) -> Void in
             if authorized {
-                
-                // Get and set the user's height.
+
                 self.setHeight()
             } else {
                 if error != nil {
-//                    print(error)
                 }
                 print("Permission denied.")
             }
@@ -111,27 +95,7 @@ class HomeViewController: UIViewController {
         
         getHealthKitPermission()
         
-       
-        
         istimerCounting = false
-//        panelTitleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 40))
-//        panelTitleLabel.textColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
-//        panelTitleLabel.font = UIFont(name: "AvenirNext-UltraLight", size: 25)
-//        panelTitleLabel.textAlignment = .center
-//        panelTitleLabel.text = "Pull this up"
-//        
-//        
-//        panelBottomView = UIView(frame: CGRect(x: 0, y: self.view.frame.height/2, width: self.view.frame.width, height: 40))
-//        panelBottomView.backgroundColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
-//        panelBottomView.layer.cornerRadius = 15.0
-//        self.view.addSubview(panelBottomView)
-//        panelBottomView.addSubview(panelTitleLabel)
-//        
-//        bottomController = CTBottomSlideController(parent: self.view, bottomView: panelBottomView,
-//                                                   tabController: nil,
-//                                                   navController: self.navigationController, visibleHeight: 40)
-//        bottomController?.setAnchorPoint(anchor: 0.5)
-//        bottomController?.delegate = self
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(switchMode))
         
@@ -160,9 +124,6 @@ class HomeViewController: UIViewController {
         titleView.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         titleView.addGestureRecognizer(tapGesture)
         
-//        let leftBarButton = UIBarButtonItem(image: UIImage(named: "icn_left"), style: .plain, target: self, action: #selector(switchModeBack))
-//        self.navigationItem.leftBarButtonItem = leftBarButton
-        
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "icn_activities"), style: .plain, target: self, action: #selector(pushActivities))
         self.navigationItem.rightBarButtonItem = rightBarButton
         
@@ -188,8 +149,7 @@ class HomeViewController: UIViewController {
         }
         configureMode(selectedIndex: selectedIndex)
         intervalsLabel.text = "Rounds: \(intervals)"
-//        self.view.bringSubview(toFront: panelBottomView)
-        
+
          updateConstraints()
         
     }
@@ -247,10 +207,7 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     func setHeight() {
-        // Create the HKSample for Height.
         let heightSample = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.height)
-        
-        // Call HealthKitManager's getSample() method to get the user's height.
         self.healthManager.getHeight(sampleType: heightSample!, completion: { (userHeight, error) -> Void in
             
             if( error != nil ) {
@@ -259,17 +216,13 @@ class HomeViewController: UIViewController {
             }
             
             var heightString = ""
-            
             self.height = userHeight as? HKQuantitySample
-            
-            // The height is formatted to the user's locale.
             if let meters = self.height?.quantity.doubleValue(for: HKUnit.meter()) {
                 let formatHeight = LengthFormatter()
                 formatHeight.isForPersonHeightUse = true
                 heightString = formatHeight.string(fromMeters: meters)
             }
             
-            // Set the label to reflect the user's height.
             DispatchQueue.main.async(execute: { () -> Void in
                 self.heightLabel.text = heightString
             })
@@ -306,7 +259,6 @@ class HomeViewController: UIViewController {
         }
         timeLabel.textColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
          self.navigationController?.progressTintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
-//        playSound()
         timer?.start()
     }
 
@@ -331,20 +283,6 @@ class HomeViewController: UIViewController {
             IntervalcircleSlider.divisa = "Min"
             intervalsLabel.isHidden = true
             IntervalcircleSlider.isHidden = false
-//             bottomController?.setAnchorPoint(anchor: 0.5)
-//            let panelHeight = (self.view.frame.size.height/2)-80
-//            clockLabel.frame = CGRect(x: 0, y: panelHeight, width: self.view.frame.size.width, height: 40)
-//            bottomController?.setAnchorPoint(anchor: 0.5)
-//            if (panelBottomView.subviews.contains(roundsCircleSlider)){
-//                roundsCircleSlider.removeFromSuperview()
-//            }
-//            if (panelBottomView.subviews.contains(onCircleSlider)){
-//                onCircleSlider.removeFromSuperview()
-//            }
-//            if (panelBottomView.subviews.contains(offCircleSlider)){
-//                offCircleSlider.removeFromSuperview()
-//            }
-            
         case "timer":
             print("Timer Selected")
             let totalTime = intervals * 60
@@ -356,29 +294,12 @@ class HomeViewController: UIViewController {
             IntervalcircleSlider.divisa = "Min"
             intervalsLabel.isHidden = true
             IntervalcircleSlider.isHidden = false
-//            let panelHeight = (self.view.frame.size.height/2)-80
-//            clockLabel.frame = CGRect(x: 0, y: panelHeight, width: self.view.frame.size.width, height: 40)
-//             bottomController?.setAnchorPoint(anchor: 0.5)
-//            if (panelBottomView.subviews.contains(roundsCircleSlider)){
-//                roundsCircleSlider.removeFromSuperview()
-//            }
-//            if (panelBottomView.subviews.contains(onCircleSlider)){
-//                onCircleSlider.removeFromSuperview()
-//            }
-//            if (panelBottomView.subviews.contains(offCircleSlider)){
-//                offCircleSlider.removeFromSuperview()
-//            }
         case "tabata":
             print("tabata Selected")
             IntervalcircleSlider.isHidden = true
             intervalsLabel.isHidden = false
             let panelHeight = (self.view.frame.size.height)-45
             clockLabel.frame = CGRect(x: 0, y: panelHeight, width: self.view.frame.size.width, height: 40)
-//             bottomController?.setAnchorPoint(anchor: 1.0)
-//            panelBottomView.addSubview(onCircleSlider)
-//            panelBottomView.addSubview(offCircleSlider)
-//            panelBottomView.addSubview(roundsCircleSlider)
-//            
         default:
             print("default Selected")
             timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeStopWatch)
@@ -484,8 +405,6 @@ class HomeViewController: UIViewController {
         
         self.view.addSubview(timeLabel)
         self.view.addSubview(intervalsLabel)
-//        panelBottomView.addSubview(self.IntervalcircleSlider)
-//        panelBottomView.addSubview(clockLabel)
         
         clockTimer = Timer.scheduledTimer(timeInterval: 1.0,
                                           target: self,
@@ -500,21 +419,7 @@ class HomeViewController: UIViewController {
                                                         dateStyle: .none,
                                                         timeStyle: .medium)
     }
-//    func playSound() {
-//        guard let url = Bundle.main.url(forResource: "tone", withExtension: "wav") else { return }
-//        
-//        do {
-//            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-//            try AVAudioSession.sharedInstance().setActive(true)
-//            
-//            player = try AVAudioPlayer(contentsOf: url)
-//            guard let player = player else { return }
-//            
-//            player.play()
-//        } catch let error {
-//            print(error.localizedDescription)
-//        }
-//    }
+
     func startONTimer(){
 //        playSound()
         offtimer.pause()
@@ -587,8 +492,6 @@ extension HomeViewController: MZTimerLabelDelegate {
 
                 return
             }
-//            startInterval()
-//            return
         }
         endTimer()
         
@@ -634,25 +537,4 @@ extension HomeViewController: CircularSliderDelegate {
     }
 }
 
-//extension HomeViewController: CTBottomSlideDelegate,UIGestureRecognizerDelegate {
-//    func didPanelCollapse(){
-//        panelTitleLabel.text = "Pull this up"
-//    }
-//    func didPanelExpand(){
-//        panelTitleLabel.text = "Pull this Down"
-//    }
-//    func didPanelAnchor(){
-//        panelTitleLabel.text = "Pull this Down"
-//    }
-//    func didPanelMove(panelOffset: CGFloat){
-//    
-//    }
-//    
-//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-//        if (gestureRecognizer is UIPanGestureRecognizer || gestureRecognizer is UIRotationGestureRecognizer) {
-//            return true
-//        } else {
-//            return true
-//        }
-//    }
-//}
+
