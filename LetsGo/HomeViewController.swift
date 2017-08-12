@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+// HomeViewController.swift
 //  LetsGo
 //
 //  Created by Menem Ragab on 7/26/17.

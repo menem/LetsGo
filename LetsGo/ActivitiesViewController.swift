@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ActivitiesViewController.swift
 //  LetsGo
 //
 //  Created by Menem Ragab on 8/3/17.
@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import HGPlaceholders
 import RandomColorSwift
 
 
