@@ -41,16 +41,6 @@ class HomeViewController: UITableViewController {
         self.navigationController?.pushViewController(activitiesViewController, animated: true)
     }
     
-    //
-    //    func startActivity(){
-    //        timeContentView.playSound()
-    //        timeContentView.timer.start()
-    //    }
-    //    func resumeActivity(){
-    //        timeContentView.playSound()
-    //        timeContentView.timer.start()
-    //    }
-    
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -69,7 +59,11 @@ class HomeViewController: UITableViewController {
         if (indexPath.section == 0) {
             return 40
         } else {
-            return self.view.frame.size.height * 0.75
+            if(indexPath.row == 0){
+                return self.view.frame.size.height * 0.75
+            }else{
+                return self.view.frame.size.height * 0.1
+            }
         }
     }
     
@@ -129,10 +123,7 @@ class HomeViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath.section == 0) {
-            //            let newActivityViewController = ActivitiesViewController()
-            //            self.navigationController?.pushViewController(newActivityViewController, animated: true)
-        }
+
     }
 }
 
