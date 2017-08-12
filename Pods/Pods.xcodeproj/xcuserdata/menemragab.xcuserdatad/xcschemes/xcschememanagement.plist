@@ -9,16 +9,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>CTSlidingUpPanel.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>CircularSlider.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>HGCircularSlider.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -59,21 +49,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SwiftyUserDefaults.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>VBFPopFlatButton.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>pop.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -92,7 +67,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>171015227367C6D309F5210DFB2ACA50</key>
+		<key>29FB6F85E9D7D9D38412C710A6BE8FE5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -112,37 +87,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5D837AD86FC7EB90CBA7485EE15A93A6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6A90BF6A07A7FF6CC0121C6D2AB59225</key>
+		<key>79E8CB9F41D7DCA8B6A7D0E777E6B89B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>817E776CCB6FA148815038E446EA2E0E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>AF09DB055935BD941846539935605A14</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BA1E32C73C4D84B314AF2FA977270E50</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D3469DC10D728D1E0B930FCFFF6B0F96</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E50C2BCC750E845A7C9A7851E25DE79A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

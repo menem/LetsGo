@@ -9,8 +9,6 @@
 import UIKit
 import MZTimerLabel
 import KYNavigationProgress
-import AVFoundation
-import CircularSlider
 import Intents
 import HealthKit
 
@@ -24,7 +22,6 @@ class HomeViewController: UIViewController {
     var intervals = 0
     var timer: MZTimerLabel!
     var intervalsLabel: UILabel!
-    var IntervalcircleSlider: CircularSlider!
     var timeLabel: UILabel!
     var userIntent: INStartWorkoutIntent!
     var clockLabel: UILabel!
@@ -37,9 +34,6 @@ class HomeViewController: UIViewController {
     var offInterval = 0.0
     var ontimer: MZTimerLabel!
     var offtimer: MZTimerLabel!
-    var roundsCircleSlider: CircularSlider!
-    var onCircleSlider: CircularSlider!
-    var offCircleSlider: CircularSlider!
     var countDownTimer: MZTimerLabel!
     var istimerCounting: Bool!
     let healthManager:HealthKitManager = HealthKitManager()
@@ -279,10 +273,7 @@ class HomeViewController: UIViewController {
             timer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeStopWatch)
             timer?.delegate = self
             isInterval = false
-            IntervalcircleSlider.title = "Time cap"
-            IntervalcircleSlider.divisa = "Min"
             intervalsLabel.isHidden = true
-            IntervalcircleSlider.isHidden = false
         case "timer":
             print("Timer Selected")
             let totalTime = intervals * 60
@@ -290,13 +281,10 @@ class HomeViewController: UIViewController {
             timer?.delegate = self
             timer?.setCountDownTime(TimeInterval(totalTime))
             isInterval = false
-            IntervalcircleSlider.title = "Count Down"
-            IntervalcircleSlider.divisa = "Min"
             intervalsLabel.isHidden = true
-            IntervalcircleSlider.isHidden = false
+
         case "tabata":
             print("tabata Selected")
-            IntervalcircleSlider.isHidden = true
             intervalsLabel.isHidden = false
             let panelHeight = (self.view.frame.size.height)-45
             clockLabel.frame = CGRect(x: 0, y: panelHeight, width: self.view.frame.size.width, height: 40)
@@ -308,22 +296,6 @@ class HomeViewController: UIViewController {
         }
     }
     func makeUserInterface(){
-        IntervalcircleSlider = CircularSlider(frame:CGRect(x: (self.view.frame.size.width/2)-100, y: 50, width: 200, height: 200))
-        IntervalcircleSlider.delegate = self
-        IntervalcircleSlider.maximumValue = 120
-        IntervalcircleSlider.minimumValue = 1
-        IntervalcircleSlider.value = 1
-        IntervalcircleSlider.knobRadius = 20
-        IntervalcircleSlider.bgColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
-        IntervalcircleSlider.radiansOffset = 0.01
-        IntervalcircleSlider.backgroundColor = .clear
-        IntervalcircleSlider.pgHighlightedColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
-        IntervalcircleSlider.highlighted = true
-        IntervalcircleSlider.pgNormalColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
-        IntervalcircleSlider.title = "Time"
-        IntervalcircleSlider.divisa = "Min"
-        IntervalcircleSlider.tintColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
-        IntervalcircleSlider.lineWidth = 10
        
         timeLabel = UILabel(frame: CGRect(x:0, y: (self.view.frame.size.height/2)-60, width: self.view.frame.size.width, height: 120))
         timeLabel.textAlignment = .center
@@ -341,64 +313,11 @@ class HomeViewController: UIViewController {
         clockLabel.textAlignment = .center
         clockLabel.font = UIFont (name: "Avenir-Book", size: 21)
         clockLabel.textColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
-        
 
-        
-        roundsCircleSlider = CircularSlider(frame:CGRect(x: (self.view.frame.size.width/2)-94, y: 50, width: 180, height: 180))
-        roundsCircleSlider.delegate = self
-        roundsCircleSlider.maximumValue = 60
-        roundsCircleSlider.minimumValue = 1
-        roundsCircleSlider.value = 1
-        roundsCircleSlider.knobRadius = 20
-        roundsCircleSlider.radiansOffset = 0.01
-        roundsCircleSlider.lineWidth = 10
-        roundsCircleSlider.backgroundColor = .clear
-        roundsCircleSlider.pgHighlightedColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
-        roundsCircleSlider.pgNormalColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
-        roundsCircleSlider.bgColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
-        roundsCircleSlider.tintColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
-        roundsCircleSlider.highlighted = true
-        roundsCircleSlider.title = "Rounds"
-        roundsCircleSlider.divisa = ""
-        
-        onCircleSlider = CircularSlider(frame:CGRect(x: (self.view.frame.size.width/2)-94, y: 240, width: 180, height: 180))
-        onCircleSlider.delegate = self
-        onCircleSlider.maximumValue = 5
-        onCircleSlider.minimumValue = 0.1
-        onCircleSlider.value = 0.1
-        onCircleSlider.knobRadius = 20
-        onCircleSlider.radiansOffset = 0.01
-        onCircleSlider.lineWidth = 10
-        onCircleSlider.backgroundColor = .clear
-        onCircleSlider.pgHighlightedColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
-        onCircleSlider.pgNormalColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
-        onCircleSlider.bgColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
-        onCircleSlider.tintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
-        onCircleSlider.highlighted = true
-        onCircleSlider.title = "ON"
-        onCircleSlider.divisa = "Min"
-        
         ontimer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
         ontimer?.delegate = self
         ontimer.tag = 1
-        //            timer?.setCountDownTime(TimeInterval(totalTime))
-        
-        offCircleSlider = CircularSlider(frame:CGRect(x: (self.view.frame.size.width/2)-94, y: 430, width: 180, height: 180))
-        offCircleSlider.delegate = self
-        offCircleSlider.maximumValue = 5
-        offCircleSlider.minimumValue = 0
-        offCircleSlider.value = 0.1
-        offCircleSlider.knobRadius = 20
-        offCircleSlider.lineWidth = 10
-        offCircleSlider.backgroundColor = .clear
-        offCircleSlider.pgHighlightedColor = #colorLiteral(red: 0.5015509129, green: 0.5780293345, blue: 0.8545677066, alpha: 1)
-        offCircleSlider.pgNormalColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
-        offCircleSlider.bgColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
-        offCircleSlider.tintColor = #colorLiteral(red: 0.5015509129, green: 0.5780293345, blue: 0.8545677066, alpha: 1)
-        offCircleSlider.highlighted = true
-        offCircleSlider.title = "OFF"
-        offCircleSlider.divisa = "Min"
-        
+ 
         offtimer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
         offtimer?.delegate = self
         offtimer.tag = 2
@@ -500,41 +419,3 @@ extension HomeViewController: MZTimerLabelDelegate {
 func round(_ value: Double, toNearest: Double) -> Double {
     return round(value / toNearest) * toNearest
 }
-
-extension HomeViewController: CircularSliderDelegate {
-    func circularSlider(_ circularSlider: CircularSlider, valueForValue value: Float) -> Float {
-        if (circularSlider.title == "ON"){
-            onInterval = round(Double(value), toNearest:0.1)
-            let onTime = onInterval * 60
-            ontimer?.setCountDownTime(TimeInterval(onTime))
-            return Float(onInterval)
-        }
-        
-        if (circularSlider.title == "OFF"){
-            offInterval = round(Double(value), toNearest:0.1)
-            let offTime = offInterval * 60
-            offtimer?.setCountDownTime(TimeInterval(offTime))
-            return Float(offInterval)
-        }
-        
-        if ((userIntent) != nil){
-            let minute = userIntent.goalValue!/60
-            intervals = Int(minute)
-            intervalsLabel.text = "Rounds: \(intervals)"
-            return Float(intervals)
-        }else{
-            let selectedMode = modes[selectedIndex]
-            intervals = Int(floorf(value))
-            intervalsLabel.text = "Rounds: \(intervals)"
-            if (selectedMode == "timer"){
-            let totalTime = intervals * 60
-            timer?.setCountDownTime(TimeInterval(totalTime))
-            }
-
-            return floorf(value)
-        }
-        
-    }
-}
-
-

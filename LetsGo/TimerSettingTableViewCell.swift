@@ -6,7 +6,7 @@
 //  Copyright © 2017 Phoenix fitness. All rights reserved.
 //
 import UIKit
-import VBFPopFlatButton
+//import VBFPopFlatButton
 
 class TimerSettingTableViewCell: UITableViewCell {
     

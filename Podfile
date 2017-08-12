@@ -7,11 +7,7 @@ target ‘LetsGo’ do
 
 pod 'MZTimerLabel'
 pod 'KYNavigationProgress'
-pod 'CircularSlider'
-pod "CTSlidingUpPanel"
-pod 'SwiftyUserDefaults'
 pod 'PARTagPicker'
-pod 'VBFPopFlatButton'
 pod 'HGCircularSlider', '~> 1.0.3'
 pod 'RandomColorSwift'
 pod 'Hero'
