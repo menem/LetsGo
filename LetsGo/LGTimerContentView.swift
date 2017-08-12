@@ -48,12 +48,12 @@ class LGTimerContentView: UIView {
         if(!isRunning) {
             timer.start()
             timeLabel.textColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
-            timerControls.adjustTintColor(newColor: #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1))
+            timerControls.tintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
             isRunning = true
         }else{
             timer.pause()
             timeLabel.textColor = #colorLiteral(red: 0.5015509129, green: 0.5780293345, blue: 0.8545677066, alpha: 1)
-            timerControls.adjustTintColor(newColor: #colorLiteral(red: 0.5015509129, green: 0.5780293345, blue: 0.8545677066, alpha: 1))
+             timerControls.tintColor = #colorLiteral(red: 0.5015509129, green: 0.5780293345, blue: 0.8545677066, alpha: 1)
             isRunning = false
         }
         configureRunningControls()
@@ -64,7 +64,7 @@ class LGTimerContentView: UIView {
        timer.pause()
         timer.reset()
         timeLabel.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
-        timerControls.adjustTintColor(newColor: #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1))
+         timerControls.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         isRunning = false
         configureRunningControls()
     }

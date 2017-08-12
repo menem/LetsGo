@@ -37,11 +37,15 @@ class LGTimerControls: UIView {
         return button
     }()
     
-    func adjustTintColor(newColor: UIColor) {
-        playButton.tintColor = newColor
-        pauseButton.tintColor = newColor
-        stopButton.tintColor = newColor
+    override var tintColor: UIColor! {
+        didSet {
+            playButton.tintColor = tintColor
+            pauseButton.tintColor = tintColor
+            stopButton.tintColor = tintColor
+            setNeedsDisplay()
+        }
     }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(playButton)
