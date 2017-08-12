@@ -29,10 +29,9 @@ class ActivitiesViewController: UITableViewController {
         self.tableView.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
         self.tableView.separatorStyle = .none
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
+        self.title = "Activities"
 
-
-//        colors = randomColors(count: activities.count, hue: .random, luminosity: .dark)
-      loadActivities()
+        loadActivities()
         
         let addButtonImage = UIImage(named:"icn_add")
         let addBarButtonItem  = UIBarButtonItem(image: addButtonImage, style: .plain, target: self, action: #selector(openSettings))
