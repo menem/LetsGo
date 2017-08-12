@@ -6,27 +6,17 @@
 //  Copyright © 2017 Phoenix fitness. All rights reserved.
 //
 import UIKit
-import VBFPopFlatButton
 
 class TimerSettingTableViewCell: UITableViewCell {
     
-//    lazy var counterSetupButton: VBFPopFlatButton = {
-//        let button = VBFPopFlatButton()
-//        button.roundBackgroundColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
-//        button.tintColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
-//        button.lineThickness = 2
-//        button.currentButtonType = .buttonMenuType
-//        button.currentButtonStyle = .buttonRoundedStyle
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        return button
-//    }()
     
     lazy var counterSetupButton: UIButton = {
-        let counterSetupButton = UIButton(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
-        let buttonImage = UIImage(named: "img_appIcon")
-        counterSetupButton.setImage(buttonImage, for: .normal)
-//        menuButton.addTarget(self, action: #selector(menuButtonPressed), for: .touchUpInside)
-        return counterSetupButton
+        let button = UIButton()
+        let buttonImage = UIImage(named: "icn_settings")
+        button.setImage(buttonImage, for: .normal)
+        button.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -50,10 +40,10 @@ class TimerSettingTableViewCell: UITableViewCell {
         super.updateConstraints()
         
         NSLayoutConstraint.activate([
-            counterSetupButton.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+            counterSetupButton.topAnchor.constraint(equalTo: self.contentView.topAnchor),
             counterSetupButton.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -10),
-            counterSetupButton.widthAnchor.constraint(equalToConstant: 60),
-            counterSetupButton.heightAnchor.constraint(equalToConstant: 60),
+            counterSetupButton.widthAnchor.constraint(equalToConstant: 32),
+            counterSetupButton.heightAnchor.constraint(equalToConstant: 32),
             
             ])
     }

@@ -23,6 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
         UINavigationBar.appearance().tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         // Override point for customization after application launch.
+        let homeViewController = HomeViewController()
+        //        homeViewController.userIntent = startIntent
+        let navViewController = UINavigationController(rootViewController: homeViewController)
+        
+        window!.rootViewController = navViewController
+        window!.makeKeyAndVisible()
+        
         return true
     }
 
@@ -38,9 +45,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         print("AppDelegate: Start Workout Intent - TRUE")
         print(startIntent)
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let homeViewController = mainStoryboard.instantiateViewController(withIdentifier: "timer") as! HomeViewController
-        homeViewController.userIntent = startIntent
+//        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let homeViewController = mainStoryboard.instantiateViewController(withIdentifier: "timer") as! HomeViewController
+        let homeViewController = HomeViewController()
+//        homeViewController.userIntent = startIntent
         let navViewController = UINavigationController(rootViewController: homeViewController)
         
         window!.rootViewController = navViewController

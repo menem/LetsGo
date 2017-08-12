@@ -7,27 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		480B29C61F3CA392007743F6 /* LGDurationSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480B29C51F3CA392007743F6 /* LGDurationSelection.swift */; };
+		480B29CA1F3F15C7007743F6 /* LGTimerControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480B29C91F3F15C7007743F6 /* LGTimerControls.swift */; };
+		480B29CC1F3F36ED007743F6 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480B29CB1F3F36ED007743F6 /* File.swift */; };
 		4825CF431F2FEFD30066B40D /* LGTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825CF421F2FEFD30066B40D /* LGTimer.swift */; };
 		4825CF451F2FFA5E0066B40D /* LGActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825CF441F2FFA5E0066B40D /* LGActivity.swift */; };
 		483238AA1F2E7AEA006194AE /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 483238A91F2E7AEA006194AE /* HealthKit.framework */; };
 		484F0FA81F2EB4790056F1E2 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484F0FA71F2EB4790056F1E2 /* HealthKitManager.swift */; };
 		4850E1B01F28EE00004D85A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4850E1AF1F28EE00004D85A7 /* AppDelegate.swift */; };
 		4850E1B21F28EE00004D85A7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4850E1B11F28EE00004D85A7 /* HomeViewController.swift */; };
-		4850E1B51F28EE00004D85A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4850E1B31F28EE00004D85A7 /* Main.storyboard */; };
 		4850E1B71F28EE00004D85A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4850E1B61F28EE00004D85A7 /* Assets.xcassets */; };
 		4850E1BA1F28EE00004D85A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4850E1B81F28EE00004D85A7 /* LaunchScreen.storyboard */; };
 		4850E1C91F2A8865004D85A7 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4850E1C81F2A8865004D85A7 /* IntentHandler.swift */; };
 		4850E1CD1F2A8865004D85A7 /* SiriHandler.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4850E1C61F2A8865004D85A7 /* SiriHandler.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		48998BD21F396E4200F7E4AB /* LGTimerContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48998BD11F396E4200F7E4AB /* LGTimerContentView.swift */; };
 		48A31BB01F32253500E919FB /* LGTimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BAF1F32253500E919FB /* LGTimeManager.swift */; };
-		48A31BB21F32550B00E919FB /* LGSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BB11F32550B00E919FB /* LGSlider.swift */; };
 		48A31BB51F331A4000E919FB /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BB41F331A4000E919FB /* ActivitiesViewController.swift */; };
 		48A31BB71F333D8600E919FB /* TitleBackgroundTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BB61F333D8600E919FB /* TitleBackgroundTableViewCell.swift */; };
 		48A31BB91F333EB900E919FB /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BB81F333EB900E919FB /* ActivityTableViewCell.swift */; };
 		48A31BBC1F3364AA00E919FB /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BBB1F3364AA00E919FB /* ActivityViewController.swift */; };
 		48A31BBE1F3372C100E919FB /* TimerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BBD1F3372C100E919FB /* TimerTableViewCell.swift */; };
-		48A31BC01F33A4CF00E919FB /* NewActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BBF1F33A4CF00E919FB /* NewActivityViewController.swift */; };
-		48A31BC21F33A4E700E919FB /* NewTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BC11F33A4E700E919FB /* NewTimerViewController.swift */; };
 		48A31BC51F34352200E919FB /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BC31F34352200E919FB /* TextFieldTableViewCell.swift */; };
 		48A31BC61F34352200E919FB /* LGTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BC41F34352200E919FB /* LGTextField.swift */; };
 		48A31BC91F35FA5400E919FB /* LGTextField+BottomBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BC71F35FA5400E919FB /* LGTextField+BottomBorder.swift */; };
@@ -68,6 +67,9 @@
 
 /* Begin PBXFileReference section */
 		14E8FA497D650EDF3219475A /* Pods_LetsGo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LetsGo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		480B29C51F3CA392007743F6 /* LGDurationSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGDurationSelection.swift; sourceTree = "<group>"; };
+		480B29C91F3F15C7007743F6 /* LGTimerControls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGTimerControls.swift; sourceTree = "<group>"; };
+		480B29CB1F3F36ED007743F6 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		4825CF421F2FEFD30066B40D /* LGTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGTimer.swift; sourceTree = "<group>"; };
 		4825CF441F2FFA5E0066B40D /* LGActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGActivity.swift; sourceTree = "<group>"; };
 		483238A91F2E7AEA006194AE /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -75,7 +77,6 @@
 		4850E1AC1F28EE00004D85A7 /* LetsGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LetsGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4850E1AF1F28EE00004D85A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4850E1B11F28EE00004D85A7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		4850E1B41F28EE00004D85A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4850E1B61F28EE00004D85A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4850E1B91F28EE00004D85A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4850E1BB1F28EE00004D85A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -85,14 +86,11 @@
 		4850E1CA1F2A8865004D85A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48998BD11F396E4200F7E4AB /* LGTimerContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGTimerContentView.swift; sourceTree = "<group>"; };
 		48A31BAF1F32253500E919FB /* LGTimeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGTimeManager.swift; sourceTree = "<group>"; };
-		48A31BB11F32550B00E919FB /* LGSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGSlider.swift; sourceTree = "<group>"; };
 		48A31BB41F331A4000E919FB /* ActivitiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitiesViewController.swift; sourceTree = "<group>"; };
 		48A31BB61F333D8600E919FB /* TitleBackgroundTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleBackgroundTableViewCell.swift; sourceTree = "<group>"; };
 		48A31BB81F333EB900E919FB /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		48A31BBB1F3364AA00E919FB /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		48A31BBD1F3372C100E919FB /* TimerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerTableViewCell.swift; sourceTree = "<group>"; };
-		48A31BBF1F33A4CF00E919FB /* NewActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewActivityViewController.swift; sourceTree = "<group>"; };
-		48A31BC11F33A4E700E919FB /* NewTimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTimerViewController.swift; sourceTree = "<group>"; };
 		48A31BC31F34352200E919FB /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		48A31BC41F34352200E919FB /* LGTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGTextField.swift; sourceTree = "<group>"; };
 		48A31BC71F35FA5400E919FB /* LGTextField+BottomBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LGTextField+BottomBorder.swift"; sourceTree = "<group>"; };
@@ -132,11 +130,10 @@
 			isa = PBXGroup;
 			children = (
 				4850E1B11F28EE00004D85A7 /* HomeViewController.swift */,
+				480B29CB1F3F36ED007743F6 /* File.swift */,
 				48B3965A1F3BBF7A0084F5DC /* TimerViewController.swift */,
 				48B3965C1F3BBF970084F5DC /* StopwatchViewController.swift */,
 				48A31BB41F331A4000E919FB /* ActivitiesViewController.swift */,
-				48A31BBF1F33A4CF00E919FB /* NewActivityViewController.swift */,
-				48A31BC11F33A4E700E919FB /* NewTimerViewController.swift */,
 				48A31BBB1F3364AA00E919FB /* ActivityViewController.swift */,
 			);
 			name = "View Controllers";
@@ -175,7 +172,6 @@
 		4825CF3F1F2FEBED0066B40D /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				4850E1B31F28EE00004D85A7 /* Main.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -249,8 +245,10 @@
 		48A31BB31F32551600E919FB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				48A31BB11F32550B00E919FB /* LGSlider.swift */,
+				48A31BC41F34352200E919FB /* LGTextField.swift */,
 				48998BD11F396E4200F7E4AB /* LGTimerContentView.swift */,
+				480B29C91F3F15C7007743F6 /* LGTimerControls.swift */,
+				480B29C51F3CA392007743F6 /* LGDurationSelection.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -259,7 +257,6 @@
 			isa = PBXGroup;
 			children = (
 				48A31BC31F34352200E919FB /* TextFieldTableViewCell.swift */,
-				48A31BC41F34352200E919FB /* LGTextField.swift */,
 				48A31BB81F333EB900E919FB /* ActivityTableViewCell.swift */,
 				48A31BBD1F3372C100E919FB /* TimerTableViewCell.swift */,
 				48B3965E1F3BCCCC0084F5DC /* CounterTableViewCell.swift */,
@@ -397,7 +394,6 @@
 				48E657AC1F2E1658007E649E /* tone.wav in Resources */,
 				48B396591F3BAC000084F5DC /* BetmHairline.otf in Resources */,
 				48B396581F3BAC000084F5DC /* Betm-Regular3.otf in Resources */,
-				4850E1B51F28EE00004D85A7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,13 +459,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				480B29CC1F3F36ED007743F6 /* File.swift in Sources */,
 				48B3965B1F3BBF7A0084F5DC /* TimerViewController.swift in Sources */,
+				480B29CA1F3F15C7007743F6 /* LGTimerControls.swift in Sources */,
 				48A31BB71F333D8600E919FB /* TitleBackgroundTableViewCell.swift in Sources */,
 				48A31BC61F34352200E919FB /* LGTextField.swift in Sources */,
 				4825CF431F2FEFD30066B40D /* LGTimer.swift in Sources */,
 				48A31BBE1F3372C100E919FB /* TimerTableViewCell.swift in Sources */,
 				48A31BC51F34352200E919FB /* TextFieldTableViewCell.swift in Sources */,
-				48A31BC21F33A4E700E919FB /* NewTimerViewController.swift in Sources */,
 				4850E1B21F28EE00004D85A7 /* HomeViewController.swift in Sources */,
 				48B3965F1F3BCCCC0084F5DC /* CounterTableViewCell.swift in Sources */,
 				48A31BC91F35FA5400E919FB /* LGTextField+BottomBorder.swift in Sources */,
@@ -479,13 +476,12 @@
 				48B3965D1F3BBF970084F5DC /* StopwatchViewController.swift in Sources */,
 				48A31BBC1F3364AA00E919FB /* ActivityViewController.swift in Sources */,
 				4825CF451F2FFA5E0066B40D /* LGActivity.swift in Sources */,
-				48A31BC01F33A4CF00E919FB /* NewActivityViewController.swift in Sources */,
+				480B29C61F3CA392007743F6 /* LGDurationSelection.swift in Sources */,
 				484F0FA81F2EB4790056F1E2 /* HealthKitManager.swift in Sources */,
 				48998BD21F396E4200F7E4AB /* LGTimerContentView.swift in Sources */,
 				48A31BCA1F35FA5400E919FB /* LGTextField+PlaceholderTextColor.swift in Sources */,
 				48A31BB51F331A4000E919FB /* ActivitiesViewController.swift in Sources */,
 				48B396611F3C55AC0084F5DC /* TimerSettingTableViewCell.swift in Sources */,
-				48A31BB21F32550B00E919FB /* LGSlider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,14 +504,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4850E1B31F28EE00004D85A7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4850E1B41F28EE00004D85A7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4850E1B81F28EE00004D85A7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

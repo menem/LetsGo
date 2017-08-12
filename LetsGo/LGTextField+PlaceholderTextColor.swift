@@ -13,13 +13,13 @@ extension LGTextField {
     
     func setPlaceHolder(placeHolderText: String) {
         self.attributedPlaceholder = NSAttributedString(string: placeHolderText,
-                                                        attributes: [NSForegroundColorAttributeName: UIColor.white])
+                                                        attributes: [NSForegroundColorAttributeName: #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)])
     }
     
     func setPlaceHolderTextColorForBeingSelected() {
         if let placeHolderText = self.placeholder {
             self.attributedPlaceholder = NSAttributedString(string: placeHolderText,
-                                                            attributes: [NSForegroundColorAttributeName: #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)])
+                                                            attributes: [NSForegroundColorAttributeName: #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)])
         }
     }
     
@@ -27,7 +27,7 @@ extension LGTextField {
         if (self.text?.isEmpty)! {
             if let placeHolderText = self.placeholder {
                 self.attributedPlaceholder = NSAttributedString(string: placeHolderText,
-                                                                attributes: [NSForegroundColorAttributeName: UIColor.white])
+                                                                attributes: [NSForegroundColorAttributeName: #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)])
             }
 
         }

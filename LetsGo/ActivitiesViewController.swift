@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ActivitiesViewController.swift
 //  LetsGo
 //
 //  Created by Menem Ragab on 8/3/17.
@@ -7,18 +7,20 @@
 //
 
 import UIKit
-import HGPlaceholders
 import RandomColorSwift
+import CNPPopupController
 
 
 let BannerTableViewCellIdentifier = "BannerTableViewCellIdentifier"
 let ActivityTableViewCellIdentifier = "ActivityTableViewCellIdentifier"
 
 class ActivitiesViewController: UITableViewController {
-    
-    var placeholderTableView: TableView?
+
     var activities = [LGActivity]()
     var colors = [UIColor]()
+    var activityNameTextField: LGTextField!
+    var activityName: String!
+    var popupController: CNPPopupController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,23 +29,59 @@ class ActivitiesViewController: UITableViewController {
         self.tableView.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
         self.tableView.separatorStyle = .none
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
-        
-        
-        placeholderTableView = tableView as? TableView
-        placeholderTableView?.placeholderDelegate = self
-        placeholderTableView?.showNoResultsPlaceholder()
+        self.title = "Activities"
 
+        loadActivities()
         
-        let timeManager = LGTimerManager()
-        activities = timeManager.loadActivities()
-        colors = randomColors(count: activities.count, hue: .random, luminosity: .light)
-        self.tableView.reloadData()
-        
-        
-        self.placeholderTableView?.reloadData()
+        let addButtonImage = UIImage(named:"icn_add")
+        let addBarButtonItem  = UIBarButtonItem(image: addButtonImage, style: .plain, target: self, action: #selector(openSettings))
+        self.navigationItem.rightBarButtonItem = addBarButtonItem
         
     }
+    func loadActivities(){
+        let timeManager = LGTimerManager()
+        activities = timeManager.loadActivities()
+        self.tableView.reloadData()
+    }
+    
+    func openSettings(){
+        activityNameTextField = LGTextField()
+        activityNameTextField.autocapitalizationType = .none
+        activityNameTextField.autocorrectionType = .no
+        activityNameTextField.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        activityNameTextField.textAlignment = .center
+        activityNameTextField.textColor = #colorLiteral(red: 0.2333382666, green: 0.5698561072, blue: 0.8839787841, alpha: 1)
+        activityNameTextField.translatesAutoresizingMaskIntoConstraints = false
+        activityNameTextField.placeholder = "Enter Activity Name"
+        activityNameTextField.tintColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
 
+        let closeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
+        let buttonImage = UIImage(named: "icn_close")
+        closeButton.setImage(buttonImage, for: .normal)
+        closeButton.addTarget(self, action: #selector(dismissPopUp), for: .touchUpInside)
+        
+        popupController = CNPPopupController(contents: [closeButton, activityNameTextField])
+        popupController.theme.popupStyle = .centered
+        popupController.theme.cornerRadius = 14.0
+        popupController.theme.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
+        popupController.theme.shouldDismissOnBackgroundTouch = true
+        popupController.present(animated: true)
+        popupController.delegate = self
+    }
+    
+    func dismissPopUp() {
+        self.popupController?.dismiss(animated: true)
+    }
+    
+    
+    func saveActivity() {
+        if ((activityNameTextField?.text?.characters.count)! > 0) {
+            let manager = LGTimerManager()
+            manager.saveActivity(title: (activityNameTextField?.text)!, type: "Workout")
+            print(activityName)
+            print(activityNameTextField?.text ?? "Workout")
+        }
+    }
     
 // MARK: - Table view data source
 
@@ -91,7 +129,6 @@ class ActivitiesViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: ActivityTableViewCellIdentifier, for: indexPath) as! ActivityTableViewCell
             let activity = activities[indexPath.row]
             cell.titlelabel.text = activity.title
-            cell.titlelabel.textColor = colors[indexPath.row]
             return cell
         }
         
@@ -100,8 +137,7 @@ class ActivitiesViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.section == 0) {
-            let newActivityViewController = NewActivityViewController()
-            self.navigationController?.pushViewController(newActivityViewController, animated: true)
+
         }else{
         let selectedActivity = activities[indexPath.row]
         let activityViewController = ActivityViewController()
@@ -110,22 +146,56 @@ class ActivitiesViewController: UITableViewController {
         }
         
     }
+
+}
+
+extension ActivitiesViewController : CNPPopupControllerDelegate {
     
+    func popupControllerWillDismiss(_ controller: CNPPopupController) {
+        print("Popup controller will be dismissed")
+        saveActivity()
+        loadActivities()
+    }
+    
+    func popupControllerDidPresent(_ controller: CNPPopupController) {
+        print("Popup controller presented")
+    }
     
 }
 
-extension ActivitiesViewController: PlaceholderDelegate {
-    
-    func tableView(_ tableView: TableView, actionButtonTappedFor placeholder: Placeholder) {
-        print(placeholder.key.value)
-        placeholderTableView?.showDefault()
-    }
-}
-
-class ProjectNameTableView: TableView {
-    
-    override func customSetup() {
-        placeholdersProvider = .basic
+extension ActivitiesViewController : UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        switch textField {
+        case activityNameTextField:
+            activityNameTextField.setBottomBarToSelectedState()
+            activityNameTextField.setPlaceHolderTextColorForBeingSelected()
+        default:
+            return
+        }
     }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        switch textField {
+        case activityNameTextField:
+            activityNameTextField.setBottomBarToDefaultState()
+            activityNameTextField.changePlaceHolderTextColorToDefault()
+            activityName = textField.text
+        default:
+            return
+        }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if (textField.text != nil && !(textField.text?.isEmpty)!) {
+            
+            switch activityNameTextField {
+            case activityNameTextField:
+                activityName = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+            default:
+                return false
+            }
+        }
+        return true
+    }
 }

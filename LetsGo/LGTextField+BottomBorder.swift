@@ -12,12 +12,12 @@ import UIKit
 extension LGTextField {
     
     func setBottomBarToSelectedState() {
-        self.tintColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
+        self.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
     }
     
     func setBottomBarToDefaultState() {
         if((self.text?.isEmpty)!) {
-            self.tintColor = .white
+            self.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         }
     }
     
