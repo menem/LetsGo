@@ -30,8 +30,10 @@ class TimerViewController: UITableViewController {
         self.title = "Timer"
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         
-        let playBarButton = UIBarButtonItem(title: "Play", style: .plain, target: self, action: #selector(startActivity))
-        self.navigationItem.rightBarButtonItem = playBarButton
+        
+        let playButtonImage = UIImage(named:"icn_play")
+        let playBarButtonItem  = UIBarButtonItem(image: playButtonImage, style: .plain, target: self, action: #selector(startActivity))
+        self.navigationItem.rightBarButtonItem = playBarButtonItem
     
     }
     

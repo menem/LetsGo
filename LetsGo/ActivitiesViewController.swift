@@ -29,7 +29,7 @@ class ActivitiesViewController: UITableViewController {
 
         let timeManager = LGTimerManager()
         activities = timeManager.loadActivities()
-        colors = randomColors(count: activities.count, hue: .random, luminosity: .light)
+        colors = randomColors(count: activities.count, hue: .random, luminosity: .dark)
         self.tableView.reloadData()
         
         let addButtonImage = UIImage(named:"icn_add")

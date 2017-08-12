@@ -9,7 +9,7 @@
 import UIKit
 import RandomColorSwift
 
-var cellColor = randomColor(hue: .random, luminosity: .light)
+var cellColor = randomColor(hue: .random, luminosity: .dark)
 
 class TimerTableViewCell: UITableViewCell {
     

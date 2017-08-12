@@ -24,7 +24,8 @@ class NewActivityViewController: UITableViewController {
         self.tableView.separatorStyle = .none
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
         
-        let saveBarButton  = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveActivity))
+        let saveButtonImage = UIImage(named:"icn_done")
+        let saveBarButton  = UIBarButtonItem(image: saveButtonImage, style: .plain, target: self, action: #selector(saveActivity))
         self.navigationItem.rightBarButtonItem = saveBarButton
         
         

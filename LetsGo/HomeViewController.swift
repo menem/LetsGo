@@ -304,14 +304,14 @@ class HomeViewController: UIViewController {
         
         intervalsLabel = UILabel(frame: CGRect(x: 0, y: 40, width: self.view.frame.size.width, height: 80))
         intervalsLabel.textAlignment = .center
-        intervalsLabel.font = UIFont (name: "Avenir-Heavy", size: 60)
+        intervalsLabel.font = UIFont (name: "Betm-Regular3", size: 60)
         intervalsLabel.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
 
         self.navigationController?.progressTintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
         let panelHeight = (self.view.frame.size.height/2)-80
         clockLabel = UILabel(frame: CGRect(x: 0, y: panelHeight, width: self.view.frame.size.width, height: 40))
         clockLabel.textAlignment = .center
-        clockLabel.font = UIFont (name: "Avenir-Book", size: 21)
+        clockLabel.font = UIFont (name: "Betm-Regular3", size: 21)
         clockLabel.textColor = #colorLiteral(red: 0.9373082519, green: 0.9373301864, blue: 0.9373183846, alpha: 1)
 
         ontimer = MZTimerLabel(label: timeLabel, andTimerType: MZTimerLabelTypeTimer)
