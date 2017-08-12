@@ -60,7 +60,7 @@ class HomeViewController: UITableViewController {
             return 40
         } else {
             if(indexPath.row == 0){
-                return self.view.frame.size.height * 0.75
+                return self.view.frame.size.height * 0.7
             }else{
                 return self.view.frame.size.height * 0.1
             }

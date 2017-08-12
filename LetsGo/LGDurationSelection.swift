@@ -16,13 +16,13 @@ class LGDurationSelection: UIView {
        let circularSlider = CircularSlider(frame: CGRect(x: 20, y: 20, width: 250, height: 250))
         circularSlider.diskColor = .clear
         circularSlider.diskFillColor = .clear
-        circularSlider.trackFillColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
-        circularSlider.trackColor = .clear
+        circularSlider.trackFillColor = #colorLiteral(red: 0.340575099, green: 0.3558157086, blue: 0.4202301502, alpha: 1)
+        circularSlider.trackColor = #colorLiteral(red: 0.8633617759, green: 0.8748404384, blue: 0.9247974157, alpha: 1)
         circularSlider.backgroundColor = .clear
         circularSlider.lineWidth = 4
         circularSlider.thumbLineWidth = 4
         circularSlider.thumbRadius = 4
-        circularSlider.endThumbTintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        circularSlider.endThumbTintColor = #colorLiteral(red: 0.340575099, green: 0.3558157086, blue: 0.4202301502, alpha: 1)
         circularSlider.endThumbStrokeHighlightedColor = .clear
         circularSlider.endThumbStrokeColor = .clear
         
@@ -39,7 +39,7 @@ class LGDurationSelection: UIView {
         circularSlider.diskColor = .clear
         circularSlider.diskFillColor = .clear
         circularSlider.trackFillColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
-        circularSlider.trackColor = .clear
+        circularSlider.trackColor = #colorLiteral(red: 0.8633617759, green: 0.8748404384, blue: 0.9247974157, alpha: 1)
         circularSlider.backgroundColor = .clear
         circularSlider.lineWidth = 4
         circularSlider.thumbLineWidth = 4
@@ -62,6 +62,7 @@ class LGDurationSelection: UIView {
         label.textAlignment = .center
         label.font = UIFont (name: "Betm-Regular3", size: 25)
         label.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -69,12 +70,23 @@ class LGDurationSelection: UIView {
     var secondsLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 260, y: 270, width: 60, height: 40))
         label.textAlignment = .center
-        label.font = UIFont (name: "Betm-Regular3", size: 25)
-        label.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        label.font = UIFont (name: "BetmHairline", size: 25)
+        label.textColor = #colorLiteral(red: 0.340575099, green: 0.3558157086, blue: 0.4202301502, alpha: 1)
+        label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
+    var timeTextLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: 260, y: 270, width: 60, height: 40))
+        label.textAlignment = .center
+        label.font = UIFont (name: "BetmHairline", size: 15)
+        label.text = "MIN:sec"
+        label.textColor = #colorLiteral(red: 0.340575099, green: 0.3558157086, blue: 0.4202301502, alpha: 1)
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -83,6 +95,8 @@ class LGDurationSelection: UIView {
         self.addSubview(minutesCircularSlider)
         self.addSubview(minutesLabel)
         self.addSubview(secondsLabel)
+        self.addSubview(timeTextLabel)
+        
         updateMinutes()
         updateSeconds()
         setNeedsUpdateConstraints()
@@ -107,14 +121,13 @@ class LGDurationSelection: UIView {
             
             minutesLabel.centerXAnchor.constraint(equalTo: minutesCircularSlider.centerXAnchor, constant: -20),
             minutesLabel.centerYAnchor.constraint(equalTo: minutesCircularSlider.centerYAnchor),
-            minutesLabel.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -40),
-            minutesLabel.heightAnchor.constraint(equalTo: self.heightAnchor, constant: -40),
-            
         
-            secondsLabel.centerXAnchor.constraint(equalTo: minutesCircularSlider.centerXAnchor, constant: 20),
-            secondsLabel.centerYAnchor.constraint(equalTo: minutesCircularSlider.centerYAnchor),
-            secondsLabel.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -40),
-            secondsLabel.heightAnchor.constraint(equalTo: self.heightAnchor, constant: -40)
+            secondsLabel.centerYAnchor.constraint(equalTo: minutesLabel.centerYAnchor),
+            secondsLabel.leftAnchor.constraint(equalTo: minutesLabel.rightAnchor),
+            
+            timeTextLabel.topAnchor.constraint(equalTo: minutesLabel.bottomAnchor),
+            timeTextLabel.centerXAnchor.constraint(equalTo: minutesLabel.rightAnchor),
+
             ])
         super.updateConstraints()
     }
@@ -122,7 +135,7 @@ class LGDurationSelection: UIView {
     func updateMinutes() {
         var selectedHour = Int(minutesCircularSlider.endPointValue)
         selectedHour = (selectedHour == 0 ? 12 : selectedHour)
-        minutesLabel.text = String(format: "%02d", selectedHour)
+        minutesLabel.text = String(format: "%02d:", selectedHour)
     }
     
     func adjustMinutes() {
