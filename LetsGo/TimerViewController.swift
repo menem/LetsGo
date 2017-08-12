@@ -28,7 +28,7 @@ class TimerViewController: UITableViewController {
         self.tableView.separatorStyle = .none
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
         self.title = "Timer"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName :#colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)]
         
         
         let playButtonImage = UIImage(named:"icn_play")
@@ -65,7 +65,7 @@ class TimerViewController: UITableViewController {
         if (indexPath.section == 0) {
             return 40
         } else {
-            return 320
+            return self.view.frame.size.height * 0.75
         }
     }
     

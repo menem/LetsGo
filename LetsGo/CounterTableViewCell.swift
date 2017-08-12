@@ -12,6 +12,7 @@ class CounterTableViewCell: UITableViewCell {
     
      var timerContentView: LGTimerContentView = {
         var timer = LGTimerContentView()
+        timer.translatesAutoresizingMaskIntoConstraints = false
         return timer
     }()
     
@@ -38,8 +39,8 @@ class CounterTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             timerContentView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
             timerContentView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            timerContentView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor),
-            timerContentView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor)
+            timerContentView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor),
+            timerContentView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor)
             
             ])
     }

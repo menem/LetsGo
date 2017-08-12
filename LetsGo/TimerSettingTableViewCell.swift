@@ -6,13 +6,12 @@
 //  Copyright © 2017 Phoenix fitness. All rights reserved.
 //
 import UIKit
-//import VBFPopFlatButton
 
 class TimerSettingTableViewCell: UITableViewCell {
     
     
     lazy var counterSetupButton: UIButton = {
-        let counterSetupButton = UIButton(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
+        let counterSetupButton = UIButton()
         let buttonImage = UIImage(named: "icn_settings")
         counterSetupButton.setImage(buttonImage, for: .normal)
         return counterSetupButton
@@ -39,8 +38,8 @@ class TimerSettingTableViewCell: UITableViewCell {
         super.updateConstraints()
         
         NSLayoutConstraint.activate([
-            counterSetupButton.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            counterSetupButton.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -10),
+            counterSetupButton.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            counterSetupButton.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -70),
             counterSetupButton.widthAnchor.constraint(equalToConstant: 60),
             counterSetupButton.heightAnchor.constraint(equalToConstant: 60),
             

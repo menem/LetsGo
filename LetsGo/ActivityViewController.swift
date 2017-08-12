@@ -30,7 +30,7 @@ class ActivityViewController: UITableViewController {
         self.tableView.separatorStyle = .none
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
         self.title = activity.title
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)]
         
         let timeManager = LGTimerManager()
         timers = timeManager.loadTimers(activity: activity)
@@ -54,6 +54,8 @@ class ActivityViewController: UITableViewController {
         timeContentView.timer.setCountDownTime((timers.first?.duration)!)
         currentInterval = timers.first?.intervals
         self.title = timers.first?.title
+        let selectedIndexPath = IndexPath(row: 0, section: 1)
+        self.tableView.cellForRow(at: selectedIndexPath)?.backgroundColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
         timeContentView.playSound()
         timeContentView.timer.start()
     }
@@ -62,6 +64,8 @@ class ActivityViewController: UITableViewController {
         currentInterval = timers[currentlyPlaying].intervals
         timeContentView.timer.setCountDownTime(timerDuration)
         self.title = timers[currentlyPlaying].title
+        let selectedIndexPath = IndexPath(row: currentlyPlaying, section: 1)
+        self.tableView.cellForRow(at: selectedIndexPath)?.backgroundColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
         timeContentView.playSound()
         timeContentView.timer.start()
     }
@@ -69,6 +73,8 @@ class ActivityViewController: UITableViewController {
         let timerDuration = timers[index].duration
         timeContentView.timer.setCountDownTime(timerDuration)
         self.title = timers[index].title
+        let selectedIndexPath = IndexPath(row: currentlyPlaying, section: 1)
+        self.tableView.cellForRow(at: selectedIndexPath)?.backgroundColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
         timeContentView.playSound()
         timeContentView.timer.start()
     }

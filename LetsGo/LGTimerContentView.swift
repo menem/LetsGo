@@ -18,7 +18,7 @@ class LGTimerContentView: UIView {
 //TODO: the timelabel requires the frame being set!!
     
     lazy var timeLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 250, height: 120))
+        let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont (name: "Betm-Regular3", size: 60)
         label.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
@@ -65,12 +65,10 @@ class LGTimerContentView: UIView {
         NSLayoutConstraint.activate([
             timeLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             timeLabel.topAnchor.constraint(equalTo:  self.topAnchor),
-            timeLabel.widthAnchor.constraint(equalToConstant: self.frame.size.width),
-            timeLabel.heightAnchor.constraint(equalToConstant: self.frame.size.height)
+            timeLabel.widthAnchor.constraint(equalTo: self.widthAnchor),
+            timeLabel.heightAnchor.constraint(equalTo: self.heightAnchor)
             ])
         super.updateConstraints()
-            self.setNeedsLayout()
-            self.layoutIfNeeded()
     }
     
 }
