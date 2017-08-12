@@ -11,11 +11,12 @@ class TimerSettingTableViewCell: UITableViewCell {
     
     
     lazy var counterSetupButton: UIButton = {
-        let counterSetupButton = UIButton()
+        let button = UIButton()
         let buttonImage = UIImage(named: "icn_settings")
-        counterSetupButton.setImage(buttonImage, for: .normal)
-        counterSetupButton.translatesAutoresizingMaskIntoConstraints = false
-        return counterSetupButton
+        button.setImage(buttonImage, for: .normal)
+        button.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

@@ -12,33 +12,36 @@ import UIKit
 class LGTimerControls: UIView {
     
     lazy var playButton: UIButton = {
-        let counterSetupButton = UIButton()
+        let button = UIButton()
         let buttonImage = UIImage(named: "icn_play")
-        counterSetupButton.setImage(buttonImage, for: .normal)
-        counterSetupButton.translatesAutoresizingMaskIntoConstraints = false
-        return counterSetupButton
+        button.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        button.setImage(buttonImage, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     
     lazy var pauseButton: UIButton = {
-        let counterSetupButton = UIButton()
+        let button = UIButton()
         let buttonImage = UIImage(named: "icn_pause")
-        counterSetupButton.setImage(buttonImage, for: .normal)
-        counterSetupButton.translatesAutoresizingMaskIntoConstraints = false
-        return counterSetupButton
+        button.setImage(buttonImage, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     lazy var stopButton: UIButton = {
-        let counterSetupButton = UIButton()
+        let button = UIButton()
         let buttonImage = UIImage(named: "icn_stop")
-        counterSetupButton.setImage(buttonImage, for: .normal)
-        counterSetupButton.translatesAutoresizingMaskIntoConstraints = false
-        return counterSetupButton
+        button.setImage(buttonImage, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
-    
-    
-    
+    func adjustTintColor(newColor: UIColor) {
+        playButton.tintColor = newColor
+        pauseButton.tintColor = newColor
+        stopButton.tintColor = newColor
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(playButton)

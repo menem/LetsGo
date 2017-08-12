@@ -120,7 +120,7 @@ class ActivityViewController: UITableViewController {
         if (section == 0) {
             return 0
         } else {
-            return 80
+            return 150
         }
     }
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
