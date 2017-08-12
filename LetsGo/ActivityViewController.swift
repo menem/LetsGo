@@ -40,10 +40,6 @@ class ActivityViewController: UITableViewController {
         let addBarButtonItem  = UIBarButtonItem(image: addButtonImage, style: .plain, target: self, action: #selector(pushNewActivity))
         self.navigationItem.rightBarButtonItem = addBarButtonItem
         
-        timeContentView = LGTimerContentView(frame: CGRect(x:0, y: (self.view.frame.size.height)-160, width: self.view.frame.size.width, height: 120))
-        timeContentView.timer.setCountDownTime(calculateTotalTime())
-        timeContentView.timer.delegate = self
-        self.view.addSubview(timeContentView)
 
     }
     
@@ -114,7 +110,24 @@ class ActivityViewController: UITableViewController {
         
         return 0
     }
-    
+  override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if (section == 0) {
+            return 0
+        } else {
+            return 80
+        }
+    }
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if (section != 0) {
+            timeContentView = LGTimerContentView(frame: CGRect(x:0, y: 0, width: self.view.frame.size.width, height: 80))
+            timeContentView.timer.setCountDownTime(calculateTotalTime())
+            timeContentView.timer.delegate = self
+            timeContentView.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
+            return timeContentView
+        }else{
+        return nil
+        }
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.section == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: BannerTableViewCellIdentifier, for: indexPath) as! TitleBackgroundTableViewCell

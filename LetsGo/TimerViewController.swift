@@ -19,7 +19,7 @@ class TimerViewController: UITableViewController {
     var timer: LGTimer!
     var timeContentView: LGTimerContentView!
     var popupController: CNPPopupController!
-    
+    var durationSelector: LGDurationSelection!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,7 +65,7 @@ class TimerViewController: UITableViewController {
         if (indexPath.section == 0) {
             return 40
         } else {
-            return 120
+            return 320
         }
     }
     
@@ -76,8 +76,9 @@ class TimerViewController: UITableViewController {
         
         return 0
     }
+    
     func openSettings(){
-        let durationSelector = LGDurationSelection(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
+        durationSelector = LGDurationSelection(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
        
         let closeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
          let buttonImage = UIImage(named: "icn_close")
@@ -90,13 +91,13 @@ class TimerViewController: UITableViewController {
         popupController.theme.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
         popupController.theme.shouldDismissOnBackgroundTouch = true
         popupController.present(animated: true)
-        
+        popupController.delegate = self
     }
     
     func dismissPopUp() {
         self.popupController?.dismiss(animated: true)
-//        print("Block for button: \(button.titleLabel?.text)")
     }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.section == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: BannerTableViewCellIdentifier, for: indexPath) as! TitleBackgroundTableViewCell
@@ -124,9 +125,6 @@ class TimerViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if (indexPath.section == 0) {
-//
-//        }
         if (indexPath.section == 0) {
             let newActivityViewController = ActivitiesViewController()
             self.navigationController?.pushViewController(newActivityViewController, animated: true)
@@ -143,4 +141,20 @@ extension TimerViewController: MZTimerLabelDelegate {
     func timerLabel(_ timerLabel: MZTimerLabel!, finshedCountDownTimerWithTime countTime: TimeInterval){
 
     }
+}
+
+
+extension TimerViewController : CNPPopupControllerDelegate {
+    
+    func popupControllerWillDismiss(_ controller: CNPPopupController) {
+        print("Popup controller will be dismissed")
+        let minutesInSeconds = Double(self.durationSelector.minutesLabel.text!)! * 60
+        let totalSeconds = minutesInSeconds + Double(self.durationSelector.secondsLabel.text!)!
+        self.timeContentView.timer.setCountDownTime(totalSeconds)
+    }
+    
+    func popupControllerDidPresent(_ controller: CNPPopupController) {
+        print("Popup controller presented")
+    }
+    
 }

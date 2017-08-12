@@ -10,9 +10,8 @@ import RandomColorSwift
 
 class CounterTableViewCell: UITableViewCell {
     
-    lazy var timerContentView: LGTimerContentView = {
+     var timerContentView: LGTimerContentView = {
         var timer = LGTimerContentView()
-//        con   tentview
         return timer
     }()
     
@@ -24,9 +23,8 @@ class CounterTableViewCell: UITableViewCell {
         self.backgroundColor = .clear
         
         contentView.addSubview(timerContentView)
-        timerContentView.frame = contentView.frame
         setNeedsUpdateConstraints()
-//        contentView.setNeedsLayout()
+
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -38,10 +36,10 @@ class CounterTableViewCell: UITableViewCell {
         super.updateConstraints()
         
         NSLayoutConstraint.activate([
-            timerContentView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            timerContentView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+            timerContentView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            timerContentView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
             timerContentView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor),
-            timerContentView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor),
+            timerContentView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor)
             
             ])
     }

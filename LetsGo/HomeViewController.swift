@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
     var clockLabel: UILabel!
     var clockTimer = Timer()
     let modes = ["timer", "stopwatch", "tabata"]
-    var selectedIndex = 0
+    var selectedIndex = 1
     var titleView: UILabel!
     var isInterval: Bool!
     var onInterval = 0.0
