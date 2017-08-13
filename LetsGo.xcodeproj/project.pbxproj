@@ -38,6 +38,7 @@
 		48B3965F1F3BCCCC0084F5DC /* CounterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B3965E1F3BCCCC0084F5DC /* CounterTableViewCell.swift */; };
 		48B396611F3C55AC0084F5DC /* TimerSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B396601F3C55AC0084F5DC /* TimerSettingTableViewCell.swift */; };
 		48E657AC1F2E1658007E649E /* tone.wav in Resources */ = {isa = PBXBuildFile; fileRef = 48E657AB1F2E1658007E649E /* tone.wav */; };
+		48F0231E1F3FC36000EED177 /* IntervalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F0231D1F3FC36000EED177 /* IntervalsViewController.swift */; };
 		4C3B67DF2BC822FFDB07F9C5 /* Pods_LetsGo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14E8FA497D650EDF3219475A /* Pods_LetsGo.framework */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +103,7 @@
 		48B3965E1F3BCCCC0084F5DC /* CounterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CounterTableViewCell.swift; sourceTree = "<group>"; };
 		48B396601F3C55AC0084F5DC /* TimerSettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerSettingTableViewCell.swift; sourceTree = "<group>"; };
 		48E657AB1F2E1658007E649E /* tone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tone.wav; sourceTree = "<group>"; };
+		48F0231D1F3FC36000EED177 /* IntervalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervalsViewController.swift; sourceTree = "<group>"; };
 		5C1CAB1FD870C4C22C7A8CB9 /* Pods-LetsGo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetsGo.release.xcconfig"; path = "Pods/Target Support Files/Pods-LetsGo/Pods-LetsGo.release.xcconfig"; sourceTree = "<group>"; };
 		E8418AE36AB7D1935CE2EE43 /* Pods-LetsGo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetsGo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LetsGo/Pods-LetsGo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,6 +137,7 @@
 				48B3965C1F3BBF970084F5DC /* StopwatchViewController.swift */,
 				48A31BB41F331A4000E919FB /* ActivitiesViewController.swift */,
 				48A31BBB1F3364AA00E919FB /* ActivityViewController.swift */,
+				48F0231D1F3FC36000EED177 /* IntervalsViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 				48A31BB01F32253500E919FB /* LGTimeManager.swift in Sources */,
 				48A31BB91F333EB900E919FB /* ActivityTableViewCell.swift in Sources */,
 				48B3965D1F3BBF970084F5DC /* StopwatchViewController.swift in Sources */,
+				48F0231E1F3FC36000EED177 /* IntervalsViewController.swift in Sources */,
 				48A31BBC1F3364AA00E919FB /* ActivityViewController.swift in Sources */,
 				4825CF451F2FFA5E0066B40D /* LGActivity.swift in Sources */,
 				480B29C61F3CA392007743F6 /* LGDurationSelection.swift in Sources */,
