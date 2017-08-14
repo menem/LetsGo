@@ -22,10 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setAppearance()
         
         let homeViewController = HomeViewController()
-        //        homeViewController.userIntent = startIntent
-//        let navViewController = UINavigationController(rootViewController: homeViewController)
+//            homeViewController.userIntent = startIntent
+        let navViewController = UINavigationController(rootViewController: homeViewController)
         
-        window!.rootViewController = homeViewController
+        window!.rootViewController = navViewController
         window!.makeKeyAndVisible()
         
         return true
