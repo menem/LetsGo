@@ -49,7 +49,7 @@ class LGDurationSelection: UIView {
         circularSlider.endThumbStrokeColor = .clear
         
         
-        circularSlider.minimumValue = 0
+        circularSlider.minimumValue = 1
         circularSlider.maximumValue = 60
         circularSlider.endPointValue = 10
         circularSlider.addTarget(self, action: #selector(updateMinutes), for: .valueChanged)
@@ -133,14 +133,14 @@ class LGDurationSelection: UIView {
     }
 
     func updateMinutes() {
-        var selectedHour = Int(minutesCircularSlider.endPointValue)
-        selectedHour = (selectedHour == 0 ? 12 : selectedHour)
-        minutesLabel.text = String(format: "%02d:", selectedHour)
+        var selectedMinute = Int(minutesCircularSlider.endPointValue)
+        selectedMinute = (selectedMinute == 60 ? 0 : selectedMinute)
+        minutesLabel.text = String(format: "%02d", selectedMinute)
     }
     
     func adjustMinutes() {
-        let selectedHour = round(minutesCircularSlider.endPointValue)
-        minutesCircularSlider.endPointValue = selectedHour
+        let selectedMinute = round(minutesCircularSlider.endPointValue)
+        minutesCircularSlider.endPointValue = selectedMinute
         updateMinutes()
     }
     

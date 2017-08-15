@@ -33,6 +33,8 @@ class TimerViewController: UITableViewController {
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "icn_activities"), style: .plain, target: self, action: #selector(pushActivities))
         self.navigationItem.rightBarButtonItem = rightBarButton
         
+        configureSettings()
+        
     }
     
     func pushActivities(){
@@ -73,8 +75,8 @@ class TimerViewController: UITableViewController {
         
         return 0
     }
-    
-    func openSettings(){
+    func configureSettings() {
+        
         durationSelector = LGDurationSelection(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
         
         let closeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
@@ -87,8 +89,13 @@ class TimerViewController: UITableViewController {
         popupController.theme.cornerRadius = 14.0
         popupController.theme.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
         popupController.theme.shouldDismissOnBackgroundTouch = true
-        popupController.present(animated: true)
+        
         popupController.delegate = self
+        
+    }
+    func openSettings(){
+    popupController.present(animated: true)
+    
     }
     
     func dismissPopUp() {
@@ -142,8 +149,12 @@ extension TimerViewController : CNPPopupControllerDelegate {
     
     func popupControllerWillDismiss(_ controller: CNPPopupController) {
         print("Popup controller will be dismissed")
-        let minutesInSeconds = Double(self.durationSelector.minutesLabel.text!)! * 60
-        let totalSeconds = minutesInSeconds + Double(self.durationSelector.secondsLabel.text!)!
+        durationSelector.adjustMinutes()
+        durationSelector.adjustSeconds()
+        
+        let minuteReading = Double(durationSelector.minutesLabel.text! ) ?? 0
+        let minutesInSeconds = minuteReading * 60
+        let totalSeconds = minutesInSeconds + Double(durationSelector.secondsLabel.text!)!
         self.timeContentView.timer.setCountDownTime(totalSeconds)
     }
     

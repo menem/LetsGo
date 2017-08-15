@@ -16,7 +16,11 @@ class IntervalsViewController: UITableViewController {
     var timer: LGTimer!
     var timeContentView: LGTimerContentView!
     var popupController: CNPPopupController!
-    var durationSelector: LGDurationSelection!
+    var onDurationSelector: LGDurationSelection!
+    var offDurationSelector: LGDurationSelection!
+    var scrollView: UIScrollView?
+    var StepCounter: UIStepper!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -73,14 +77,34 @@ class IntervalsViewController: UITableViewController {
     }
     
     func openSettings(){
-        durationSelector = LGDurationSelection(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
+        
+        onDurationSelector = LGDurationSelection(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
+        offDurationSelector = LGDurationSelection(frame: CGRect(x: 310, y: 0, width: 300, height: 400))
+        
+        scrollView = UIScrollView(frame: onDurationSelector.frame)
+        scrollView?.delegate = self
+        let bounds = onDurationSelector.bounds
+        let width = bounds.size.width
+        let height = bounds.size.height
+        scrollView!.contentSize = CGSize(width: 2*width, height: height)
+        let views = [onDurationSelector, offDurationSelector]
+        
+        for view in views {
+            scrollView!.addSubview(view!)
+        }
+        StepCounter = UIStepper(frame:  CGRect(x: 0, y: 0, width: 100, height: 40))
+        StepCounter.autorepeat = true
+        StepCounter.maximumValue = 10.0
+        StepCounter.minimumValue = 1.0
+        StepCounter.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         
         let closeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
         let buttonImage = UIImage(named: "icn_close")
         closeButton.setImage(buttonImage, for: .normal)
+        closeButton.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         closeButton.addTarget(self, action: #selector(dismissPopUp), for: .touchUpInside)
         
-        popupController = CNPPopupController(contents: [closeButton, durationSelector])
+        popupController = CNPPopupController(contents: [closeButton, scrollView!,StepCounter])
         popupController.theme.popupStyle = .centered
         popupController.theme.cornerRadius = 14.0
         popupController.theme.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
@@ -140,13 +164,14 @@ extension IntervalsViewController : CNPPopupControllerDelegate {
     
     func popupControllerWillDismiss(_ controller: CNPPopupController) {
         print("Popup controller will be dismissed")
-        let minutesInSeconds = Double(self.durationSelector.minutesLabel.text!)! * 60
-        let totalSeconds = minutesInSeconds + Double(self.durationSelector.secondsLabel.text!)!
-        self.timeContentView.timer.setCountDownTime(totalSeconds)
+//        let minutesInSeconds = Double(self.durationSelector.minutesLabel.text!)! * 60
+//        let totalSeconds = minutesInSeconds + Double(self.durationSelector.secondsLabel.text!)!
+//        self.timeContentView.timer.setCountDownTime(totalSeconds)
     }
     
     func popupControllerDidPresent(_ controller: CNPPopupController) {
         print("Popup controller presented")
+        
     }
     
 }

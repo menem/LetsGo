@@ -17,7 +17,7 @@ class HomeViewController: UIViewController {
         
         let screenFrame = self.view.frame
         scrollView = UIScrollView(frame: screenFrame)
-        scrollView?.delegate = self
+//        scrollView?.delegate = self
         self.view.addSubview(scrollView!)
         
         let timerViewController = TimerViewController()
@@ -68,11 +68,11 @@ class HomeViewController: UIViewController {
     
 }
 
-extension HomeViewController:UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollView.contentOffset = CGPoint(x: scrollView.contentOffset.x, y: 64)
-    }
-}
+//extension HomeViewController:UIScrollViewDelegate {
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        scrollView.contentOffset = CGPoint(x: scrollView.contentOffset.x, y: 64)
+//    }
+//}
 
 //import EZSwipeController
 //
