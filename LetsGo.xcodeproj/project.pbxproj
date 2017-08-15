@@ -40,6 +40,7 @@
 		48E657AC1F2E1658007E649E /* tone.wav in Resources */ = {isa = PBXBuildFile; fileRef = 48E657AB1F2E1658007E649E /* tone.wav */; };
 		48F0231E1F3FC36000EED177 /* IntervalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F0231D1F3FC36000EED177 /* IntervalsViewController.swift */; };
 		48F023201F428EE500EED177 /* LGRoundSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F0231F1F428EE500EED177 /* LGRoundSelector.swift */; };
+		48F023221F43AA7200EED177 /* LGDoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F023211F43AA7200EED177 /* LGDoneButton.swift */; };
 		4C3B67DF2BC822FFDB07F9C5 /* Pods_LetsGo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14E8FA497D650EDF3219475A /* Pods_LetsGo.framework */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +107,7 @@
 		48E657AB1F2E1658007E649E /* tone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tone.wav; sourceTree = "<group>"; };
 		48F0231D1F3FC36000EED177 /* IntervalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervalsViewController.swift; sourceTree = "<group>"; };
 		48F0231F1F428EE500EED177 /* LGRoundSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGRoundSelector.swift; sourceTree = "<group>"; };
+		48F023211F43AA7200EED177 /* LGDoneButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGDoneButton.swift; sourceTree = "<group>"; };
 		5C1CAB1FD870C4C22C7A8CB9 /* Pods-LetsGo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetsGo.release.xcconfig"; path = "Pods/Target Support Files/Pods-LetsGo/Pods-LetsGo.release.xcconfig"; sourceTree = "<group>"; };
 		E8418AE36AB7D1935CE2EE43 /* Pods-LetsGo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetsGo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LetsGo/Pods-LetsGo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -255,6 +257,7 @@
 				480B29C91F3F15C7007743F6 /* LGTimerControls.swift */,
 				480B29C51F3CA392007743F6 /* LGDurationSelection.swift */,
 				48F0231F1F428EE500EED177 /* LGRoundSelector.swift */,
+				48F023211F43AA7200EED177 /* LGDoneButton.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				480B29CC1F3F36ED007743F6 /* File.swift in Sources */,
+				48F023221F43AA7200EED177 /* LGDoneButton.swift in Sources */,
 				48B3965B1F3BBF7A0084F5DC /* TimerViewController.swift in Sources */,
 				480B29CA1F3F15C7007743F6 /* LGTimerControls.swift in Sources */,
 				48A31BB71F333D8600E919FB /* TitleBackgroundTableViewCell.swift in Sources */,

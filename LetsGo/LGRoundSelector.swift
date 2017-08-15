@@ -17,7 +17,7 @@ class LGRoundSelector: UIView {
         label.textAlignment = .center
         label.font = UIFont (name: "BetmHairline", size: 25)
         label.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
-        label.text = "Rounds:"
+        label.text = "Rounds: 1"
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -72,10 +72,10 @@ class LGRoundSelector: UIView {
     override func updateConstraints() {
         NSLayoutConstraint.activate([
             roundsLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            roundsLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            roundsLabel.rightAnchor.constraint(equalTo: self.centerXAnchor),
             
             roundStepper.centerYAnchor.constraint(equalTo: roundsLabel.centerYAnchor),
-            roundStepper.leftAnchor.constraint(equalTo: roundsLabel.rightAnchor),
+            roundStepper.leftAnchor.constraint(equalTo: roundsLabel.rightAnchor , constant: 5),
             roundStepper.widthAnchor.constraint(equalToConstant: 100),
             roundStepper.heightAnchor.constraint(equalToConstant: 40),
             

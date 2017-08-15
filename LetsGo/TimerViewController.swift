@@ -79,13 +79,10 @@ class TimerViewController: UITableViewController {
     func configureSettings() {
         
         durationSelector = LGDurationSelection(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
+        let closeButton = LGDoneButton(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
+        closeButton.doneButton.addTarget(self, action: #selector(dismissPopUp), for: .touchUpInside)
         
-        let closeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
-        let buttonImage = UIImage(named: "icn_close")
-        closeButton.setImage(buttonImage, for: .normal)
-        closeButton.addTarget(self, action: #selector(dismissPopUp), for: .touchUpInside)
-        
-        popupController = CNPPopupController(contents: [closeButton, durationSelector])
+        popupController = CNPPopupController(contents: [durationSelector, closeButton])
         popupController.theme.popupStyle = .centered
         popupController.theme.cornerRadius = 14.0
         popupController.theme.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
@@ -100,6 +97,13 @@ class TimerViewController: UITableViewController {
     }
     
     func dismissPopUp() {
+        durationSelector.adjustMinutes()
+        durationSelector.adjustSeconds()
+        
+        let minuteReading = Double(durationSelector.minutesLabel.text! ) ?? 0
+        let minutesInSeconds = minuteReading * 60
+        let totalSeconds = minutesInSeconds + Double(durationSelector.secondsLabel.text!)!
+        self.timeContentView.timer.setCountDownTime(totalSeconds)
         self.popupController?.dismiss(animated: true)
     }
     
@@ -150,13 +154,7 @@ extension TimerViewController : CNPPopupControllerDelegate {
     
     func popupControllerWillDismiss(_ controller: CNPPopupController) {
         print("Popup controller will be dismissed")
-        durationSelector.adjustMinutes()
-        durationSelector.adjustSeconds()
-        
-        let minuteReading = Double(durationSelector.minutesLabel.text! ) ?? 0
-        let minutesInSeconds = minuteReading * 60
-        let totalSeconds = minutesInSeconds + Double(durationSelector.secondsLabel.text!)!
-        self.timeContentView.timer.setCountDownTime(totalSeconds)
+
     }
     
     func popupControllerDidPresent(_ controller: CNPPopupController) {

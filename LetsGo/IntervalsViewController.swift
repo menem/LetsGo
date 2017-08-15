@@ -97,13 +97,11 @@ class IntervalsViewController: UITableViewController {
 
         roundCounter = LGRoundSelector(frame: CGRect(x: 0, y: 0, width: 300, height: 40))
         
-        let closeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
-        let buttonImage = UIImage(named: "icn_close")
-        closeButton.setImage(buttonImage, for: .normal)
-        closeButton.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
-        closeButton.addTarget(self, action: #selector(dismissPopUp), for: .touchUpInside)
+        let closeButton = LGDoneButton(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
         
-        popupController = CNPPopupController(contents: [closeButton, scrollView!,roundCounter])
+        closeButton.doneButton.addTarget(self, action: #selector(dismissPopUp), for: .touchUpInside)
+        
+        popupController = CNPPopupController(contents: [roundCounter, scrollView!, closeButton])
         popupController.theme.popupStyle = .centered
         popupController.theme.cornerRadius = 14.0
         popupController.theme.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
