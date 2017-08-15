@@ -11,16 +11,17 @@ import UIKit
 
 class HomeViewController: UIViewController {
     var scrollView: UIScrollView?
-    
+    var pageControl : UIPageControl!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         let screenFrame = self.view.bounds
         scrollView = UIScrollView(frame: screenFrame)
         scrollView?.isPagingEnabled = true
         scrollView?.isDirectionalLockEnabled = true
         
-//        scrollView?.delegate = self
+        scrollView?.delegate = self
         self.view.addSubview(scrollView!)
         
         let timerViewController = TimerViewController()
@@ -32,7 +33,9 @@ class HomeViewController: UIViewController {
         let height = bounds.size.height
         
         scrollView!.contentSize = CGSize(width: 3*width, height: height - 100)
-        
+        let pageX = (bounds.size.width/2) - 100
+        let pageY = height - 70
+         pageControl = UIPageControl(frame: CGRect(x:pageX, y:pageY, width:200, height:50))
         
         let viewControllers = [timerViewController, stopViewController, intervalsViewController]
         
@@ -40,8 +43,6 @@ class HomeViewController: UIViewController {
         
         
         for viewController in viewControllers {
-            // index is the index within the array
-            // participant is the real object contained in the array
             addChildViewController(viewController);
             let originX:CGFloat = CGFloat(idx) * width;
             viewController.view.frame = CGRect(x: originX, y: 0, width: width, height: height);
@@ -49,6 +50,8 @@ class HomeViewController: UIViewController {
             viewController.didMove(toParentViewController: self)
             idx += 1;
         }
+         configurePageControl()
+
         self.title = "Timer"
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName :#colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)]
         
@@ -68,80 +71,30 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func configurePageControl() {
+        // The total number of pages that are available is based on how many available colors we have.
+        self.pageControl.numberOfPages = 3
+        self.pageControl.currentPage = 0
+        self.pageControl.pageIndicatorTintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        self.pageControl.currentPageIndicatorTintColor = UIColor(red:0.83, green:0.84, blue:0.91, alpha:1.00)
+        pageControl.addTarget(self, action: #selector(self.changePage(sender:)), for: UIControlEvents.valueChanged)
+        self.view.addSubview(pageControl)
+        
+    }
+    
+    // MARK : TO CHANGE WHILE CLICKING ON PAGE CONTROL
+    func changePage(sender: AnyObject) -> () {
+        let x = CGFloat(pageControl.currentPage) * (scrollView?.frame.size.width)!
+        scrollView?.setContentOffset(CGPoint(x:x, y:-64), animated: true)
+    }
+    
+
     
 }
-
-//extension HomeViewController:UIScrollViewDelegate {
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        scrollView.contentOffset = CGPoint(x: scrollView.contentOffset.x, y: 64)
-//    }
-//}
-
-//import EZSwipeController
-//
-//class HomeViewController: EZSwipeController {
-//    override func setupView() {
-//        datasource = self
-//    }
-//    
-//    func pushActivities(){
-//        let activitiesViewController = ActivitiesViewController()
-//        self.navigationController?.pushViewController(activitiesViewController, animated: true)
-//    }
-//}
-//
-//extension HomeViewController: EZSwipeControllerDataSource {
-//    func viewControllerData() -> [UIViewController] {
-//        let timerViewController = TimerViewController()
-//        let stopViewController = StopwatchViewController()
-//        let intervalsViewController = IntervalsViewController()
-//        
-//        return [timerViewController, stopViewController,intervalsViewController]
-//    }
-//    
-//    func titlesForPages() -> [String] {
-//        return ["Timer", "Stopwatch", "Tabata"]
-//    }
-//    
-//    func indexOfStartingPage() -> Int {
-//        return 1
-//    }
-//    
-//    func changedToPageIndex(_ index: Int) {
-//        // You can do anything from here, for now we'll just print the new index
-//        print(index)
-//    }
-//
-//    func navigationBarDataForPageIndex(_ index: Int) -> UINavigationBar {
-//        var title = ""
-//        switch index {
-//        case 1:
-//            title = "Stopwatch"
-//        case 2:
-//            title = "Tabata"
-//        default:
-//             title = "Timer"
-//        }
-//        
-//
-//        let navigationBar = UINavigationBar()
-//         navigationBar.barStyle = UIBarStyle.default
-//        let navigationItem = UINavigationItem(title: title)
-//        navigationItem.hidesBackButton = true
-//        
-//        let rightBarButton = UIBarButtonItem(image: UIImage(named: "icn_activities"), style: .plain, target: self, action: #selector(pushActivities))
-//        navigationItem.leftBarButtonItem = nil
-//        navigationItem.rightBarButtonItem = rightBarButton
-//        navigationBar.pushItem(navigationItem, animated: false)
-//        return navigationBar
-//    }
-//
-//    func disableSwipingForRightButtonAtPageIndex(_ index: Int) -> Bool {
-//         return false
-//    }
-//    func clickedRightButtonFromPageIndex(_ index: Int) {
-//        pushActivities()
-//    }
-//
-//
-//}
+extension HomeViewController:UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+        let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
+        pageControl.currentPage = Int(pageNumber)
+    }
+}
