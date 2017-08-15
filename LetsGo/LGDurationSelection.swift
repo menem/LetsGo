@@ -68,7 +68,16 @@ class LGDurationSelection: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+    var separatorLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = UIFont (name: "Betm-Regular3", size: 30)
+        label.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        label.text = ":"
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     var secondsLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -96,6 +105,7 @@ class LGDurationSelection: UIView {
         self.addSubview(secondsCircularSlider)
         self.addSubview(minutesCircularSlider)
         self.addSubview(minutesLabel)
+        self.addSubview(separatorLabel)
         self.addSubview(secondsLabel)
         self.addSubview(timeTextLabel)
         
@@ -124,8 +134,11 @@ class LGDurationSelection: UIView {
             minutesLabel.centerXAnchor.constraint(equalTo: minutesCircularSlider.centerXAnchor, constant: -20),
             minutesLabel.centerYAnchor.constraint(equalTo: minutesCircularSlider.centerYAnchor),
         
-            secondsLabel.centerYAnchor.constraint(equalTo: minutesLabel.centerYAnchor),
-            secondsLabel.leftAnchor.constraint(equalTo: minutesLabel.rightAnchor),
+            separatorLabel.centerYAnchor.constraint(equalTo: minutesLabel.centerYAnchor),
+            separatorLabel.leftAnchor.constraint(equalTo: minutesLabel.rightAnchor),
+            
+            secondsLabel.centerYAnchor.constraint(equalTo: separatorLabel.centerYAnchor),
+            secondsLabel.leftAnchor.constraint(equalTo: separatorLabel.rightAnchor),
             
             timeTextLabel.topAnchor.constraint(equalTo: minutesLabel.bottomAnchor),
             timeTextLabel.centerXAnchor.constraint(equalTo: minutesLabel.rightAnchor),
