@@ -28,8 +28,9 @@ class TimerViewController: UITableViewController {
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
         self.title = "Timer"
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName :#colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)]
-        
-        
+//        self.tableView.contentInset = UIEdgeInsetsMake(44,0,0,0)
+//        self.automaticallyAdjustsScrollViewInsets = false
+        tableView.isScrollEnabled = false
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "icn_activities"), style: .plain, target: self, action: #selector(pushActivities))
         self.navigationItem.rightBarButtonItem = rightBarButton
         

@@ -113,13 +113,13 @@ class LGDurationSelection: UIView {
         NSLayoutConstraint.activate([
             secondsCircularSlider.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             secondsCircularSlider.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            secondsCircularSlider.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -20),
-            secondsCircularSlider.heightAnchor.constraint(equalTo: self.heightAnchor, constant: -20),
+            secondsCircularSlider.widthAnchor.constraint(equalTo: self.widthAnchor),
+            secondsCircularSlider.heightAnchor.constraint(equalTo: self.heightAnchor),
             
             minutesCircularSlider.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             minutesCircularSlider.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            minutesCircularSlider.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -40),
-            minutesCircularSlider.heightAnchor.constraint(equalTo: self.heightAnchor, constant: -40),
+            minutesCircularSlider.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -100),
+            minutesCircularSlider.heightAnchor.constraint(equalTo: self.heightAnchor, constant: -100),
             
             minutesLabel.centerXAnchor.constraint(equalTo: minutesCircularSlider.centerXAnchor, constant: -20),
             minutesLabel.centerYAnchor.constraint(equalTo: minutesCircularSlider.centerYAnchor),

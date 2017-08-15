@@ -15,8 +15,11 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let screenFrame = self.view.frame
+        let screenFrame = self.view.bounds
         scrollView = UIScrollView(frame: screenFrame)
+        scrollView?.isPagingEnabled = true
+        scrollView?.isDirectionalLockEnabled = true
+        
 //        scrollView?.delegate = self
         self.view.addSubview(scrollView!)
         
@@ -28,7 +31,7 @@ class HomeViewController: UIViewController {
         let width = bounds.size.width
         let height = bounds.size.height
         
-        scrollView!.contentSize = CGSize(width: 3*width, height: height)
+        scrollView!.contentSize = CGSize(width: 3*width, height: height - 100)
         
         
         let viewControllers = [timerViewController, stopViewController, intervalsViewController]
