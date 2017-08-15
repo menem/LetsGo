@@ -13,7 +13,7 @@ import HGCircularSlider
 class LGDurationSelection: UIView {
   
     lazy var secondsCircularSlider: CircularSlider = {
-       let circularSlider = CircularSlider(frame: CGRect(x: 20, y: 20, width: 250, height: 250))
+       let circularSlider = CircularSlider()
         circularSlider.diskColor = .clear
         circularSlider.diskFillColor = .clear
         circularSlider.trackFillColor = #colorLiteral(red: 0.340575099, green: 0.3558157086, blue: 0.4202301502, alpha: 1)
@@ -31,11 +31,12 @@ class LGDurationSelection: UIView {
         circularSlider.endPointValue = 30
         circularSlider.addTarget(self, action: #selector(updateSeconds), for: .valueChanged)
         circularSlider.addTarget(self, action: #selector(adjustSeconds), for: .editingDidEnd)
+        circularSlider.translatesAutoresizingMaskIntoConstraints = false
         return circularSlider
     }()
     
     lazy var minutesCircularSlider: CircularSlider = {
-        let circularSlider =  CircularSlider(frame: CGRect(x: 50, y: 50, width: 190, height: 190))
+        let circularSlider =  CircularSlider()
         circularSlider.diskColor = .clear
         circularSlider.diskFillColor = .clear
         circularSlider.trackFillColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
@@ -54,11 +55,12 @@ class LGDurationSelection: UIView {
         circularSlider.endPointValue = 10
         circularSlider.addTarget(self, action: #selector(updateMinutes), for: .valueChanged)
         circularSlider.addTarget(self, action: #selector(adjustMinutes), for: .editingDidEnd)
+        circularSlider.translatesAutoresizingMaskIntoConstraints = false
         return circularSlider
     }()
     
     var minutesLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: 200, y: 270, width: 60, height: 120))
+        let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont (name: "Betm-Regular3", size: 25)
         label.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
@@ -68,7 +70,7 @@ class LGDurationSelection: UIView {
     }()
     
     var secondsLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: 260, y: 270, width: 60, height: 40))
+        let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont (name: "BetmHairline", size: 25)
         label.textColor = #colorLiteral(red: 0.340575099, green: 0.3558157086, blue: 0.4202301502, alpha: 1)
@@ -78,7 +80,7 @@ class LGDurationSelection: UIView {
     }()
     
     var timeTextLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: 260, y: 270, width: 60, height: 40))
+        let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont (name: "BetmHairline", size: 15)
         label.text = "MIN:sec"
