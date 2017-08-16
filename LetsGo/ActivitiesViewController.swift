@@ -45,22 +45,20 @@ class ActivitiesViewController: UITableViewController {
     }
     
     func openSettings(){
-        activityNameTextField = LGTextField()
+        activityNameTextField = LGTextField(frame: CGRect(x: 0, y: 0, width: 300, height: 40))
         activityNameTextField.autocapitalizationType = .none
         activityNameTextField.autocorrectionType = .no
         activityNameTextField.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         activityNameTextField.textAlignment = .center
         activityNameTextField.textColor = #colorLiteral(red: 0.2333382666, green: 0.5698561072, blue: 0.8839787841, alpha: 1)
-        activityNameTextField.translatesAutoresizingMaskIntoConstraints = false
+//        activityNameTextField.translatesAutoresizingMaskIntoConstraints = false
         activityNameTextField.placeholder = "Enter Activity Name"
         activityNameTextField.tintColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
 
-        let closeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
-        let buttonImage = UIImage(named: "icn_close")
-        closeButton.setImage(buttonImage, for: .normal)
-        closeButton.addTarget(self, action: #selector(dismissPopUp), for: .touchUpInside)
+        let closeButton = LGDoneButton(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
+        closeButton.doneButton.addTarget(self, action: #selector(dismissPopUp), for: .touchUpInside)
         
-        popupController = CNPPopupController(contents: [closeButton, activityNameTextField])
+        popupController = CNPPopupController(contents: [activityNameTextField,closeButton])
         popupController.theme.popupStyle = .centered
         popupController.theme.cornerRadius = 14.0
         popupController.theme.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)

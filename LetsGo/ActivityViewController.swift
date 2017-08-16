@@ -22,8 +22,7 @@ class ActivityViewController: UITableViewController {
     var timerName: String!
     var popupController: CNPPopupController!
     var timerNameTextField: LGTextField!
-    var timerDurationTextField: LGTextField!
-    var timerIntervalTextField: LGTextField!
+    var durationSelector: LGDurationSelection!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,42 +48,21 @@ loadTimers()
         self.tableView.reloadData()
     }
     func openSettings(){
-        timerNameTextField = LGTextField()
+        timerNameTextField = LGTextField(frame: CGRect(x: 0, y: 0, width: 300, height: 40))
         timerNameTextField.autocapitalizationType = .none
         timerNameTextField.autocorrectionType = .no
         timerNameTextField.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         timerNameTextField.textAlignment = .center
         timerNameTextField.textColor = #colorLiteral(red: 0.2333382666, green: 0.5698561072, blue: 0.8839787841, alpha: 1)
-        timerNameTextField.translatesAutoresizingMaskIntoConstraints = false
+//        timerNameTextField.translatesAutoresizingMaskIntoConstraints = false
         timerNameTextField.placeholder = "Enter Timer Name"
         timerNameTextField.tintColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
         
-        timerDurationTextField = LGTextField()
-        timerDurationTextField.autocapitalizationType = .none
-        timerDurationTextField.autocorrectionType = .no
-        timerDurationTextField.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
-        timerDurationTextField.textAlignment = .center
-        timerDurationTextField.textColor = #colorLiteral(red: 0.2333382666, green: 0.5698561072, blue: 0.8839787841, alpha: 1)
-        timerDurationTextField.translatesAutoresizingMaskIntoConstraints = false
-        timerDurationTextField.placeholder = "Enter Timer Duration"
-        timerDurationTextField.tintColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
+        durationSelector = LGDurationSelection(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
+        let closeButton = LGDoneButton(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
+        closeButton.doneButton.addTarget(self, action: #selector(dismissPopUp), for: .touchUpInside)
         
-        timerIntervalTextField = LGTextField()
-        timerIntervalTextField.autocapitalizationType = .none
-        timerIntervalTextField.autocorrectionType = .no
-        timerIntervalTextField.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
-        timerIntervalTextField.textAlignment = .center
-        timerIntervalTextField.textColor = #colorLiteral(red: 0.2333382666, green: 0.5698561072, blue: 0.8839787841, alpha: 1)
-        timerIntervalTextField.translatesAutoresizingMaskIntoConstraints = false
-        timerIntervalTextField.placeholder = "Enter Timer Interval"
-        timerIntervalTextField.tintColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
-        
-        let closeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
-        let buttonImage = UIImage(named: "icn_close")
-        closeButton.setImage(buttonImage, for: .normal)
-        closeButton.addTarget(self, action: #selector(dismissPopUp), for: .touchUpInside)
-        
-        popupController = CNPPopupController(contents: [closeButton, timerNameTextField,timerDurationTextField,timerIntervalTextField])
+        popupController = CNPPopupController(contents: [timerNameTextField,durationSelector,closeButton])
         popupController.theme.popupStyle = .centered
         popupController.theme.cornerRadius = 14.0
         popupController.theme.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
@@ -94,6 +72,8 @@ loadTimers()
     }
     
     func dismissPopUp() {
+        saveTimersForActivity()
+        loadTimers()
         self.popupController?.dismiss(animated: true)
     }
     
@@ -137,10 +117,19 @@ loadTimers()
     }
     func saveTimersForActivity() {
         let manager = LGTimerManager()
-        let intervals = Int(timerIntervalTextField.text!)
-        let duration = Double(timerDurationTextField.text!)
-        let name = timerNameTextField.text!
-        manager.savetimers(title: name, duration: duration!, intervals: intervals!, activity: activity)
+        let intervals = 1//Int(timerIntervalTextField.text!)
+      
+        durationSelector.adjustMinutes()
+        durationSelector.adjustSeconds()
+        
+        let minuteReading = Double(durationSelector.minutesLabel.text! ) ?? 0
+        let minutesInSeconds = minuteReading * 60
+//        let totalSeconds =
+//        self.timeContentView.timer.setCountDownTime(totalSeconds)
+        
+        let duration = minutesInSeconds + Double(durationSelector.secondsLabel.text!)!
+        let name = timerNameTextField.text ?? "Timer"
+        manager.savetimers(title: name, duration: duration, intervals: intervals, activity: activity)
     }
 // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -281,8 +270,7 @@ extension ActivityViewController : CNPPopupControllerDelegate {
     
     func popupControllerWillDismiss(_ controller: CNPPopupController) {
         print("Popup controller will be dismissed")
-        saveTimersForActivity()
-        loadTimers()
+
     }
     
     func popupControllerDidPresent(_ controller: CNPPopupController) {
