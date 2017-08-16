@@ -128,7 +128,9 @@ class ActivitiesViewController: UITableViewController {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: ActivityTableViewCellIdentifier, for: indexPath) as! ActivityTableViewCell
             let activity = activities[indexPath.row]
-            cell.titlelabel.text = activity.title
+            cell.activityTypeImageView.image = UIImage(named: "icn_timer")
+            cell.titlelabel.text = activity.title.capitalized
+            cell.backCardView.backgroundColor = randomColor(hue: .random, luminosity: .light)
             return cell
         }
         

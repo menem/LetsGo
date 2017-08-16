@@ -59,6 +59,10 @@ loadTimers()
         timerNameTextField.tintColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
         
         durationSelector = LGDurationSelection(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
+        durationSelector.minutesCircularSlider.maximumValue = 20
+        durationSelector.minutesCircularSlider.minimumValue = 0
+        
+        
         let closeButton = LGDoneButton(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
         closeButton.doneButton.addTarget(self, action: #selector(dismissPopUp), for: .touchUpInside)
         
