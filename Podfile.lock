@@ -1,21 +1,24 @@
 PODS:
   - CNPPopupController (0.3.3)
+  - CountdownLabel (2.0.1)
   - HGCircularSlider (1.0.3)
   - MZTimerLabel (0.5.4)
   - RandomColorSwift (1.0.0)
 
 DEPENDENCIES:
   - CNPPopupController
+  - CountdownLabel
   - HGCircularSlider (~> 1.0.3)
   - MZTimerLabel
   - RandomColorSwift
 
 SPEC CHECKSUMS:
   CNPPopupController: 59b06290762f68beab5fb0bbfa87eb4dcbefb7de
+  CountdownLabel: 1297533b42ef5c1a441cd458136c35ad93210da1
   HGCircularSlider: f3a941d52bae7833b7213b8d89c6264c5506d9ad
   MZTimerLabel: cd9bfb9304540ef2a9e163384fca9c978f0dbf83
   RandomColorSwift: 9f85058b721665d52d239ca166a913e083506444
 
-PODFILE CHECKSUM: 5cf93ce2ee3220bf9ac5889a0242dc4214abb240
+PODFILE CHECKSUM: 106d687a8329b5c98f7accf013d67cd61726b8a9
 
 COCOAPODS: 1.2.1

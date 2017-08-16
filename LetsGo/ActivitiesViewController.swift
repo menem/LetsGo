@@ -68,6 +68,8 @@ class ActivitiesViewController: UITableViewController {
     }
     
     func dismissPopUp() {
+        saveActivity()
+        loadActivities()
         self.popupController?.dismiss(animated: true)
     }
     
@@ -151,8 +153,7 @@ extension ActivitiesViewController : CNPPopupControllerDelegate {
     
     func popupControllerWillDismiss(_ controller: CNPPopupController) {
         print("Popup controller will be dismissed")
-        saveActivity()
-        loadActivities()
+
     }
     
     func popupControllerDidPresent(_ controller: CNPPopupController) {

@@ -9,5 +9,6 @@ pod 'MZTimerLabel'
 pod 'HGCircularSlider', '~> 1.0.3'
 pod 'RandomColorSwift'
 pod 'CNPPopupController'
+pod 'CountdownLabel'
 
 end
