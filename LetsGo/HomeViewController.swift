@@ -12,7 +12,8 @@ import UIKit
 class HomeViewController: UIViewController {
     var scrollView: UIScrollView?
     var pageControl : UIPageControl!
-
+    var viewControllers = [UIViewController]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -20,13 +21,14 @@ class HomeViewController: UIViewController {
         scrollView = UIScrollView(frame: screenFrame)
         scrollView?.isPagingEnabled = true
         scrollView?.isDirectionalLockEnabled = true
-        
+        scrollView?.showsHorizontalScrollIndicator = false
         scrollView?.delegate = self
         self.view.addSubview(scrollView!)
-        
+
         let timerViewController = TimerViewController()
         let stopViewController = StopwatchViewController()
         let intervalsViewController = IntervalsViewController()
+        viewControllers = [timerViewController, stopViewController, intervalsViewController]
         
         let bounds = UIScreen.main.bounds
         let width = bounds.size.width
@@ -36,10 +38,7 @@ class HomeViewController: UIViewController {
         let pageX = (bounds.size.width/2) - 100
         let pageY = height - 70
          pageControl = UIPageControl(frame: CGRect(x:pageX, y:pageY, width:200, height:50))
-        
-        let viewControllers = [timerViewController, stopViewController, intervalsViewController]
-        
-        var idx:Int = 0
+                var idx:Int = 0
         
         
         for viewController in viewControllers {
@@ -96,5 +95,7 @@ extension HomeViewController:UIScrollViewDelegate {
         
         let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
         pageControl.currentPage = Int(pageNumber)
+        let viewcontroller = viewControllers[Int(pageNumber)]
+        self.title = viewcontroller.title
     }
 }

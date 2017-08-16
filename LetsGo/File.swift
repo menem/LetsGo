@@ -15,7 +15,6 @@
 
 import UIKit
 import MZTimerLabel
-import KYNavigationProgress
 import Intents
 import HealthKit
 
@@ -57,8 +56,8 @@ class ViewController: UIViewController {
         countDownTimer.reset()
         istimerCounting = false
         timeLabel.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
-        self.navigationController?.progress = 0
-        self.navigationController?.progressTintColor = .clear
+//        self.navigationController?.progress = 0
+//        self.navigationController?.progressTintColor = .clear
     }
     
     func toggleTimer() {
@@ -259,7 +258,7 @@ class ViewController: UIViewController {
             return
         }
         timeLabel.textColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
-        self.navigationController?.progressTintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
+//        self.navigationController?.progressTintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
         timer?.start()
     }
     
@@ -314,7 +313,7 @@ class ViewController: UIViewController {
         intervalsLabel.font = UIFont (name: "Betm-Regular3", size: 60)
         intervalsLabel.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         
-        self.navigationController?.progressTintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
+//        self.navigationController?.progressTintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
         let panelHeight = (self.view.frame.size.height/2)-80
         clockLabel = UILabel(frame: CGRect(x: 0, y: panelHeight, width: self.view.frame.size.width, height: 40))
         clockLabel.textAlignment = .center
@@ -355,7 +354,7 @@ class ViewController: UIViewController {
         countDownTimer.pause()
         countDownTimer.reset()
         timeLabel.textColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
-        self.navigationController?.progressTintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
+//        self.navigationController?.progressTintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
     }
     func startOFFTimer(){
         //        playSound()
@@ -364,7 +363,7 @@ class ViewController: UIViewController {
         ontimer.isEnabled = false
         offtimer?.start()
         timeLabel.textColor = #colorLiteral(red: 0.5015509129, green: 0.5780293345, blue: 0.8545677066, alpha: 1)
-        self.navigationController?.progressTintColor = #colorLiteral(red: 0.5015509129, green: 0.5780293345, blue: 0.8545677066, alpha: 1)
+//        self.navigationController?.progressTintColor = #colorLiteral(red: 0.5015509129, green: 0.5780293345, blue: 0.8545677066, alpha: 1)
         
     }
     
@@ -380,8 +379,8 @@ class ViewController: UIViewController {
 }
 extension ViewController: MZTimerLabelDelegate {
     func timerLabel(_ timerLabel: MZTimerLabel!, countingTo time: TimeInterval, timertype timerType: MZTimerLabelType){
-        let progress = time/timerLabel.getCountDownTime()
-        self.navigationController?.progress = Float(progress)
+//        let progress = time/timerLabel.getCountDownTime()
+//        self.navigationController?.progress = Float(progress)
         intervalsLabel.text = "Rounds:\(intervals)"
         istimerCounting = true
         

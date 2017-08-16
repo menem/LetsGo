@@ -8,7 +8,6 @@
 
 import UIKit
 import MZTimerLabel
-import KYNavigationProgress
 import CNPPopupController
 
 let TimerTableViewCellIdentifier = "TimerTableViewCellIdentifier"
@@ -217,8 +216,8 @@ loadTimers()
 
 extension ActivityViewController: MZTimerLabelDelegate {
     func timerLabel(_ timerLabel: MZTimerLabel!, countingTo time: TimeInterval, timertype timerType: MZTimerLabelType){
-        let progress = time/timerLabel.getCountDownTime()
-        self.navigationController?.progress = Float(progress)        
+//        let progress = time/timerLabel.getCountDownTime()
+//        self.navigationController?.progress = Float(progress)        
     }
     
     func timerLabel(_ timerLabel: MZTimerLabel!, finshedCountDownTimerWithTime countTime: TimeInterval){

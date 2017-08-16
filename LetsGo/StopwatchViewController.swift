@@ -7,7 +7,6 @@
 //
 import UIKit
 import MZTimerLabel
-import KYNavigationProgress
 import CNPPopupController
 
 class StopwatchViewController: UITableViewController {
@@ -127,8 +126,8 @@ class StopwatchViewController: UITableViewController {
 
 extension StopwatchViewController: MZTimerLabelDelegate {
     func timerLabel(_ timerLabel: MZTimerLabel!, countingTo time: TimeInterval, timertype timerType: MZTimerLabelType){
-        let progress = time/timerLabel.getCountDownTime()
-        self.navigationController?.progress = Float(progress)
+//        let progress = time/timerLabel.getCountDownTime()
+//        self.navigationController?.progress = Float(progress)
     }
     
     func timerLabel(_ timerLabel: MZTimerLabel!, finshedCountDownTimerWithTime countTime: TimeInterval){

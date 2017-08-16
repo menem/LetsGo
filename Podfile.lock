@@ -1,27 +1,21 @@
 PODS:
   - CNPPopupController (0.3.3)
-  - EZSwipeController (0.6.1)
   - HGCircularSlider (1.0.3)
-  - KYNavigationProgress (2.0.1)
   - MZTimerLabel (0.5.4)
   - RandomColorSwift (1.0.0)
 
 DEPENDENCIES:
   - CNPPopupController
-  - EZSwipeController
   - HGCircularSlider (~> 1.0.3)
-  - KYNavigationProgress
   - MZTimerLabel
   - RandomColorSwift
 
 SPEC CHECKSUMS:
   CNPPopupController: 59b06290762f68beab5fb0bbfa87eb4dcbefb7de
-  EZSwipeController: 255b0f8aed31963b0236802c926e27dd006a2532
   HGCircularSlider: f3a941d52bae7833b7213b8d89c6264c5506d9ad
-  KYNavigationProgress: 7f979e79f6e57b1ee33d3de89d6b705a1f4e266a
   MZTimerLabel: cd9bfb9304540ef2a9e163384fca9c978f0dbf83
   RandomColorSwift: 9f85058b721665d52d239ca166a913e083506444
 
-PODFILE CHECKSUM: 954a32772f265b950dedfbf0921c76411c098095
+PODFILE CHECKSUM: 5cf93ce2ee3220bf9ac5889a0242dc4214abb240
 
 COCOAPODS: 1.2.1
