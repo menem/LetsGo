@@ -41,6 +41,7 @@
 		48F0231E1F3FC36000EED177 /* IntervalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F0231D1F3FC36000EED177 /* IntervalsViewController.swift */; };
 		48F023201F428EE500EED177 /* LGRoundSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F0231F1F428EE500EED177 /* LGRoundSelector.swift */; };
 		48F023221F43AA7200EED177 /* LGDoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F023211F43AA7200EED177 /* LGDoneButton.swift */; };
+		48F023241F44696A00EED177 /* LGCountDownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F023231F44696A00EED177 /* LGCountDownTimer.swift */; };
 		4C3B67DF2BC822FFDB07F9C5 /* Pods_LetsGo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14E8FA497D650EDF3219475A /* Pods_LetsGo.framework */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +109,7 @@
 		48F0231D1F3FC36000EED177 /* IntervalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervalsViewController.swift; sourceTree = "<group>"; };
 		48F0231F1F428EE500EED177 /* LGRoundSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGRoundSelector.swift; sourceTree = "<group>"; };
 		48F023211F43AA7200EED177 /* LGDoneButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGDoneButton.swift; sourceTree = "<group>"; };
+		48F023231F44696A00EED177 /* LGCountDownTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGCountDownTimer.swift; sourceTree = "<group>"; };
 		5C1CAB1FD870C4C22C7A8CB9 /* Pods-LetsGo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetsGo.release.xcconfig"; path = "Pods/Target Support Files/Pods-LetsGo/Pods-LetsGo.release.xcconfig"; sourceTree = "<group>"; };
 		E8418AE36AB7D1935CE2EE43 /* Pods-LetsGo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetsGo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LetsGo/Pods-LetsGo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -258,6 +260,7 @@
 				480B29C51F3CA392007743F6 /* LGDurationSelection.swift */,
 				48F0231F1F428EE500EED177 /* LGRoundSelector.swift */,
 				48F023211F43AA7200EED177 /* LGDoneButton.swift */,
+				48F023231F44696A00EED177 /* LGCountDownTimer.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				4825CF431F2FEFD30066B40D /* LGTimer.swift in Sources */,
 				48A31BBE1F3372C100E919FB /* TimerTableViewCell.swift in Sources */,
 				48A31BC51F34352200E919FB /* TextFieldTableViewCell.swift in Sources */,
+				48F023241F44696A00EED177 /* LGCountDownTimer.swift in Sources */,
 				4850E1B21F28EE00004D85A7 /* HomeViewController.swift in Sources */,
 				48B3965F1F3BCCCC0084F5DC /* CounterTableViewCell.swift in Sources */,
 				48F023201F428EE500EED177 /* LGRoundSelector.swift in Sources */,
@@ -629,6 +633,7 @@
 				CODE_SIGN_ENTITLEMENTS = LetsGo/LetsGo.entitlements;
 				DEVELOPMENT_TEAM = BYQ9TMRU8A;
 				INFOPLIST_FILE = LetsGo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.phoenixfitnesshub.Timer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -645,6 +650,7 @@
 				CODE_SIGN_ENTITLEMENTS = LetsGo/LetsGo.entitlements;
 				DEVELOPMENT_TEAM = BYQ9TMRU8A;
 				INFOPLIST_FILE = LetsGo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.phoenixfitnesshub.Timer;
 				PRODUCT_NAME = "$(TARGET_NAME)";

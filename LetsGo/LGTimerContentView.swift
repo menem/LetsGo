@@ -10,6 +10,7 @@ import Foundation
 import AVFoundation
 import UIKit
 import MZTimerLabel
+import CountdownLabel
 
 class LGTimerContentView: UIView {
     
@@ -33,6 +34,12 @@ class LGTimerContentView: UIView {
         return timer!
     }()
     
+    lazy var countDownTimerLabel: LGCountDownTimer = {
+        let countDownTimer = LGCountDownTimer()
+        countDownTimer.translatesAutoresizingMaskIntoConstraints = false
+        countDownTimer.timeLabel.countdownDelegate = self
+        return countDownTimer
+    }()
     lazy var timerControls: LGTimerControls = {
         let timerControl = LGTimerControls()
         timerControl.pauseButton.addTarget(self, action: #selector(toggleTimer), for: .touchUpInside)
@@ -50,20 +57,21 @@ class LGTimerContentView: UIView {
         }
     }
     func toggleTimer() {
-        playSound()
+     
 
         if(!isRunning) {
-            timer.start()
-            self.tintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
-//            timerControls.tintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
             isRunning = true
+            self.tintColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
+            countDownTimerLabel.isHidden = false
+            timeLabel.isHidden = true
+            countDownTimerLabel.timeLabel.setCountDownTime(minutes: 10)
+            countDownTimerLabel.timeLabel.start()
         }else{
             timer.pause()
             self.tintColor = #colorLiteral(red: 0.5015509129, green: 0.5780293345, blue: 0.8545677066, alpha: 1)
-//            timeLabel.textColor = #colorLiteral(red: 0.5015509129, green: 0.5780293345, blue: 0.8545677066, alpha: 1)
-//             timerControls.tintColor = #colorLiteral(red: 0.5015509129, green: 0.5780293345, blue: 0.8545677066, alpha: 1)
             isRunning = false
         }
+           playSound()
         configureRunningControls()
     }
     
@@ -72,8 +80,6 @@ class LGTimerContentView: UIView {
        timer.pause()
         timer.reset()
           self.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
-//        timeLabel.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
-//         timerControls.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         isRunning = false
         configureRunningControls()
     }
@@ -95,7 +101,8 @@ class LGTimerContentView: UIView {
         configureRunningControls()
         self.addSubview(timeLabel)
         self.addSubview(timerControls)
-        self.bringSubview(toFront: timeLabel)
+        self.addSubview(countDownTimerLabel)
+        self.bringSubview(toFront: countDownTimerLabel)
         setNeedsUpdateConstraints()
     }
     
@@ -123,7 +130,12 @@ class LGTimerContentView: UIView {
         NSLayoutConstraint.activate([
             timeLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             timeLabel.centerYAnchor.constraint(equalTo:  self.centerYAnchor),
-        
+            
+            countDownTimerLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            countDownTimerLabel.centerYAnchor.constraint(equalTo:  self.centerYAnchor),
+//            countDownTimerLabel.widthAnchor.constraint(equalTo: timeLabel.widthAnchor),
+//            countDownTimerLabel.heightAnchor.constraint(equalTo: timeLabel.heightAnchor),
+            
             timerControls.topAnchor.constraint(equalTo: timeLabel.bottomAnchor),
             timerControls.centerXAnchor.constraint(equalTo: timeLabel.centerXAnchor),
             timerControls.widthAnchor.constraint(equalTo: timeLabel.widthAnchor),
@@ -132,4 +144,39 @@ class LGTimerContentView: UIView {
         super.updateConstraints()
     }
     
+}
+
+extension LGTimerContentView: CountdownLabelDelegate {
+     func countingAt(timeCounted: TimeInterval, timeRemaining: TimeInterval) {
+        switch timeRemaining {
+        case 3:
+            let synthesizer = AVSpeechSynthesizer()
+            let utterance = AVSpeechUtterance(string: "3")
+            utterance.rate = 0.7
+            utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+            synthesizer.speak(utterance)
+        case 2:
+            let synthesizer = AVSpeechSynthesizer()
+            let utterance = AVSpeechUtterance(string: "2")
+            utterance.rate = 0.7
+            utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+            synthesizer.speak(utterance)
+        case 1:
+            let synthesizer = AVSpeechSynthesizer()
+            let utterance = AVSpeechUtterance(string: "1")
+            utterance.rate = 0.7
+            utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+            synthesizer.speak(utterance)
+        default:
+            break
+        }
+    }
+    func countdownFinished() {
+        timer.start()
+        self.tintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
+     
+        countDownTimerLabel.isHidden = true
+        timeLabel.isHidden = false
+        
+    }
 }

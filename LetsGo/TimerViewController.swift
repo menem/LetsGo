@@ -144,7 +144,7 @@ extension TimerViewController: MZTimerLabelDelegate {
     }
     
     func timerLabel(_ timerLabel: MZTimerLabel!, finshedCountDownTimerWithTime countTime: TimeInterval){
-        
+        self.timeContentView.stopTimer()
     }
 }
 

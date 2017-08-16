@@ -126,8 +126,8 @@ class IntervalsViewController: UITableViewController {
         
         let onminuteReading = Double(onDurationSelector.minutesLabel.text! ) ?? 0
         let onminutesInSeconds = onminuteReading * 60
-        //        ontotalSeconds = onminutesInSeconds + Double(onDurationSelector.secondsLabel.text!)!
-        ontotalSeconds = 10
+                ontotalSeconds = onminutesInSeconds + Double(onDurationSelector.secondsLabel.text!)!
+//        ontotalSeconds = 10
         
         
         offDurationSelector.adjustMinutes()
@@ -135,8 +135,8 @@ class IntervalsViewController: UITableViewController {
         
         let offminuteReading = Double(offDurationSelector.minutesLabel.text! ) ?? 0
         let offminutesInSeconds = offminuteReading * 60
-        //        offtotalSeconds = offminutesInSeconds + Double(offDurationSelector.secondsLabel.text!)!
-        offtotalSeconds = 5
+                offtotalSeconds = offminutesInSeconds + Double(offDurationSelector.secondsLabel.text!)!
+//        offtotalSeconds = 5
         
         rounds = Int(roundCounter.roundStepper.value)
         currentRound = 0
