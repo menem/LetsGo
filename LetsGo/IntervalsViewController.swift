@@ -12,13 +12,18 @@ import CNPPopupController
 
 class IntervalsViewController: UITableViewController {
     
-    var timer: LGTimer!
+    var timers = [LGTimer]()
     var timeContentView: LGTimerContentView!
     var popupController: CNPPopupController!
     var onDurationSelector: LGDurationSelection!
     var offDurationSelector: LGDurationSelection!
     var scrollView: UIScrollView?
     var roundCounter: LGRoundSelector!
+    var rounds: Int!
+    var ontotalSeconds: Double!
+    var offtotalSeconds: Double!
+    var currentRound: Int!
+    var isCountingOffTimer: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,9 +115,34 @@ class IntervalsViewController: UITableViewController {
     }
     
     func dismissPopUp() {
+        
+        configureTimers()
         self.popupController?.dismiss(animated: true)
     }
     
+    func configureTimers() {
+        onDurationSelector.adjustMinutes()
+        onDurationSelector.adjustSeconds()
+        
+        let onminuteReading = Double(onDurationSelector.minutesLabel.text! ) ?? 0
+        let onminutesInSeconds = onminuteReading * 60
+        //        ontotalSeconds = onminutesInSeconds + Double(onDurationSelector.secondsLabel.text!)!
+        ontotalSeconds = 10
+        
+        
+        offDurationSelector.adjustMinutes()
+        offDurationSelector.adjustSeconds()
+        
+        let offminuteReading = Double(offDurationSelector.minutesLabel.text! ) ?? 0
+        let offminutesInSeconds = offminuteReading * 60
+        //        offtotalSeconds = offminutesInSeconds + Double(offDurationSelector.secondsLabel.text!)!
+        offtotalSeconds = 5
+        
+        rounds = Int(roundCounter.roundStepper.value)
+        currentRound = 0
+        self.timeContentView.timer.setCountDownTime(ontotalSeconds)
+        isCountingOffTimer = false
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.section == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: BannerTableViewCellIdentifier, for: indexPath) as! TitleBackgroundTableViewCell
@@ -151,7 +181,28 @@ extension IntervalsViewController: MZTimerLabelDelegate {
     }
     
     func timerLabel(_ timerLabel: MZTimerLabel!, finshedCountDownTimerWithTime countTime: TimeInterval){
-        
+        if (currentRound < rounds){
+            if (isCountingOffTimer){
+                isCountingOffTimer = false
+                currentRound! += 1
+            if (currentRound < rounds){
+                self.timeContentView.tintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
+                self.timeContentView.timer.setCountDownTime(ontotalSeconds)
+                self.timeContentView.playSound()
+                self.timeContentView.timer.start()
+                    return
+            }else{
+                self.timeContentView.stopTimer()
+                configureTimers()
+                }
+                return
+            }
+            isCountingOffTimer = true
+             self.timeContentView.tintColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
+            self.timeContentView.timer.setCountDownTime(offtotalSeconds)
+            self.timeContentView.playSound()
+            self.timeContentView.timer.start()
+        }
     }
 }
 
