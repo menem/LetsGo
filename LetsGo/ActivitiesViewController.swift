@@ -38,6 +38,7 @@ class ActivitiesViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = addBarButtonItem
         
     }
+
     
     // We are willing to become first responder to get shake motion
     override var canBecomeFirstResponder: Bool {
@@ -122,10 +123,6 @@ class ActivitiesViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if (section != 0) {
-            return 1
-        }
-        
         return 0
     }
     

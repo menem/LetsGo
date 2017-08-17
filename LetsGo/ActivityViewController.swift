@@ -89,14 +89,15 @@ loadTimers()
         timeContentView.timer.setCountDownTime((timers.first?.duration)!+10)
         currentInterval = timers.first?.intervals
         
-        let synthesizer = AVSpeechSynthesizer()
-        let utterance = AVSpeechUtterance(string: (timers.first?.title)!)
-        utterance.rate = 0.7
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        synthesizer.speak(utterance)
+//        let synthesizer = AVSpeechSynthesizer()
+//        let utterance = AVSpeechUtterance(string: (timers.first?.title)!)
+//        utterance.rate = 0.7
+//        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+//        synthesizer.speak(utterance)
 
         let selectedIndexPath = IndexPath(row: 0, section: 1)
-        self.tableView.cellForRow(at: selectedIndexPath)?.backgroundColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
+        let selectedCell = self.tableView.cellForRow(at: selectedIndexPath) as! TimerTableViewCell
+        highlightCell(cell: selectedCell)
         timeContentView.playSound()
         timeContentView.timer.start()
     }
@@ -105,16 +106,21 @@ loadTimers()
         currentInterval = timers[currentlyPlaying].intervals
         timeContentView.timer.setCountDownTime(timerDuration)
         
-        let synthesizer = AVSpeechSynthesizer()
-        let utterance = AVSpeechUtterance(string: timers[currentlyPlaying].title)
-        utterance.rate = 0.7
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        synthesizer.speak(utterance)
+//        let synthesizer = AVSpeechSynthesizer()
+//        let utterance = AVSpeechUtterance(string: timers[currentlyPlaying].title)
+//        utterance.rate = 0.7
+//        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+//        synthesizer.speak(utterance)
         
         let selectedIndexPath = IndexPath(row: currentlyPlaying, section: 1)
         let previousCellIndex = IndexPath(row: currentlyPlaying - 1, section: 1)
-        self.tableView.cellForRow(at: previousCellIndex )?.backgroundColor = .clear
-        self.tableView.cellForRow(at: selectedIndexPath)?.backgroundColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
+ let previousCell = self.tableView.cellForRow(at: previousCellIndex)  as! TimerTableViewCell
+        normalizeCell(cell: previousCell)
+        let selectedCell = self.tableView.cellForRow(at:selectedIndexPath ) as! TimerTableViewCell
+       highlightCell(cell: selectedCell)
+        
+      
+      
         
         timeContentView.playSound()
         timeContentView.timer.start()
@@ -123,16 +129,37 @@ loadTimers()
         let timerDuration = timers[index].duration
         timeContentView.timer.setCountDownTime(timerDuration)
        
+//        let synthesizer = AVSpeechSynthesizer()
+//        let utterance = AVSpeechUtterance(string: timers[index].title)
+//        utterance.rate = 0.7
+//        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+//        synthesizer.speak(utterance)
+
+        let selectedIndexPath = IndexPath(row: currentlyPlaying, section: 1)
+        let selectedCell = self.tableView.cellForRow(at: selectedIndexPath) as! TimerTableViewCell
+        highlightCell(cell: selectedCell)
+        timeContentView.playSound()
+        timeContentView.timer.start()
+    }
+    
+    func highlightCell(cell: TimerTableViewCell) {
+        cell.backCardView.backgroundColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        cell.titlelabel.textColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
+        cell.Durationlabel.textColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
+        cell.Intervalslabel.textColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
+        
         let synthesizer = AVSpeechSynthesizer()
-        let utterance = AVSpeechUtterance(string: timers[index].title)
+        let utterance = AVSpeechUtterance(string: cell.titlelabel.text!)
         utterance.rate = 0.7
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         synthesizer.speak(utterance)
-
-        let selectedIndexPath = IndexPath(row: currentlyPlaying, section: 1)
-        self.tableView.cellForRow(at: selectedIndexPath)?.backgroundColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
-        timeContentView.playSound()
-        timeContentView.timer.start()
+    }
+    
+    func normalizeCell(cell: TimerTableViewCell) {
+        cell.backCardView.backgroundColor = cellColor
+        cell.titlelabel.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        cell.Durationlabel.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        cell.Intervalslabel.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
     }
     func calculateTotalTime() -> Double {
         var accumelatedTime = 0.0
@@ -218,7 +245,7 @@ loadTimers()
             let cell = tableView.dequeueReusableCell(withIdentifier: TimerTableViewCellIdentifier, for: indexPath) as! TimerTableViewCell
             let timer = timers[indexPath.row]
             cell.titlelabel.text = timer.title
-            cell.titlelabel.textColor = cellColor
+            cell.backCardView.backgroundColor = cellColor
             cell.Durationlabel.text = String(timer.duration)
             cell.Intervalslabel.text = String(timer.intervals)
             return cell

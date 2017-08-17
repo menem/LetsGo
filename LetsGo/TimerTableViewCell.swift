@@ -15,7 +15,7 @@ class TimerTableViewCell: UITableViewCell {
     
     lazy var titlelabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont (name: "Betm-Regular3", size: 24)
+        label.font = UIFont (name: "BetmHairline", size: 24)
 //        label.textColor = cellColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -24,16 +24,22 @@ class TimerTableViewCell: UITableViewCell {
     
     lazy var Durationlabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont (name: "Betm-Regular3", size: 24)
+        label.font = UIFont (name: "BetmHairline", size: 24)
 //        label.textColor = cellColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
+    lazy var backCardView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 5.0
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     lazy var Intervalslabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont (name: "Betm-Regular3", size: 24)
+        label.font = UIFont (name: "BetmHairline", size: 24)
 //        label.textColor = cellColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -45,11 +51,11 @@ class TimerTableViewCell: UITableViewCell {
         self.separatorInset = UIEdgeInsets.zero
         self.layoutMargins = UIEdgeInsets.zero
         self.backgroundColor = .clear
-        
+        contentView.addSubview(backCardView)
         contentView.addSubview(titlelabel)
         contentView.addSubview(Intervalslabel)
         contentView.addSubview(Durationlabel)
-        
+            contentView.sendSubview(toBack: backCardView)
         setNeedsUpdateConstraints()
     }
     
@@ -74,6 +80,11 @@ class TimerTableViewCell: UITableViewCell {
             Intervalslabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
             Intervalslabel.leftAnchor.constraint(equalTo: self.titlelabel.rightAnchor, constant: 32),
             Intervalslabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -32),
+            
+            backCardView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            backCardView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+            backCardView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, constant: -10),
+            backCardView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, constant: -20),
             
             ])
     }
