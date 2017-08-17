@@ -133,8 +133,6 @@ class LGTimerContentView: UIView {
             
             countDownTimerLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             countDownTimerLabel.centerYAnchor.constraint(equalTo:  self.centerYAnchor),
-//            countDownTimerLabel.widthAnchor.constraint(equalTo: timeLabel.widthAnchor),
-//            countDownTimerLabel.heightAnchor.constraint(equalTo: timeLabel.heightAnchor),
             
             timerControls.topAnchor.constraint(equalTo: timeLabel.bottomAnchor),
             timerControls.centerXAnchor.constraint(equalTo: timeLabel.centerXAnchor),

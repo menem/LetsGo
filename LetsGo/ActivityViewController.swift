@@ -9,6 +9,7 @@
 import UIKit
 import MZTimerLabel
 import CNPPopupController
+import AVFoundation
 
 let TimerTableViewCellIdentifier = "TimerTableViewCellIdentifier"
 
@@ -86,7 +87,13 @@ loadTimers()
         currentlyPlaying = 0
         timeContentView.timer.setCountDownTime((timers.first?.duration)!+10)
         currentInterval = timers.first?.intervals
-        self.title = timers.first?.title
+        
+        let synthesizer = AVSpeechSynthesizer()
+        let utterance = AVSpeechUtterance(string: (timers.first?.title)!)
+        utterance.rate = 0.7
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        synthesizer.speak(utterance)
+
         let selectedIndexPath = IndexPath(row: 0, section: 1)
         self.tableView.cellForRow(at: selectedIndexPath)?.backgroundColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
         timeContentView.playSound()
@@ -96,7 +103,13 @@ loadTimers()
         let timerDuration = timers[currentlyPlaying].duration
         currentInterval = timers[currentlyPlaying].intervals
         timeContentView.timer.setCountDownTime(timerDuration)
-        self.title = timers[currentlyPlaying].title
+        
+        let synthesizer = AVSpeechSynthesizer()
+        let utterance = AVSpeechUtterance(string: timers[currentlyPlaying].title)
+        utterance.rate = 0.7
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        synthesizer.speak(utterance)
+        
         let selectedIndexPath = IndexPath(row: currentlyPlaying, section: 1)
         let previousCellIndex = IndexPath(row: currentlyPlaying - 1, section: 1)
         self.tableView.cellForRow(at: previousCellIndex )?.backgroundColor = .clear
@@ -108,7 +121,13 @@ loadTimers()
     func resumeTimer(index: Int){
         let timerDuration = timers[index].duration
         timeContentView.timer.setCountDownTime(timerDuration)
-        self.title = timers[index].title
+       
+        let synthesizer = AVSpeechSynthesizer()
+        let utterance = AVSpeechUtterance(string: timers[index].title)
+        utterance.rate = 0.7
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        synthesizer.speak(utterance)
+
         let selectedIndexPath = IndexPath(row: currentlyPlaying, section: 1)
         self.tableView.cellForRow(at: selectedIndexPath)?.backgroundColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
         timeContentView.playSound()
@@ -213,8 +232,7 @@ loadTimers()
 
 extension ActivityViewController: MZTimerLabelDelegate {
     func timerLabel(_ timerLabel: MZTimerLabel!, countingTo time: TimeInterval, timertype timerType: MZTimerLabelType){
-//        let progress = time/timerLabel.getCountDownTime()
-//        self.navigationController?.progress = Float(progress)        
+
     }
     
     func timerLabel(_ timerLabel: MZTimerLabel!, finshedCountDownTimerWithTime countTime: TimeInterval){
