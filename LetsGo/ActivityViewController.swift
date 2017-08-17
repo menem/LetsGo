@@ -84,7 +84,7 @@ loadTimers()
     func startActivity(){
         
         currentlyPlaying = 0
-        timeContentView.timer.setCountDownTime((timers.first?.duration)!)
+        timeContentView.timer.setCountDownTime((timers.first?.duration)!+10)
         currentInterval = timers.first?.intervals
         self.title = timers.first?.title
         let selectedIndexPath = IndexPath(row: 0, section: 1)
@@ -98,7 +98,10 @@ loadTimers()
         timeContentView.timer.setCountDownTime(timerDuration)
         self.title = timers[currentlyPlaying].title
         let selectedIndexPath = IndexPath(row: currentlyPlaying, section: 1)
+        let previousCellIndex = IndexPath(row: currentlyPlaying - 1, section: 1)
+        self.tableView.cellForRow(at: previousCellIndex )?.backgroundColor = .clear
         self.tableView.cellForRow(at: selectedIndexPath)?.backgroundColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
+        
         timeContentView.playSound()
         timeContentView.timer.start()
     }
@@ -158,9 +161,9 @@ loadTimers()
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if (section != 0) {
-            return 1
-        }
+//        if (section != 0) {
+//            return 0
+//        }
         
         return 0
     }
@@ -168,14 +171,15 @@ loadTimers()
         if (section == 0) {
             return 0
         } else {
-            return 150
+            return 120
         }
     }
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if (section != 0) {
-            timeContentView = LGTimerContentView(frame: CGRect(x:0, y: 0, width: self.view.frame.size.width, height: 80))
+            timeContentView = LGTimerContentView(frame: CGRect(x:0, y: -40, width: self.view.frame.size.width, height: 80))
             timeContentView.timer.setCountDownTime(calculateTotalTime())
             timeContentView.timer.delegate = self
+            timeContentView.timerControls.playButton.addTarget(self, action:#selector(startActivity), for: .touchUpInside)
             timeContentView.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
             return timeContentView
         }else{
@@ -222,6 +226,7 @@ extension ActivityViewController: MZTimerLabelDelegate {
         if (currentlyPlaying < timers.count){
             currentlyPlaying! += 1
             if currentlyPlaying == timers.count {
+                self.timeContentView.stopTimer()
                 return
             }
             resumeActivity()

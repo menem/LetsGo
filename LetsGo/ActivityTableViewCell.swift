@@ -68,7 +68,7 @@ class ActivityTableViewCell: UITableViewCell {
             
             backCardView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
             backCardView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            backCardView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, constant: -20),
+            backCardView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, constant: -10),
             backCardView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, constant: -20),
             
             
