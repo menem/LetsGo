@@ -9,14 +9,14 @@
 import UIKit
 import RandomColorSwift
 
-var cellColor = randomColor(hue: .random, luminosity: .dark)
+//var cellColor = randomColor(hue: .random, luminosity: .dark)
 
 class TimerTableViewCell: UITableViewCell {
     
     lazy var titlelabel: UILabel = {
         let label = UILabel()
         label.font = UIFont (name: "Betm-Regular3", size: 24)
-        label.textColor = cellColor
+//        label.textColor = cellColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -25,7 +25,7 @@ class TimerTableViewCell: UITableViewCell {
     lazy var Durationlabel: UILabel = {
         let label = UILabel()
         label.font = UIFont (name: "Betm-Regular3", size: 24)
-        label.textColor = cellColor
+//        label.textColor = cellColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -34,7 +34,7 @@ class TimerTableViewCell: UITableViewCell {
     lazy var Intervalslabel: UILabel = {
         let label = UILabel()
         label.font = UIFont (name: "Betm-Regular3", size: 24)
-        label.textColor = cellColor
+//        label.textColor = cellColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

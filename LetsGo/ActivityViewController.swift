@@ -14,7 +14,7 @@ import AVFoundation
 let TimerTableViewCellIdentifier = "TimerTableViewCellIdentifier"
 
 class ActivityViewController: UITableViewController {
-    
+    var cellColor: UIColor!
     var timers = [LGTimer]()
     var activity: LGActivity!
     var timeContentView: LGTimerContentView!
@@ -27,6 +27,7 @@ class ActivityViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         
         self.tableView.tableFooterView = UIView()
         self.tableView.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
@@ -157,6 +158,8 @@ loadTimers()
         let name = timerNameTextField.text ?? "Timer"
         manager.savetimers(title: name, duration: duration, intervals: intervals, activity: activity)
     }
+    
+
 // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -215,6 +218,7 @@ loadTimers()
             let cell = tableView.dequeueReusableCell(withIdentifier: TimerTableViewCellIdentifier, for: indexPath) as! TimerTableViewCell
             let timer = timers[indexPath.row]
             cell.titlelabel.text = timer.title
+            cell.titlelabel.textColor = cellColor
             cell.Durationlabel.text = String(timer.duration)
             cell.Intervalslabel.text = String(timer.intervals)
             return cell

@@ -15,7 +15,7 @@ let BannerTableViewCellIdentifier = "BannerTableViewCellIdentifier"
 let ActivityTableViewCellIdentifier = "ActivityTableViewCellIdentifier"
 
 class ActivitiesViewController: UITableViewController {
-
+    
     var activities = [LGActivity]()
     var colors = [UIColor]()
     var activityNameTextField: LGTextField!
@@ -24,7 +24,7 @@ class ActivitiesViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+       self.becomeFirstResponder()
         self.tableView.tableFooterView = UIView()
         self.tableView.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
         self.tableView.separatorStyle = .none
@@ -38,6 +38,21 @@ class ActivitiesViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = addBarButtonItem
         
     }
+    
+    // We are willing to become first responder to get shake motion
+    override var canBecomeFirstResponder: Bool {
+        get {
+            return true
+        }
+    }
+    
+    // Enable detection of shake motion
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            tableView.reloadData()
+        }
+    }
+    
     func loadActivities(){
         let timeManager = LGTimerManager()
         activities = timeManager.loadActivities()
@@ -143,6 +158,8 @@ class ActivitiesViewController: UITableViewController {
         }else{
         let selectedActivity = activities[indexPath.row]
         let activityViewController = ActivityViewController()
+            let selectedCell = self.tableView.cellForRow(at: indexPath) as! ActivityTableViewCell
+            activityViewController.cellColor = selectedCell.backCardView.backgroundColor
             activityViewController.activity = selectedActivity
             self.navigationController?.pushViewController(activityViewController, animated: true)
         }
