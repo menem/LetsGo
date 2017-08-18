@@ -58,11 +58,20 @@ class HomeViewController: UIViewController {
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "icn_activities"), style: .plain, target: self, action: #selector(pushActivities))
         self.navigationItem.rightBarButtonItem = rightBarButton
         
+        
+        let leftBarButton = UIBarButtonItem(image: UIImage(named: "icn_records"), style: .plain, target: self, action: #selector(pushRecords))
+        self.navigationItem.leftBarButtonItem = leftBarButton
+        
     }
     
     func pushActivities(){
         let activitiesViewController = ActivitiesViewController()
         self.navigationController?.pushViewController(activitiesViewController, animated: true)
+    }
+    
+    func pushRecords(){
+        let recordsTableViewController = RecordsTableViewController()
+        self.navigationController?.pushViewController(recordsTableViewController, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
