@@ -76,6 +76,7 @@ class LGTimerContentView: UIView {
     }
     
     func stopTimer() {
+        saveRecord()
         playSound()
        timer.pause()
         timer.reset()
@@ -83,6 +84,12 @@ class LGTimerContentView: UIView {
         isRunning = false
         configureRunningControls()
     }
+    
+    func saveRecord() {
+        let manager = LGRecordsManager()
+        manager.saveRecord(title: "Timer", timer:timeLabel.text!)
+    }
+    
     
     func configureRunningControls() {
         if(isRunning) {
