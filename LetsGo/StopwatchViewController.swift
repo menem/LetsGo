@@ -64,9 +64,9 @@ class StopwatchViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if (section != 0) {
-            return 1
-        }
+//        if (section != 0) {
+//            return 1
+//        }
         
         return 0
     }
