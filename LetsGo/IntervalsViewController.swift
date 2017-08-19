@@ -29,13 +29,13 @@ class IntervalsViewController: UITableViewController {
         super.viewDidLoad()
         
         self.tableView.tableFooterView = UIView()
-        self.tableView.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
+        self.tableView.backgroundColor =  .clear
         self.tableView.separatorStyle = .none
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
         tableView.isScrollEnabled = false
         
         self.title = "Intervals"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName :#colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)]
+//        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName :#colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)]
         
         
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "icn_activities"), style: .plain, target: self, action: #selector(pushActivities))
@@ -154,6 +154,7 @@ class IntervalsViewController: UITableViewController {
                 self.tableView.register(TimerSettingTableViewCell.self, forCellReuseIdentifier: TimerSettingTableViewCellIdentifier)
                 let cell = tableView.dequeueReusableCell(withIdentifier: TimerSettingTableViewCellIdentifier, for: indexPath) as! TimerSettingTableViewCell
                 cell.counterSetupButton.addTarget(self, action: #selector(openSettings), for: .touchUpInside)
+                cell.counterSetupButton.tintColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
                 return cell
             default:
                 self.tableView.register(CounterTableViewCell.self, forCellReuseIdentifier: CounterTableViewCellIdentifier)

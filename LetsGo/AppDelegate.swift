@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setAppearance()
         
         let homeViewController = HomeViewController()
-//            homeViewController.userIntent = startIntent
         let navViewController = UINavigationController(rootViewController: homeViewController)
         
         window!.rootViewController = navViewController
@@ -78,16 +77,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func setAppearance() {
         
-        
-        UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
-        
-        self.window?.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
+        self.window?.backgroundColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         
         let navigationBarAppearace = UINavigationBar.appearance()
-        navigationBarAppearace.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
-        navigationBarAppearace.barTintColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
-        navigationBarAppearace.titleTextAttributes =  [NSFontAttributeName: UIFont(name: "Betm-Regular3", size: 18)!, NSForegroundColorAttributeName:#colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)]
+        navigationBarAppearace.tintColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
+        navigationBarAppearace.barTintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        navigationBarAppearace.titleTextAttributes =  [NSFontAttributeName: UIFont(name: "Betm-Regular3", size: 18)!, NSForegroundColorAttributeName:#colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)]
+        navigationBarAppearace.shadowImage = UIImage()
+         navigationBarAppearace.setBackgroundImage(UIImage(), for: .default)
     }
 }
 

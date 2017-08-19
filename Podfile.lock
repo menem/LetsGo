@@ -3,6 +3,7 @@ PODS:
   - CountdownLabel (2.0.1)
   - HGCircularSlider (1.0.3)
   - MZTimerLabel (0.5.4)
+  - Pastel (0.3.0)
   - RandomColorSwift (1.0.0)
 
 DEPENDENCIES:
@@ -10,6 +11,7 @@ DEPENDENCIES:
   - CountdownLabel
   - HGCircularSlider (~> 1.0.3)
   - MZTimerLabel
+  - Pastel
   - RandomColorSwift
 
 SPEC CHECKSUMS:
@@ -17,8 +19,9 @@ SPEC CHECKSUMS:
   CountdownLabel: 1297533b42ef5c1a441cd458136c35ad93210da1
   HGCircularSlider: f3a941d52bae7833b7213b8d89c6264c5506d9ad
   MZTimerLabel: cd9bfb9304540ef2a9e163384fca9c978f0dbf83
+  Pastel: 738740c84f2b15bbcd96ebe99c4e6c2f5dd42262
   RandomColorSwift: 9f85058b721665d52d239ca166a913e083506444
 
-PODFILE CHECKSUM: 106d687a8329b5c98f7accf013d67cd61726b8a9
+PODFILE CHECKSUM: 6dae3fde1357b271f3ae72616004f43e8212f591
 
 COCOAPODS: 1.2.1

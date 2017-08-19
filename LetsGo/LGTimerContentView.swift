@@ -20,11 +20,19 @@ class LGTimerContentView: UIView {
     lazy var timeLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont (name: "Betm-Regular3", size: 60)
-        label.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        label.font = UIFont (name: "Betm-Regular3", size: 80)
+        label.textColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    lazy var backBlurView: UIView = {
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.alpha = 0.7
+        blurEffectView.layer.cornerRadius = 5.0
+        blurEffectView.translatesAutoresizingMaskIntoConstraints = false
+        return blurEffectView
     }()
     
     lazy var timer: MZTimerLabel = {
@@ -42,6 +50,7 @@ class LGTimerContentView: UIView {
     }()
     lazy var timerControls: LGTimerControls = {
         let timerControl = LGTimerControls()
+        timerControl.tintColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
         timerControl.pauseButton.addTarget(self, action: #selector(toggleTimer), for: .touchUpInside)
         timerControl.playButton.addTarget(self, action: #selector(toggleTimer), for: .touchUpInside)
         timerControl.stopButton.addTarget(self, action: #selector(stopTimer), for: .touchUpInside)
@@ -57,8 +66,6 @@ class LGTimerContentView: UIView {
         }
     }
     func toggleTimer() {
-     
-
         if(!isRunning) {
             isRunning = true
             self.tintColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
@@ -109,7 +116,9 @@ class LGTimerContentView: UIView {
         self.addSubview(timeLabel)
         self.addSubview(timerControls)
         self.addSubview(countDownTimerLabel)
-        self.bringSubview(toFront: countDownTimerLabel)
+        self.addSubview(backBlurView)
+//        self.sendSubview(toBack: backBlurView)
+//        self.bringSubview(toFront: countDownTimerLabel)
         setNeedsUpdateConstraints()
     }
     
@@ -144,7 +153,13 @@ class LGTimerContentView: UIView {
             timerControls.topAnchor.constraint(equalTo: timeLabel.bottomAnchor),
             timerControls.centerXAnchor.constraint(equalTo: timeLabel.centerXAnchor),
             timerControls.widthAnchor.constraint(equalTo: timeLabel.widthAnchor),
-            timerControls.heightAnchor.constraint(equalToConstant: 40)
+            timerControls.heightAnchor.constraint(equalToConstant: 40),
+            
+//            backBlurView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+//            backBlurView.centerYAnchor.constraint(equalTo: timeLabel.centerYAnchor),
+//            backBlurView.heightAnchor.constraint(equalTo: timeLabel.heightAnchor, constant: 20),
+//            backBlurView.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -20),
+            
             ])
         super.updateConstraints()
     }
