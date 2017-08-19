@@ -32,6 +32,7 @@ class ActivityTableViewCell: UITableViewCell {
     lazy var backCardView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 5.0
+        view.alpha = 0.7
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
