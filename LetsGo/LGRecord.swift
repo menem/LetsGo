@@ -19,6 +19,7 @@ class LGRecord: NSObject, NSCoding {
     init(title: String, time: String) {
         self.title = title
         self.timerMode = " "
+        
         self.timestamp = " "
         self.notes = " "
         self.calories = 1.0

@@ -162,27 +162,32 @@ class LGTimerContentView: UIView {
 
 extension LGTimerContentView: CountdownLabelDelegate {
     func countingAt(timeCounted: TimeInterval, timeRemaining: TimeInterval) {
+            let synthesizer = AVSpeechSynthesizer()
+         var utterance = AVSpeechUtterance()
+        utterance.rate = 0.6
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+                 DispatchQueue.main.async {
         switch timeRemaining {
-        case 3:
-            let synthesizer = AVSpeechSynthesizer()
-            let utterance = AVSpeechUtterance(string: "3")
-            utterance.rate = 0.7
-            utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-            synthesizer.speak(utterance)
+     case 3:
+            DispatchQueue.main.async {
+                utterance = AVSpeechUtterance(string: "3")
+                synthesizer.speak(utterance)
+            }
         case 2:
-            let synthesizer = AVSpeechSynthesizer()
-            let utterance = AVSpeechUtterance(string: "2")
-            utterance.rate = 0.7
-            utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-            synthesizer.speak(utterance)
+            DispatchQueue.main.async {
+                
+                utterance = AVSpeechUtterance(string: "2")
+                synthesizer.speak(utterance)
+            }
         case 1:
-            let synthesizer = AVSpeechSynthesizer()
-            let utterance = AVSpeechUtterance(string: "1")
-            utterance.rate = 0.7
-            utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-            synthesizer.speak(utterance)
+            DispatchQueue.main.async {
+                
+                utterance = AVSpeechUtterance(string: "1")
+                synthesizer.speak(utterance)
+            }
         default:
             break
+        }
         }
     }
     func countdownFinished() {
