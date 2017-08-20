@@ -106,7 +106,7 @@ class HomeViewController: UIViewController {
         INVocabulary.shared().setVocabularyStrings(["interval","emom","time cap", "wod", "timer", "tabata", "amrap", "stopwatch"], of: .workoutActivityName)
         if ((userIntent) != nil){
             
-            let minute = userIntent.goalValue!/60
+//            let minute = userIntent.goalValue!/60
             switch String(describing: userIntent.workoutName).lowercased() {
             case "interval":
                 self.pageControl.currentPage = 2

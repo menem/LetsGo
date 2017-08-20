@@ -11,6 +11,11 @@
 		480A7ADA1F472C2800D7D006 /* LGRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A7AD91F472C2800D7D006 /* LGRecord.swift */; };
 		480A7ADC1F47315F00D7D006 /* LGRecordsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A7ADB1F47315F00D7D006 /* LGRecordsManager.swift */; };
 		480A7ADE1F474E8F00D7D006 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A7ADD1F474E8F00D7D006 /* RecordTableViewCell.swift */; };
+		480A7AF51F4A44F500D7D006 /* DPTimeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A7AEA1F4A44F400D7D006 /* DPTimeCollectionViewCell.swift */; };
+		480A7AF61F4A44F500D7D006 /* DPTimeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 480A7AEB1F4A44F400D7D006 /* DPTimeCollectionViewCell.xib */; };
+		480A7AF71F4A44F500D7D006 /* DPTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A7AEC1F4A44F400D7D006 /* DPTimePicker.swift */; };
+		480A7AF81F4A44F500D7D006 /* DPTimePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 480A7AED1F4A44F400D7D006 /* DPTimePicker.xib */; };
+		480A7AF91F4A44F500D7D006 /* EZYGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A7AEE1F4A44F400D7D006 /* EZYGradientView.swift */; };
 		480B29C61F3CA392007743F6 /* LGDurationSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480B29C51F3CA392007743F6 /* LGDurationSelection.swift */; };
 		480B29CA1F3F15C7007743F6 /* LGTimerControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480B29C91F3F15C7007743F6 /* LGTimerControls.swift */; };
 		480B29CC1F3F36ED007743F6 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480B29CB1F3F36ED007743F6 /* File.swift */; };
@@ -79,6 +84,11 @@
 		480A7AD91F472C2800D7D006 /* LGRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGRecord.swift; sourceTree = "<group>"; };
 		480A7ADB1F47315F00D7D006 /* LGRecordsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGRecordsManager.swift; sourceTree = "<group>"; };
 		480A7ADD1F474E8F00D7D006 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
+		480A7AEA1F4A44F400D7D006 /* DPTimeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPTimeCollectionViewCell.swift; sourceTree = "<group>"; };
+		480A7AEB1F4A44F400D7D006 /* DPTimeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DPTimeCollectionViewCell.xib; sourceTree = "<group>"; };
+		480A7AEC1F4A44F400D7D006 /* DPTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPTimePicker.swift; sourceTree = "<group>"; };
+		480A7AED1F4A44F400D7D006 /* DPTimePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DPTimePicker.xib; sourceTree = "<group>"; };
+		480A7AEE1F4A44F400D7D006 /* EZYGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZYGradientView.swift; sourceTree = "<group>"; };
 		480B29C51F3CA392007743F6 /* LGDurationSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGDurationSelection.swift; sourceTree = "<group>"; };
 		480B29C91F3F15C7007743F6 /* LGTimerControls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGTimerControls.swift; sourceTree = "<group>"; };
 		480B29CB1F3F36ED007743F6 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
@@ -142,6 +152,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		480A7AE11F4A44E300D7D006 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				480A7AE91F4A44F400D7D006 /* DPTimePicker */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		480A7AE91F4A44F400D7D006 /* DPTimePicker */ = {
+			isa = PBXGroup;
+			children = (
+				480A7AEA1F4A44F400D7D006 /* DPTimeCollectionViewCell.swift */,
+				480A7AEB1F4A44F400D7D006 /* DPTimeCollectionViewCell.xib */,
+				480A7AEC1F4A44F400D7D006 /* DPTimePicker.swift */,
+				480A7AED1F4A44F400D7D006 /* DPTimePicker.xib */,
+				480A7AEE1F4A44F400D7D006 /* EZYGradientView.swift */,
+			);
+			name = DPTimePicker;
+			path = DPTimePicker/DPTimePicker;
+			sourceTree = "<group>";
+		};
 		480B29C41F3C6568007743F6 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +274,7 @@
 		4850E1AE1F28EE00004D85A7 /* LetsGo */ = {
 			isa = PBXGroup;
 			children = (
+				480A7AE11F4A44E300D7D006 /* Vendor */,
 				4850E1AF1F28EE00004D85A7 /* AppDelegate.swift */,
 				4825CF3C1F2FEB6F0066B40D /* Models */,
 				4825CF3D1F2FEB860066B40D /* Managers */,
@@ -416,6 +448,8 @@
 				4850E1BA1F28EE00004D85A7 /* LaunchScreen.storyboard in Resources */,
 				4850E1B71F28EE00004D85A7 /* Assets.xcassets in Resources */,
 				48E657AC1F2E1658007E649E /* tone.wav in Resources */,
+				480A7AF61F4A44F500D7D006 /* DPTimeCollectionViewCell.xib in Resources */,
+				480A7AF81F4A44F500D7D006 /* DPTimePicker.xib in Resources */,
 				48B396591F3BAC000084F5DC /* BetmHairline.otf in Resources */,
 				48B396581F3BAC000084F5DC /* Betm-Regular3.otf in Resources */,
 			);
@@ -492,6 +526,7 @@
 				480A7ADA1F472C2800D7D006 /* LGRecord.swift in Sources */,
 				48A31BC61F34352200E919FB /* LGTextField.swift in Sources */,
 				480A7ADC1F47315F00D7D006 /* LGRecordsManager.swift in Sources */,
+				480A7AF71F4A44F500D7D006 /* DPTimePicker.swift in Sources */,
 				4825CF431F2FEFD30066B40D /* LGTimer.swift in Sources */,
 				48A31BBE1F3372C100E919FB /* TimerTableViewCell.swift in Sources */,
 				48A31BC51F34352200E919FB /* TextFieldTableViewCell.swift in Sources */,
@@ -501,6 +536,7 @@
 				48F023201F428EE500EED177 /* LGRoundSelector.swift in Sources */,
 				48A31BC91F35FA5400E919FB /* LGTextField+BottomBorder.swift in Sources */,
 				4850E1B01F28EE00004D85A7 /* AppDelegate.swift in Sources */,
+				480A7AF51F4A44F500D7D006 /* DPTimeCollectionViewCell.swift in Sources */,
 				48A31BB01F32253500E919FB /* LGTimeManager.swift in Sources */,
 				48A31BB91F333EB900E919FB /* ActivityTableViewCell.swift in Sources */,
 				48B3965D1F3BBF970084F5DC /* StopwatchViewController.swift in Sources */,
@@ -512,6 +548,7 @@
 				484F0FA81F2EB4790056F1E2 /* HealthKitManager.swift in Sources */,
 				48998BD21F396E4200F7E4AB /* LGTimerContentView.swift in Sources */,
 				48A31BCA1F35FA5400E919FB /* LGTextField+PlaceholderTextColor.swift in Sources */,
+				480A7AF91F4A44F500D7D006 /* EZYGradientView.swift in Sources */,
 				48A31BB51F331A4000E919FB /* ActivitiesViewController.swift in Sources */,
 				48B396611F3C55AC0084F5DC /* TimerSettingTableViewCell.swift in Sources */,
 			);
