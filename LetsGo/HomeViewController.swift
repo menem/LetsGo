@@ -8,12 +8,16 @@
 
 import UIKit
 import Pastel
-
+import Intents
 
 class HomeViewController: UIViewController {
     var scrollView: UIScrollView?
     var pageControl : UIPageControl!
     var viewControllers = [UIViewController]()
+    var userIntent: INStartWorkoutIntent!
+    let timerViewController = TimerViewController()
+    let stopViewController = StopwatchViewController()
+    let intervalsViewController = IntervalsViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +30,7 @@ class HomeViewController: UIViewController {
         scrollView?.delegate = self
         self.view.addSubview(scrollView!)
         
-        let timerViewController = TimerViewController()
-        let stopViewController = StopwatchViewController()
-        let intervalsViewController = IntervalsViewController()
+
         viewControllers = [timerViewController, stopViewController, intervalsViewController]
         
         let bounds = UIScreen.main.bounds
@@ -51,6 +53,7 @@ class HomeViewController: UIViewController {
             idx += 1;
         }
         configurePageControl()
+        configureSiri()
         
         self.title = "Home"
         self.navigationController?.navigationBar.titleTextAttributes =  [NSFontAttributeName: UIFont(name: "Betm-Regular3", size: 18)!, NSForegroundColorAttributeName:#colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)]
@@ -96,7 +99,30 @@ class HomeViewController: UIViewController {
         scrollView?.setContentOffset(CGPoint(x:x, y:-64), animated: true)
     }
     
-    
+    func configureSiri()  {
+        INPreferences.requestSiriAuthorization { (status) in
+            
+        }
+        INVocabulary.shared().setVocabularyStrings(["interval","emom","time cap", "wod", "timer", "tabata", "amrap", "stopwatch"], of: .workoutActivityName)
+        if ((userIntent) != nil){
+            
+            let minute = userIntent.goalValue!/60
+            switch String(describing: userIntent.workoutName).lowercased() {
+            case "interval":
+                self.pageControl.currentPage = 2
+                stopViewController.timeContentView.toggleTimer()
+            case "time cap":
+                self.pageControl.currentPage = 0
+                stopViewController.timeContentView.toggleTimer()
+            case "stopwatch":
+                self.pageControl.currentPage = 1
+                stopViewController.timeContentView.toggleTimer()
+            default:
+                self.pageControl.currentPage = 1
+                stopViewController.timeContentView.toggleTimer()
+            }
+        }
+    }
     
 }
 extension HomeViewController:UIScrollViewDelegate {

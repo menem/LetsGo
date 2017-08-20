@@ -87,13 +87,6 @@ class ActivityViewController: UITableViewController {
         currentlyPlaying = 0
         timeContentView.timer.setCountDownTime((timers.first?.duration)!+10)
         currentInterval = timers.first?.intervals
-        
-        //        let synthesizer = AVSpeechSynthesizer()
-        //        let utterance = AVSpeechUtterance(string: (timers.first?.title)!)
-        //        utterance.rate = 0.7
-        //        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        //        synthesizer.speak(utterance)
-        
         let selectedIndexPath = IndexPath(row: 0, section: 1)
         let selectedCell = self.tableView.cellForRow(at: selectedIndexPath) as! TimerTableViewCell
         highlightCell(cell: selectedCell)
@@ -104,13 +97,6 @@ class ActivityViewController: UITableViewController {
         let timerDuration = timers[currentlyPlaying].duration
         currentInterval = timers[currentlyPlaying].intervals
         timeContentView.timer.setCountDownTime(timerDuration)
-        
-        //        let synthesizer = AVSpeechSynthesizer()
-        //        let utterance = AVSpeechUtterance(string: timers[currentlyPlaying].title)
-        //        utterance.rate = 0.7
-        //        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        //        synthesizer.speak(utterance)
-        
         let selectedIndexPath = IndexPath(row: currentlyPlaying, section: 1)
         let previousCellIndex = IndexPath(row: currentlyPlaying - 1, section: 1)
         let previousCell = self.tableView.cellForRow(at: previousCellIndex)  as! TimerTableViewCell
@@ -127,13 +113,6 @@ class ActivityViewController: UITableViewController {
     func resumeTimer(index: Int){
         let timerDuration = timers[index].duration
         timeContentView.timer.setCountDownTime(timerDuration)
-        
-        //        let synthesizer = AVSpeechSynthesizer()
-        //        let utterance = AVSpeechUtterance(string: timers[index].title)
-        //        utterance.rate = 0.7
-        //        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        //        synthesizer.speak(utterance)
-        
         let selectedIndexPath = IndexPath(row: currentlyPlaying, section: 1)
         let selectedCell = self.tableView.cellForRow(at: selectedIndexPath) as! TimerTableViewCell
         highlightCell(cell: selectedCell)
@@ -170,16 +149,13 @@ class ActivityViewController: UITableViewController {
     }
     func saveTimersForActivity() {
         let manager = LGTimerManager()
-        let intervals = 1//Int(timerIntervalTextField.text!)
+        let intervals = 1
         
         durationSelector.adjustMinutes()
         durationSelector.adjustSeconds()
         
         let minuteReading = Double(durationSelector.minutesLabel.text! ) ?? 0
         let minutesInSeconds = minuteReading * 60
-        //        let totalSeconds =
-        //        self.timeContentView.timer.setCountDownTime(totalSeconds)
-        
         let duration = minutesInSeconds + Double(durationSelector.secondsLabel.text!)!
         let name = timerNameTextField.text ?? "Timer"
         manager.savetimers(title: name, duration: duration, intervals: intervals, activity: activity)
@@ -209,31 +185,24 @@ class ActivityViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        //        if (section != 0) {
-        //            return 0
-        //        }
-        
-        return 0
-    }
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if (section == 0) {
-            return 0
+            return 140
         } else {
-            return 120
+            return 0
         }
     }
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if (section != 0) {
+ override   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if (section == 0) {
             timeContentView = LGTimerContentView(frame: CGRect(x:0, y: -40, width: self.view.frame.size.width, height: 80))
             timeContentView.timer.setCountDownTime(calculateTotalTime())
             timeContentView.timer.delegate = self
             timeContentView.timerControls.playButton.addTarget(self, action:#selector(startActivity), for: .touchUpInside)
-            //            timeContentView.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
             return timeContentView
         }else{
             return nil
         }
     }
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.section == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: BannerTableViewCellIdentifier, for: indexPath) as! TitleBackgroundTableViewCell

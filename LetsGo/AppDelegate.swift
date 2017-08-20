@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window!.rootViewController = navViewController
         window!.makeKeyAndVisible()
+        
         setApplicationBackground()
      
         return true
@@ -35,16 +36,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return false
         }
         print(endIntent)
+        
         guard let startIntent = userActivity.interaction?.intent as? INStartWorkoutIntent else {
             print("AppDelegate: Start Workout Intent - FALSE")
             return false
         }
         print("AppDelegate: Start Workout Intent - TRUE")
-        print(startIntent)
-        //        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        //        let homeViewController = mainStoryboard.instantiateViewController(withIdentifier: "timer") as! HomeViewController
+
         let homeViewController = HomeViewController()
-        //        homeViewController.userIntent = startIntent
+                homeViewController.userIntent = startIntent
         let navViewController = UINavigationController(rootViewController: homeViewController)
         
         window!.rootViewController = navViewController

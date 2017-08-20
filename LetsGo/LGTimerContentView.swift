@@ -87,7 +87,7 @@ class LGTimerContentView: UIView {
         playSound()
         timer.pause()
         timer.reset()
-        self.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        self.tintColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
         isRunning = false
         configureRunningControls()
     }

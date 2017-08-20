@@ -24,6 +24,7 @@ class IntervalsViewController: UITableViewController {
     var offtotalSeconds: Double!
     var currentRound: Int!
     var isCountingOffTimer: Bool!
+    var timerSetupButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -153,6 +154,7 @@ class IntervalsViewController: UITableViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: TimerSettingTableViewCellIdentifier, for: indexPath) as! TimerSettingTableViewCell
                 cell.counterSetupButton.addTarget(self, action: #selector(openSettings), for: .touchUpInside)
                 cell.counterSetupButton.tintColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
+                self.timerSetupButton = cell.counterSetupButton
                 return cell
             default:
                 self.tableView.register(CounterTableViewCell.self, forCellReuseIdentifier: CounterTableViewCellIdentifier)
@@ -175,11 +177,11 @@ class IntervalsViewController: UITableViewController {
 
 extension IntervalsViewController: MZTimerLabelDelegate {
     func timerLabel(_ timerLabel: MZTimerLabel!, countingTo time: TimeInterval, timertype timerType: MZTimerLabelType){
-        //        let progress = time/timerLabel.getCountDownTime()
-        //        self.navigationController?.progress = Float(progress)
+self.timerSetupButton.isHidden = true
     }
     
     func timerLabel(_ timerLabel: MZTimerLabel!, finshedCountDownTimerWithTime countTime: TimeInterval){
+        
         if (currentRound < rounds){
             if (isCountingOffTimer){
                 isCountingOffTimer = false
@@ -192,6 +194,7 @@ extension IntervalsViewController: MZTimerLabelDelegate {
                     return
                 }else{
                     self.timeContentView.stopTimer()
+                    self.timerSetupButton.isHidden = false
                     configureTimers()
                 }
                 return
