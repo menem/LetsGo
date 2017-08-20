@@ -35,20 +35,10 @@ class LGRoundSelector: UIView {
         stepper.translatesAutoresizingMaskIntoConstraints = false
         return stepper
     }()
-    
-//    lazy var quantityLabel: UILabel = {
-//        let label = UILabel()
-//        label.textAlignment = .center
-//        label.font = UIFont (name: "BetmHairline", size: 25)
-//        label.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
-//        label.sizeToFit()
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        return label
-//    }()
-    
+
     override var tintColor: UIColor! {
         didSet {
-//            quantityLabel.tintColor = tintColor
+
             roundStepper.tintColor = tintColor
             roundsLabel.tintColor = tintColor
             setNeedsDisplay()
@@ -59,8 +49,6 @@ class LGRoundSelector: UIView {
         super.init(frame: frame)
         self.addSubview(roundsLabel)
         self.addSubview(roundStepper)
-//        self.addSubview(quantityLabel)
-
         setNeedsUpdateConstraints()
     }
     
@@ -89,12 +77,5 @@ class LGRoundSelector: UIView {
         
         stepperMapping[stepper]!.text = "Rounds: \(Int(stepper.value))"
     }
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
 
 }

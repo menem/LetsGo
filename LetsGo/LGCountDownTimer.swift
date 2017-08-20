@@ -21,23 +21,6 @@ class LGCountDownTimer: UIView {
         label.textColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
-        
-//        label.then(targetTime: 1) { [unowned self] in
-//            _ = AVSpeechSynthesizer()
-//            let utterance = AVSpeechUtterance(string: "1")
-//            utterance.rate = 0.2
-//        }
-//        label.then(targetTime: 2) { [unowned self] in
-//            _ = AVSpeechSynthesizer()
-//            let utterance = AVSpeechUtterance(string: "2")
-//            utterance.rate = 0.2
-//        }
-//        label.then(targetTime: 3) { [unowned self] in
-//            _ = AVSpeechSynthesizer()
-//            let utterance = AVSpeechUtterance(string: "3")
-//            utterance.rate = 0.2
-//        }
-        
         return label
     }()
     

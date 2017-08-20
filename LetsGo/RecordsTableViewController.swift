@@ -12,18 +12,12 @@ import Pastel
 let RecordTableViewCellIdentifier = "RecordTableViewCellIdentifier"
 
 class RecordsTableViewController: UITableViewController {
-
+    
     var records = [LGRecord]()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-        
-        
-        
-//        self.becomeFirstResponder()
         self.tableView.tableFooterView = UIView()
         self.tableView.backgroundColor = .clear
         self.tableView.separatorStyle = .none
@@ -34,17 +28,12 @@ class RecordsTableViewController: UITableViewController {
         
     }
     
-
-    
     func loadRecords(){
         let recordsManager = LGRecordsManager()
         records = recordsManager.loadRecords()
         self.tableView.reloadData()
     }
 
-    
-
-    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -92,9 +81,6 @@ class RecordsTableViewController: UITableViewController {
             return cell
         }
         
-        
     }
-    
-
     
 }

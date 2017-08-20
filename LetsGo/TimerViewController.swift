@@ -26,9 +26,6 @@ class TimerViewController: UITableViewController {
         self.tableView.separatorStyle = .none
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
         self.title = "Timer"
-//        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName :#colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)]
-//        self.tableView.contentInset = UIEdgeInsetsMake(44,0,0,0)
-//        self.automaticallyAdjustsScrollViewInsets = false
         tableView.isScrollEnabled = false
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "icn_activities"), style: .plain, target: self, action: #selector(pushActivities))
         self.navigationItem.rightBarButtonItem = rightBarButton
@@ -69,10 +66,6 @@ class TimerViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        if (section != 0) {
-//            return 1
-//        }
-        
         return 0
     }
     func configureSettings() {
@@ -91,8 +84,8 @@ class TimerViewController: UITableViewController {
         
     }
     func openSettings(){
-    popupController.present(animated: true)
-    
+        popupController.present(animated: true)
+        
     }
     
     func dismissPopUp() {
@@ -140,8 +133,6 @@ class TimerViewController: UITableViewController {
 
 extension TimerViewController: MZTimerLabelDelegate {
     func timerLabel(_ timerLabel: MZTimerLabel!, countingTo time: TimeInterval, timertype timerType: MZTimerLabelType){
-//        let progress = time/timerLabel.getCountDownTime()
-//        self.navigationController?.progress = Float(progress)
     }
     
     func timerLabel(_ timerLabel: MZTimerLabel!, finshedCountDownTimerWithTime countTime: TimeInterval){
@@ -154,7 +145,7 @@ extension TimerViewController : CNPPopupControllerDelegate {
     
     func popupControllerWillDismiss(_ controller: CNPPopupController) {
         print("Popup controller will be dismissed")
-
+        
     }
     
     func popupControllerDidPresent(_ controller: CNPPopupController) {

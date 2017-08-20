@@ -13,7 +13,7 @@ class LGTimerManager {
     func saveActivity(title: String, type: String){
         
         let activity = LGActivity(title: title, type: type)
-
+        
         
         guard let activitiesData = UserDefaults.standard.object(forKey: "activities") as? NSData else {
             print("'places' not found in UserDefaults")
@@ -22,7 +22,7 @@ class LGTimerManager {
             
             let newActivitiesData = NSKeyedArchiver.archivedData(withRootObject: activitiesArray)
             UserDefaults.standard.set(newActivitiesData, forKey: "activities")
-
+            
             return
         }
         
@@ -33,7 +33,7 @@ class LGTimerManager {
             
             let newActivitiesData = NSKeyedArchiver.archivedData(withRootObject: activitiesArray)
             UserDefaults.standard.set(newActivitiesData, forKey: "activities")
-
+            
             return
         }
         
@@ -42,7 +42,7 @@ class LGTimerManager {
         UserDefaults.standard.set(newActivitiesData, forKey: "activities")
         
     }
-
+    
     func savetimers(title: String,duration: Double,intervals: Int, activity: LGActivity){
         
         let timersKey = "\(activity.title).timers"

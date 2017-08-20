@@ -42,7 +42,7 @@ class LGRecordsManager: NSObject {
         UserDefaults.standard.set(newrecordData, forKey: "records")
         
     }
-
+    
     func loadRecords() -> [LGRecord]{
         
         let recordsKey = "records"

@@ -12,7 +12,6 @@ class LGDoneButton: UIView {
 
     lazy var doneButton: UIButton = {
         let button = UIButton()
-//        let buttonImage = UIImage(named: "icn_play")
         button.setTitle("Done", for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont(name: "Betm-Regular3", size: 25)
@@ -20,7 +19,6 @@ class LGDoneButton: UIView {
         button.layer.cornerRadius = 25
         button.layer.borderWidth = 4
         button.layer.borderColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1).cgColor
-//        button.setImage(buttonImage, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

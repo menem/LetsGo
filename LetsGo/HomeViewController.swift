@@ -17,37 +17,15 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-           let screenFrame = UIScreen.main.bounds
-//        let pastelView = PastelView(frame: screenFrame)
-//        
-//        // Custom Direction
-//        pastelView.startPastelPoint = .bottomLeft
-//        pastelView.endPastelPoint = .topRight
-//        
-//        // Custom Duration
-//        pastelView.animationDuration = 3.0
-//        
-//        // Custom Color
-//        pastelView.setColors([UIColor(red: 156/255, green: 39/255, blue: 176/255, alpha: 1.0),
-//                              UIColor(red: 255/255, green: 64/255, blue: 129/255, alpha: 1.0),
-//                              UIColor(red: 123/255, green: 31/255, blue: 162/255, alpha: 1.0),
-//                              UIColor(red: 32/255, green: 76/255, blue: 255/255, alpha: 1.0),
-//                              UIColor(red: 32/255, green: 158/255, blue: 255/255, alpha: 1.0),
-//                              UIColor(red: 90/255, green: 120/255, blue: 127/255, alpha: 1.0),
-//                              UIColor(red: 58/255, green: 255/255, blue: 217/255, alpha: 1.0)])
-//        
-//        pastelView.startAnimation()
-//        view.insertSubview(pastelView, at: 0)
-//        
-     
+        let screenFrame = UIScreen.main.bounds
+        
         scrollView = UIScrollView(frame: screenFrame)
-//        scrollView?.contentInset = UIEdgeInsets(top: -84, left: 0, bottom: 0, right: 0)
         scrollView?.isPagingEnabled = true
         scrollView?.isDirectionalLockEnabled = true
         scrollView?.showsHorizontalScrollIndicator = false
         scrollView?.delegate = self
         self.view.addSubview(scrollView!)
-
+        
         let timerViewController = TimerViewController()
         let stopViewController = StopwatchViewController()
         let intervalsViewController = IntervalsViewController()
@@ -60,8 +38,8 @@ class HomeViewController: UIViewController {
         scrollView!.contentSize = CGSize(width: 3*width, height: height - 80)
         let pageX = (bounds.size.width/2) - 125
         let pageY = height - 70
-         pageControl = UIPageControl(frame: CGRect(x:pageX, y:pageY, width:250, height:50))
-                var idx:Int = 0
+        pageControl = UIPageControl(frame: CGRect(x:pageX, y:pageY, width:250, height:50))
+        var idx:Int = 0
         
         
         for viewController in viewControllers {
@@ -72,11 +50,10 @@ class HomeViewController: UIViewController {
             viewController.didMove(toParentViewController: self)
             idx += 1;
         }
-         configurePageControl()
-
-        self.title = "Timer"
-//        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName :#colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)]
-     self.navigationController?.navigationBar.titleTextAttributes =  [NSFontAttributeName: UIFont(name: "Betm-Regular3", size: 18)!, NSForegroundColorAttributeName:#colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)]
+        configurePageControl()
+        
+        self.title = "Home"
+        self.navigationController?.navigationBar.titleTextAttributes =  [NSFontAttributeName: UIFont(name: "Betm-Regular3", size: 18)!, NSForegroundColorAttributeName:#colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)]
         
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "icn_activities"), style: .plain, target: self, action: #selector(pushActivities))
         self.navigationItem.rightBarButtonItem = rightBarButton
@@ -119,7 +96,7 @@ class HomeViewController: UIViewController {
         scrollView?.setContentOffset(CGPoint(x:x, y:-64), animated: true)
     }
     
-
+    
     
 }
 extension HomeViewController:UIScrollViewDelegate {

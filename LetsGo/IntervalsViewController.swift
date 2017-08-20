@@ -35,8 +35,6 @@ class IntervalsViewController: UITableViewController {
         tableView.isScrollEnabled = false
         
         self.title = "Intervals"
-//        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName :#colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)]
-        
         
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "icn_activities"), style: .plain, target: self, action: #selector(pushActivities))
         self.navigationItem.rightBarButtonItem = rightBarButton
@@ -75,9 +73,9 @@ class IntervalsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        if (section != 0) {
-//            return 1
-//        }
+        //        if (section != 0) {
+        //            return 1
+        //        }
         
         return 0
     }
@@ -98,7 +96,7 @@ class IntervalsViewController: UITableViewController {
         for view in views {
             scrollView!.addSubview(view!)
         }
-
+        
         roundCounter = LGRoundSelector(frame: CGRect(x: 0, y: 0, width: 300, height: 40))
         
         let closeButton = LGDoneButton(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
@@ -126,8 +124,8 @@ class IntervalsViewController: UITableViewController {
         
         let onminuteReading = Double(onDurationSelector.minutesLabel.text! ) ?? 0
         let onminutesInSeconds = onminuteReading * 60
-                ontotalSeconds = onminutesInSeconds + Double(onDurationSelector.secondsLabel.text!)!
-//        ontotalSeconds = 10
+        ontotalSeconds = onminutesInSeconds + Double(onDurationSelector.secondsLabel.text!)!
+        //        ontotalSeconds = 10
         
         
         offDurationSelector.adjustMinutes()
@@ -135,8 +133,8 @@ class IntervalsViewController: UITableViewController {
         
         let offminuteReading = Double(offDurationSelector.minutesLabel.text! ) ?? 0
         let offminutesInSeconds = offminuteReading * 60
-                offtotalSeconds = offminutesInSeconds + Double(offDurationSelector.secondsLabel.text!)!
-//        offtotalSeconds = 5
+        offtotalSeconds = offminutesInSeconds + Double(offDurationSelector.secondsLabel.text!)!
+        //        offtotalSeconds = 5
         
         rounds = Int(roundCounter.roundStepper.value)
         currentRound = 0
@@ -177,8 +175,8 @@ class IntervalsViewController: UITableViewController {
 
 extension IntervalsViewController: MZTimerLabelDelegate {
     func timerLabel(_ timerLabel: MZTimerLabel!, countingTo time: TimeInterval, timertype timerType: MZTimerLabelType){
-//        let progress = time/timerLabel.getCountDownTime()
-//        self.navigationController?.progress = Float(progress)
+        //        let progress = time/timerLabel.getCountDownTime()
+        //        self.navigationController?.progress = Float(progress)
     }
     
     func timerLabel(_ timerLabel: MZTimerLabel!, finshedCountDownTimerWithTime countTime: TimeInterval){
@@ -186,20 +184,20 @@ extension IntervalsViewController: MZTimerLabelDelegate {
             if (isCountingOffTimer){
                 isCountingOffTimer = false
                 currentRound! += 1
-            if (currentRound < rounds){
-                self.timeContentView.tintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
-                self.timeContentView.timer.setCountDownTime(ontotalSeconds)
-                self.timeContentView.playSound()
-                self.timeContentView.timer.start()
+                if (currentRound < rounds){
+                    self.timeContentView.tintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
+                    self.timeContentView.timer.setCountDownTime(ontotalSeconds)
+                    self.timeContentView.playSound()
+                    self.timeContentView.timer.start()
                     return
-            }else{
-                self.timeContentView.stopTimer()
-                configureTimers()
+                }else{
+                    self.timeContentView.stopTimer()
+                    configureTimers()
                 }
                 return
             }
             isCountingOffTimer = true
-             self.timeContentView.tintColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
+            self.timeContentView.tintColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
             self.timeContentView.timer.setCountDownTime(offtotalSeconds)
             self.timeContentView.playSound()
             self.timeContentView.timer.start()
@@ -212,9 +210,9 @@ extension IntervalsViewController : CNPPopupControllerDelegate {
     
     func popupControllerWillDismiss(_ controller: CNPPopupController) {
         print("Popup controller will be dismissed")
-//        let minutesInSeconds = Double(self.durationSelector.minutesLabel.text!)! * 60
-//        let totalSeconds = minutesInSeconds + Double(self.durationSelector.secondsLabel.text!)!
-//        self.timeContentView.timer.setCountDownTime(totalSeconds)
+        //        let minutesInSeconds = Double(self.durationSelector.minutesLabel.text!)! * 60
+        //        let totalSeconds = minutesInSeconds + Double(self.durationSelector.secondsLabel.text!)!
+        //        self.timeContentView.timer.setCountDownTime(totalSeconds)
     }
     
     func popupControllerDidPresent(_ controller: CNPPopupController) {

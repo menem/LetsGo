@@ -25,39 +25,13 @@ class ActivitiesViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let screenFrame = self.view.frame
-//        let originX = screenFrame.origin.x
-//        let originY = screenFrame.origin.y - 84
-//        let height = screenFrame.height + 120
-//        let width = screenFrame.width
-//        let pastelView = PastelView(frame: CGRect(x: originX, y: originY, width: width, height: height))
-//        
-//        // Custom Direction
-//        pastelView.startPastelPoint = .bottomLeft
-//        pastelView.endPastelPoint = .topRight
-//        
-//        // Custom Duration
-//        pastelView.animationDuration = 3.0
-//        
-//        // Custom Color
-//        pastelView.setColors([UIColor(red: 156/255, green: 39/255, blue: 176/255, alpha: 1.0),
-//                              UIColor(red: 255/255, green: 64/255, blue: 129/255, alpha: 1.0),
-//                              UIColor(red: 123/255, green: 31/255, blue: 162/255, alpha: 1.0),
-//                              UIColor(red: 32/255, green: 76/255, blue: 255/255, alpha: 1.0),
-//                              UIColor(red: 32/255, green: 158/255, blue: 255/255, alpha: 1.0),
-//                              UIColor(red: 90/255, green: 120/255, blue: 127/255, alpha: 1.0),
-//                              UIColor(red: 58/255, green: 255/255, blue: 217/255, alpha: 1.0)])
-//        
-//        pastelView.startAnimation()
-//        view.insertSubview(pastelView, at: 0)
-        
-       self.becomeFirstResponder()
+        self.becomeFirstResponder()
         self.tableView.tableFooterView = UIView()
         self.tableView.backgroundColor = .clear
         self.tableView.separatorStyle = .none
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
         self.title = "Activities"
-
+        
         loadActivities()
         
         let addButtonImage = UIImage(named:"icn_add")
@@ -65,7 +39,7 @@ class ActivitiesViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = addBarButtonItem
         
     }
-
+    
     
     // We are willing to become first responder to get shake motion
     override var canBecomeFirstResponder: Bool {
@@ -94,10 +68,10 @@ class ActivitiesViewController: UITableViewController {
         activityNameTextField.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         activityNameTextField.textAlignment = .center
         activityNameTextField.textColor = #colorLiteral(red: 0.2333382666, green: 0.5698561072, blue: 0.8839787841, alpha: 1)
-//        activityNameTextField.translatesAutoresizingMaskIntoConstraints = false
+        //        activityNameTextField.translatesAutoresizingMaskIntoConstraints = false
         activityNameTextField.placeholder = "Enter Activity Name"
         activityNameTextField.tintColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
-
+        
         let closeButton = LGDoneButton(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
         closeButton.doneButton.addTarget(self, action: #selector(dismissPopUp), for: .touchUpInside)
         
@@ -126,8 +100,8 @@ class ActivitiesViewController: UITableViewController {
         }
     }
     
-// MARK: - Table view data source
-
+    // MARK: - Table view data source
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
         
@@ -154,7 +128,7 @@ class ActivitiesViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//      This is the Sponsor cell
+        //      This is the Sponsor cell
         if (indexPath.section == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: BannerTableViewCellIdentifier, for: indexPath) as! TitleBackgroundTableViewCell
             
@@ -162,7 +136,7 @@ class ActivitiesViewController: UITableViewController {
             
             return cell
         } else {
-
+            
             self.tableView.register(ActivityTableViewCell.self, forCellReuseIdentifier: ActivityTableViewCellIdentifier)
             
             let cell = tableView.dequeueReusableCell(withIdentifier: ActivityTableViewCellIdentifier, for: indexPath) as! ActivityTableViewCell
@@ -178,10 +152,10 @@ class ActivitiesViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.section == 0) {
-
+            
         }else{
-        let selectedActivity = activities[indexPath.row]
-        let activityViewController = ActivityViewController()
+            let selectedActivity = activities[indexPath.row]
+            let activityViewController = ActivityViewController()
             let selectedCell = self.tableView.cellForRow(at: indexPath) as! ActivityTableViewCell
             activityViewController.cellColor = selectedCell.backCardView.backgroundColor
             activityViewController.activity = selectedActivity
@@ -189,14 +163,14 @@ class ActivitiesViewController: UITableViewController {
         }
         
     }
-
+    
 }
 
 extension ActivitiesViewController : CNPPopupControllerDelegate {
     
     func popupControllerWillDismiss(_ controller: CNPPopupController) {
         print("Popup controller will be dismissed")
-
+        
     }
     
     func popupControllerDidPresent(_ controller: CNPPopupController) {
