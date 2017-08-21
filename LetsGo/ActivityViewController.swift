@@ -24,6 +24,8 @@ class ActivityViewController: UITableViewController {
     var popupController: CNPPopupController!
     var timerNameTextField: LGTextField!
     var durationSelector: LGDurationSelection!
+    var isTableEditing: Bool!
+    var orderBarButtonItem: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,10 +41,30 @@ class ActivityViewController: UITableViewController {
         
         let addButtonImage = UIImage(named:"icn_add")
         let addBarButtonItem  = UIBarButtonItem(image: addButtonImage, style: .plain, target: self, action: #selector(openSettings))
-        self.navigationItem.rightBarButtonItem = addBarButtonItem
+        isTableEditing = false
         
-//             tableView.setEditing(true, animated: true);
+        let orderBarButtonImage = UIImage(named:"icn_order")
+        orderBarButtonItem  = UIBarButtonItem(image: orderBarButtonImage, style: .plain, target: self, action: #selector(toggleEditingMode))
+        
+        self.navigationItem.setRightBarButtonItems([orderBarButtonItem,addBarButtonItem], animated: true)
+        
+
     }
+    func toggleEditingMode(){
+        if (!isTableEditing){
+            isTableEditing = true
+         tableView.setEditing(true, animated: true);
+            let doneBarButtonImage = UIImage(named:"icn_done")
+            orderBarButtonItem.image = doneBarButtonImage
+        }else{
+            isTableEditing = false
+         tableView.setEditing(false, animated: true);
+                let orderBarButtonImage = UIImage(named:"icn_order")
+              orderBarButtonItem.image = orderBarButtonImage
+        }
+        
+    }
+    
     func loadTimers() {
         let timeManager = LGTimerManager()
         timers = timeManager.loadTimers(activity: activity)
