@@ -49,6 +49,22 @@ class RecordsTableViewController: UITableViewController {
         }
     }
     
+    override  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
+    {
+        return true
+    }
+    
+    override   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    {
+        if editingStyle == .delete
+        {
+            let manager = LGRecordsManager()
+            records.remove(at: indexPath.row)
+            manager.updateRecords(newRecords: records)
+            tableView.reloadData()
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if (indexPath.section == 0) {
             return 40
