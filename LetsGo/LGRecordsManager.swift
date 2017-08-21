@@ -42,7 +42,36 @@ class LGRecordsManager: NSObject {
         UserDefaults.standard.set(newrecordData, forKey: "records")
         
     }
-    
+    func updateRecords(newRecords: [LGRecord])  {
+            UserDefaults.standard.removeObject(forKey: "records")
+        
+        guard let recordData = UserDefaults.standard.object(forKey: "records") as? NSData else {
+            print("'places' not found in UserDefaults")
+            var recordsArray: [LGRecord] = []
+            recordsArray = newRecords
+            
+            let newrecordData = NSKeyedArchiver.archivedData(withRootObject: recordsArray)
+            UserDefaults.standard.set(newrecordData, forKey: "records")
+            
+            return
+        }
+        
+        guard var recordsArray = NSKeyedUnarchiver.unarchiveObject(with: recordData as Data) as? [LGRecord] else {
+            print("Could not unarchive from placesData")
+            var recordsArray: [LGRecord] = []
+           recordsArray = newRecords
+            
+            let newrecordData = NSKeyedArchiver.archivedData(withRootObject: recordsArray)
+            UserDefaults.standard.set(newrecordData, forKey: "records")
+            
+            return
+        }
+        
+        recordsArray = newRecords
+        let newrecordData = NSKeyedArchiver.archivedData(withRootObject: recordsArray)
+        UserDefaults.standard.set(newrecordData, forKey: "records")
+        
+    }
     func loadRecords() -> [LGRecord]{
         
         let recordsKey = "records"
