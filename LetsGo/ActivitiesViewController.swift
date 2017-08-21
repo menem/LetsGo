@@ -82,7 +82,6 @@ class ActivitiesViewController: UITableViewController {
         activityNameTextField.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         activityNameTextField.textAlignment = .center
         activityNameTextField.textColor = #colorLiteral(red: 0.2333382666, green: 0.5698561072, blue: 0.8839787841, alpha: 1)
-        //        activityNameTextField.translatesAutoresizingMaskIntoConstraints = false
         activityNameTextField.placeholder = "Enter Activity Name"
         activityNameTextField.tintColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
         
