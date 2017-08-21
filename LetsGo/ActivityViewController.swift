@@ -104,9 +104,6 @@ class ActivityViewController: UITableViewController {
         let selectedCell = self.tableView.cellForRow(at:selectedIndexPath ) as! TimerTableViewCell
         highlightCell(cell: selectedCell)
         
-        
-        
-        
         timeContentView.playSound()
         timeContentView.timer.start()
     }
@@ -221,10 +218,27 @@ class ActivityViewController: UITableViewController {
         
         
     }
+  override  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
+    {
+        return true
+    }
     
+ override   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    {
+        if editingStyle == .delete
+        {
+             let manager = LGTimerManager()
+            timers.remove(at: indexPath.row)
+         timers =   manager.updateTimers(activity: activity, newtimers: timers)
+            tableView.reloadData()
+        }
+    }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath.section == 0) {
-            startActivity()
+        if (indexPath.section != 0) {
+         let selectedTimer = timers[indexPath.row]
+            let manager = LGTimerManager()
+            manager.savetimers(title: selectedTimer.title, duration:  selectedTimer.duration, intervals:  selectedTimer.intervals, activity: activity)
+            loadTimers()
         }
     }
 }
