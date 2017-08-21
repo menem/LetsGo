@@ -34,14 +34,14 @@ class ActivityViewController: UITableViewController {
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
         self.title = activity.title
         
-        
+   
         loadTimers()
         
         let addButtonImage = UIImage(named:"icn_add")
         let addBarButtonItem  = UIBarButtonItem(image: addButtonImage, style: .plain, target: self, action: #selector(openSettings))
         self.navigationItem.rightBarButtonItem = addBarButtonItem
         
-        
+//             tableView.setEditing(true, animated: true);
     }
     func loadTimers() {
         let timeManager = LGTimerManager()
@@ -233,6 +233,20 @@ class ActivityViewController: UITableViewController {
             tableView.reloadData()
         }
     }
+
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true;
+    }
+   
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let selectedTimer = timers[sourceIndexPath.row];
+        timers.remove(at: sourceIndexPath.row);
+        timers.insert(selectedTimer, at: destinationIndexPath.row)
+        let manager = LGTimerManager()
+        timers =   manager.updateTimers(activity: activity, newtimers: timers)
+        tableView.reloadData()
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.section != 0) {
          let selectedTimer = timers[indexPath.row]
