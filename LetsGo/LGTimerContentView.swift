@@ -94,7 +94,7 @@ class LGTimerContentView: UIView {
     
     func saveRecord() {
         let manager = LGRecordsManager()
-        manager.saveRecord(title: "Timer", timer:timeLabel.text!)
+        manager.saveRecord(title: "Timer", timer:Double(timer.getTimeCounted()))
     }
     
     

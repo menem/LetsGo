@@ -10,7 +10,7 @@ import UIKit
 
 class LGRecordsManager: NSObject {
     
-    func saveRecord(title: String, timer: String){
+    func saveRecord(title: String, timer: Double){
         
         let record = LGRecord(title: title, time: timer)
         

@@ -30,6 +30,25 @@ class RecordTableViewCell: UITableViewCell {
         return label
     }()
     
+    lazy var calorieslabel: UILabel = {
+        let label = UILabel()
+        label.font =  UIFont (name: "BetmHairline", size: 26)
+        label.textColor = #colorLiteral(red: 0.340575099, green: 0.3558157086, blue: 0.4202301502, alpha: 1)
+    label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy var calorieImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "icn_calorie")
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        imageView.tintColor = #colorLiteral(red: 0.340575099, green: 0.3558157086, blue: 0.4202301502, alpha: 1)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     lazy var backCardView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 5.0
@@ -45,6 +64,8 @@ class RecordTableViewCell: UITableViewCell {
         contentView.addSubview(backCardView)
         contentView.addSubview(titlelabel)
         contentView.addSubview(timeElapsedlabel)
+        contentView.addSubview(calorieImageView)
+        contentView.addSubview(calorieslabel)
         contentView.sendSubview(toBack: backCardView)
         setNeedsUpdateConstraints()
     }
@@ -72,7 +93,15 @@ class RecordTableViewCell: UITableViewCell {
             backCardView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, constant: -10),
             backCardView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, constant: -20),
             
+            calorieImageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+            calorieImageView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -15),
+            calorieImageView.widthAnchor.constraint(equalToConstant: 16),
+            calorieImageView.heightAnchor.constraint(equalToConstant: 16),
             
+            calorieslabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+            calorieslabel.rightAnchor.constraint(equalTo: self.calorieImageView.leftAnchor, constant: 5),
+//            calorieslabel.widthAnchor.constraint(equalToConstant: 100),
+            calorieslabel.heightAnchor.constraint(equalToConstant: 32),
             ])
     }
 

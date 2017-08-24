@@ -91,8 +91,9 @@ class RecordsTableViewController: UITableViewController {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: RecordTableViewCellIdentifier, for: indexPath) as! RecordTableViewCell
             let record = records[indexPath.row]
-            cell.timeElapsedlabel.text = record.timeElapsed
+            cell.timeElapsedlabel.text = "\(record.timeElapsed)"
             cell.titlelabel.text = record.title.capitalized
+            cell.calorieslabel.text = "\(record.calories)"
             cell.backCardView.backgroundColor = randomColor(hue: .random, luminosity: .light)
             return cell
         }

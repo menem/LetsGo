@@ -14,15 +14,14 @@ class LGRecord: NSObject, NSCoding {
     var notes: String
     var timerMode: String
     var calories: Double
-    var timeElapsed: String
+    var timeElapsed: Double
     
-    init(title: String, time: String) {
+    init(title: String, time: Double) {
         self.title = title
         self.timerMode = " "
-        
         self.timestamp = " "
         self.notes = " "
-        self.calories = 1.0
+        self.calories = 0.0175*8*90*(time/60)
         self.timeElapsed = time
     }
     required init?(coder aDecoder: NSCoder) {
@@ -31,7 +30,7 @@ class LGRecord: NSObject, NSCoding {
          self.timestamp = aDecoder.decodeObject(forKey: "timestamp") as? String ?? ""
          self.notes = aDecoder.decodeObject(forKey: "notes") as? String ?? ""
         self.calories = aDecoder.decodeDouble(forKey: "calories")
-        self.timeElapsed = aDecoder.decodeObject(forKey: "timeElapsed") as? String ?? ""
+        self.timeElapsed = aDecoder.decodeDouble(forKey: "timeElapsed")
         
     }
     
