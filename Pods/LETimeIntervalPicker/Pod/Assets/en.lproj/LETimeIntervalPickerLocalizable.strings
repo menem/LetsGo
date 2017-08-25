@@ -6,14 +6,30 @@
 
 */
 
-"hours" = "hours";
+"days-full-singular"        = "day";
+"days-short-singular"       = "day";
+"days-abbreviated-singular" = "d";
+"days-full-plural"          = "days";
+"days-short-plural"         = "days";
+"days-abbreviated-plural"   = "d";
 
-"hour" = "hour";
+"hours-full-singular"        = "hour";
+"hours-short-singular"       = "hr";
+"hours-abbreviated-singular" = "h";
+"hours-full-plural"          = "hours";
+"hours-short-plural"         = "hrs";
+"hours-abbreviated-plural"   = "h";
 
-"minutes" = "minutes";
+"minutes-full-singular"        = "minute";
+"minutes-short-singular"       = "min";
+"minutes-abbreviated-singular" = "m";
+"minutes-full-plural"          = "minutes";
+"minutes-short-plural"         = "mins";
+"minutes-abbreviated-plural"   = "m";
 
-"minute" = "minute";
-
-"seconds" = "seconds";
-
-"second" = "second";
+"seconds-full-singular"        = "second";
+"seconds-short-singular"       = "sec";
+"seconds-abbreviated-singular" = "s";
+"seconds-full-plural"          = "seconds";
+"seconds-short-plural"         = "secs";
+"seconds-abbreviated-plural"   = "s";

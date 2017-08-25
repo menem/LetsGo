@@ -137,7 +137,7 @@ import UIKit
     /// The style to use for displaying the component names
     ///
     /// See LETimeIntervalPicker.UnitsStyle for details
-    public var unitsStyle = UnitsStyle.full
+    public var unitsStyle = UnitsStyle.short
     
     /// Whether the picker should loop around to appear as being infinite
     ///
@@ -281,16 +281,40 @@ import UIKit
     // MARK: - Localization
     
     fileprivate func title(for component: Component, count: Int) -> String {
-        var key = component.rawValue + "-" + unitsStyle.rawValue
+//        var key = component.rawValue + "-" + unitsStyle.rawValue
+        var titleString = " "
         switch count {
         case 1:
-            key += "-singular"
-        default:
-            key += "-plural"
-        }
-        let bundle = Bundle(for: LETimeIntervalPicker.self)
-        let tableName = "LETimeIntervalPickerLocalizable"
-        return NSLocalizedString(key, tableName: tableName, bundle: bundle, comment: "")
+            if unitsStyle == .short{
+                switch component {
+                case .hours:
+                    titleString = "Hr"
+                case .minutes:
+                    titleString = "Min"
+                case .seconds:
+                    titleString = "Sec"
+                default:
+                      titleString = " "
+                }
+            }
+            default:
+                if unitsStyle == .short{
+                    switch component {
+                    case .hours:
+                        titleString = "Hrs"
+                    case .minutes:
+                        titleString = "Mins"
+                    case .seconds:
+                        titleString = "Secs"
+                    default:
+                        titleString = " "
+                    }
+            }
+            }
+
+//        let bundle = Bundle(for: LETimeIntervalPicker.self)
+//        let tableName = "LETimeIntervalPickerLocalizable"
+        return titleString// NSLocalizedString(key, tableName: tableName, bundle: bundle, comment: "")
     }
     
     fileprivate func updateTextLabels() {

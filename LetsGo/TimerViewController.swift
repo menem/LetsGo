@@ -75,7 +75,8 @@ class TimerViewController: UITableViewController {
     func configureSettings() {
 
         
-        timeSelector = TimePickerView(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
+        timeSelector = TimePickerView(frame: CGRect(x: 0, y: 0, width: 300, height: 140))
+        timeSelector.titlelabel.text = "Select Timer duration:"
 //        timeSelector.datePickerView.datePickerMode = UIDatePickerMode.countDownTimer
 //        timeSelector.datePickerView.date = Date()
         timeSelector.datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged), for: UIControlEvents.valueChanged)

@@ -11,14 +11,25 @@ import LETimeIntervalPicker
 
 class TimePickerView: UIView {
     
+    lazy var titlelabel: UILabel = {
+        let label = UILabel()
+        label.font =  UIFont (name: "BetmHairline", size: 26)
+        label.textColor = #colorLiteral(red: 0.340575099, green: 0.3558157086, blue: 0.4202301502, alpha: 1)
+        label.sizeToFit()
+//        label.adjustsFontSizeToFitWidth = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     lazy var datePickerView: LETimeIntervalPicker = {
         let datePicker = LETimeIntervalPicker()
         datePicker.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
-        datePicker.unitsStyle = .abbreviated
-//        datePicker.ti
-//        datePicker.ti
-//        datePicker.
-//        datePicker.setValue(UIColor.white, forKeyPath: "textColor")
+        datePicker.unitsStyle = .short
+       datePicker.components = [.minutes, .seconds]
+          datePicker.set(numberOfRows: 121, for: .minutes)
+        datePicker.textFont = UIFont (name: "BetmHairline", size: 21)!
+    datePicker.numberFont = UIFont (name: "Betm-Regular3", size: 25)!
+datePicker.contentMode = .center
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         
         return datePicker
@@ -28,6 +39,7 @@ class TimePickerView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(datePickerView)
+        self.addSubview(titlelabel)
         setNeedsUpdateConstraints()
     }
     
@@ -38,10 +50,16 @@ class TimePickerView: UIView {
     override func updateConstraints() {
         super.updateConstraints()
         NSLayoutConstraint.activate([
+
+            
+            titlelabel.topAnchor.constraint(equalTo: self.topAnchor),
+            titlelabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+        
             datePickerView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            datePickerView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            datePickerView.heightAnchor.constraint(equalToConstant: 130),
-            datePickerView.widthAnchor.constraint(equalToConstant: self.frame.size.width)
+            datePickerView.topAnchor.constraint(equalTo: self.titlelabel.bottomAnchor),
+            datePickerView.heightAnchor.constraint(equalToConstant: 120),
+            datePickerView.widthAnchor.constraint(equalToConstant: self.frame.size.width),
+            
             ])
         
     }
