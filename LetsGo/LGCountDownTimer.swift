@@ -17,7 +17,7 @@ class LGCountDownTimer: UIView {
         label.setCountDownTime(minutes: 10)
         label.animationType = .Scale
         label.textAlignment = .center
-        label.font = UIFont (name: "Betm-Regular3", size: 60)
+        label.font = UIFont (name: "Betm-Regular3", size: 80)
         label.textColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false

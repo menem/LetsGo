@@ -150,7 +150,7 @@ class ActivityViewController: UITableViewController {
     func highlightCell(cell: TimerTableViewCell) {
         cell.backCardView.backgroundColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         cell.titlelabel.textColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
-        cell.Durationlabel.textColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
+        cell.Durationlabel.textColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
         cell.Intervalslabel.textColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
         
         let synthesizer = AVSpeechSynthesizer()
@@ -245,7 +245,8 @@ class ActivityViewController: UITableViewController {
             let timer = timers[indexPath.row]
             cell.titlelabel.text = timer.title
             cell.backCardView.backgroundColor = cellColor
-            cell.Durationlabel.text = String(timer.duration)
+            let timeString = TimeHelper.sharedInstance.timefromTimeInterval(timeInterval: timer.duration)
+            cell.Durationlabel.text = timeString
             cell.Intervalslabel.text = String(timer.intervals)
             return cell
         }
