@@ -30,6 +30,9 @@ class ActivityViewController: UITableViewController {
     var isTableEditing: Bool!
     var orderBarButtonItem: UIBarButtonItem!
     var timeSelector: TimePickerView!
+    var totalTimeCounted: TimeInterval!
+    var currentTimeCounted: TimeInterval!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,6 +134,9 @@ class ActivityViewController: UITableViewController {
         let previousCellIndex = IndexPath(row: currentlyPlaying - 1, section: 1)
         let previousCell = self.tableView.cellForRow(at: previousCellIndex)  as! TimerTableViewCell
         normalizeCell(cell: previousCell)
+        let previousTimerDuration = timers[currentlyPlaying - 1].duration
+        totalTimeCounted = totalTimeCounted + previousTimerDuration
+
         let selectedCell = self.tableView.cellForRow(at:selectedIndexPath ) as! TimerTableViewCell
         highlightCell(cell: selectedCell)
         
@@ -146,7 +152,17 @@ class ActivityViewController: UITableViewController {
         timeContentView.playSound()
         timeContentView.timer.start()
     }
+    func saveRecord()  {
+        totalTimeCounted = totalTimeCounted + currentTimeCounted
+        let manager = LGRecordsManager()
+        manager.saveRecord(title: activity.title, timer: totalTimeCounted)
+    }
     
+    func startRecording(){
+        totalTimeCounted = 0
+        currentTimeCounted = 0
+    }
+
     func highlightCell(cell: TimerTableViewCell) {
         cell.backCardView.backgroundColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         cell.titlelabel.textColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
@@ -228,6 +244,9 @@ class ActivityViewController: UITableViewController {
             timeContentView.timer.setCountDownTime(calculateTotalTime())
             timeContentView.timer.delegate = self
             timeContentView.timerControls.playButton.addTarget(self, action:#selector(startActivity), for: .touchUpInside)
+            timeContentView.timerControls.stopButton.addTarget(self, action: #selector(saveRecord), for: .touchUpInside)
+            timeContentView.timerControls.playButton.addTarget(self, action: #selector(startRecording), for: .touchUpInside)
+
             return timeContentView
         }else{
             return nil
@@ -294,7 +313,10 @@ class ActivityViewController: UITableViewController {
 
 extension ActivityViewController: MZTimerLabelDelegate {
     func timerLabel(_ timerLabel: MZTimerLabel!, countingTo time: TimeInterval, timertype timerType: MZTimerLabelType){
-        
+        if self.timeContentView.timer.getTimeCounted() > 0 {
+            currentTimeCounted = self.timeContentView.timer.getTimeCounted()
+        }
+  
     }
     
     func timerLabel(_ timerLabel: MZTimerLabel!, finshedCountDownTimerWithTime countTime: TimeInterval){
@@ -306,6 +328,7 @@ extension ActivityViewController: MZTimerLabelDelegate {
         if (currentlyPlaying < timers.count){
             currentlyPlaying! += 1
             if currentlyPlaying == timers.count {
+                saveRecord()
                 self.timeContentView.stopTimer()
                 return
             }
