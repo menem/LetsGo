@@ -15,6 +15,8 @@ class StopwatchViewController: UITableViewController {
     var timeContentView: LGTimerContentView!
     var popupController: CNPPopupController!
     var durationSelector: LGDurationSelection!
+    var totalTimeCounted: TimeInterval!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +31,7 @@ class StopwatchViewController: UITableViewController {
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "icn_activities"), style: .plain, target: self, action: #selector(pushActivities))
         self.navigationItem.rightBarButtonItem = rightBarButton
         
+          totalTimeCounted = 0
     }
     
     func pushActivities(){
@@ -105,6 +108,9 @@ class StopwatchViewController: UITableViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: CounterTableViewCellIdentifier, for: indexPath) as! CounterTableViewCell
                 cell.timerContentView.timer.timerType = MZTimerLabelTypeStopWatch
                 cell.timerContentView.timer.delegate = self
+                cell.timerContentView.timerControls.stopButton.addTarget(self, action: #selector(saveRecord), for: .touchUpInside)
+                cell.timerContentView.timerControls.playButton.addTarget(self, action: #selector(startRecording), for: .touchUpInside)
+                
                 self.timeContentView = cell.timerContentView
                 return cell
             }
@@ -113,20 +119,28 @@ class StopwatchViewController: UITableViewController {
         }
         
     }
+    func startRecording(){
+    totalTimeCounted = 0
+    }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+    func saveRecord()  {
+        let manager = LGRecordsManager()
+        manager.saveRecord(title: "Stopwatch", timer: totalTimeCounted)
     }
 }
 
+
 extension StopwatchViewController: MZTimerLabelDelegate {
     func timerLabel(_ timerLabel: MZTimerLabel!, countingTo time: TimeInterval, timertype timerType: MZTimerLabelType){
+        if time > 0 {
+           totalTimeCounted = time
+        }
+        
     }
     
     func timerLabel(_ timerLabel: MZTimerLabel!, finshedCountDownTimerWithTime countTime: TimeInterval){
 
-            let manager = LGRecordsManager()
-            manager.saveRecord(title: "Stopwatch", timer:countTime)
+   
         
     }
 }
