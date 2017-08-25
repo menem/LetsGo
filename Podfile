@@ -11,5 +11,6 @@ pod 'RandomColorSwift'
 pod 'CNPPopupController'
 pod 'CountdownLabel'
 pod "Pastel"
+pod "LETimeIntervalPicker"
 
 end

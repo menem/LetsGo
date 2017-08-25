@@ -8,6 +8,7 @@
 import UIKit
 import MZTimerLabel
 import CNPPopupController
+import LETimeIntervalPicker
 
 let CounterTableViewCellIdentifier = "CounterTableViewCellIdentifier"
 let TimerSettingTableViewCellIdentifier = "TimerSettingTableViewCellIdentifier"
@@ -19,6 +20,7 @@ class TimerViewController: UITableViewController {
     var popupController: CNPPopupController!
     var durationSelector: LGDurationSelection!
     var timerSetupButton: UIButton!
+    var timeSelector: TimePickerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,12 +73,17 @@ class TimerViewController: UITableViewController {
         return 0
     }
     func configureSettings() {
+
         
-        durationSelector = LGDurationSelection(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
+        timeSelector = TimePickerView(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
+//        timeSelector.datePickerView.datePickerMode = UIDatePickerMode.countDownTimer
+//        timeSelector.datePickerView.date = Date()
+        timeSelector.datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged), for: UIControlEvents.valueChanged)
+        
         let closeButton = LGDoneButton(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
         closeButton.doneButton.addTarget(self, action: #selector(dismissPopUp), for: .touchUpInside)
         
-        popupController = CNPPopupController(contents: [durationSelector, closeButton])
+        popupController = CNPPopupController(contents: [timeSelector, closeButton])
         popupController.theme.popupStyle = .centered
         popupController.theme.cornerRadius = 14.0
         popupController.theme.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
@@ -90,14 +97,19 @@ class TimerViewController: UITableViewController {
         
     }
     
+    func datePickerValueChanged(sender: LETimeIntervalPicker) {
+         self.timeContentView.timer.setCountDownTime(sender.timeInterval)
+        print("\(sender.timeInterval)")
+    }
+    
     func dismissPopUp() {
-        durationSelector.adjustMinutes()
-        durationSelector.adjustSeconds()
-        
-        let minuteReading = Double(durationSelector.minutesLabel.text! ) ?? 0
-        let minutesInSeconds = minuteReading * 60
-        let totalSeconds = minutesInSeconds + Double(durationSelector.secondsLabel.text!)!
-        self.timeContentView.timer.setCountDownTime(totalSeconds)
+//        durationSelector.adjustMinutes()
+//        durationSelector.adjustSeconds()
+//        
+//        let minuteReading = Double(durationSelector.minutesLabel.text! ) ?? 0
+//        let minutesInSeconds = minuteReading * 60
+//        let totalSeconds = minutesInSeconds + Double(durationSelector.secondsLabel.text!)!
+//        self.timeContentView.timer.setCountDownTime(totalSeconds)
         self.popupController?.dismiss(animated: true)
     }
     
