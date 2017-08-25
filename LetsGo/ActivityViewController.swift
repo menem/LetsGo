@@ -11,9 +11,12 @@ import MZTimerLabel
 import CNPPopupController
 import AVFoundation
 import Pastel
+import LETimeIntervalPicker
+
 let TimerTableViewCellIdentifier = "TimerTableViewCellIdentifier"
 
 class ActivityViewController: UITableViewController {
+    
     var cellColor: UIColor!
     var timers = [LGTimer]()
     var activity: LGActivity!
@@ -23,9 +26,10 @@ class ActivityViewController: UITableViewController {
     var timerName: String!
     var popupController: CNPPopupController!
     var timerNameTextField: LGTextField!
-    var durationSelector: LGDurationSelection!
+//    var durationSelector: LGDurationSelection!
     var isTableEditing: Bool!
     var orderBarButtonItem: UIBarButtonItem!
+    var timeSelector: TimePickerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,20 +80,24 @@ class ActivityViewController: UITableViewController {
         timerNameTextField.autocorrectionType = .no
         timerNameTextField.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         timerNameTextField.textAlignment = .center
-        timerNameTextField.textColor = #colorLiteral(red: 0.2333382666, green: 0.5698561072, blue: 0.8839787841, alpha: 1)
+        timerNameTextField.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         //        timerNameTextField.translatesAutoresizingMaskIntoConstraints = false
         timerNameTextField.placeholder = "Enter Timer Name"
-        timerNameTextField.tintColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
+        timerNameTextField.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         
-        durationSelector = LGDurationSelection(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
-        durationSelector.minutesCircularSlider.maximumValue = 20
-        durationSelector.minutesCircularSlider.minimumValue = 0
+//        durationSelector = LGDurationSelection(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
+//        durationSelector.minutesCircularSlider.maximumValue = 20
+//        durationSelector.minutesCircularSlider.minimumValue = 0
+//        
+        timeSelector = TimePickerView(frame: CGRect(x: 0, y: 0, width: 300, height: 140))
+        timeSelector.titlelabel.text = "Select Timer duration:"
+//        timeSelector.datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged), for: UIControlEvents.valueChanged)
         
         
         let closeButton = LGDoneButton(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
         closeButton.doneButton.addTarget(self, action: #selector(dismissPopUp), for: .touchUpInside)
         
-        popupController = CNPPopupController(contents: [timerNameTextField,durationSelector,closeButton])
+        popupController = CNPPopupController(contents: [timerNameTextField,timeSelector,closeButton])
         popupController.theme.popupStyle = .centered
         popupController.theme.cornerRadius = 14.0
         popupController.theme.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
@@ -170,16 +178,20 @@ class ActivityViewController: UITableViewController {
         let manager = LGTimerManager()
         let intervals = 1
         
-        durationSelector.adjustMinutes()
-        durationSelector.adjustSeconds()
+//        durationSelector.adjustMinutes()
+//        durationSelector.adjustSeconds()
         
-        let minuteReading = Double(durationSelector.minutesLabel.text! ) ?? 0
-        let minutesInSeconds = minuteReading * 60
-        let duration = minutesInSeconds + Double(durationSelector.secondsLabel.text!)!
+//        let minuteReading = Double(durationSelector.minutesLabel.text! ) ?? 0
+//        let minutesInSeconds = minuteReading * 60
+        let duration = self.timeSelector.datePickerView.timeInterval
         let name = timerNameTextField.text ?? "Timer"
         manager.savetimers(title: name, duration: duration, intervals: intervals, activity: activity)
     }
     
+//    func datePickerValueChanged(sender: LETimeIntervalPicker) {
+//        self.timeContentView.timer.setCountDownTime(sender.timeInterval)
+//        //        print("\(sender.timeInterval)")
+//    }
     
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {

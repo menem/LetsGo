@@ -77,8 +77,6 @@ class TimerViewController: UITableViewController {
         
         timeSelector = TimePickerView(frame: CGRect(x: 0, y: 0, width: 300, height: 140))
         timeSelector.titlelabel.text = "Select Timer duration:"
-//        timeSelector.datePickerView.datePickerMode = UIDatePickerMode.countDownTimer
-//        timeSelector.datePickerView.date = Date()
         timeSelector.datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged), for: UIControlEvents.valueChanged)
         
         let closeButton = LGDoneButton(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
@@ -100,7 +98,7 @@ class TimerViewController: UITableViewController {
     
     func datePickerValueChanged(sender: LETimeIntervalPicker) {
          self.timeContentView.timer.setCountDownTime(sender.timeInterval)
-        print("\(sender.timeInterval)")
+//        print("\(sender.timeInterval)")
     }
     
     func dismissPopUp() {

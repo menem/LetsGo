@@ -15,8 +15,10 @@ class IntervalsViewController: UITableViewController {
     var timers = [LGTimer]()
     var timeContentView: LGTimerContentView!
     var popupController: CNPPopupController!
-    var onDurationSelector: LGDurationSelection!
-    var offDurationSelector: LGDurationSelection!
+        var onTimeSelector: TimePickerView!
+        var offTimeSelector: TimePickerView!
+//    var onDurationSelector: LGDurationSelection!
+//    var offDurationSelector: LGDurationSelection!
     var scrollView: UIScrollView?
     var roundCounter: LGRoundSelector!
     var rounds: Int!
@@ -79,16 +81,23 @@ class IntervalsViewController: UITableViewController {
     
     func openSettings(){
         
-        onDurationSelector = LGDurationSelection(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
-        offDurationSelector = LGDurationSelection(frame: CGRect(x: 310, y: 0, width: 300, height: 400))
+        onTimeSelector = TimePickerView(frame: CGRect(x: 0, y: 0, width: 300, height: 140))
+        onTimeSelector.titlelabel.text = "Select ON Timer duration:"
         
-        scrollView = UIScrollView(frame: onDurationSelector.frame)
+        offTimeSelector = TimePickerView(frame: CGRect(x: 310, y: 0, width: 300, height: 140))
+        offTimeSelector.titlelabel.text = "Select OFF Timer duration:"
+        
+        
+//        onDurationSelector = LGDurationSelection(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
+//        offDurationSelector = LGDurationSelection(frame: CGRect(x: 310, y: 0, width: 300, height: 400))
+        
+        scrollView = UIScrollView(frame: onTimeSelector.frame)
         scrollView?.delegate = self
-        let bounds = onDurationSelector.bounds
+        let bounds = onTimeSelector.bounds
         let width = bounds.size.width
         let height = bounds.size.height
         scrollView!.contentSize = CGSize(width: 2*width, height: height)
-        let views = [onDurationSelector, offDurationSelector]
+        let views = [onTimeSelector, offTimeSelector]
         
         for view in views {
             scrollView!.addSubview(view!)
@@ -114,19 +123,19 @@ class IntervalsViewController: UITableViewController {
     }
     
     func configureTimers() {
-        onDurationSelector.adjustMinutes()
-        onDurationSelector.adjustSeconds()
+//        onDurationSelector.adjustMinutes()
+//        onDurationSelector.adjustSeconds()
         
-        let onminuteReading = Double(onDurationSelector.minutesLabel.text! ) ?? 0
-        let onminutesInSeconds = onminuteReading * 60
-        ontotalSeconds = onminutesInSeconds + Double(onDurationSelector.secondsLabel.text!)!
+//        let onminuteReading = Double(onDurationSelector.minutesLabel.text! ) ?? 0
+//        let onminutesInSeconds = onminuteReading * 60
+        ontotalSeconds =  self.onTimeSelector.datePickerView.timeInterval
 
-        offDurationSelector.adjustMinutes()
-        offDurationSelector.adjustSeconds()
-        
-        let offminuteReading = Double(offDurationSelector.minutesLabel.text! ) ?? 0
-        let offminutesInSeconds = offminuteReading * 60
-        offtotalSeconds = offminutesInSeconds + Double(offDurationSelector.secondsLabel.text!)!
+//        offDurationSelector.adjustMinutes()
+//        offDurationSelector.adjustSeconds()
+//        
+//        let offminuteReading = Double(offDurationSelector.minutesLabel.text! ) ?? 0
+//        let offminutesInSeconds = offminuteReading * 60
+        offtotalSeconds = self.offTimeSelector.datePickerView.timeInterval
 
         rounds = Int(roundCounter.roundStepper.value)
         currentRound = 0
