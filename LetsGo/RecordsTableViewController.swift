@@ -91,9 +91,10 @@ class RecordsTableViewController: UITableViewController {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: RecordTableViewCellIdentifier, for: indexPath) as! RecordTableViewCell
             let record = records[indexPath.row]
-            cell.timeElapsedlabel.text = "\(record.timeElapsed)"
+            let timeString = TimeHelper.sharedInstance.timefromTimeInterval(timeInterval: record.timeElapsed)
+            cell.timeElapsedlabel.text = timeString
             cell.titlelabel.text = record.title.capitalized
-            cell.calorieslabel.text = "\(record.calories)"
+            cell.calorieslabel.text =  String(format: "%0.2d",record.calories)
             cell.backCardView.backgroundColor = randomColor(hue: .random, luminosity: .light)
             return cell
         }

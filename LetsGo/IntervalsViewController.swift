@@ -205,7 +205,7 @@ self.timerSetupButton.isHidden = true
                 return
             }
             isCountingOffTimer = true
-            self.timeContentView.tintColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
+            self.timeContentView.tintColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
             self.timeContentView.timer.setCountDownTime(offtotalSeconds)
             self.timeContentView.playSound()
             self.timeContentView.timer.start()
