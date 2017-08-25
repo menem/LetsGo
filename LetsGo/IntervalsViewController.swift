@@ -155,6 +155,8 @@ class IntervalsViewController: UITableViewController {
                 cell.counterSetupButton.addTarget(self, action: #selector(openSettings), for: .touchUpInside)
                 cell.counterSetupButton.tintColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
                 self.timerSetupButton = cell.counterSetupButton
+                
+
                 return cell
             default:
                 self.tableView.register(CounterTableViewCell.self, forCellReuseIdentifier: CounterTableViewCellIdentifier)
@@ -162,6 +164,9 @@ class IntervalsViewController: UITableViewController {
                 cell.timerContentView.timer.setCountDownTime(60)
                 cell.timerContentView.timer.delegate = self
                 self.timeContentView = cell.timerContentView
+                
+                let settingTapGesture = UITapGestureRecognizer(target: self, action: #selector(openSettings))
+               self.timeContentView.addGestureRecognizer(settingTapGesture)
                 return cell
             }
             

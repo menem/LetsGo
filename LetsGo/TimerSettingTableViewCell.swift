@@ -12,9 +12,12 @@ class TimerSettingTableViewCell: UITableViewCell {
     
     lazy var counterSetupButton: UIButton = {
         let button = UIButton()
-        let buttonImage = UIImage(named: "icn_settings")
-        button.setImage(buttonImage, for: .normal)
-        button.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+//        let buttonImage = UIImage(named: "icn_settings")
+        button.setTitle("TAP ON THE TIMER TO EDIT SETTINGS", for: .normal)
+        button.titleLabel?.font = UIFont (name: "BetmHairline", size: 18)
+//        button.setImage(buttonImage, for: .normal)
+        button.tintColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
+        button.sizeToFit()
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -40,10 +43,10 @@ class TimerSettingTableViewCell: UITableViewCell {
         super.updateConstraints()
         
         NSLayoutConstraint.activate([
-            counterSetupButton.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            counterSetupButton.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -10),
-            counterSetupButton.widthAnchor.constraint(equalToConstant: 32),
-            counterSetupButton.heightAnchor.constraint(equalToConstant: 32),
+            counterSetupButton.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            counterSetupButton.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+//            counterSetupButton.widthAnchor.constraint(equalToConstant: 32),
+//            counterSetupButton.heightAnchor.constraint(equalToConstant: 32),
             
             ])
     }
