@@ -7,32 +7,63 @@
 //
 
 import UIKit
-import MZTimerLabel
-import KYNavigationProgress
-import CNPPopupController
+import Pastel
+import Intents
 
-let CounterTableViewCellIdentifier = "CounterTableViewCellIdentifier"
-let TimerSettingTableViewCellIdentifier = "TimerSettingTableViewCellIdentifier"
-
-class HomeViewController: UITableViewController {
+class HomeViewController: UIViewController {
+    var scrollView: UIScrollView?
+    var pageControl : UIPageControl!
+    var viewControllers = [UIViewController]()
+    var userIntent: INStartWorkoutIntent!
+    let timerViewController = TimerViewController()
+    let stopViewController = StopwatchViewController()
+    let intervalsViewController = IntervalsViewController()
     
-    var timer: LGTimer!
-    var timeContentView: LGTimerContentView!
-    var popupController: CNPPopupController!
-    var durationSelector: LGDurationSelection!
     override func viewDidLoad() {
         super.viewDidLoad()
+        let screenFrame = UIScreen.main.bounds
         
-        self.tableView.tableFooterView = UIView()
-        self.tableView.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
-        self.tableView.separatorStyle = .none
-        self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
-        self.title = "Timer"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName :#colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)]
+        scrollView = UIScrollView(frame: screenFrame)
+        scrollView?.isPagingEnabled = true
+        scrollView?.isDirectionalLockEnabled = true
+        scrollView?.showsHorizontalScrollIndicator = false
+        scrollView?.delegate = self
+        self.view.addSubview(scrollView!)
         
+
+        viewControllers = [timerViewController, stopViewController, intervalsViewController]
+        
+        let bounds = UIScreen.main.bounds
+        let width = screenFrame.size.width
+        let height = screenFrame.size.height
+        
+        scrollView!.contentSize = CGSize(width: 3*width, height: height - 80)
+        let pageX = (bounds.size.width/2) - 125
+        let pageY = height - 70
+        pageControl = UIPageControl(frame: CGRect(x:pageX, y:pageY, width:250, height:50))
+        var idx:Int = 0
+        
+        
+        for viewController in viewControllers {
+            addChildViewController(viewController);
+            let originX:CGFloat = CGFloat(idx) * width;
+            viewController.view.frame = CGRect(x: originX, y: 0, width: width, height: height);
+            scrollView!.addSubview(viewController.view)
+            viewController.didMove(toParentViewController: self)
+            idx += 1;
+        }
+        configurePageControl()
+        configureSiri()
+        
+        self.title = "Home"
+        self.navigationController?.navigationBar.titleTextAttributes =  [NSFontAttributeName: UIFont(name: "Betm-Regular3", size: 18)!, NSForegroundColorAttributeName:#colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)]
         
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "icn_activities"), style: .plain, target: self, action: #selector(pushActivities))
         self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        
+        let leftBarButton = UIBarButtonItem(image: UIImage(named: "icn_records"), style: .plain, target: self, action: #selector(pushRecords))
+        self.navigationItem.leftBarButtonItem = leftBarButton
         
     }
     
@@ -41,115 +72,65 @@ class HomeViewController: UITableViewController {
         self.navigationController?.pushViewController(activitiesViewController, animated: true)
     }
     
-    // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+    func pushRecords(){
+        let recordsTableViewController = RecordsTableViewController()
+        self.navigationController?.pushViewController(recordsTableViewController, animated: true)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func configurePageControl() {
+        // The total number of pages that are available is based on how many available colors we have.
+        self.pageControl.numberOfPages = 3
+        self.pageControl.currentPage = 0
+        self.pageControl.pageIndicatorTintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        self.pageControl.currentPageIndicatorTintColor = UIColor(red:0.83, green:0.84, blue:0.91, alpha:1.00)
+        pageControl.addTarget(self, action: #selector(self.changePage(sender:)), for: UIControlEvents.valueChanged)
+        self.view.addSubview(pageControl)
         
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (section == 0) {
-            return 1
-        } else {
-            return 2
+    // MARK : TO CHANGE WHILE CLICKING ON PAGE CONTROL
+    func changePage(sender: AnyObject) -> () {
+        let x = CGFloat(pageControl.currentPage) * (scrollView?.frame.size.width)!
+        scrollView?.setContentOffset(CGPoint(x:x, y:-64), animated: true)
+    }
+    
+    func configureSiri()  {
+        INPreferences.requestSiriAuthorization { (status) in
+            
         }
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if (indexPath.section == 0) {
-            return 40
-        } else {
-            if(indexPath.row == 0){
-                return self.view.frame.size.height * 0.7
-            }else{
-                return self.view.frame.size.height * 0.1
-            }
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if (section != 0) {
-            return 1
-        }
-        
-        return 0
-    }
-    
-    func openSettings(){
-        durationSelector = LGDurationSelection(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
-        
-        let closeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
-        let buttonImage = UIImage(named: "icn_close")
-        closeButton.setImage(buttonImage, for: .normal)
-        closeButton.addTarget(self, action: #selector(dismissPopUp), for: .touchUpInside)
-        
-        popupController = CNPPopupController(contents: [closeButton, durationSelector])
-        popupController.theme.popupStyle = .centered
-        popupController.theme.cornerRadius = 14.0
-        popupController.theme.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
-        popupController.theme.shouldDismissOnBackgroundTouch = true
-        popupController.present(animated: true)
-        popupController.delegate = self
-    }
-    
-    func dismissPopUp() {
-        self.popupController?.dismiss(animated: true)
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (indexPath.section == 0) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: BannerTableViewCellIdentifier, for: indexPath) as! TitleBackgroundTableViewCell
-            cell.backgroundImageView.image = UIImage(named: "icn_sponsor")
-            return cell
-        } else {
-            switch indexPath.row {
-            case 1:
-                self.tableView.register(TimerSettingTableViewCell.self, forCellReuseIdentifier: TimerSettingTableViewCellIdentifier)
-                let cell = tableView.dequeueReusableCell(withIdentifier: TimerSettingTableViewCellIdentifier, for: indexPath) as! TimerSettingTableViewCell
-                cell.counterSetupButton.addTarget(self, action: #selector(openSettings), for: .touchUpInside)
-                return cell
+        INVocabulary.shared().setVocabularyStrings(["interval","emom","time cap", "wod", "timer", "tabata", "amrap", "stopwatch"], of: .workoutActivityName)
+        if ((userIntent) != nil){
+            
+//            let minute = userIntent.goalValue!/60
+            switch String(describing: userIntent.workoutName).lowercased() {
+            case "interval":
+                self.pageControl.currentPage = 2
+                stopViewController.timeContentView.toggleTimer()
+            case "time cap":
+                self.pageControl.currentPage = 0
+                stopViewController.timeContentView.toggleTimer()
+            case "stopwatch":
+                self.pageControl.currentPage = 1
+                stopViewController.timeContentView.toggleTimer()
             default:
-                self.tableView.register(CounterTableViewCell.self, forCellReuseIdentifier: CounterTableViewCellIdentifier)
-                let cell = tableView.dequeueReusableCell(withIdentifier: CounterTableViewCellIdentifier, for: indexPath) as! CounterTableViewCell
-                cell.timerContentView.timer.setCountDownTime(60)
-                cell.timerContentView.timer.delegate = self
-                self.timeContentView = cell.timerContentView
-                return cell
+                self.pageControl.currentPage = 1
+                stopViewController.timeContentView.toggleTimer()
             }
-            
-            
         }
-        
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-    }
 }
-
-extension HomeViewController: MZTimerLabelDelegate {
-    func timerLabel(_ timerLabel: MZTimerLabel!, countingTo time: TimeInterval, timertype timerType: MZTimerLabelType){
-        let progress = time/timerLabel.getCountDownTime()
-        self.navigationController?.progress = Float(progress)
-    }
-    
-    func timerLabel(_ timerLabel: MZTimerLabel!, finshedCountDownTimerWithTime countTime: TimeInterval){
+extension HomeViewController:UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
+        let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
+        pageControl.currentPage = Int(pageNumber)
+        let viewcontroller = viewControllers[Int(pageNumber)]
+        self.title = viewcontroller.title
     }
-}
-
-
-extension HomeViewController : CNPPopupControllerDelegate {
-    
-    func popupControllerWillDismiss(_ controller: CNPPopupController) {
-        print("Popup controller will be dismissed")
-        let minutesInSeconds = Double(self.durationSelector.minutesLabel.text!)! * 60
-        let totalSeconds = minutesInSeconds + Double(self.durationSelector.secondsLabel.text!)!
-        self.timeContentView.timer.setCountDownTime(totalSeconds)
-    }
-    
-    func popupControllerDidPresent(_ controller: CNPPopupController) {
-        print("Popup controller presented")
-    }
-    
 }

@@ -29,7 +29,7 @@ extension LGTextField {
                 self.attributedPlaceholder = NSAttributedString(string: placeHolderText,
                                                                 attributes: [NSForegroundColorAttributeName: #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)])
             }
-
+            
         }
     }
 }

@@ -8,13 +8,13 @@
 
 import UIKit
 import MZTimerLabel
-import KYNavigationProgress
 import CNPPopupController
-
+import AVFoundation
+import Pastel
 let TimerTableViewCellIdentifier = "TimerTableViewCellIdentifier"
 
 class ActivityViewController: UITableViewController {
-    
+    var cellColor: UIColor!
     var timers = [LGTimer]()
     var activity: LGActivity!
     var timeContentView: LGTimerContentView!
@@ -23,69 +23,73 @@ class ActivityViewController: UITableViewController {
     var timerName: String!
     var popupController: CNPPopupController!
     var timerNameTextField: LGTextField!
-    var timerDurationTextField: LGTextField!
-    var timerIntervalTextField: LGTextField!
+    var durationSelector: LGDurationSelection!
+    var isTableEditing: Bool!
+    var orderBarButtonItem: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.tableFooterView = UIView()
-        self.tableView.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
+        self.tableView.backgroundColor = .clear
         self.tableView.separatorStyle = .none
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
         self.title = activity.title
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)]
         
-loadTimers()
+   
+        loadTimers()
         
         let addButtonImage = UIImage(named:"icn_add")
         let addBarButtonItem  = UIBarButtonItem(image: addButtonImage, style: .plain, target: self, action: #selector(openSettings))
-        self.navigationItem.rightBarButtonItem = addBarButtonItem
+        isTableEditing = false
+        
+        let orderBarButtonImage = UIImage(named:"icn_order")
+        orderBarButtonItem  = UIBarButtonItem(image: orderBarButtonImage, style: .plain, target: self, action: #selector(toggleEditingMode))
+        
+        self.navigationItem.setRightBarButtonItems([orderBarButtonItem,addBarButtonItem], animated: true)
         
 
     }
+    func toggleEditingMode(){
+        if (!isTableEditing){
+            isTableEditing = true
+         tableView.setEditing(true, animated: true);
+            let doneBarButtonImage = UIImage(named:"icn_done")
+            orderBarButtonItem.image = doneBarButtonImage
+        }else{
+            isTableEditing = false
+         tableView.setEditing(false, animated: true);
+                let orderBarButtonImage = UIImage(named:"icn_order")
+              orderBarButtonItem.image = orderBarButtonImage
+        }
+        
+    }
+    
     func loadTimers() {
         let timeManager = LGTimerManager()
         timers = timeManager.loadTimers(activity: activity)
         self.tableView.reloadData()
     }
     func openSettings(){
-        timerNameTextField = LGTextField()
+        timerNameTextField = LGTextField(frame: CGRect(x: 0, y: 0, width: 300, height: 40))
         timerNameTextField.autocapitalizationType = .none
         timerNameTextField.autocorrectionType = .no
         timerNameTextField.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         timerNameTextField.textAlignment = .center
         timerNameTextField.textColor = #colorLiteral(red: 0.2333382666, green: 0.5698561072, blue: 0.8839787841, alpha: 1)
-        timerNameTextField.translatesAutoresizingMaskIntoConstraints = false
+        //        timerNameTextField.translatesAutoresizingMaskIntoConstraints = false
         timerNameTextField.placeholder = "Enter Timer Name"
         timerNameTextField.tintColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
         
-        timerDurationTextField = LGTextField()
-        timerDurationTextField.autocapitalizationType = .none
-        timerDurationTextField.autocorrectionType = .no
-        timerDurationTextField.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
-        timerDurationTextField.textAlignment = .center
-        timerDurationTextField.textColor = #colorLiteral(red: 0.2333382666, green: 0.5698561072, blue: 0.8839787841, alpha: 1)
-        timerDurationTextField.translatesAutoresizingMaskIntoConstraints = false
-        timerDurationTextField.placeholder = "Enter Timer Duration"
-        timerDurationTextField.tintColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
+        durationSelector = LGDurationSelection(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
+        durationSelector.minutesCircularSlider.maximumValue = 20
+        durationSelector.minutesCircularSlider.minimumValue = 0
         
-        timerIntervalTextField = LGTextField()
-        timerIntervalTextField.autocapitalizationType = .none
-        timerIntervalTextField.autocorrectionType = .no
-        timerIntervalTextField.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
-        timerIntervalTextField.textAlignment = .center
-        timerIntervalTextField.textColor = #colorLiteral(red: 0.2333382666, green: 0.5698561072, blue: 0.8839787841, alpha: 1)
-        timerIntervalTextField.translatesAutoresizingMaskIntoConstraints = false
-        timerIntervalTextField.placeholder = "Enter Timer Interval"
-        timerIntervalTextField.tintColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
         
-        let closeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
-        let buttonImage = UIImage(named: "icn_close")
-        closeButton.setImage(buttonImage, for: .normal)
-        closeButton.addTarget(self, action: #selector(dismissPopUp), for: .touchUpInside)
+        let closeButton = LGDoneButton(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
+        closeButton.doneButton.addTarget(self, action: #selector(dismissPopUp), for: .touchUpInside)
         
-        popupController = CNPPopupController(contents: [closeButton, timerNameTextField,timerDurationTextField,timerIntervalTextField])
+        popupController = CNPPopupController(contents: [timerNameTextField,durationSelector,closeButton])
         popupController.theme.popupStyle = .centered
         popupController.theme.cornerRadius = 14.0
         popupController.theme.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
@@ -95,17 +99,19 @@ loadTimers()
     }
     
     func dismissPopUp() {
+        saveTimersForActivity()
+        loadTimers()
         self.popupController?.dismiss(animated: true)
     }
     
     func startActivity(){
         
         currentlyPlaying = 0
-        timeContentView.timer.setCountDownTime((timers.first?.duration)!)
+        timeContentView.timer.setCountDownTime((timers.first?.duration)!+10)
         currentInterval = timers.first?.intervals
-        self.title = timers.first?.title
         let selectedIndexPath = IndexPath(row: 0, section: 1)
-        self.tableView.cellForRow(at: selectedIndexPath)?.backgroundColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
+        let selectedCell = self.tableView.cellForRow(at: selectedIndexPath) as! TimerTableViewCell
+        highlightCell(cell: selectedCell)
         timeContentView.playSound()
         timeContentView.timer.start()
     }
@@ -113,20 +119,44 @@ loadTimers()
         let timerDuration = timers[currentlyPlaying].duration
         currentInterval = timers[currentlyPlaying].intervals
         timeContentView.timer.setCountDownTime(timerDuration)
-        self.title = timers[currentlyPlaying].title
         let selectedIndexPath = IndexPath(row: currentlyPlaying, section: 1)
-        self.tableView.cellForRow(at: selectedIndexPath)?.backgroundColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
+        let previousCellIndex = IndexPath(row: currentlyPlaying - 1, section: 1)
+        let previousCell = self.tableView.cellForRow(at: previousCellIndex)  as! TimerTableViewCell
+        normalizeCell(cell: previousCell)
+        let selectedCell = self.tableView.cellForRow(at:selectedIndexPath ) as! TimerTableViewCell
+        highlightCell(cell: selectedCell)
+        
         timeContentView.playSound()
         timeContentView.timer.start()
     }
     func resumeTimer(index: Int){
         let timerDuration = timers[index].duration
         timeContentView.timer.setCountDownTime(timerDuration)
-        self.title = timers[index].title
         let selectedIndexPath = IndexPath(row: currentlyPlaying, section: 1)
-        self.tableView.cellForRow(at: selectedIndexPath)?.backgroundColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
+        let selectedCell = self.tableView.cellForRow(at: selectedIndexPath) as! TimerTableViewCell
+        highlightCell(cell: selectedCell)
         timeContentView.playSound()
         timeContentView.timer.start()
+    }
+    
+    func highlightCell(cell: TimerTableViewCell) {
+        cell.backCardView.backgroundColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        cell.titlelabel.textColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
+        cell.Durationlabel.textColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
+        cell.Intervalslabel.textColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
+        
+        let synthesizer = AVSpeechSynthesizer()
+        let utterance = AVSpeechUtterance(string: cell.titlelabel.text!)
+        utterance.rate = 0.7
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        synthesizer.speak(utterance)
+    }
+    
+    func normalizeCell(cell: TimerTableViewCell) {
+        cell.backCardView.backgroundColor = cellColor
+        cell.titlelabel.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        cell.Durationlabel.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        cell.Intervalslabel.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
     }
     func calculateTotalTime() -> Double {
         var accumelatedTime = 0.0
@@ -138,12 +168,20 @@ loadTimers()
     }
     func saveTimersForActivity() {
         let manager = LGTimerManager()
-        let intervals = Int(timerIntervalTextField.text!)
-        let duration = Double(timerDurationTextField.text!)
-        let name = timerNameTextField.text!
-        manager.savetimers(title: name, duration: duration!, intervals: intervals!, activity: activity)
+        let intervals = 1
+        
+        durationSelector.adjustMinutes()
+        durationSelector.adjustSeconds()
+        
+        let minuteReading = Double(durationSelector.minutesLabel.text! ) ?? 0
+        let minutesInSeconds = minuteReading * 60
+        let duration = minutesInSeconds + Double(durationSelector.secondsLabel.text!)!
+        let name = timerNameTextField.text ?? "Timer"
+        manager.savetimers(title: name, duration: duration, intervals: intervals, activity: activity)
     }
-// MARK: - Table view data source
+    
+    
+    // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
         
@@ -166,30 +204,24 @@ loadTimers()
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if (section != 0) {
-            return 1
-        }
-        
-        return 0
-    }
-  override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if (section == 0) {
-            return 0
+            return 140
         } else {
-            return 150
+            return 0
         }
     }
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if (section != 0) {
-            timeContentView = LGTimerContentView(frame: CGRect(x:0, y: 0, width: self.view.frame.size.width, height: 80))
+ override   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if (section == 0) {
+            timeContentView = LGTimerContentView(frame: CGRect(x:0, y: -40, width: self.view.frame.size.width, height: 80))
             timeContentView.timer.setCountDownTime(calculateTotalTime())
             timeContentView.timer.delegate = self
-            timeContentView.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
+            timeContentView.timerControls.playButton.addTarget(self, action:#selector(startActivity), for: .touchUpInside)
             return timeContentView
         }else{
-        return nil
+            return nil
         }
     }
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.section == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: BannerTableViewCellIdentifier, for: indexPath) as! TitleBackgroundTableViewCell
@@ -200,6 +232,7 @@ loadTimers()
             let cell = tableView.dequeueReusableCell(withIdentifier: TimerTableViewCellIdentifier, for: indexPath) as! TimerTableViewCell
             let timer = timers[indexPath.row]
             cell.titlelabel.text = timer.title
+            cell.backCardView.backgroundColor = cellColor
             cell.Durationlabel.text = String(timer.duration)
             cell.Intervalslabel.text = String(timer.intervals)
             return cell
@@ -207,22 +240,52 @@ loadTimers()
         
         
     }
+  override  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
+    {
+        return true
+    }
+    
+ override   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    {
+        if editingStyle == .delete
+        {
+             let manager = LGTimerManager()
+            timers.remove(at: indexPath.row)
+         timers =   manager.updateTimers(activity: activity, newtimers: timers)
+            tableView.reloadData()
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true;
+    }
+   
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let selectedTimer = timers[sourceIndexPath.row];
+        timers.remove(at: sourceIndexPath.row);
+        timers.insert(selectedTimer, at: destinationIndexPath.row)
+        let manager = LGTimerManager()
+        timers =   manager.updateTimers(activity: activity, newtimers: timers)
+        tableView.reloadData()
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath.section == 0) {
-            startActivity()
+        if (indexPath.section != 0) {
+         let selectedTimer = timers[indexPath.row]
+            let manager = LGTimerManager()
+            manager.savetimers(title: selectedTimer.title, duration:  selectedTimer.duration, intervals:  selectedTimer.intervals, activity: activity)
+            loadTimers()
         }
     }
 }
 
 extension ActivityViewController: MZTimerLabelDelegate {
     func timerLabel(_ timerLabel: MZTimerLabel!, countingTo time: TimeInterval, timertype timerType: MZTimerLabelType){
-        let progress = time/timerLabel.getCountDownTime()
-        self.navigationController?.progress = Float(progress)        
+        
     }
     
     func timerLabel(_ timerLabel: MZTimerLabel!, finshedCountDownTimerWithTime countTime: TimeInterval){
-         currentInterval! -= 1
+        currentInterval! -= 1
         if (currentInterval > 0) {
             resumeTimer(index: currentlyPlaying)
             return
@@ -230,6 +293,7 @@ extension ActivityViewController: MZTimerLabelDelegate {
         if (currentlyPlaying < timers.count){
             currentlyPlaying! += 1
             if currentlyPlaying == timers.count {
+                self.timeContentView.stopTimer()
                 return
             }
             resumeActivity()
@@ -282,8 +346,7 @@ extension ActivityViewController : CNPPopupControllerDelegate {
     
     func popupControllerWillDismiss(_ controller: CNPPopupController) {
         print("Popup controller will be dismissed")
-        saveTimersForActivity()
-        loadTimers()
+        
     }
     
     func popupControllerDidPresent(_ controller: CNPPopupController) {

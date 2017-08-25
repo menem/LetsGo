@@ -9,13 +9,13 @@
 import UIKit
 import RandomColorSwift
 import CNPPopupController
-
+import Pastel
 
 let BannerTableViewCellIdentifier = "BannerTableViewCellIdentifier"
 let ActivityTableViewCellIdentifier = "ActivityTableViewCellIdentifier"
 
 class ActivitiesViewController: UITableViewController {
-
+    
     var activities = [LGActivity]()
     var colors = [UIColor]()
     var activityNameTextField: LGTextField!
@@ -24,13 +24,14 @@ class ActivitiesViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        
+        self.becomeFirstResponder()
         self.tableView.tableFooterView = UIView()
-        self.tableView.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
+        self.tableView.backgroundColor = .clear
         self.tableView.separatorStyle = .none
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
         self.title = "Activities"
-
+        
         loadActivities()
         
         let addButtonImage = UIImage(named:"icn_add")
@@ -38,6 +39,36 @@ class ActivitiesViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = addBarButtonItem
         
     }
+    
+    override  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
+    {
+        return true
+    }
+    
+    override   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    {
+        if editingStyle == .delete
+        {
+            let manager = LGTimerManager()
+            activities.remove(at: indexPath.row)
+            manager.updateActivities(newActivities: activities)
+            tableView.reloadData()
+        }
+    }
+    // We are willing to become first responder to get shake motion
+    override var canBecomeFirstResponder: Bool {
+        get {
+            return true
+        }
+    }
+    
+    // Enable detection of shake motion
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            tableView.reloadData()
+        }
+    }
+    
     func loadActivities(){
         let timeManager = LGTimerManager()
         activities = timeManager.loadActivities()
@@ -45,22 +76,19 @@ class ActivitiesViewController: UITableViewController {
     }
     
     func openSettings(){
-        activityNameTextField = LGTextField()
+        activityNameTextField = LGTextField(frame: CGRect(x: 0, y: 0, width: 300, height: 40))
         activityNameTextField.autocapitalizationType = .none
         activityNameTextField.autocorrectionType = .no
         activityNameTextField.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         activityNameTextField.textAlignment = .center
         activityNameTextField.textColor = #colorLiteral(red: 0.2333382666, green: 0.5698561072, blue: 0.8839787841, alpha: 1)
-        activityNameTextField.translatesAutoresizingMaskIntoConstraints = false
         activityNameTextField.placeholder = "Enter Activity Name"
         activityNameTextField.tintColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
-
-        let closeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
-        let buttonImage = UIImage(named: "icn_close")
-        closeButton.setImage(buttonImage, for: .normal)
-        closeButton.addTarget(self, action: #selector(dismissPopUp), for: .touchUpInside)
         
-        popupController = CNPPopupController(contents: [closeButton, activityNameTextField])
+        let closeButton = LGDoneButton(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
+        closeButton.doneButton.addTarget(self, action: #selector(dismissPopUp), for: .touchUpInside)
+        
+        popupController = CNPPopupController(contents: [activityNameTextField,closeButton])
         popupController.theme.popupStyle = .centered
         popupController.theme.cornerRadius = 14.0
         popupController.theme.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
@@ -70,6 +98,8 @@ class ActivitiesViewController: UITableViewController {
     }
     
     func dismissPopUp() {
+        saveActivity()
+        loadActivities()
         self.popupController?.dismiss(animated: true)
     }
     
@@ -83,8 +113,8 @@ class ActivitiesViewController: UITableViewController {
         }
     }
     
-// MARK: - Table view data source
-
+    // MARK: - Table view data source
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
         
@@ -107,15 +137,11 @@ class ActivitiesViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if (section != 0) {
-            return 1
-        }
-        
         return 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//      This is the Sponsor cell
+        //      This is the Sponsor cell
         if (indexPath.section == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: BannerTableViewCellIdentifier, for: indexPath) as! TitleBackgroundTableViewCell
             
@@ -123,12 +149,14 @@ class ActivitiesViewController: UITableViewController {
             
             return cell
         } else {
-
+            
             self.tableView.register(ActivityTableViewCell.self, forCellReuseIdentifier: ActivityTableViewCellIdentifier)
             
             let cell = tableView.dequeueReusableCell(withIdentifier: ActivityTableViewCellIdentifier, for: indexPath) as! ActivityTableViewCell
             let activity = activities[indexPath.row]
-            cell.titlelabel.text = activity.title
+            cell.activityTypeImageView.image = UIImage(named: "icn_timer")
+            cell.titlelabel.text = activity.title.capitalized
+            cell.backCardView.backgroundColor = randomColor(hue: .random, luminosity: .light)
             return cell
         }
         
@@ -137,24 +165,25 @@ class ActivitiesViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.section == 0) {
-
+            
         }else{
-        let selectedActivity = activities[indexPath.row]
-        let activityViewController = ActivityViewController()
+            let selectedActivity = activities[indexPath.row]
+            let activityViewController = ActivityViewController()
+            let selectedCell = self.tableView.cellForRow(at: indexPath) as! ActivityTableViewCell
+            activityViewController.cellColor = selectedCell.backCardView.backgroundColor
             activityViewController.activity = selectedActivity
             self.navigationController?.pushViewController(activityViewController, animated: true)
         }
         
     }
-
+    
 }
 
 extension ActivitiesViewController : CNPPopupControllerDelegate {
     
     func popupControllerWillDismiss(_ controller: CNPPopupController) {
         print("Popup controller will be dismissed")
-        saveActivity()
-        loadActivities()
+        
     }
     
     func popupControllerDidPresent(_ controller: CNPPopupController) {

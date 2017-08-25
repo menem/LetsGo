@@ -90,20 +90,20 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/CNPPopupController/CNPPopupController.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/CountdownLabel/CountdownLabel.framework"
   install_framework "$BUILT_PRODUCTS_DIR/HGCircularSlider/HGCircularSlider.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Hero/Hero.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/KYNavigationProgress/KYNavigationProgress.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/LETimeIntervalPicker/LETimeIntervalPicker.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MZTimerLabel/MZTimerLabel.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/PARTagPicker/PARTagPicker.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Pastel/Pastel.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RandomColorSwift/RandomColorSwift.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/CNPPopupController/CNPPopupController.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/CountdownLabel/CountdownLabel.framework"
   install_framework "$BUILT_PRODUCTS_DIR/HGCircularSlider/HGCircularSlider.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Hero/Hero.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/KYNavigationProgress/KYNavigationProgress.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/LETimeIntervalPicker/LETimeIntervalPicker.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MZTimerLabel/MZTimerLabel.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/PARTagPicker/PARTagPicker.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Pastel/Pastel.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RandomColorSwift/RandomColorSwift.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

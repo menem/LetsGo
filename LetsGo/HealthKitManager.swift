@@ -10,7 +10,7 @@ import Foundation
 import HealthKit
 
 class HealthKitManager {
-
+    
     let healthKitStore: HKHealthStore = HKHealthStore()
     
     func authorizeHealthKit(completion: ((_ success: Bool, _ error: Error?) -> Void)!) {
@@ -29,7 +29,7 @@ class HealthKitManager {
         // Request authorization to read and/or write the specific data.
         healthKitStore.requestAuthorization(toShare: healthDataToWrite, read: healthDataToRead) { (success, error) -> Void in
             if( completion != nil ) {
-//             completion(success:success, error:error)
+                //             completion(success:success, error:error)
                 
             }
         }
@@ -49,7 +49,7 @@ class HealthKitManager {
         // Save the distance quantity sample to the HealthKit Store.
         healthKitStore.save(distance, withCompletion: { (success, error) -> Void in
             if( error != nil ) {
-//                print(error ?? <#default value#>)
+                //                print(error ?? <#default value#>)
             } else {
                 print("The distance has been recorded! Better go check!")
             }

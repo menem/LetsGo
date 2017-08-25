@@ -13,7 +13,7 @@ class LGTimerManager {
     func saveActivity(title: String, type: String){
         
         let activity = LGActivity(title: title, type: type)
-
+        
         
         guard let activitiesData = UserDefaults.standard.object(forKey: "activities") as? NSData else {
             print("'places' not found in UserDefaults")
@@ -22,7 +22,7 @@ class LGTimerManager {
             
             let newActivitiesData = NSKeyedArchiver.archivedData(withRootObject: activitiesArray)
             UserDefaults.standard.set(newActivitiesData, forKey: "activities")
-
+            
             return
         }
         
@@ -33,7 +33,7 @@ class LGTimerManager {
             
             let newActivitiesData = NSKeyedArchiver.archivedData(withRootObject: activitiesArray)
             UserDefaults.standard.set(newActivitiesData, forKey: "activities")
-
+            
             return
         }
         
@@ -42,7 +42,7 @@ class LGTimerManager {
         UserDefaults.standard.set(newActivitiesData, forKey: "activities")
         
     }
-
+    
     func savetimers(title: String,duration: Double,intervals: Int, activity: LGActivity){
         
         let timersKey = "\(activity.title).timers"
@@ -89,6 +89,72 @@ class LGTimerManager {
             return []
         }
         return []
+    }
+    
+    func updateTimers(activity: LGActivity, newtimers: [LGTimer]) ->  [LGTimer] {
+        let timersKey = "\(activity.title).timers"
+        UserDefaults.standard.removeObject(forKey: timersKey)
+
+        guard let timersData = UserDefaults.standard.object(forKey: timersKey) as? NSData else {
+            print("'places' not found in UserDefaults")
+            var timersArray: [LGTimer] = []
+            timersArray = newtimers
+            
+            let newTimersData = NSKeyedArchiver.archivedData(withRootObject: timersArray)
+            UserDefaults.standard.set(newTimersData, forKey: timersKey)
+            
+            return timersArray
+        }
+        
+        guard var timersArray = NSKeyedUnarchiver.unarchiveObject(with: timersData as Data) as? [LGTimer] else {
+            print("Could not unarchive from placesData")
+            var timersArray: [LGTimer] = []
+            timersArray = newtimers
+            
+            let newTimersData = NSKeyedArchiver.archivedData(withRootObject: timersArray)
+            UserDefaults.standard.set(newTimersData, forKey: timersKey)
+            return timersArray
+        }
+        
+        timersArray = newtimers
+        let newTimersData = NSKeyedArchiver.archivedData(withRootObject: timersArray)
+        UserDefaults.standard.set(newTimersData, forKey: timersKey)
+   
+        return timersArray
+
+    }
+    
+    func updateActivities(newActivities: [LGActivity])  {
+        UserDefaults.standard.removeObject(forKey: "activities")
+        
+        
+        guard let activitiesData = UserDefaults.standard.object(forKey: "activities") as? NSData else {
+            print("'places' not found in UserDefaults")
+            var activitiesArray: [LGActivity] = []
+            activitiesArray = newActivities
+            
+            let newActivitiesData = NSKeyedArchiver.archivedData(withRootObject: activitiesArray)
+            UserDefaults.standard.set(newActivitiesData, forKey: "activities")
+            
+            return
+        }
+        
+        guard var activitiesArray = NSKeyedUnarchiver.unarchiveObject(with: activitiesData as Data) as? [LGActivity] else {
+            print("Could not unarchive from placesData")
+            var activitiesArray: [LGActivity] = []
+            activitiesArray = newActivities
+            
+            let newActivitiesData = NSKeyedArchiver.archivedData(withRootObject: activitiesArray)
+            UserDefaults.standard.set(newActivitiesData, forKey: "activities")
+            
+            return
+        }
+        
+        activitiesArray = newActivities
+        let newActivitiesData = NSKeyedArchiver.archivedData(withRootObject: activitiesArray)
+        UserDefaults.standard.set(newActivitiesData, forKey: "activities")
+
+        
     }
     
     func loadActivities() -> [LGActivity] {
