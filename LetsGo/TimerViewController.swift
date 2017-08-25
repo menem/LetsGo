@@ -21,6 +21,7 @@ class TimerViewController: UITableViewController {
     var durationSelector: LGDurationSelection!
     var timerSetupButton: UIButton!
     var timeSelector: TimePickerView!
+       var totalTimeCounted: TimeInterval!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,16 @@ class TimerViewController: UITableViewController {
         
         configureSettings()
         
+    }
+    
+    
+    func saveRecord()  {
+        let manager = LGRecordsManager()
+        manager.saveRecord(title: "Timer", timer: totalTimeCounted)
+    }
+    
+    func startRecording(){
+        totalTimeCounted = 0
     }
     
     func pushActivities(){
@@ -135,6 +146,8 @@ class TimerViewController: UITableViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: CounterTableViewCellIdentifier, for: indexPath) as! CounterTableViewCell
                 cell.timerContentView.timer.setCountDownTime(60)
                 cell.timerContentView.timer.delegate = self
+                cell.timerContentView.timerControls.stopButton.addTarget(self, action: #selector(saveRecord), for: .touchUpInside)
+                cell.timerContentView.timerControls.playButton.addTarget(self, action: #selector(startRecording), for: .touchUpInside)
                 self.timeContentView = cell.timerContentView
                 let settingTapGesture = UITapGestureRecognizer(target: self, action: #selector(openSettings))
                 self.timeContentView.addGestureRecognizer(settingTapGesture)
@@ -155,10 +168,15 @@ extension TimerViewController: MZTimerLabelDelegate {
     func timerLabel(_ timerLabel: MZTimerLabel!, countingTo time: TimeInterval, timertype timerType: MZTimerLabelType){
         self.timerSetupButton.isHidden = true
         
+        if self.timeContentView.timer.getTimeCounted() > 0 {
+            totalTimeCounted = self.timeContentView.timer.getTimeCounted()
+        }
+        
     }
     
     func timerLabel(_ timerLabel: MZTimerLabel!, finshedCountDownTimerWithTime countTime: TimeInterval){
         self.timeContentView.stopTimer()
+         saveRecord()
         self.timerSetupButton.isHidden = false
         
     }
