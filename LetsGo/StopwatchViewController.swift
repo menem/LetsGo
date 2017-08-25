@@ -124,6 +124,9 @@ extension StopwatchViewController: MZTimerLabelDelegate {
     }
     
     func timerLabel(_ timerLabel: MZTimerLabel!, finshedCountDownTimerWithTime countTime: TimeInterval){
+
+            let manager = LGRecordsManager()
+            manager.saveRecord(title: "Stopwatch", timer:countTime)
         
     }
 }

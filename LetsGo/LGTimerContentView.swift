@@ -83,7 +83,7 @@ class LGTimerContentView: UIView {
     }
     
     func stopTimer() {
-        saveRecord()
+//        saveRecord()
         playSound()
         timer.pause()
         timer.reset()
@@ -92,10 +92,7 @@ class LGTimerContentView: UIView {
         configureRunningControls()
     }
     
-    func saveRecord() {
-        let manager = LGRecordsManager()
-        manager.saveRecord(title: "Timer", timer:Double(timer.getTimeCounted()))
-    }
+
     
     
     func configureRunningControls() {
