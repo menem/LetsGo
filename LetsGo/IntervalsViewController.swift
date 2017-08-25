@@ -15,8 +15,8 @@ class IntervalsViewController: UITableViewController {
     var timers = [LGTimer]()
     var timeContentView: LGTimerContentView!
     var popupController: CNPPopupController!
-        var onTimeSelector: TimePickerView!
-        var offTimeSelector: TimePickerView!
+        var onTimeSelector: LGTimePickerView!
+        var offTimeSelector: LGTimePickerView!
        var totalTimeCounted: TimeInterval!
     var scrollView: UIScrollView?
     var roundCounter: LGRoundSelector!
@@ -81,10 +81,10 @@ class IntervalsViewController: UITableViewController {
     
     func openSettings(){
         
-        onTimeSelector = TimePickerView(frame: CGRect(x: 0, y: 0, width: 300, height: 140))
+        onTimeSelector = LGTimePickerView(frame: CGRect(x: 0, y: 0, width: 300, height: 140))
         onTimeSelector.titlelabel.text = "Select ON Timer duration:"
         
-        offTimeSelector = TimePickerView(frame: CGRect(x: 310, y: 0, width: 300, height: 140))
+        offTimeSelector = LGTimePickerView(frame: CGRect(x: 310, y: 0, width: 300, height: 140))
         offTimeSelector.titlelabel.text = "Select OFF Timer duration:"
         
         

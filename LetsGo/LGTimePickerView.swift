@@ -9,7 +9,7 @@
 import UIKit
 import LETimeIntervalPicker
 
-class TimePickerView: UIView {
+class LGTimePickerView: UIView {
     
     lazy var titlelabel: UILabel = {
         let label = UILabel()

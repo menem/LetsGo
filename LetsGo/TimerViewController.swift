@@ -20,7 +20,7 @@ class TimerViewController: UITableViewController {
     var popupController: CNPPopupController!
     var durationSelector: LGDurationSelection!
     var timerSetupButton: UIButton!
-    var timeSelector: TimePickerView!
+    var timeSelector: LGTimePickerView!
        var totalTimeCounted: TimeInterval!
     
     override func viewDidLoad() {
@@ -89,7 +89,7 @@ class TimerViewController: UITableViewController {
     func configureSettings() {
 
         
-        timeSelector = TimePickerView(frame: CGRect(x: 0, y: 0, width: 300, height: 140))
+        timeSelector = LGTimePickerView(frame: CGRect(x: 0, y: 0, width: 300, height: 140))
         timeSelector.titlelabel.text = "Select Timer duration:"
         timeSelector.datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged), for: UIControlEvents.valueChanged)
         

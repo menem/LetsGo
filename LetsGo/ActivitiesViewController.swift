@@ -81,9 +81,9 @@ class ActivitiesViewController: UITableViewController {
         activityNameTextField.autocorrectionType = .no
         activityNameTextField.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         activityNameTextField.textAlignment = .center
-        activityNameTextField.textColor = #colorLiteral(red: 0.2333382666, green: 0.5698561072, blue: 0.8839787841, alpha: 1)
+        activityNameTextField.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         activityNameTextField.placeholder = "Enter Activity Name"
-        activityNameTextField.tintColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
+        activityNameTextField.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         
         let closeButton = LGDoneButton(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
         closeButton.doneButton.addTarget(self, action: #selector(dismissPopUp), for: .touchUpInside)
