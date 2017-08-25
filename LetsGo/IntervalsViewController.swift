@@ -17,8 +17,7 @@ class IntervalsViewController: UITableViewController {
     var popupController: CNPPopupController!
         var onTimeSelector: TimePickerView!
         var offTimeSelector: TimePickerView!
-//    var onDurationSelector: LGDurationSelection!
-//    var offDurationSelector: LGDurationSelection!
+       var totalTimeCounted: TimeInterval!
     var scrollView: UIScrollView?
     var roundCounter: LGRoundSelector!
     var rounds: Int!
@@ -27,6 +26,7 @@ class IntervalsViewController: UITableViewController {
     var currentRound: Int!
     var isCountingOffTimer: Bool!
     var timerSetupButton: UIButton!
+    var currentTimeCounted: TimeInterval!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,6 +115,16 @@ class IntervalsViewController: UITableViewController {
         popupController.present(animated: true)
         popupController.delegate = self
     }
+    func saveRecord()  {
+         totalTimeCounted = totalTimeCounted + currentTimeCounted
+        let manager = LGRecordsManager()
+        manager.saveRecord(title: "Intervals", timer: totalTimeCounted)
+    }
+    
+    func startRecording(){
+        totalTimeCounted = 0
+        currentTimeCounted = 0
+    }
     
     func dismissPopUp() {
         
@@ -164,6 +174,8 @@ class IntervalsViewController: UITableViewController {
                 cell.timerContentView.timer.setCountDownTime(60)
                 cell.timerContentView.timer.delegate = self
                 self.timeContentView = cell.timerContentView
+                cell.timerContentView.timerControls.stopButton.addTarget(self, action: #selector(saveRecord), for: .touchUpInside)
+                cell.timerContentView.timerControls.playButton.addTarget(self, action: #selector(startRecording), for: .touchUpInside)
                 
                 let settingTapGesture = UITapGestureRecognizer(target: self, action: #selector(openSettings))
                self.timeContentView.addGestureRecognizer(settingTapGesture)
@@ -183,6 +195,9 @@ class IntervalsViewController: UITableViewController {
 extension IntervalsViewController: MZTimerLabelDelegate {
     func timerLabel(_ timerLabel: MZTimerLabel!, countingTo time: TimeInterval, timertype timerType: MZTimerLabelType){
 self.timerSetupButton.isHidden = true
+        if self.timeContentView.timer.getTimeCounted() > 0 {
+            currentTimeCounted = self.timeContentView.timer.getTimeCounted()
+        }
     }
     
     func timerLabel(_ timerLabel: MZTimerLabel!, finshedCountDownTimerWithTime countTime: TimeInterval){
@@ -194,11 +209,15 @@ self.timerSetupButton.isHidden = true
                 if (currentRound < rounds){
                     self.timeContentView.tintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
                     self.timeContentView.timer.setCountDownTime(ontotalSeconds)
+                       totalTimeCounted = totalTimeCounted + offtotalSeconds
                     self.timeContentView.playSound()
                     self.timeContentView.timer.start()
                     return
                 }else{
+                    
                     self.timeContentView.stopTimer()
+                     saveRecord()
+             
                     self.timerSetupButton.isHidden = false
                     configureTimers()
                 }
@@ -207,6 +226,7 @@ self.timerSetupButton.isHidden = true
             isCountingOffTimer = true
             self.timeContentView.tintColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
             self.timeContentView.timer.setCountDownTime(offtotalSeconds)
+            totalTimeCounted = totalTimeCounted + ontotalSeconds
             self.timeContentView.playSound()
             self.timeContentView.timer.start()
         }
