@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import QuartzCore
+
 
 class TimerTableViewCell: UITableViewCell {
     
     lazy var titlelabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont (name: "BetmHairline", size: 24)
+        label.font = UIFont (name: "Betm-Regular3", size: 25)
 
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -21,8 +23,11 @@ class TimerTableViewCell: UITableViewCell {
     
     lazy var Durationlabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont (name: "BetmHairline", size: 24)
-
+        label.font = UIFont (name: "BetmHairline", size: 21)
+        label.layer.cornerRadius = 5.0
+        label.layer.masksToBounds = true
+        label.sizeToFit()
+        label.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -49,7 +54,7 @@ class TimerTableViewCell: UITableViewCell {
         self.backgroundColor = .clear
         contentView.addSubview(backCardView)
         contentView.addSubview(titlelabel)
-        contentView.addSubview(Intervalslabel)
+//        contentView.addSubview(Intervalslabel)
         contentView.addSubview(Durationlabel)
             contentView.sendSubview(toBack: backCardView)
         setNeedsUpdateConstraints()
@@ -65,17 +70,17 @@ class TimerTableViewCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             Durationlabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            Durationlabel.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 32),
-            Durationlabel.widthAnchor.constraint(equalToConstant: 60),
-            Durationlabel.heightAnchor.constraint(equalToConstant: 60),
+            Durationlabel.rightAnchor.constraint(equalTo: self.backCardView.rightAnchor, constant: -10),
+//            Durationlabel.widthAnchor.constraint(equalToConstant: 60),
+//            Durationlabel.heightAnchor.constraint(equalToConstant: 60),
             
             titlelabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            titlelabel.leftAnchor.constraint(equalTo: self.Durationlabel.rightAnchor, constant: 32),
-            titlelabel.rightAnchor.constraint(equalTo: self.Intervalslabel.leftAnchor, constant: -32),
+            titlelabel.leftAnchor.constraint(equalTo: self.backCardView.leftAnchor, constant: 10),
+            titlelabel.rightAnchor.constraint(equalTo: self.Durationlabel.leftAnchor, constant: -32),
             
-            Intervalslabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            Intervalslabel.leftAnchor.constraint(equalTo: self.titlelabel.rightAnchor, constant: 32),
-            Intervalslabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -32),
+//            Intervalslabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+//            Intervalslabel.leftAnchor.constraint(equalTo: self.titlelabel.rightAnchor, constant: 32),
+//            Intervalslabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -32),
             
             backCardView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
             backCardView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
