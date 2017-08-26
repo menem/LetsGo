@@ -21,7 +21,7 @@ class ActivityTableViewCell: UITableViewCell {
     
     lazy var titlelabel: UILabel = {
         let label = UILabel()
-        label.font =  UIFont (name: "BetmHairline", size: 36)
+        label.font =  UIFont (name: "Betm-Regular3", size: 25)
         label.textColor = #colorLiteral(red: 0.340575099, green: 0.3558157086, blue: 0.4202301502, alpha: 1)
         label.minimumScaleFactor = 0.5
         label.adjustsFontSizeToFitWidth = true

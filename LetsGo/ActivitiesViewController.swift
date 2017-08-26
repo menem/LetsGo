@@ -21,6 +21,7 @@ class ActivitiesViewController: UITableViewController {
     var activityNameTextField: LGTextField!
     var activityName: String!
     var popupController: CNPPopupController!
+    var activityType: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,7 +86,10 @@ class ActivitiesViewController: UITableViewController {
         activityNameTextField.placeholder = "Enter Activity Name"
         activityNameTextField.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         
-        let activityTypeSelector = LGActivityTypePickerView (frame: CGRect(x: 0, y: 0, width: 300, height: 40))
+        let activityTypeSelector = LGActivityTypePickerView (frame: CGRect(x: 0, y: 0, width: 300, height: 90))
+        activityTypeSelector.cookingButton.addTarget(self, action: #selector(setActivityType(sender:)), for: .touchUpInside)
+        activityTypeSelector.workoutButton.addTarget(self, action: #selector(setActivityType(sender:)), for: .touchUpInside)
+        activityTypeSelector.workButton.addTarget(self, action: #selector(setActivityType(sender:)), for: .touchUpInside)
         
         let closeButton = LGDoneButton(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
         closeButton.doneButton.addTarget(self, action: #selector(dismissPopUp), for: .touchUpInside)
@@ -109,9 +113,7 @@ class ActivitiesViewController: UITableViewController {
     func saveActivity() {
         if ((activityNameTextField?.text?.characters.count)! > 0) {
             let manager = LGTimerManager()
-            manager.saveActivity(title: (activityNameTextField?.text)!, type: "Workout")
-            print(activityName)
-            print(activityNameTextField?.text ?? "Workout")
+            manager.saveActivity(title: (activityNameTextField?.text)!, type: activityType)
         }
     }
     
@@ -141,7 +143,16 @@ class ActivitiesViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }
-    
+    func setActivityType(sender: AnyObject)  {
+        switch sender.tag {
+        case 1:
+            activityType = "work"
+        case 2:
+            activityType = "cooking"
+        default:
+            activityType = "workout"
+        }
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //      This is the Sponsor cell
         if (indexPath.section == 0) {
@@ -156,7 +167,15 @@ class ActivitiesViewController: UITableViewController {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: ActivityTableViewCellIdentifier, for: indexPath) as! ActivityTableViewCell
             let activity = activities[indexPath.row]
-            cell.activityTypeImageView.image = UIImage(named: "icn_timer")
+            switch activity.type {
+            case "cooking":
+                 cell.activityTypeImageView.image = UIImage(named: "icn_cooking")
+            case "work":
+                cell.activityTypeImageView.image = UIImage(named: "icn_work")
+            default:
+                cell.activityTypeImageView.image = UIImage(named: "icn_workout")
+            }
+           
             cell.titlelabel.text = activity.title.capitalized
             cell.backCardView.backgroundColor = randomColor(hue: .random, luminosity: .light)
             return cell
