@@ -12,5 +12,6 @@ pod 'CNPPopupController'
 pod 'CountdownLabel'
 pod "Pastel"
 pod "LETimeIntervalPicker"
+pod 'XXXRoundMenuButton'
 
 end

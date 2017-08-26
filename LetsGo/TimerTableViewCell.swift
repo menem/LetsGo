@@ -27,7 +27,7 @@ class TimerTableViewCell: UITableViewCell {
         label.layer.cornerRadius = 5.0
         label.layer.masksToBounds = true
         label.sizeToFit()
-        label.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
+        label.backgroundColor = .clear
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

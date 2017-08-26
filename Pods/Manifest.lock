@@ -6,6 +6,7 @@ PODS:
   - MZTimerLabel (0.5.4)
   - Pastel (0.3.0)
   - RandomColorSwift (1.0.0)
+  - XXXRoundMenuButton (1.0.2)
 
 DEPENDENCIES:
   - CNPPopupController
@@ -15,6 +16,7 @@ DEPENDENCIES:
   - MZTimerLabel
   - Pastel
   - RandomColorSwift
+  - XXXRoundMenuButton
 
 SPEC CHECKSUMS:
   CNPPopupController: 59b06290762f68beab5fb0bbfa87eb4dcbefb7de
@@ -24,7 +26,8 @@ SPEC CHECKSUMS:
   MZTimerLabel: cd9bfb9304540ef2a9e163384fca9c978f0dbf83
   Pastel: 738740c84f2b15bbcd96ebe99c4e6c2f5dd42262
   RandomColorSwift: 9f85058b721665d52d239ca166a913e083506444
+  XXXRoundMenuButton: 15e6c376b0587eceea1edf182883ab00e64155e1
 
-PODFILE CHECKSUM: 737c24a09046f6bc7a54cb9dd2c5edba2165d372
+PODFILE CHECKSUM: 611b654690a027e7370129ec3d112b24cf6afd2f
 
 COCOAPODS: 1.2.1
