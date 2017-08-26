@@ -94,7 +94,8 @@ class RecordsTableViewController: UITableViewController {
             let timeString = TimeHelper.sharedInstance.timefromTimeInterval(timeInterval: record.timeElapsed)
             cell.timeElapsedlabel.text = timeString
             cell.titlelabel.text = record.title.capitalized
-            cell.calorieslabel.text = "\(round(record.calories))"
+            let caloriesInt = record.calories.rounded(.up)
+            cell.calorieslabel.text = "\(caloriesInt)"
             cell.backCardView.backgroundColor = randomColor(hue: .random, luminosity: .light)
             return cell
         }
