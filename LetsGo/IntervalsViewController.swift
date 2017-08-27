@@ -9,6 +9,7 @@
 import UIKit
 import MZTimerLabel
 import CNPPopupController
+import NYAlertViewController
 
 class IntervalsViewController: UITableViewController {
     
@@ -78,7 +79,50 @@ class IntervalsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
                 return 0
     }
-    
+    func promptUserforRecord(){
+        let alertViewController = NYAlertViewController()
+        
+        // Set a title and message
+        alertViewController.title = "Save Record?"
+        alertViewController.message = "Do you wish to save this interval timer as a workout in your records?"
+        
+        // Customize appearance as desired
+        alertViewController.buttonCornerRadius = 20.0
+        alertViewController.view.tintColor = self.view.tintColor
+        
+        alertViewController.titleFont = UIFont(name: "AvenirNext-Bold", size: 19.0)
+        alertViewController.messageFont = UIFont(name: "AvenirNext-Medium", size: 16.0)
+        alertViewController.cancelButtonTitleFont = UIFont(name: "AvenirNext-Medium", size: 16.0)
+        alertViewController.cancelButtonTitleFont = UIFont(name: "AvenirNext-Medium", size: 16.0)
+        
+        alertViewController.swipeDismissalGestureEnabled = true
+        alertViewController.backgroundTapDismissalGestureEnabled = true
+        
+        // Add alert actions
+        let cancelAction = NYAlertAction(
+            title: "Cancel",
+            style: .destructive,
+            handler: { (action: NYAlertAction!) -> Void in
+                self.dismiss(animated: true, completion: nil)
+        }
+        )
+        
+        let doneAction = NYAlertAction(
+            title: "Okay",
+            style: .default,
+            handler: { (action: NYAlertAction!) -> Void in
+                self.totalTimeCounted = self.totalTimeCounted + self.currentTimeCounted
+                let manager = LGRecordsManager()
+                manager.saveRecord(title: "Intervals", timer: self.totalTimeCounted)
+                self.dismiss(animated: true, completion: nil)
+        }
+        )
+        
+        alertViewController.addAction(cancelAction)
+        alertViewController.addAction(doneAction)
+        // Present the alert view controller
+        self.present(alertViewController, animated: true, completion: nil)
+    }
     func openSettings(){
         
         onTimeSelector = LGTimePickerView(frame: CGRect(x: 0, y: 0, width: 300, height: 140))
@@ -116,9 +160,7 @@ class IntervalsViewController: UITableViewController {
         popupController.delegate = self
     }
     func saveRecord()  {
-         totalTimeCounted = totalTimeCounted + currentTimeCounted
-        let manager = LGRecordsManager()
-        manager.saveRecord(title: "Intervals", timer: totalTimeCounted)
+promptUserforRecord()
     }
     
     func startRecording(){
