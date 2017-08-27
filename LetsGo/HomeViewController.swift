@@ -9,6 +9,7 @@
 import UIKit
 import Pastel
 import Intents
+import HealthKit
 
 class HomeViewController: UIViewController {
     var scrollView: UIScrollView?
@@ -18,9 +19,13 @@ class HomeViewController: UIViewController {
     let timerViewController = TimerViewController()
     let stopViewController = StopwatchViewController()
     let intervalsViewController = IntervalsViewController()
+    let healthManager:HealthKitManager = HealthKitManager()
+    var height: HKQuantitySample?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         getHealthKitPermission()
+        
         let screenFrame = UIScreen.main.bounds
         
         scrollView = UIScrollView(frame: screenFrame)
@@ -67,7 +72,21 @@ class HomeViewController: UIViewController {
         
     }
     
+    func getHealthKitPermission() {
+        healthManager.authorizeHealthKit { (authorized,  error) -> Void in
+            if authorized {
+                
+                self.setHeight()
+            } else {
+                if error != nil {
+                }
+                print("Permission denied.")
+            }
+        }
+    }
+    
     func pushActivities(){
+//         healthManager.saveDistance(distanceRecorded: 0.1, date: NSDate())
         let activitiesViewController = ActivitiesViewController()
         self.navigationController?.pushViewController(activitiesViewController, animated: true)
     }
@@ -81,6 +100,31 @@ class HomeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func setHeight() {
+        let heightSample = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.height)
+        self.healthManager.getHeight(sampleType: heightSample!, completion: { (userHeight, error) -> Void in
+            
+            if( error != nil ) {
+                print("Error: \(String(describing: error?.localizedDescription))")
+                return
+            }
+            
+            var heightString = ""
+            self.height = userHeight as? HKQuantitySample
+            if let meters = self.height?.quantity.doubleValue(for: HKUnit.meter()) {
+                let formatHeight = LengthFormatter()
+                formatHeight.isForPersonHeightUse = true
+                heightString = formatHeight.string(fromMeters: meters)
+            }
+            
+            DispatchQueue.main.async(execute: { () -> Void in
+                print("Menem's Height is \(heightString)")
+            })
+        })
+        
+    }
+
     
     func configurePageControl() {
         // The total number of pages that are available is based on how many available colors we have.
