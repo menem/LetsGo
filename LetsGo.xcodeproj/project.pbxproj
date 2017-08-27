@@ -146,13 +146,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		480A7AE11F4A44E300D7D006 /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Vendor;
-			sourceTree = "<group>";
-		};
 		480B29C41F3C6568007743F6 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,8 +176,8 @@
 				484F0FA71F2EB4790056F1E2 /* HealthKitManager.swift */,
 				48A31BAF1F32253500E919FB /* LGTimeManager.swift */,
 				480A7ADB1F47315F00D7D006 /* LGRecordsManager.swift */,
-				4850E1C71F2A8865004D85A7 /* SiriHandler */,
 				48DBF9D81F509F9700EAE6AB /* TimeHelper.swift */,
+				4850E1C71F2A8865004D85A7 /* SiriHandler */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -195,16 +188,8 @@
 				480B29C41F3C6568007743F6 /* View Controllers */,
 				48A31BBA1F333F5500E919FB /* Cells */,
 				48A31BB31F32551600E919FB /* Views */,
-				4825CF3F1F2FEBED0066B40D /* Storyboards */,
 			);
 			name = UI;
-			sourceTree = "<group>";
-		};
-		4825CF3F1F2FEBED0066B40D /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Storyboards;
 			sourceTree = "<group>";
 		};
 		4825CF401F2FEC030066B40D /* Support */ = {
@@ -255,7 +240,6 @@
 			isa = PBXGroup;
 			children = (
 				4850E1AF1F28EE00004D85A7 /* AppDelegate.swift */,
-				480A7AE11F4A44E300D7D006 /* Vendor */,
 				4825CF3C1F2FEB6F0066B40D /* Models */,
 				4825CF3D1F2FEB860066B40D /* Managers */,
 				48A31BCB1F35FA8100E919FB /* Extensions */,

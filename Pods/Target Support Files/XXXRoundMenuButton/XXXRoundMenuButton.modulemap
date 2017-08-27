@@ -1,6 +1,0 @@
-framework module XXXRoundMenuButton {
-  umbrella header "XXXRoundMenuButton-umbrella.h"
-
-  export *
-  module * { export * }
-}
