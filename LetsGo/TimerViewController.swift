@@ -9,6 +9,7 @@ import UIKit
 import MZTimerLabel
 import CNPPopupController
 import LETimeIntervalPicker
+import NYAlertViewController
 
 let CounterTableViewCellIdentifier = "CounterTableViewCellIdentifier"
 let TimerSettingTableViewCellIdentifier = "TimerSettingTableViewCellIdentifier"
@@ -44,8 +45,7 @@ class TimerViewController: UITableViewController {
     
     
     func saveRecord()  {
-        let manager = LGRecordsManager()
-        manager.saveRecord(title: "Timer", timer: totalTimeCounted)
+        promptUserforRecord()
     }
     
     func startRecording(){
@@ -114,15 +114,50 @@ class TimerViewController: UITableViewController {
          self.timeContentView.timer.setCountDownTime(sender.timeInterval)
 //        print("\(sender.timeInterval)")
     }
-    
+    func promptUserforRecord(){
+        let alertViewController = NYAlertViewController()
+        
+        // Set a title and message
+        alertViewController.title = "Save Record?"
+        alertViewController.message = "Do you wish to save this timer as a workout in your records?"
+        
+        // Customize appearance as desired
+        alertViewController.buttonCornerRadius = 20.0
+        alertViewController.view.tintColor = self.view.tintColor
+        
+        alertViewController.titleFont = UIFont(name: "AvenirNext-Bold", size: 19.0)
+        alertViewController.messageFont = UIFont(name: "AvenirNext-Medium", size: 16.0)
+        alertViewController.cancelButtonTitleFont = UIFont(name: "AvenirNext-Medium", size: 16.0)
+        alertViewController.cancelButtonTitleFont = UIFont(name: "AvenirNext-Medium", size: 16.0)
+        
+        alertViewController.swipeDismissalGestureEnabled = true
+        alertViewController.backgroundTapDismissalGestureEnabled = true
+        
+        // Add alert actions
+        let cancelAction = NYAlertAction(
+            title: "Cancel",
+            style: .destructive,
+            handler: { (action: NYAlertAction!) -> Void in
+                self.dismiss(animated: true, completion: nil)
+        }
+        )
+        
+        let doneAction = NYAlertAction(
+            title: "Okay",
+            style: .default,
+            handler: { (action: NYAlertAction!) -> Void in
+                let manager = LGRecordsManager()
+                manager.saveRecord(title: "Timer", timer: self.totalTimeCounted)
+                self.dismiss(animated: true, completion: nil)
+        }
+        )
+        
+        alertViewController.addAction(cancelAction)
+        alertViewController.addAction(doneAction)
+        // Present the alert view controller
+        self.present(alertViewController, animated: true, completion: nil)
+    }
     func dismissPopUp() {
-//        durationSelector.adjustMinutes()
-//        durationSelector.adjustSeconds()
-//        
-//        let minuteReading = Double(durationSelector.minutesLabel.text! ) ?? 0
-//        let minutesInSeconds = minuteReading * 60
-//        let totalSeconds = minutesInSeconds + Double(durationSelector.secondsLabel.text!)!
-//        self.timeContentView.timer.setCountDownTime(totalSeconds)
         self.popupController?.dismiss(animated: true)
     }
     
