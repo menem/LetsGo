@@ -8,12 +8,16 @@
 
 import UIKit
 import RandomColorSwift
-import Pastel
+import CNPPopupController
+
 let RecordTableViewCellIdentifier = "RecordTableViewCellIdentifier"
 
 class RecordsTableViewController: UITableViewController {
-    
+    var popupController: CNPPopupController!
     var records = [LGRecord]()
+    var selectedRecord: LGRecord!
+    var selectedRecordIndexPath: IndexPath!
+    var notesTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +37,48 @@ class RecordsTableViewController: UITableViewController {
         records = recordsManager.loadRecords()
         self.tableView.reloadData()
     }
-
+    func configureSettings(record: LGRecord) {
+        
+        notesTextView = UITextView(frame: CGRect(x: 0, y: 0, width: 300.0, height: 200.0))
+        self.automaticallyAdjustsScrollViewInsets = false
+        
+        notesTextView.text = record.notes
+        notesTextView.font = UIFont(name: "Betm-Regular3", size: 18)
+        notesTextView.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        notesTextView.backgroundColor = .clear
+        notesTextView.layer.borderColor = UIColor(red:0.15, green:0.16, blue:0.20, alpha:0.50).cgColor
+        notesTextView.layer.cornerRadius = 5.0
+        notesTextView.layer.borderWidth = 1.0
+//        notesTextView.layer.borderColor?.alpha = 0.5
+        
+        let closeButton = LGDoneButton(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
+        closeButton.doneButton.addTarget(self, action: #selector(dismissPopUp), for: .touchUpInside)
+        
+        popupController = CNPPopupController(contents: [notesTextView, closeButton])
+        popupController.theme.popupStyle = .centered
+        popupController.theme.cornerRadius = 14.0
+        popupController.theme.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
+        popupController.theme.shouldDismissOnBackgroundTouch = true
+        
+//        popupController.delegate = self
+        
+    }
+    func openSettings(){
+        popupController.present(animated: true)
+        
+    }
+    
+    func dismissPopUp() {
+        let manager = LGRecordsManager()
+        selectedRecord.notes = notesTextView.text
+        records.remove(at: selectedRecordIndexPath.row)
+        records.insert(selectedRecord, at: selectedRecordIndexPath.row)
+        
+        manager.updateRecords(newRecords: records)
+        tableView.reloadData()
+        
+        self.popupController?.dismiss(animated: true)
+    }
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -101,5 +146,15 @@ class RecordsTableViewController: UITableViewController {
         }
         
     }
-    
+   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+   selectedRecordIndexPath = indexPath
+    selectedRecord = records[indexPath.row]
+    configureSettings(record: selectedRecord)
+    openSettings()
+//    let activityViewController = ActivityViewController()
+//    let selectedCell = self.tableView.cellForRow(at: indexPath) as! ActivityTableViewCell
+//    activityViewController.cellColor = selectedCell.backCardView.backgroundColor
+//    activityViewController.activity = selectedActivity
+//    self.navigationController?.pushViewController(activityViewController, animated: true)
+    }
 }

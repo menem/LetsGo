@@ -25,7 +25,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
          getHealthKitPermission()
-        
+        setHeight()
         let screenFrame = UIScreen.main.bounds
         
         scrollView = UIScrollView(frame: screenFrame)
