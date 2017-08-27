@@ -66,6 +66,7 @@ class LGTimerContentView: UIView {
         }
     }
     func toggleTimer() {
+        if timer.getCountDownTime() > 0 && timer.timerType != MZTimerLabelTypeStopWatch {
         if(!isRunning) {
             isRunning = true
             self.tintColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
@@ -79,7 +80,11 @@ class LGTimerContentView: UIView {
             isRunning = false
         }
         playSound()
-        configureRunningControls()
+            configureRunningControls()
+        }else{
+        
+            return
+        }
     }
     
     func stopTimer() {
@@ -159,7 +164,8 @@ class LGTimerContentView: UIView {
 
 extension LGTimerContentView: CountdownLabelDelegate {
     func countingAt(timeCounted: TimeInterval, timeRemaining: TimeInterval) {
-            let synthesizer = AVSpeechSynthesizer()
+        timerControls.isHidden = true
+        let synthesizer = AVSpeechSynthesizer()
          var utterance = AVSpeechUtterance()
         utterance.rate = 0.6
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
@@ -190,7 +196,7 @@ extension LGTimerContentView: CountdownLabelDelegate {
     func countdownFinished() {
         timer.start()
         self.tintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
-        
+         timerControls.isHidden = false
         countDownTimerLabel.isHidden = true
         timeLabel.isHidden = false
         

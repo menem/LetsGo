@@ -117,7 +117,7 @@ class ActivityViewController: UITableViewController {
     }
     
     func startActivity(){
-        
+        if timers.count > 0 {
         currentlyPlaying = 0
         timeContentView.timer.setCountDownTime((timers.first?.duration)!+10)
         currentInterval = timers.first?.intervals
@@ -125,7 +125,8 @@ class ActivityViewController: UITableViewController {
         let selectedCell = self.tableView.cellForRow(at: selectedIndexPath) as! TimerTableViewCell
         highlightCell(cell: selectedCell)
         timeContentView.playSound()
-        timeContentView.timer.start()
+            timeContentView.timer.start()
+        }
     }
     func resumeActivity(){
         let timerDuration = timers[currentlyPlaying].duration
