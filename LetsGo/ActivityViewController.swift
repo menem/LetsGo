@@ -28,6 +28,7 @@ class ActivityViewController: UITableViewController {
     var popupController: CNPPopupController!
     var timerNameTextField: LGTextField!
     var isTableEditing: Bool!
+    var canEditMode: Bool!
     var orderBarButtonItem: UIBarButtonItem!
     var timeSelector: LGTimePickerView!
     var totalTimeCounted: TimeInterval!
@@ -44,6 +45,7 @@ class ActivityViewController: UITableViewController {
         self.title = activity.title
         self.tableView.allowsSelectionDuringEditing = true
         
+        canEditMode = true
    
         loadTimers()
         
@@ -59,6 +61,7 @@ class ActivityViewController: UITableViewController {
 
     }
     func toggleEditingMode(){
+        if canEditMode {
         if (!isTableEditing){
             isTableEditing = true
          tableView.setEditing(true, animated: true);
@@ -70,7 +73,7 @@ class ActivityViewController: UITableViewController {
                 let orderBarButtonImage = UIImage(named:"icn_order")
               orderBarButtonItem.image = orderBarButtonImage
         }
-        
+        }
     }
     
     func loadTimers() {
@@ -157,6 +160,7 @@ class ActivityViewController: UITableViewController {
         timeContentView.timer.start()
     }
     func saveRecord()  {
+        canEditMode = true
         promptUserforRecord()
     }
     func promptUserforRecord(){
@@ -203,6 +207,7 @@ class ActivityViewController: UITableViewController {
         self.present(alertViewController, animated: true, completion: nil)
     }
     func startRecording(){
+        canEditMode = false
         totalTimeCounted = 0
         currentTimeCounted = 0
     }
@@ -310,7 +315,7 @@ class ActivityViewController: UITableViewController {
     }
   override  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
     {
-        if indexPath.section != 0 {
+        if indexPath.section != 0 && canEditMode {
             return true
         }else{
          return false
@@ -367,6 +372,7 @@ class ActivityViewController: UITableViewController {
 
 extension ActivityViewController: MZTimerLabelDelegate {
     func timerLabel(_ timerLabel: MZTimerLabel!, countingTo time: TimeInterval, timertype timerType: MZTimerLabelType){
+      canEditMode = false
         if self.timeContentView.timer.getTimeCounted() > 0 {
             currentTimeCounted = self.timeContentView.timer.getTimeCounted()
         }
@@ -374,6 +380,7 @@ extension ActivityViewController: MZTimerLabelDelegate {
     }
     
     func timerLabel(_ timerLabel: MZTimerLabel!, finshedCountDownTimerWithTime countTime: TimeInterval){
+      canEditMode = true
         currentInterval! -= 1
         if (currentInterval > 0) {
             resumeTimer(index: currentlyPlaying)
