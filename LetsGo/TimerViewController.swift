@@ -22,10 +22,13 @@ class TimerViewController: UITableViewController {
     var durationSelector: LGDurationSelection!
     var timerSetupButton: UIButton!
     var timeSelector: LGTimePickerView!
-       var totalTimeCounted: TimeInterval!
+    var totalTimeCounted: TimeInterval!
+    var canEditMode: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        canEditMode = true
         
         self.tableView.tableFooterView = UIView()
         self.tableView.backgroundColor = .clear
@@ -45,6 +48,7 @@ class TimerViewController: UITableViewController {
     
     
     func saveRecord()  {
+        canEditMode = true
         promptUserforRecord()
     }
     
@@ -113,8 +117,9 @@ class TimerViewController: UITableViewController {
         
     }
     func openSettings(){
+        if canEditMode{
         popupController.present(animated: true)
-        
+        }
     }
     
     func datePickerValueChanged(sender: LETimeIntervalPicker) {
@@ -209,7 +214,7 @@ class TimerViewController: UITableViewController {
 extension TimerViewController: MZTimerLabelDelegate {
     func timerLabel(_ timerLabel: MZTimerLabel!, countingTo time: TimeInterval, timertype timerType: MZTimerLabelType){
         self.timerSetupButton.isHidden = true
-        
+        canEditMode = false
         if self.timeContentView.timer.getTimeCounted() > 0 {
             totalTimeCounted = self.timeContentView.timer.getTimeCounted()
         }
@@ -218,8 +223,10 @@ extension TimerViewController: MZTimerLabelDelegate {
     
     func timerLabel(_ timerLabel: MZTimerLabel!, finshedCountDownTimerWithTime countTime: TimeInterval){
         self.timeContentView.stopTimer()
+        canEditMode = true
          saveRecord()
         self.timerSetupButton.isHidden = false
+//        tableView.reloadData()
         
     }
 }
