@@ -32,16 +32,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         guard let endIntent = userActivity.interaction?.intent as? INEndWorkoutIntent else {
-            print("AppDelegate: end Workout Intent - FALSE")
+//            print("AppDelegate: end Workout Intent - FALSE")
             return false
         }
-        print(endIntent)
+//        print(endIntent)
         
         guard let startIntent = userActivity.interaction?.intent as? INStartWorkoutIntent else {
-            print("AppDelegate: Start Workout Intent - FALSE")
+//            print("AppDelegate: Start Workout Intent - FALSE")
             return false
         }
-        print("AppDelegate: Start Workout Intent - TRUE")
+//        print("AppDelegate: Start Workout Intent - TRUE")
 
         let homeViewController = HomeViewController()
                 homeViewController.userIntent = startIntent

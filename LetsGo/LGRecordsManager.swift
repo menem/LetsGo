@@ -16,7 +16,7 @@ class LGRecordsManager: NSObject {
         
         
         guard let recordData = UserDefaults.standard.object(forKey: "records") as? NSData else {
-            print("'places' not found in UserDefaults")
+//            print("'places' not found in UserDefaults")
             var recordsArray: [LGRecord] = []
             recordsArray.append(record)
             
@@ -27,7 +27,7 @@ class LGRecordsManager: NSObject {
         }
         
         guard var recordsArray = NSKeyedUnarchiver.unarchiveObject(with: recordData as Data) as? [LGRecord] else {
-            print("Could not unarchive from placesData")
+//            print("Could not unarchive from placesData")
             var recordsArray: [LGRecord] = []
             recordsArray.append(record)
             
@@ -46,7 +46,7 @@ class LGRecordsManager: NSObject {
             UserDefaults.standard.removeObject(forKey: "records")
         
         guard let recordData = UserDefaults.standard.object(forKey: "records") as? NSData else {
-            print("'places' not found in UserDefaults")
+//            print("'places' not found in UserDefaults")
             var recordsArray: [LGRecord] = []
             recordsArray = newRecords
             
@@ -57,7 +57,7 @@ class LGRecordsManager: NSObject {
         }
         
         guard var recordsArray = NSKeyedUnarchiver.unarchiveObject(with: recordData as Data) as? [LGRecord] else {
-            print("Could not unarchive from placesData")
+//            print("Could not unarchive from placesData")
             var recordsArray: [LGRecord] = []
            recordsArray = newRecords
             

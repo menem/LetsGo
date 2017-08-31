@@ -193,14 +193,14 @@ extension StopwatchViewController: MZTimerLabelDelegate {
 extension StopwatchViewController : CNPPopupControllerDelegate {
     
     func popupControllerWillDismiss(_ controller: CNPPopupController) {
-        print("Popup controller will be dismissed")
+//        print("Popup controller will be dismissed")
         let minutesInSeconds = Double(self.durationSelector.minutesLabel.text!)! * 60
         let totalSeconds = minutesInSeconds + Double(self.durationSelector.secondsLabel.text!)!
         self.timeContentView.timer.setCountDownTime(totalSeconds)
     }
     
     func popupControllerDidPresent(_ controller: CNPPopupController) {
-        print("Popup controller presented")
+//        print("Popup controller presented")
     }
     
 }

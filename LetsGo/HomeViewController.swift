@@ -80,7 +80,7 @@ class HomeViewController: UIViewController {
             } else {
                 if error != nil {
                 }
-                print("Permission denied.")
+//                print("Permission denied.")
             }
         }
     }
@@ -106,7 +106,7 @@ class HomeViewController: UIViewController {
         self.healthManager.getHeight(sampleType: heightSample!, completion: { (userHeight, error) -> Void in
             
             if( error != nil ) {
-                print("Error: \(String(describing: error?.localizedDescription))")
+//                print("Error: \(String(describing: error?.localizedDescription))")
                 return
             }
             
@@ -118,9 +118,9 @@ class HomeViewController: UIViewController {
                 heightString = formatHeight.string(fromMeters: meters)
             }
             
-            DispatchQueue.main.async(execute: { () -> Void in
-                print("Menem's Height is \(heightString)")
-            })
+//            DispatchQueue.main.async(execute: { () -> Void in
+////                print("Menem's Height is \(heightString)")
+//            })
         })
         
     }

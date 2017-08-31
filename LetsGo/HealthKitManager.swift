@@ -23,7 +23,7 @@ class HealthKitManager {
         
         // Just in case OneHourWalker makes its way to an iPad...
         if !HKHealthStore.isHealthDataAvailable() {
-            print("Can't access HealthKit.")
+//            print("Can't access HealthKit.")
         }
         
         // Request authorization to read and/or write the specific data.
@@ -51,7 +51,7 @@ class HealthKitManager {
             if( error != nil ) {
                 //                print(error ?? <#default value#>)
             } else {
-                print("The distance has been recorded! Better go check!")
+//                print("The distance has been recorded! Better go check!")
             }
         })
     }

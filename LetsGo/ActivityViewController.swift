@@ -124,7 +124,7 @@ class ActivityViewController: UITableViewController {
         let selectedIndexPath = IndexPath(row: 0, section: 1)
         let selectedCell = self.tableView.cellForRow(at: selectedIndexPath) as! TimerTableViewCell
         highlightCell(cell: selectedCell)
-        timeContentView.playSound()
+        LGSoundHelper.sharedInstance.playSoundfor(state: .start)
             timeContentView.timer.start()
         }
     }
@@ -142,7 +142,7 @@ class ActivityViewController: UITableViewController {
         let selectedCell = self.tableView.cellForRow(at:selectedIndexPath ) as! TimerTableViewCell
         highlightCell(cell: selectedCell)
         
-        timeContentView.playSound()
+       LGSoundHelper.sharedInstance.playSoundfor(state: .start)
         timeContentView.timer.start()
     }
     func resumeTimer(index: Int){
@@ -151,7 +151,7 @@ class ActivityViewController: UITableViewController {
         let selectedIndexPath = IndexPath(row: currentlyPlaying, section: 1)
         let selectedCell = self.tableView.cellForRow(at: selectedIndexPath) as! TimerTableViewCell
         highlightCell(cell: selectedCell)
-        timeContentView.playSound()
+        LGSoundHelper.sharedInstance.playSoundfor(state: .start)
         timeContentView.timer.start()
     }
     func saveRecord()  {
@@ -214,11 +214,8 @@ class ActivityViewController: UITableViewController {
         cell.Durationlabel.textColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
         cell.Intervalslabel.textColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
         
-        let synthesizer = AVSpeechSynthesizer()
-        let utterance = AVSpeechUtterance(string: cell.titlelabel.text!)
-        utterance.rate = 0.7
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        synthesizer.speak(utterance)
+        
+        LGSoundHelper.sharedInstance.speak(text: cell.titlelabel.text!)
     }
     
     func normalizeCell(cell: TimerTableViewCell) {
@@ -309,7 +306,7 @@ class ActivityViewController: UITableViewController {
             let timer = timers[indexPath.row]
             cell.titlelabel.text = timer.title
             cell.backCardView.backgroundColor = cellColor
-            let timeString = TimeHelper.sharedInstance.timefromTimeInterval(timeInterval: timer.duration)
+            let timeString = LGTimeHelper.sharedInstance.timefromTimeInterval(timeInterval: timer.duration)
             cell.Durationlabel.text = timeString
             cell.Intervalslabel.text = String(timer.intervals)
             return cell
@@ -426,12 +423,12 @@ extension ActivityViewController : UITextFieldDelegate {
 extension ActivityViewController : CNPPopupControllerDelegate {
     
     func popupControllerWillDismiss(_ controller: CNPPopupController) {
-        print("Popup controller will be dismissed")
+//        print("Popup controller will be dismissed")
         
     }
     
     func popupControllerDidPresent(_ controller: CNPPopupController) {
-        print("Popup controller presented")
+//        print("Popup controller presented")
     }
     
 }

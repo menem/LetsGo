@@ -16,7 +16,7 @@ class LGTimerManager {
         
         
         guard let activitiesData = UserDefaults.standard.object(forKey: "activities") as? NSData else {
-            print("'places' not found in UserDefaults")
+//            print("'places' not found in UserDefaults")
             var activitiesArray: [LGActivity] = []
             activitiesArray.append(activity)
             
@@ -27,7 +27,7 @@ class LGTimerManager {
         }
         
         guard var activitiesArray = NSKeyedUnarchiver.unarchiveObject(with: activitiesData as Data) as? [LGActivity] else {
-            print("Could not unarchive from placesData")
+//            print("Could not unarchive from placesData")
             var activitiesArray: [LGActivity] = []
             activitiesArray.append(activity)
             
@@ -49,7 +49,7 @@ class LGTimerManager {
         let timer = LGTimer(title: title, duration: duration, intervals: intervals, isWorkout: true)
         
         guard let timersData = UserDefaults.standard.object(forKey: timersKey) as? NSData else {
-            print("'places' not found in UserDefaults")
+//            print("'places' not found in UserDefaults")
             var timersArray: [LGTimer] = []
             timersArray.append(timer)
             
@@ -60,7 +60,7 @@ class LGTimerManager {
         }
         
         guard var timersArray = NSKeyedUnarchiver.unarchiveObject(with: timersData as Data) as? [LGTimer] else {
-            print("Could not unarchive from placesData")
+//            print("Could not unarchive from placesData")
             var timersArray: [LGTimer] = []
             timersArray.append(timer)
             
@@ -96,7 +96,7 @@ class LGTimerManager {
         UserDefaults.standard.removeObject(forKey: timersKey)
 
         guard let timersData = UserDefaults.standard.object(forKey: timersKey) as? NSData else {
-            print("'places' not found in UserDefaults")
+//            print("'places' not found in UserDefaults")
             var timersArray: [LGTimer] = []
             timersArray = newtimers
             
@@ -107,7 +107,7 @@ class LGTimerManager {
         }
         
         guard var timersArray = NSKeyedUnarchiver.unarchiveObject(with: timersData as Data) as? [LGTimer] else {
-            print("Could not unarchive from placesData")
+//            print("Could not unarchive from placesData")
             var timersArray: [LGTimer] = []
             timersArray = newtimers
             
@@ -129,7 +129,7 @@ class LGTimerManager {
         
         
         guard let activitiesData = UserDefaults.standard.object(forKey: "activities") as? NSData else {
-            print("'places' not found in UserDefaults")
+//            print("'places' not found in UserDefaults")
             var activitiesArray: [LGActivity] = []
             activitiesArray = newActivities
             
@@ -140,7 +140,7 @@ class LGTimerManager {
         }
         
         guard var activitiesArray = NSKeyedUnarchiver.unarchiveObject(with: activitiesData as Data) as? [LGActivity] else {
-            print("Could not unarchive from placesData")
+//            print("Could not unarchive from placesData")
             var activitiesArray: [LGActivity] = []
             activitiesArray = newActivities
             

@@ -252,7 +252,7 @@ self.timerSetupButton.isHidden = true
                     self.timeContentView.tintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
                     self.timeContentView.timer.setCountDownTime(ontotalSeconds)
                        totalTimeCounted = totalTimeCounted + offtotalSeconds
-                    self.timeContentView.playSound()
+                   LGSoundHelper.sharedInstance.playSoundfor(state: .start)
                     self.timeContentView.timer.start()
                     return
                 }else{
@@ -269,7 +269,7 @@ self.timerSetupButton.isHidden = true
             self.timeContentView.tintColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
             self.timeContentView.timer.setCountDownTime(offtotalSeconds)
             totalTimeCounted = totalTimeCounted + ontotalSeconds
-            self.timeContentView.playSound()
+            LGSoundHelper.sharedInstance.playSoundfor(state: .pause)
             self.timeContentView.timer.start()
         }
     }
@@ -279,11 +279,11 @@ self.timerSetupButton.isHidden = true
 extension IntervalsViewController : CNPPopupControllerDelegate {
     
     func popupControllerWillDismiss(_ controller: CNPPopupController) {
-        print("Popup controller will be dismissed")
+//        print("Popup controller will be dismissed")
     }
     
     func popupControllerDidPresent(_ controller: CNPPopupController) {
-        print("Popup controller presented")
+//        print("Popup controller presented")
         
     }
     

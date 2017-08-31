@@ -160,12 +160,12 @@ import UIKit
         var total: TimeInterval = 0
         for (index, component) in components.enumerated() {
             var selected = pickerView.selectedRow(inComponent: index)
-            print(selected)
+//            print(selected)
             if loops {
                 selected = selected % numberOfRows[component]!
             }
-            print(selected)
-            print()
+//            print(selected)
+//            print()
             total += Constants.componentValues[component]! * TimeInterval(selected)
         }
         return total
@@ -183,11 +183,11 @@ import UIKit
                 timeLeft -= Constants.componentValues[component]!
             }
             if componentCount > numberOfRows[component]! {
-                print("LETimeIntervalPicker WARNING: " +
-                    "Not enough rows to display the specified time interval " +
-                    "(requires \(componentCount) rows for component '\(component.rawValue)', " +
-                    "but specified maximum is \(numberOfRows[component]!))"
-                )
+//                print("LETimeIntervalPicker WARNING: " +
+//                    "Not enough rows to display the specified time interval " +
+//                    "(requires \(componentCount) rows for component '\(component.rawValue)', " +
+//                    "but specified maximum is \(numberOfRows[component]!))"
+//                )
             }
             let index = components.index(of: component)!
             if loops {

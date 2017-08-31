@@ -8,8 +8,9 @@
 
 import UIKit
 
-class TimeHelper: NSObject {
-    static let sharedInstance = TimeHelper()
+
+class LGTimeHelper: NSObject {
+    static let sharedInstance = LGTimeHelper()
     
     func timefromTimeInterval(timeInterval: TimeInterval) -> String {
         
@@ -32,4 +33,6 @@ class TimeHelper: NSObject {
         }
         
     }
+    
+    
 }

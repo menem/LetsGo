@@ -221,12 +221,12 @@ extension TimerViewController: MZTimerLabelDelegate {
 extension TimerViewController : CNPPopupControllerDelegate {
     
     func popupControllerWillDismiss(_ controller: CNPPopupController) {
-        print("Popup controller will be dismissed")
+//        print("Popup controller will be dismissed")
         
     }
     
     func popupControllerDidPresent(_ controller: CNPPopupController) {
-        print("Popup controller presented")
+//        print("Popup controller presented")
     }
     
 }

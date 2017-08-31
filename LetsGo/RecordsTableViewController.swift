@@ -136,7 +136,7 @@ class RecordsTableViewController: UITableViewController {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: RecordTableViewCellIdentifier, for: indexPath) as! RecordTableViewCell
             let record = records[indexPath.row]
-            let timeString = TimeHelper.sharedInstance.timefromTimeInterval(timeInterval: record.timeElapsed)
+            let timeString = LGTimeHelper.sharedInstance.timefromTimeInterval(timeInterval: record.timeElapsed)
             cell.timeElapsedlabel.text = timeString
             cell.titlelabel.text = record.title.capitalized
             let caloriesInt = record.calories.rounded(.up)
