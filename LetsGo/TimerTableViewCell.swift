@@ -11,6 +11,7 @@ import QuartzCore
 
 
 class TimerTableViewCell: UITableViewCell {
+    var isHightlightedForDisplay: Bool!
     
     lazy var titlelabel: UILabel = {
         let label = UILabel()
@@ -48,6 +49,7 @@ class TimerTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.isHightlightedForDisplay = false
         self.selectionStyle = .none
         self.separatorInset = UIEdgeInsets.zero
         self.layoutMargins = UIEdgeInsets.zero
