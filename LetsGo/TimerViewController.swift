@@ -82,7 +82,14 @@ class TimerViewController: UITableViewController {
             }
         }
     }
-    
+
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section != 0 {
+            return true
+        }else{
+            return false
+        }
+    }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }

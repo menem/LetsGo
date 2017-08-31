@@ -296,9 +296,27 @@ class ActivityViewController: UITableViewController {
     }
   override  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
     {
-        return true
+        if indexPath.section != 0 {
+            return true
+        }else{
+         return false
+        }
+        
     }
-    
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section != 0 {
+            return true
+        }else{
+            return false
+        }
+    }
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section != 0 {
+            return true
+        }else{
+            return false
+        }
+    }
  override   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
     {
         if editingStyle == .delete
@@ -310,9 +328,7 @@ class ActivityViewController: UITableViewController {
         }
     }
 
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return true;
-    }
+
    
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let selectedTimer = timers[sourceIndexPath.row];

@@ -96,7 +96,19 @@ class RecordsTableViewController: UITableViewController {
     
     override  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
     {
-        return true
+        if indexPath.section != 0 {
+            return true
+        }else{
+            return false
+        }
+        
+    }
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section != 0 {
+            return true
+        }else{
+            return false
+        }
     }
     
     override   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
@@ -151,10 +163,5 @@ class RecordsTableViewController: UITableViewController {
     selectedRecord = records[indexPath.row]
     configureSettings(record: selectedRecord)
     openSettings()
-//    let activityViewController = ActivityViewController()
-//    let selectedCell = self.tableView.cellForRow(at: indexPath) as! ActivityTableViewCell
-//    activityViewController.cellColor = selectedCell.backCardView.backgroundColor
-//    activityViewController.activity = selectedActivity
-//    self.navigationController?.pushViewController(activityViewController, animated: true)
     }
 }

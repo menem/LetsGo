@@ -133,7 +133,13 @@ class StopwatchViewController: UITableViewController {
     func dismissPopUp() {
         self.popupController?.dismiss(animated: true)
     }
-    
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section != 0 {
+            return true
+        }else{
+            return false
+        }
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.section == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: BannerTableViewCellIdentifier, for: indexPath) as! TitleBackgroundTableViewCell

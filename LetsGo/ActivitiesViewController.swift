@@ -43,7 +43,19 @@ class ActivitiesViewController: UITableViewController {
     
     override  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
     {
-        return true
+        if indexPath.section != 0 {
+            return true
+        }else{
+            return false
+        }
+        
+    }
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section != 0 {
+            return true
+        }else{
+            return false
+        }
     }
     
     override   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)

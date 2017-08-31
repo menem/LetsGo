@@ -175,24 +175,22 @@ promptUserforRecord()
     }
     
     func configureTimers() {
-//        onDurationSelector.adjustMinutes()
-//        onDurationSelector.adjustSeconds()
-        
-//        let onminuteReading = Double(onDurationSelector.minutesLabel.text! ) ?? 0
-//        let onminutesInSeconds = onminuteReading * 60
+
         ontotalSeconds =  self.onTimeSelector.datePickerView.timeInterval
 
-//        offDurationSelector.adjustMinutes()
-//        offDurationSelector.adjustSeconds()
-//        
-//        let offminuteReading = Double(offDurationSelector.minutesLabel.text! ) ?? 0
-//        let offminutesInSeconds = offminuteReading * 60
         offtotalSeconds = self.offTimeSelector.datePickerView.timeInterval
 
         rounds = Int(roundCounter.roundStepper.value)
         currentRound = 0
         self.timeContentView.timer.setCountDownTime(ontotalSeconds)
         isCountingOffTimer = false
+    }
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section != 0 {
+            return true
+        }else{
+            return false
+        }
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.section == 0) {
