@@ -26,7 +26,7 @@ class LGSoundHelper: NSObject {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             try AVAudioSession.sharedInstance().setActive(true)
             player = try AVAudioPlayer(contentsOf: url)
-            //            guard let player = player else { return }
+            guard player != nil else { return }
             
             DispatchQueue.global(qos: .userInitiated).async {
                 
@@ -35,7 +35,7 @@ class LGSoundHelper: NSObject {
             }
             
         } catch let error {
-            //            print(error.localizedDescription)
+            print(error.localizedDescription)
         }
     }
     

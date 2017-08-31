@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            print("AppDelegate: end Workout Intent - FALSE")
             return false
         }
-//        print(endIntent)
+        print(endIntent)
         
         guard let startIntent = userActivity.interaction?.intent as? INStartWorkoutIntent else {
 //            print("AppDelegate: Start Workout Intent - FALSE")
