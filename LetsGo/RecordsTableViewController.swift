@@ -18,6 +18,7 @@ class RecordsTableViewController: UITableViewController {
     var selectedRecord: LGRecord!
     var selectedRecordIndexPath: IndexPath!
     var notesTextView: UITextView!
+    var recordNameTextField: LGTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,16 @@ class RecordsTableViewController: UITableViewController {
     }
     func configureSettings(record: LGRecord) {
         
+        recordNameTextField = LGTextField(frame: CGRect(x: 0, y: 0, width: 300, height: 40))
+        recordNameTextField.autocapitalizationType = .none
+        recordNameTextField.autocorrectionType = .no
+        recordNameTextField.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        recordNameTextField.textAlignment = .center
+        recordNameTextField.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        recordNameTextField.placeholder = "Enter Record Name"
+        recordNameTextField.text = record.title
+        recordNameTextField.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        
         notesTextView = UITextView(frame: CGRect(x: 0, y: 0, width: 300.0, height: 200.0))
         self.automaticallyAdjustsScrollViewInsets = false
         
@@ -54,7 +65,7 @@ class RecordsTableViewController: UITableViewController {
         let closeButton = LGDoneButton(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
         closeButton.doneButton.addTarget(self, action: #selector(dismissPopUp), for: .touchUpInside)
         
-        popupController = CNPPopupController(contents: [notesTextView, closeButton])
+        popupController = CNPPopupController(contents: [recordNameTextField, notesTextView, closeButton])
         popupController.theme.popupStyle = .centered
         popupController.theme.cornerRadius = 14.0
         popupController.theme.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
@@ -71,6 +82,8 @@ class RecordsTableViewController: UITableViewController {
     func dismissPopUp() {
         let manager = LGRecordsManager()
         selectedRecord.notes = notesTextView.text
+        selectedRecord.title = self.recordNameTextField.text!
+        
         records.remove(at: selectedRecordIndexPath.row)
         records.insert(selectedRecord, at: selectedRecordIndexPath.row)
         
@@ -152,7 +165,16 @@ class RecordsTableViewController: UITableViewController {
             cell.timeElapsedlabel.text = timeString
             cell.titlelabel.text = record.title.capitalized
             let caloriesInt = Int(record.calories.rounded(.down))
-            cell.calorieslabel.text = "\(caloriesInt)"
+           
+            if caloriesInt <= 0 {
+                cell.calorieslabel.isHidden = true
+                cell.calorieImageView.isHidden = true
+            }else{
+                cell.calorieslabel.isHidden = false
+                cell.calorieImageView.isHidden = false
+                cell.calorieslabel.text = "\(caloriesInt)"
+            }
+           
             cell.backCardView.backgroundColor = randomColor(hue: .random, luminosity: .light)
             return cell
         }

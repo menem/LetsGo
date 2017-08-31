@@ -102,11 +102,6 @@ class RecordTableViewCell: UITableViewCell {
             calorieslabel.rightAnchor.constraint(equalTo: self.calorieImageView.leftAnchor, constant: -5),
             calorieslabel.heightAnchor.constraint(equalToConstant: 32),
             ])
-        
-        if Int(calorieslabel.text!)! <= 0 {
-        calorieslabel.isHidden = true
-        calorieImageView.isHidden = true
-        }
     }
 
 }
