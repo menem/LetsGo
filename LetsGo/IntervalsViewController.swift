@@ -16,9 +16,9 @@ class IntervalsViewController: UITableViewController {
     var timers = [LGTimer]()
     var timeContentView: LGTimerContentView!
     var popupController: CNPPopupController!
-        var onTimeSelector: LGTimePickerView!
-        var offTimeSelector: LGTimePickerView!
-       var totalTimeCounted: TimeInterval!
+    var onTimeSelector: LGTimePickerView!
+    var offTimeSelector: LGTimePickerView!
+    var totalTimeCounted: TimeInterval!
     var scrollView: UIScrollView?
     var roundCounter: LGRoundSelector!
     var rounds: Int!
@@ -28,6 +28,7 @@ class IntervalsViewController: UITableViewController {
     var isCountingOffTimer: Bool!
     var timerSetupButton: UIButton!
     var currentTimeCounted: TimeInterval!
+    var canEditMode: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,8 @@ class IntervalsViewController: UITableViewController {
         tableView.isScrollEnabled = false
         
         self.title = "Intervals"
+        canEditMode = true
+
         
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "icn_activities"), style: .plain, target: self, action: #selector(pushActivities))
         self.navigationItem.rightBarButtonItem = rightBarButton
@@ -77,7 +80,7 @@ class IntervalsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-                return 0
+        return 0
     }
     func promptUserforRecord(){
         let alertViewController = NYAlertViewController()
@@ -124,7 +127,8 @@ class IntervalsViewController: UITableViewController {
         self.present(alertViewController, animated: true, completion: nil)
     }
     func openSettings(){
-        
+        if canEditMode{
+
         onTimeSelector = LGTimePickerView(frame: CGRect(x: 0, y: 0, width: 300, height: 140))
         onTimeSelector.titlelabel.text = "Select ON Timer duration:"
         
@@ -132,8 +136,8 @@ class IntervalsViewController: UITableViewController {
         offTimeSelector.titlelabel.text = "Select OFF Timer duration:"
         
         
-//        onDurationSelector = LGDurationSelection(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
-//        offDurationSelector = LGDurationSelection(frame: CGRect(x: 310, y: 0, width: 300, height: 400))
+        //        onDurationSelector = LGDurationSelection(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
+        //        offDurationSelector = LGDurationSelection(frame: CGRect(x: 310, y: 0, width: 300, height: 400))
         
         scrollView = UIScrollView(frame: onTimeSelector.frame)
         scrollView?.delegate = self
@@ -158,9 +162,12 @@ class IntervalsViewController: UITableViewController {
         popupController.theme.shouldDismissOnBackgroundTouch = true
         popupController.present(animated: true)
         popupController.delegate = self
+        }
     }
     func saveRecord()  {
-promptUserforRecord()
+        canEditMode = true
+
+        promptUserforRecord()
     }
     
     func startRecording(){
@@ -175,11 +182,11 @@ promptUserforRecord()
     }
     
     func configureTimers() {
-
+        
         ontotalSeconds =  self.onTimeSelector.datePickerView.timeInterval
-
+        
         offtotalSeconds = self.offTimeSelector.datePickerView.timeInterval
-
+        
         rounds = Int(roundCounter.roundStepper.value)
         currentRound = 0
         self.timeContentView.timer.setCountDownTime(ontotalSeconds)
@@ -206,7 +213,7 @@ promptUserforRecord()
                 cell.counterSetupButton.tintColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
                 self.timerSetupButton = cell.counterSetupButton
                 
-
+                
                 return cell
             default:
                 self.tableView.register(CounterTableViewCell.self, forCellReuseIdentifier: CounterTableViewCellIdentifier)
@@ -218,7 +225,7 @@ promptUserforRecord()
                 cell.timerContentView.timerControls.playButton.addTarget(self, action: #selector(startRecording), for: .touchUpInside)
                 
                 let settingTapGesture = UITapGestureRecognizer(target: self, action: #selector(openSettings))
-               self.timeContentView.addGestureRecognizer(settingTapGesture)
+                self.timeContentView.addGestureRecognizer(settingTapGesture)
                 return cell
             }
             
@@ -234,14 +241,17 @@ promptUserforRecord()
 
 extension IntervalsViewController: MZTimerLabelDelegate {
     func timerLabel(_ timerLabel: MZTimerLabel!, countingTo time: TimeInterval, timertype timerType: MZTimerLabelType){
-self.timerSetupButton.isHidden = true
+        canEditMode = false
+
+        self.timerSetupButton.isHidden = true
         if self.timeContentView.timer.getTimeCounted() > 0 {
             currentTimeCounted = self.timeContentView.timer.getTimeCounted()
         }
     }
     
     func timerLabel(_ timerLabel: MZTimerLabel!, finshedCountDownTimerWithTime countTime: TimeInterval){
-        
+        canEditMode = true
+
         if (currentRound < rounds){
             if (isCountingOffTimer){
                 isCountingOffTimer = false
@@ -249,15 +259,15 @@ self.timerSetupButton.isHidden = true
                 if (currentRound < rounds){
                     self.timeContentView.tintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
                     self.timeContentView.timer.setCountDownTime(ontotalSeconds)
-                       totalTimeCounted = totalTimeCounted + offtotalSeconds
-                   LGSoundHelper.sharedInstance.playSoundfor(state: .start)
+                    totalTimeCounted = totalTimeCounted + offtotalSeconds
+                    LGSoundHelper.sharedInstance.playSoundfor(state: .start)
                     self.timeContentView.timer.start()
                     return
                 }else{
                     
                     self.timeContentView.stopTimer()
-                     saveRecord()
-             
+                    saveRecord()
+                    
                     self.timerSetupButton.isHidden = false
                     configureTimers()
                 }
@@ -277,11 +287,11 @@ self.timerSetupButton.isHidden = true
 extension IntervalsViewController : CNPPopupControllerDelegate {
     
     func popupControllerWillDismiss(_ controller: CNPPopupController) {
-//        print("Popup controller will be dismissed")
+        //        print("Popup controller will be dismissed")
     }
     
     func popupControllerDidPresent(_ controller: CNPPopupController) {
-//        print("Popup controller presented")
+        //        print("Popup controller presented")
         
     }
     
