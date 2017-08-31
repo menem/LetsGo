@@ -154,7 +154,7 @@ class TimerViewController: UITableViewController {
             style: .default,
             handler: { (action: NYAlertAction!) -> Void in
                 let manager = LGRecordsManager()
-                manager.saveRecord(title: "Timer", timer: self.totalTimeCounted)
+                manager.saveRecord(title: "Timer", timer: self.totalTimeCounted, isWorkout: true)
                 self.dismiss(animated: true, completion: nil)
         }
         )

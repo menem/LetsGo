@@ -151,7 +151,7 @@ class RecordsTableViewController: UITableViewController {
             let timeString = LGTimeHelper.sharedInstance.timefromTimeInterval(timeInterval: record.timeElapsed)
             cell.timeElapsedlabel.text = timeString
             cell.titlelabel.text = record.title.capitalized
-            let caloriesInt = Int(record.calories.rounded(.up))
+            let caloriesInt = Int(record.calories.rounded(.down))
             cell.calorieslabel.text = "\(caloriesInt)"
             cell.backCardView.backgroundColor = randomColor(hue: .random, luminosity: .light)
             return cell

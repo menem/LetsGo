@@ -10,9 +10,9 @@ import UIKit
 
 class LGRecordsManager: NSObject {
     
-    func saveRecord(title: String, timer: Double){
+    func saveRecord(title: String, timer: Double, isWorkout: Bool){
         
-        let record = LGRecord(title: title, time: timer)
+        let record = LGRecord(title: title, time: timer, isWorkout: isWorkout)
         
         
         guard let recordData = UserDefaults.standard.object(forKey: "records") as? NSData else {

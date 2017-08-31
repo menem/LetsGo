@@ -113,7 +113,7 @@ class IntervalsViewController: UITableViewController {
             handler: { (action: NYAlertAction!) -> Void in
                 self.totalTimeCounted = self.totalTimeCounted + self.currentTimeCounted
                 let manager = LGRecordsManager()
-                manager.saveRecord(title: "Intervals", timer: self.totalTimeCounted)
+                manager.saveRecord(title: "Intervals", timer: self.totalTimeCounted, isWorkout: true)
                 self.dismiss(animated: true, completion: nil)
         }
         )

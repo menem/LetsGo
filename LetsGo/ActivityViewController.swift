@@ -184,8 +184,11 @@ class ActivityViewController: UITableViewController {
                 
                 self.totalTimeCounted = self.totalTimeCounted + self.currentTimeCounted
                 let manager = LGRecordsManager()
-                manager.saveRecord(title: self.activity.title, timer: self.totalTimeCounted)
-
+                if self.activity.type == "workout"{
+                manager.saveRecord(title: self.activity.title, timer: self.totalTimeCounted, isWorkout: true)
+                }else{
+                manager.saveRecord(title: self.activity.title, timer: self.totalTimeCounted, isWorkout: false)
+                }
                 self.dismiss(animated: true, completion: nil)
         }
         )
