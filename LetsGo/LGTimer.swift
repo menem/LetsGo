@@ -22,12 +22,14 @@ class LGTimer: NSObject, NSCoding {
     var duration: Double
     var isWorkout: Bool
     var intervals: Int
+    var isHighlighted: Bool
     
     init(title: String, duration: Double, intervals: Int, isWorkout: Bool) {
         self.title = title
         self.duration = duration
         self.intervals = intervals
         self.isWorkout = isWorkout
+        self.isHighlighted = false
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -36,6 +38,7 @@ class LGTimer: NSObject, NSCoding {
         self.duration = aDecoder.decodeDouble(forKey: "duration")
         self.intervals = aDecoder.decodeInteger(forKey: "intervals")
         self.isWorkout = aDecoder.decodeBool(forKey: "isWorkout")
+        self.isHighlighted = aDecoder.decodeBool(forKey: "isHighlighted")
     }
     
     func encode(with aCoder: NSCoder) {
@@ -43,5 +46,6 @@ class LGTimer: NSObject, NSCoding {
         aCoder.encode(duration, forKey: "duration")
         aCoder.encode(intervals, forKey: "intervals")
         aCoder.encode(isWorkout, forKey: "isWorkout")
+        aCoder.encode(isHighlighted, forKey: "isWorkout")
     }
 }

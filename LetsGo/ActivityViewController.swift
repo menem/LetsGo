@@ -37,13 +37,14 @@ class ActivityViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.tableView = UITableView(frame: self.tableView.frame, style: .plain)
         self.tableView.tableFooterView = UIView()
         self.tableView.backgroundColor = .clear
         self.tableView.separatorStyle = .none
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
         self.title = activity.title
         self.tableView.allowsSelectionDuringEditing = true
+        
         
         canEditMode = true
    
@@ -111,6 +112,7 @@ class ActivityViewController: UITableViewController {
         loadTimers()
         self.popupController?.dismiss(animated: true)
     }
+
     
     func startActivity(){
         if timers.count > 0 {
@@ -120,9 +122,16 @@ class ActivityViewController: UITableViewController {
             let deadlineTime = DispatchTime.now() + .seconds(9)
             DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
                 let selectedIndexPath = IndexPath(row: 0, section: 1)
-                let selectedCell = self.tableView.cellForRow(at: selectedIndexPath) as! TimerTableViewCell
-                self.highlightCell(cell: selectedCell)
-                self.tableView.reloadRows(at: [selectedIndexPath], with: .top)
+//                let selectedCell = self.tableView.cellForRow(at: selectedIndexPath) as! TimerTableViewCell
+                 let selectedTimer = self.timers[self.currentlyPlaying]
+                selectedTimer.isHighlighted = true
+                
+                if let selectedCell = self.tableView?.cellForRow(at: selectedIndexPath) as? TimerTableViewCell {
+                   selectedCell.isHightlightedForDisplay = true
+                }
+                
+                LGSoundHelper.sharedInstance.speak(text:self.timers[self.currentlyPlaying].title)
+//                self.tableView.reloadRows(at: [selectedIndexPath], with: .top)
             }
 
         LGSoundHelper.sharedInstance.playSoundfor(state: .start)
@@ -135,16 +144,28 @@ class ActivityViewController: UITableViewController {
         timeContentView.timer.setCountDownTime(timerDuration)
         let selectedIndexPath = IndexPath(row: currentlyPlaying, section: 1)
         let previousCellIndex = IndexPath(row: currentlyPlaying - 1, section: 1)
-        let previousCell = self.tableView.cellForRow(at: previousCellIndex)  as! TimerTableViewCell
-        normalizeCell(cell: previousCell)
-        tableView.reloadRows(at: [previousCellIndex], with: .bottom)
+        let previousTimer = self.timers[self.currentlyPlaying - 1]
+        previousTimer.isHighlighted = false
+        if let previousCell = self.tableView?.cellForRow(at: previousCellIndex) as? TimerTableViewCell {
+            previousCell.isHightlightedForDisplay = false
+//            normalizeCell(cell: previousCell)
+        }
+//        let previousCell = self.tableView.cellForRow(at: previousCellIndex)  as! TimerTableViewCell
+        
+//        tableView.reloadRows(at: [previousCellIndex], with: .bottom)
         
         let previousTimerDuration = timers[currentlyPlaying - 1].duration
         totalTimeCounted = totalTimeCounted + previousTimerDuration
 
-        let selectedCell = self.tableView.cellForRow(at:selectedIndexPath ) as! TimerTableViewCell
-        highlightCell(cell: selectedCell)
-        tableView.reloadRows(at: [selectedIndexPath], with: .top)
+        let selectedTimer = self.timers[self.currentlyPlaying]
+        selectedTimer.isHighlighted = true
+        if let selectedCell = self.tableView?.cellForRow(at: selectedIndexPath) as? TimerTableViewCell {
+           selectedCell.isHightlightedForDisplay = true
+        }
+        LGSoundHelper.sharedInstance.speak(text:self.timers[self.currentlyPlaying].title)
+//        let selectedCell = self.tableView.cellForRow(at:selectedIndexPath ) as! TimerTableViewCell
+//        highlightCell(cell: selectedCell)
+//        tableView.reloadRows(at: [selectedIndexPath], with: .top)
         
        LGSoundHelper.sharedInstance.playSoundfor(state: .start)
         timeContentView.timer.start()
@@ -153,9 +174,15 @@ class ActivityViewController: UITableViewController {
         let timerDuration = timers[index].duration
         timeContentView.timer.setCountDownTime(timerDuration)
         let selectedIndexPath = IndexPath(row: currentlyPlaying, section: 1)
-        let selectedCell = self.tableView.cellForRow(at: selectedIndexPath) as! TimerTableViewCell
-        highlightCell(cell: selectedCell)
-        tableView.reloadRows(at: [selectedIndexPath], with: .top)
+        let selectedTimer = self.timers[self.currentlyPlaying]
+        selectedTimer.isHighlighted = true
+        if let selectedCell = self.tableView?.cellForRow(at: selectedIndexPath) as? TimerTableViewCell {
+            selectedCell.isHightlightedForDisplay = true
+        }
+        LGSoundHelper.sharedInstance.speak(text:self.timers[self.currentlyPlaying].title)
+//        let selectedCell = self.tableView.cellForRow(at: selectedIndexPath) as! TimerTableViewCell
+//        highlightCell(cell: selectedCell)
+//        tableView.reloadRows(at: [selectedIndexPath], with: .top)
         LGSoundHelper.sharedInstance.playSoundfor(state: .start)
         timeContentView.timer.start()
     }
@@ -212,14 +239,22 @@ class ActivityViewController: UITableViewController {
         currentTimeCounted = 0
     }
 
-    func highlightCell(cell: TimerTableViewCell) {
-        cell.isHightlightedForDisplay = true
-        LGSoundHelper.sharedInstance.speak(text: cell.titlelabel.text!)
-    }
+//    func highlightCell(cell: TimerTableViewCell) {
+//        cell.isHightlightedForDisplay = true
+////        cell.backCardView.backgroundColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+////        cell.titlelabel.textColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
+////        cell.Durationlabel.textColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
+////        cell.Intervalslabel.textColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
+////        LGSoundHelper.sharedInstance.speak(text: cell.titlelabel.text!)
+//    }
     
-    func normalizeCell(cell: TimerTableViewCell) {
-        cell.isHightlightedForDisplay = false
-    }
+//    func normalizeCell(cell: TimerTableViewCell) {
+//        cell.isHightlightedForDisplay = false
+////        cell.backCardView.backgroundColor = cellColor
+////        cell.titlelabel.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+////        cell.Durationlabel.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+////        cell.Intervalslabel.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+//    }
     
     func calculateTotalTime() -> Double {
         var accumelatedTime = 0.0
@@ -244,7 +279,7 @@ class ActivityViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (section == 0) {
-            return 1
+            return 0
         } else {
             return self.timers.count
         }
@@ -259,14 +294,14 @@ class ActivityViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if (section == 0) {
+        if (section == 1) {
             return 140
         } else {
             return 0
         }
     }
  override   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if (section == 0) {
+        if (section == 1) {
             timeContentView = LGTimerContentView(frame: CGRect(x:0, y: -40, width: self.view.frame.size.width, height: 80))
             timeContentView.timer.setCountDownTime(calculateTotalTime())
             timeContentView.timer.delegate = self
@@ -290,12 +325,14 @@ class ActivityViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: TimerTableViewCellIdentifier, for: indexPath) as! TimerTableViewCell
             let timer = timers[indexPath.row]
             cell.titlelabel.text = timer.title
-   
+            cell.backCardView.backgroundColor = cellColor
             let timeString = LGTimeHelper.sharedInstance.timefromTimeInterval(timeInterval: timer.duration)
             cell.Durationlabel.text = timeString
             cell.Intervalslabel.text = String(timer.intervals)
+            cell.delegate = self
+            cell.isHightlightedForDisplay = timer.isHighlighted
             
-            if cell.isHightlightedForDisplay {
+            if timer.isHighlighted {
                 
                 cell.backCardView.backgroundColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
                 cell.titlelabel.textColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
@@ -306,8 +343,8 @@ class ActivityViewController: UITableViewController {
                 cell.backCardView.backgroundColor = cellColor
                 cell.titlelabel.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
                 cell.Durationlabel.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
-                cell.Intervalslabel.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)            }
-            
+                cell.Intervalslabel.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+            }
             return cell
         }
         
@@ -373,6 +410,7 @@ class ActivityViewController: UITableViewController {
 extension ActivityViewController: MZTimerLabelDelegate {
     func timerLabel(_ timerLabel: MZTimerLabel!, countingTo time: TimeInterval, timertype timerType: MZTimerLabelType){
       canEditMode = false
+//       self.timeContentView.timer.setCountDownTime(time)
         if self.timeContentView.timer.getTimeCounted() > 0 {
             currentTimeCounted = self.timeContentView.timer.getTimeCounted()
         }
@@ -450,4 +488,28 @@ extension ActivityViewController : CNPPopupControllerDelegate {
 //        print("Popup controller presented")
     }
     
+}
+
+extension ActivityViewController : TimerCellUpdateDelegate {
+    
+    func cellDidChangeState(cell: TimerTableViewCell) {
+        guard let indexPath = self.tableView.indexPath(for: cell) else {
+            return
+        }
+        
+        if cell.isHightlightedForDisplay {
+            
+            cell.backCardView.backgroundColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+            cell.titlelabel.textColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
+            cell.Durationlabel.textColor = #colorLiteral(red: 0.8494446278, green: 0.2558809817, blue: 0.002898618812, alpha: 1)
+            cell.Intervalslabel.textColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
+            
+        }else{
+            cell.backCardView.backgroundColor = cellColor
+            cell.titlelabel.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+            cell.Durationlabel.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+            cell.Intervalslabel.textColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        }
+    }
+
 }
