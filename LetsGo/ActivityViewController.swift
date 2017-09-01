@@ -44,7 +44,8 @@ class ActivityViewController: UITableViewController {
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
         self.title = activity.title
         self.tableView.allowsSelectionDuringEditing = true
-        
+        let zeroRect = CGRect(x: -40, y: 0, width: 0, height: 0)
+        self.tableView.scrollRectToVisible(zeroRect, animated: false)
         
         canEditMode = true
    
@@ -295,14 +296,14 @@ class ActivityViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if (section == 1) {
-            return 140
+            return 210
         } else {
             return 0
         }
     }
  override   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if (section == 1) {
-            timeContentView = LGTimerContentView(frame: CGRect(x:0, y: -40, width: self.view.frame.size.width, height: 80))
+            timeContentView = LGTimerContentView(frame: CGRect(x:0, y: -80, width: self.view.frame.size.width, height: 80))
             timeContentView.timer.setCountDownTime(calculateTotalTime())
             timeContentView.timer.delegate = self
             timeContentView.timerControls.playButton.addTarget(self, action:#selector(startActivity), for: .touchUpInside)
@@ -394,7 +395,21 @@ class ActivityViewController: UITableViewController {
         timers =   manager.updateTimers(activity: activity, newtimers: timers)
         tableView.reloadData()
     }
-    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        for cell in self.tableView.visibleCells {
+            let visibleRect = self.tableView.rectForRow(at: self.tableView.indexPath(for: cell)!)
+            let rectOfCellInSuperview = tableView.convert(visibleRect, to: tableView.superview)
+            if rectOfCellInSuperview.origin.y < 200{
+            UIView.animate(withDuration: 0.3, animations: {
+                cell.alpha = 0
+            })
+            }else{
+            cell.alpha = 1
+            }
+        }
+        
+//        self.tableView.i
+    }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.section != 0) {
             if self.isTableEditing {
