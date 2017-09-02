@@ -94,7 +94,7 @@ class RecordTableViewCell: UITableViewCell {
             backCardView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, constant: -20),
             
             calorieImageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            calorieImageView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -15),
+            calorieImageView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -20),
             calorieImageView.widthAnchor.constraint(equalToConstant: 16),
             calorieImageView.heightAnchor.constraint(equalToConstant: 16),
             

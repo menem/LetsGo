@@ -133,6 +133,7 @@ class StopwatchViewController: UITableViewController {
     func dismissPopUp() {
         self.popupController?.dismiss(animated: true)
     }
+    
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         if indexPath.section != 0 {
             return true
