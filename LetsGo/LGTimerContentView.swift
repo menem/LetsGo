@@ -94,13 +94,18 @@ class LGTimerContentView: UIView {
     
     func configureRunningControls() {
         if(isRunning) {
-            timerControls.playButton.isHidden = true
-            timerControls.pauseButton.isHidden = false
-            timerControls.stopButton.isHidden = false
+            UIView.animate(withDuration: 0.3, animations: { 
+                self.timerControls.playButton.alpha = 0
+                self.timerControls.pauseButton.alpha = 1
+                self.timerControls.stopButton.alpha = 1
+            })
+
         }else{
-            timerControls.playButton.isHidden = false
-            timerControls.pauseButton.isHidden = true
-            timerControls.stopButton.isHidden = true
+             UIView.animate(withDuration: 0.3, animations: {
+            self.timerControls.playButton.alpha = 1
+            self.timerControls.pauseButton.alpha = 0
+            self.timerControls.stopButton.alpha = 0
+                })
         }
     }
     override init(frame: CGRect) {
