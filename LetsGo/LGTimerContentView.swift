@@ -43,7 +43,7 @@ class LGTimerContentView: UIView {
     
     lazy var timerControls: LGTimerControls = {
         let timerControl = LGTimerControls()
-        timerControl.tintColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
+//        timerControl.backgroundColor = .blue
         timerControl.pauseButton.addTarget(self, action: #selector(toggleTimer), for: .touchUpInside)
         timerControl.playButton.addTarget(self, action: #selector(toggleTimer), for: .touchUpInside)
         timerControl.stopButton.addTarget(self, action: #selector(stopTimer), for: .touchUpInside)
@@ -136,7 +136,7 @@ class LGTimerContentView: UIView {
             timerControls.topAnchor.constraint(equalTo: timeLabel.bottomAnchor),
             timerControls.centerXAnchor.constraint(equalTo: timeLabel.centerXAnchor),
             timerControls.widthAnchor.constraint(equalTo: self.widthAnchor),
-            timerControls.heightAnchor.constraint(equalToConstant: 70),
+            timerControls.heightAnchor.constraint(equalToConstant: 80),
             
             ])
         super.updateConstraints()

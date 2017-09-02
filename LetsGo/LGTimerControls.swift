@@ -14,8 +14,10 @@ class LGTimerControls: UIView {
     lazy var playButton: UIButton = {
         let button = UIButton()
         let buttonImage = UIImage(named: "icn_play")
-        button.imageView?.contentMode = .scaleAspectFill
-        button.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
+        button.imageView?.contentMode = .center
+//        button.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        button.clipsToBounds = true
+         button.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         button.setImage(buttonImage, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -25,7 +27,9 @@ class LGTimerControls: UIView {
     lazy var pauseButton: UIButton = {
         let button = UIButton()
         let buttonImage = UIImage(named: "icn_pause")
-         button.imageView?.contentMode = .scaleAspectFill
+         button.imageView?.contentMode = .center
+        button.clipsToBounds = true
+        button.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         button.setImage(buttonImage, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -34,7 +38,9 @@ class LGTimerControls: UIView {
     lazy var stopButton: UIButton = {
         let button = UIButton()
         let buttonImage = UIImage(named: "icn_stop")
-         button.imageView?.contentMode = .scaleAspectFill
+         button.imageView?.contentMode = .center
+        button.clipsToBounds = true
+         button.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         button.setImage(buttonImage, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setAppearance()
         
         
-        let launchedBefore = UserDefaults.standard.bool(forKey: "XlaunchedBefore")
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
         if launchedBefore  {
             let homeViewController = HomeViewController()
             let navViewController = UINavigationController(rootViewController: homeViewController)
