@@ -21,11 +21,14 @@ class HomeViewController: UIViewController {
     let intervalsViewController = IntervalsViewController()
     let healthManager:HealthKitManager = HealthKitManager()
     var height: HKQuantitySample?
+    var Weight: HKQuantitySample?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         getHealthKitPermission()
+        getHealthKitPermission()
         setHeight()
+        setWeight()
         let screenFrame = UIScreen.main.bounds
         
         scrollView = UIScrollView(frame: screenFrame)
@@ -118,9 +121,43 @@ class HomeViewController: UIViewController {
                 heightString = formatHeight.string(fromMeters: meters)
             }
             
-//            DispatchQueue.main.async(execute: { () -> Void in
-////                print("Menem's Height is \(heightString)")
-//            })
+            DispatchQueue.main.async(execute: { () -> Void in
+               print("Menem's Height is \(heightString)")
+                let userDefaults = UserDefaults.standard
+                userDefaults.set(heightString, forKey: "userHeight")
+                userDefaults.synchronize()
+            })
+        })
+        
+    }
+    
+    func setWeight() {
+        let WeightSample = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)
+        self.healthManager.getWeight(sampleType: WeightSample!, completion: { (userWeight, error) -> Void in
+            
+            if( error != nil ) {
+                //                print("Error: \(String(describing: error?.localizedDescription))")
+                return
+            }
+            
+            var WeightString = ""
+            var WeightValue = 0.0
+            self.Weight = userWeight as? HKQuantitySample
+            if let gram = self.Weight?.quantity.doubleValue(for: HKUnit.gram()) {
+                let formatWeight = MassFormatter()
+                formatWeight.isForPersonMassUse = true
+                WeightString = formatWeight.string(fromKilograms: gram/1000)
+                WeightValue = gram/1000.0
+               
+            }
+            
+                        DispatchQueue.main.async(execute: { () -> Void in
+                            print("Menem's Weight is \(WeightString)")
+                            let userDefaults = UserDefaults.standard
+                            print("Menem's Weight is (Without Unit) \(WeightValue)")
+                            userDefaults.set(WeightValue, forKey: "userWeight")
+                            userDefaults.synchronize()
+                        })
         })
         
     }

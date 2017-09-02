@@ -8,6 +8,8 @@
 
 import UIKit
 
+let KCrossfitMET = 8
+
 class LGRecord: NSObject, NSCoding {
     var title: String
     var timestamp: String
@@ -22,7 +24,11 @@ class LGRecord: NSObject, NSCoding {
         self.notes = " "
         self.isWorkout = isWorkout
         if isWorkout{
-            self.calories = 0.0175*8*90*(time/60)
+            if let userWeight = UserDefaults.standard.object(forKey: "userWeight") as! Double! {
+             self.calories = 0.0175 * Double(KCrossfitMET) * userWeight * (time/60)
+            }else{
+                self.calories = 0.0175 * Double(KCrossfitMET) * 90 * (time/60)
+            }
         }else{
         self.calories = 0
         }
