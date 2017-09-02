@@ -9,6 +9,7 @@
 import UIKit
 import Intents
 import Pastel
+import Onboard
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,15 +20,63 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         UIApplication.shared.isIdleTimerDisabled = true
         setAppearance()
-        let homeViewController = HomeViewController()
-        let navViewController = UINavigationController(rootViewController: homeViewController)
         
-        window!.rootViewController = navViewController
-        window!.makeKeyAndVisible()
         
-        setApplicationBackground()
-     
-        return true
+        let launchedBefore = UserDefaults.standard.bool(forKey: "XlaunchedBefore")
+        if launchedBefore  {
+            let homeViewController = HomeViewController()
+            let navViewController = UINavigationController(rootViewController: homeViewController)
+            
+            window!.rootViewController = navViewController
+            window!.makeKeyAndVisible()
+            
+            setApplicationBackground()
+            
+            return true
+        } else {
+            let firstPage = OnboardingContentViewController(title: "Page Title", body: "Page body goes here.", image: UIImage(named: "img_onboard_page1"), buttonText: "Text For Button") { () -> Void in
+                // do something here when users press the button, like ask for location services permissions, register for push notifications, connect to social media, or finish the onboarding process
+            }
+            firstPage.iconHeight = 400
+            firstPage.iconImageView.contentMode = .scaleAspectFit
+            
+            let secondPage = OnboardingContentViewController(title: "Track Time", body: "Track your ", image: UIImage(named: "img_onboard_page2"), buttonText: "Text For Button") { () -> Void in
+                // do something here when users press the button, like ask for location services permissions, register for push notifications, connect to social media, or finish the onboarding process
+            }
+            secondPage.iconHeight = 400
+            secondPage.iconImageView.contentMode = .scaleAspectFit
+
+            
+            let thirdPage = OnboardingContentViewController(title: "Page Title", body: "Page body goes here.", image: UIImage(named: "img_onboard_page3"), buttonText: "Let's Go") { () -> Void in
+                let homeViewController = HomeViewController()
+                //            homeViewController.userIntent = startIntent
+                let navViewController = UINavigationController(rootViewController: homeViewController)
+                
+                self.window!.rootViewController = navViewController
+                self.window!.makeKeyAndVisible()
+                
+                self.setApplicationBackground()
+                
+            }
+            thirdPage.iconHeight = 400
+            thirdPage.iconImageView.contentMode = .scaleAspectFit
+            // Image
+            let onboardingVC = OnboardingViewController(backgroundImage: UIImage(named: "img_onboard_bkg"), contents: [firstPage, secondPage, thirdPage])
+            onboardingVC?.shouldFadeTransitions = true
+            onboardingVC?.shouldMaskBackground = false
+            //        let homeViewController = HomeViewController()
+            let navViewController = UINavigationController(rootViewController: onboardingVC!)
+            
+            window!.rootViewController = navViewController
+            window!.makeKeyAndVisible()
+            
+            setApplicationBackground()
+            
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
+            
+            return true
+        }
+
     }
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
@@ -50,6 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.rootViewController = navViewController
         window!.makeKeyAndVisible()
         
+        setApplicationBackground()
         return true
     }
     

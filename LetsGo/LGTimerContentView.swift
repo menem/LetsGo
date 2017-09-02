@@ -135,8 +135,8 @@ class LGTimerContentView: UIView {
             
             timerControls.topAnchor.constraint(equalTo: timeLabel.bottomAnchor),
             timerControls.centerXAnchor.constraint(equalTo: timeLabel.centerXAnchor),
-            timerControls.widthAnchor.constraint(equalTo: timeLabel.widthAnchor),
-            timerControls.heightAnchor.constraint(equalToConstant: 40),
+            timerControls.widthAnchor.constraint(equalTo: self.widthAnchor),
+            timerControls.heightAnchor.constraint(equalToConstant: 70),
             
             ])
         super.updateConstraints()

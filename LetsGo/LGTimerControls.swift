@@ -14,6 +14,7 @@ class LGTimerControls: UIView {
     lazy var playButton: UIButton = {
         let button = UIButton()
         let buttonImage = UIImage(named: "icn_play")
+        button.imageView?.contentMode = .scaleAspectFill
         button.tintColor = #colorLiteral(red: 0.1977134943, green: 0.2141624689, blue: 0.2560140491, alpha: 1)
         button.setImage(buttonImage, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -24,6 +25,7 @@ class LGTimerControls: UIView {
     lazy var pauseButton: UIButton = {
         let button = UIButton()
         let buttonImage = UIImage(named: "icn_pause")
+         button.imageView?.contentMode = .scaleAspectFill
         button.setImage(buttonImage, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -32,6 +34,7 @@ class LGTimerControls: UIView {
     lazy var stopButton: UIButton = {
         let button = UIButton()
         let buttonImage = UIImage(named: "icn_stop")
+         button.imageView?.contentMode = .scaleAspectFill
         button.setImage(buttonImage, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -62,19 +65,19 @@ class LGTimerControls: UIView {
     override func updateConstraints() {
         NSLayoutConstraint.activate([
             playButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            playButton.rightAnchor.constraint(equalTo: self.rightAnchor),
-            playButton.widthAnchor.constraint(equalToConstant: 32),
-            playButton.heightAnchor.constraint(equalToConstant: 32),
+            playButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            playButton.widthAnchor.constraint(equalToConstant: 64),
+            playButton.heightAnchor.constraint(equalToConstant: 64),
             
             pauseButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            pauseButton.rightAnchor.constraint(equalTo: self.rightAnchor),
-            pauseButton.widthAnchor.constraint(equalToConstant: 32),
-            pauseButton.heightAnchor.constraint(equalToConstant: 32),
+            pauseButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10),
+            pauseButton.widthAnchor.constraint(equalToConstant: 64),
+            pauseButton.heightAnchor.constraint(equalToConstant: 64),
             
             stopButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            stopButton.leftAnchor.constraint(equalTo: self.leftAnchor),
-            stopButton.widthAnchor.constraint(equalToConstant: 32),
-            stopButton.heightAnchor.constraint(equalToConstant: 32)
+            stopButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10),
+            stopButton.widthAnchor.constraint(equalToConstant: 64),
+            stopButton.heightAnchor.constraint(equalToConstant: 64)
             
             ])
         super.updateConstraints()
