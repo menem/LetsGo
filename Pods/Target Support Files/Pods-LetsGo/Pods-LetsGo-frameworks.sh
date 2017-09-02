@@ -95,6 +95,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/LETimeIntervalPicker/LETimeIntervalPicker.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MZTimerLabel/MZTimerLabel.framework"
   install_framework "$BUILT_PRODUCTS_DIR/NYAlertViewController/NYAlertViewController.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Onboard/Onboard.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Pastel/Pastel.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RandomColorSwift/RandomColorSwift.framework"
 fi
@@ -105,6 +106,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/LETimeIntervalPicker/LETimeIntervalPicker.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MZTimerLabel/MZTimerLabel.framework"
   install_framework "$BUILT_PRODUCTS_DIR/NYAlertViewController/NYAlertViewController.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Onboard/Onboard.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Pastel/Pastel.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RandomColorSwift/RandomColorSwift.framework"
 fi

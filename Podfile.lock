@@ -5,6 +5,7 @@ PODS:
   - LETimeIntervalPicker (1.0.1)
   - MZTimerLabel (0.5.4)
   - NYAlertViewController (1.3.0)
+  - Onboard (2.3.1)
   - Pastel (0.3.0)
   - RandomColorSwift (1.0.0)
 
@@ -15,6 +16,7 @@ DEPENDENCIES:
   - LETimeIntervalPicker
   - MZTimerLabel
   - NYAlertViewController
+  - Onboard
   - Pastel
   - RandomColorSwift
 
@@ -25,9 +27,10 @@ SPEC CHECKSUMS:
   LETimeIntervalPicker: 01e38d7e9292109a931561a8494f1f4836fbcd66
   MZTimerLabel: cd9bfb9304540ef2a9e163384fca9c978f0dbf83
   NYAlertViewController: b93f82e2c1fc6d5e9485512ddbe7b481f463a074
+  Onboard: b6871f25ac753175b2ab9a362fb2feb26a81a311
   Pastel: 738740c84f2b15bbcd96ebe99c4e6c2f5dd42262
   RandomColorSwift: 9f85058b721665d52d239ca166a913e083506444
 
-PODFILE CHECKSUM: 9110765505b644a46e7248aabe4615584cbd7ec5
+PODFILE CHECKSUM: 22df19708da61d0b1994a90293b5edefdea1af0e
 
 COCOAPODS: 1.2.1
