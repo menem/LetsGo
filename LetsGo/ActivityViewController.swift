@@ -35,7 +35,10 @@ class ActivityViewController: UIViewController {
     var currentTimeCounted: TimeInterval!
     var tableView: UITableView!
 
-    
+    override func viewWillDisappear(_ animated: Bool) {
+//        self.saveRecord()
+        self.timeContentView.stopTimer()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
