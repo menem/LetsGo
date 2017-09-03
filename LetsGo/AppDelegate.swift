@@ -23,14 +23,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        let isNightMode = UserDefaults.standard.bool(forKey: "isNightMode")
+        
         if launchedBefore  {
             let homeViewController = HomeViewController()
             let navViewController = UINavigationController(rootViewController: homeViewController)
             
             window!.rootViewController = navViewController
             window!.makeKeyAndVisible()
-            
-            setApplicationBackground()
+            if !isNightMode {
+              setApplicationBackground()
+            }
+           
             
             return true
         } else {
@@ -55,7 +59,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window!.rootViewController = navViewController
                 self.window!.makeKeyAndVisible()
                 
-                self.setApplicationBackground()
+                if !isNightMode {
+                    self.setApplicationBackground()
+                }
                 
             }
             thirdPage.iconHeight = 400
@@ -70,7 +76,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window!.rootViewController = navViewController
             window!.makeKeyAndVisible()
             
-            setApplicationBackground()
+            if !isNightMode {
+                setApplicationBackground()
+            }
             
             UserDefaults.standard.set(true, forKey: "launchedBefore")
             
@@ -91,7 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return false
         }
 //        print("AppDelegate: Start Workout Intent - TRUE")
-
+        let isNightMode = UserDefaults.standard.bool(forKey: "isNightMode")
         let homeViewController = HomeViewController()
                 homeViewController.userIntent = startIntent
         let navViewController = UINavigationController(rootViewController: homeViewController)
@@ -99,7 +107,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.rootViewController = navViewController
         window!.makeKeyAndVisible()
         
-        setApplicationBackground()
+        if !isNightMode {
+            setApplicationBackground()
+        }
         return true
     }
     
