@@ -15,6 +15,5 @@ pod "LETimeIntervalPicker"
 pod 'NYAlertViewController'
 pod 'Onboard'
 pod "ODMSwipeSelector"
-pod 'KNSwitcher'
 
 end

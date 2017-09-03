@@ -7,6 +7,8 @@
 //
 
 import UIKit
+let MeasurementTableViewCellIdentifier = "MeasurementTableViewCellIdentifier"
+let SwitchTableViewCellIdentifier = "SwitchTableViewCellIdentifier"
 
 class SettingsTableViewController: UITableViewController {
 
@@ -18,7 +20,6 @@ class SettingsTableViewController: UITableViewController {
         self.tableView.tableFooterView = UIView()
         self.tableView.backgroundColor = .clear
         self.tableView.separatorStyle = .none
-        self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
         
         let leftBarButton = UIBarButtonItem(image: UIImage(named: "icn_close"), style: .plain, target: self, action: #selector(dismissSettings))
         self.navigationItem.leftBarButtonItem = leftBarButton
@@ -44,21 +45,41 @@ class SettingsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       
-        let cell = tableView.dequeueReusableCell(withIdentifier: BannerTableViewCellIdentifier, for: indexPath) as! TitleBackgroundTableViewCell
+    
 //        cell.backgroundImageView.image = UIImage(named: "icn_sponsor")
        
         switch indexPath.row {
         case 1:
-            cell.titlelabel.text = "Height"
+            self.tableView.register(MeasurementTableViewCell.self, forCellReuseIdentifier: MeasurementTableViewCellIdentifier)
+            let cell = tableView.dequeueReusableCell(withIdentifier: MeasurementTableViewCellIdentifier, for: indexPath) as! MeasurementTableViewCell
+            cell.measurementSelector.title = "Height"
+            cell.measurementSelector.value = 150
+            cell.measurementSelector.unit = .float
+            cell.measurementSelector.minValue = 100
+            cell.measurementSelector.maxValue = 300
+            cell.measurementSelector.incrementValue = 1
+            return cell
         case 2:
-            cell.titlelabel.text = "Weight"
+            self.tableView.register(MeasurementTableViewCell.self, forCellReuseIdentifier: MeasurementTableViewCellIdentifier)
+            let cell = tableView.dequeueReusableCell(withIdentifier: MeasurementTableViewCellIdentifier, for: indexPath) as! MeasurementTableViewCell
+            cell.measurementSelector.title = "Weight"
+            cell.measurementSelector.value = 150
+            cell.measurementSelector.unit = .float
+            cell.measurementSelector.minValue = 100
+            cell.measurementSelector.maxValue = 300
+            cell.measurementSelector.incrementValue = 1
+            return cell
         default:
+            self.tableView.register(SwitchTableViewCell.self, forCellReuseIdentifier: SwitchTableViewCellIdentifier)
+            let cell = tableView.dequeueReusableCell(withIdentifier: SwitchTableViewCellIdentifier, for: indexPath) as! SwitchTableViewCell
             cell.titlelabel.text = "Night Mode"
+            
+            return cell
         }
         
 //         Configure the cell...
 
-        return cell
+        
     }
  
 

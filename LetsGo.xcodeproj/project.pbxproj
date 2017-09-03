@@ -27,6 +27,8 @@
 		487D944A1F581D9E005398E8 /* LGSoundHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487D94491F581D9D005398E8 /* LGSoundHelper.swift */; };
 		487D944C1F5AD1A1005398E8 /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487D944B1F5AD1A1005398E8 /* WalkthroughViewController.swift */; };
 		4885ACE91F5C16CD008A12F2 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4885ACE81F5C16CD008A12F2 /* SettingsTableViewController.swift */; };
+		4885ACEB1F5C56CC008A12F2 /* MeasurementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4885ACEA1F5C56CC008A12F2 /* MeasurementTableViewCell.swift */; };
+		4885ACED1F5C59F4008A12F2 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4885ACEC1F5C59F4008A12F2 /* SwitchTableViewCell.swift */; };
 		48998BD21F396E4200F7E4AB /* LGTimerContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48998BD11F396E4200F7E4AB /* LGTimerContentView.swift */; };
 		48A31BB01F32253500E919FB /* LGTimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BAF1F32253500E919FB /* LGTimeManager.swift */; };
 		48A31BB51F331A4000E919FB /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BB41F331A4000E919FB /* ActivitiesViewController.swift */; };
@@ -51,6 +53,7 @@
 		48F023201F428EE500EED177 /* LGRoundSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F0231F1F428EE500EED177 /* LGRoundSelector.swift */; };
 		48F023221F43AA7200EED177 /* LGDoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F023211F43AA7200EED177 /* LGDoneButton.swift */; };
 		48F023241F44696A00EED177 /* LGCountDownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F023231F44696A00EED177 /* LGCountDownTimer.swift */; };
+		48F93FA21F5C5E9700840646 /* KNSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F93FA11F5C5E9700840646 /* KNSwitcher.swift */; };
 		4C3B67DF2BC822FFDB07F9C5 /* Pods_LetsGo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14E8FA497D650EDF3219475A /* Pods_LetsGo.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +107,8 @@
 		487D94491F581D9D005398E8 /* LGSoundHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGSoundHelper.swift; sourceTree = "<group>"; };
 		487D944B1F5AD1A1005398E8 /* WalkthroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
 		4885ACE81F5C16CD008A12F2 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		4885ACEA1F5C56CC008A12F2 /* MeasurementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurementTableViewCell.swift; sourceTree = "<group>"; };
+		4885ACEC1F5C59F4008A12F2 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		48998BD11F396E4200F7E4AB /* LGTimerContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGTimerContentView.swift; sourceTree = "<group>"; };
 		48A31BAF1F32253500E919FB /* LGTimeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGTimeManager.swift; sourceTree = "<group>"; };
 		48A31BB41F331A4000E919FB /* ActivitiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitiesViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +133,7 @@
 		48F0231F1F428EE500EED177 /* LGRoundSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGRoundSelector.swift; sourceTree = "<group>"; };
 		48F023211F43AA7200EED177 /* LGDoneButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGDoneButton.swift; sourceTree = "<group>"; };
 		48F023231F44696A00EED177 /* LGCountDownTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGCountDownTimer.swift; sourceTree = "<group>"; };
+		48F93FA11F5C5E9700840646 /* KNSwitcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KNSwitcher.swift; sourceTree = "<group>"; };
 		5C1CAB1FD870C4C22C7A8CB9 /* Pods-LetsGo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetsGo.release.xcconfig"; path = "Pods/Target Support Files/Pods-LetsGo/Pods-LetsGo.release.xcconfig"; sourceTree = "<group>"; };
 		E8418AE36AB7D1935CE2EE43 /* Pods-LetsGo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetsGo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LetsGo/Pods-LetsGo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -248,6 +254,7 @@
 		4850E1AE1F28EE00004D85A7 /* LetsGo */ = {
 			isa = PBXGroup;
 			children = (
+				48F93FA01F5C5E8A00840646 /* Vendor */,
 				4850E1AF1F28EE00004D85A7 /* AppDelegate.swift */,
 				4825CF3C1F2FEB6F0066B40D /* Models */,
 				4825CF3D1F2FEB860066B40D /* Managers */,
@@ -293,6 +300,8 @@
 				48B3965E1F3BCCCC0084F5DC /* CounterTableViewCell.swift */,
 				48A31BB61F333D8600E919FB /* TitleBackgroundTableViewCell.swift */,
 				48B396601F3C55AC0084F5DC /* TimerSettingTableViewCell.swift */,
+				4885ACEA1F5C56CC008A12F2 /* MeasurementTableViewCell.swift */,
+				4885ACEC1F5C59F4008A12F2 /* SwitchTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -304,6 +313,14 @@
 				48A31BC81F35FA5400E919FB /* LGTextField+PlaceholderTextColor.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		48F93FA01F5C5E8A00840646 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				48F93FA11F5C5E9700840646 /* KNSwitcher.swift */,
+			);
+			name = Vendor;
 			sourceTree = "<group>";
 		};
 		AE2D2CAFEACC99BF8E823CA6 /* Frameworks */ = {
@@ -491,9 +508,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				48F023221F43AA7200EED177 /* LGDoneButton.swift in Sources */,
+				4885ACEB1F5C56CC008A12F2 /* MeasurementTableViewCell.swift in Sources */,
 				480A7ADE1F474E8F00D7D006 /* RecordTableViewCell.swift in Sources */,
 				48B3965B1F3BBF7A0084F5DC /* TimerViewController.swift in Sources */,
+				48F93FA21F5C5E9700840646 /* KNSwitcher.swift in Sources */,
 				480B29CA1F3F15C7007743F6 /* LGTimerControls.swift in Sources */,
+				4885ACED1F5C59F4008A12F2 /* SwitchTableViewCell.swift in Sources */,
 				48A31BB71F333D8600E919FB /* TitleBackgroundTableViewCell.swift in Sources */,
 				480A7ADA1F472C2800D7D006 /* LGRecord.swift in Sources */,
 				48A31BC61F34352200E919FB /* LGTextField.swift in Sources */,
