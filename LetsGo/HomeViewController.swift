@@ -29,6 +29,10 @@ class HomeViewController: UIViewController {
         getHealthKitPermission()
         setHeight()
         setWeight()
+        let swipeupforsetting = UISwipeGestureRecognizer(target: self, action: #selector(pushModalSettings))
+        swipeupforsetting.direction = .up
+        self.view.addGestureRecognizer(swipeupforsetting)
+        
         let screenFrame = UIScreen.main.bounds
         
         scrollView = UIScrollView(frame: screenFrame)
@@ -74,7 +78,12 @@ class HomeViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = leftBarButton
         
     }
-    
+    func pushModalSettings(){
+        print("Settings ya ma3alem")
+        let settingsViewController = SettingsTableViewController()
+        let navViewController = UINavigationController(rootViewController: settingsViewController)
+        self.present(navViewController, animated: true, completion: nil)
+    }
     func getHealthKitPermission() {
         healthManager.authorizeHealthKit { (authorized,  error) -> Void in
             if authorized {

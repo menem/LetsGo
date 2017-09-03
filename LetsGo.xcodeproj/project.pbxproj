@@ -26,6 +26,7 @@
 		485335C11F4F38840041237D /* LGTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485335C01F4F38840041237D /* LGTimePickerView.swift */; };
 		487D944A1F581D9E005398E8 /* LGSoundHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487D94491F581D9D005398E8 /* LGSoundHelper.swift */; };
 		487D944C1F5AD1A1005398E8 /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487D944B1F5AD1A1005398E8 /* WalkthroughViewController.swift */; };
+		4885ACE91F5C16CD008A12F2 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4885ACE81F5C16CD008A12F2 /* SettingsTableViewController.swift */; };
 		48998BD21F396E4200F7E4AB /* LGTimerContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48998BD11F396E4200F7E4AB /* LGTimerContentView.swift */; };
 		48A31BB01F32253500E919FB /* LGTimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BAF1F32253500E919FB /* LGTimeManager.swift */; };
 		48A31BB51F331A4000E919FB /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A31BB41F331A4000E919FB /* ActivitiesViewController.swift */; };
@@ -102,6 +103,7 @@
 		485335C01F4F38840041237D /* LGTimePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGTimePickerView.swift; sourceTree = "<group>"; };
 		487D94491F581D9D005398E8 /* LGSoundHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGSoundHelper.swift; sourceTree = "<group>"; };
 		487D944B1F5AD1A1005398E8 /* WalkthroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
+		4885ACE81F5C16CD008A12F2 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		48998BD11F396E4200F7E4AB /* LGTimerContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGTimerContentView.swift; sourceTree = "<group>"; };
 		48A31BAF1F32253500E919FB /* LGTimeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGTimeManager.swift; sourceTree = "<group>"; };
 		48A31BB41F331A4000E919FB /* ActivitiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitiesViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				48F0231D1F3FC36000EED177 /* IntervalsViewController.swift */,
 				480A7AD71F472A5900D7D006 /* RecordsTableViewController.swift */,
 				487D944B1F5AD1A1005398E8 /* WalkthroughViewController.swift */,
+				4885ACE81F5C16CD008A12F2 /* SettingsTableViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 				480A7ADA1F472C2800D7D006 /* LGRecord.swift in Sources */,
 				48A31BC61F34352200E919FB /* LGTextField.swift in Sources */,
 				480A7ADC1F47315F00D7D006 /* LGRecordsManager.swift in Sources */,
+				4885ACE91F5C16CD008A12F2 /* SettingsTableViewController.swift in Sources */,
 				4825CF431F2FEFD30066B40D /* LGTimer.swift in Sources */,
 				48A31BBE1F3372C100E919FB /* TimerTableViewCell.swift in Sources */,
 				48A31BC51F34352200E919FB /* TextFieldTableViewCell.swift in Sources */,
