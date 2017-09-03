@@ -1,0 +1,6 @@
+framework module ODMSwipeSelector {
+  umbrella header "ODMSwipeSelector-umbrella.h"
+
+  export *
+  module * { export * }
+}
