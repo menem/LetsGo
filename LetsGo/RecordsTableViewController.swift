@@ -19,6 +19,8 @@ class RecordsTableViewController: UITableViewController {
     var selectedRecordIndexPath: IndexPath!
     var notesTextView: UITextView!
     var recordNameTextField: LGTextField!
+    var recordDates = [String]()
+    var recordsInDates = [String: [LGRecord]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +32,46 @@ class RecordsTableViewController: UITableViewController {
         self.title = "Records"
         
         loadRecords()
-        
+     
     }
     
     func loadRecords(){
         let recordsManager = LGRecordsManager()
         records = recordsManager.loadRecords()
+        var setofDates = Set<String>()
+        for record in records{
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
+            dateFormatter.locale = Locale(identifier: "en_US")
+            let date = dateFormatter.date(from:record.timestamp)!
+            dateFormatter.dateFormat = "yyyy/MM/dd"
+            let dateString = dateFormatter.string(from:date)
+            setofDates.insert(dateString)
+        }
+        recordDates = Array(setofDates)
+        recordDates.sort { $0 > $1 }
+        
+        for recordDate in recordDates{
+            var groupedRecords = [LGRecord]()
+
+            for record in records{
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
+                dateFormatter.locale = Locale(identifier: "en_US")
+                let date = dateFormatter.date(from:record.timestamp)!
+                dateFormatter.dateFormat = "yyyy/MM/dd"
+                let dateString = dateFormatter.string(from:date)
+                
+                if dateString == recordDate{
+                groupedRecords.append(record)
+                }
+             
+            }
+            
+           recordsInDates[recordDate] = groupedRecords
+        }
+        print(recordsInDates)
+        
         self.tableView.reloadData()
     }
     func configureSettings(record: LGRecord) {
@@ -95,40 +131,53 @@ class RecordsTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return recordDates.count
         
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (section == 0) {
-            return 1
-        } else {
-            return records.count
-        }
+        let recordDate = recordDates[section]
+        let recordsFoundinDate = recordsInDates[recordDate]
+            return recordsFoundinDate!.count
+//        }
     }
     
     override  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
     {
-        if indexPath.section != 0 {
+//        if indexPath.section != 0 {
             return true
-        }else{
-            return false
-        }
+//        }else{
+//            return false
+//        }
         
     }
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.section != 0 {
+//        if indexPath.section != 0 {
             return true
-        }else{
-            return false
-        }
+//        }else{
+//            return false
+//        }
     }
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+            let  label = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 40))
+//            label.setCountDownTime(minutes: 10)
+//            label.animationType = .Scale
+            label.textAlignment = .center
+            label.font = UIFont (name: "Betm-Regular3", size: 30)
+            label.textColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
+        label.text = recordDates[section]
+//            label.sizeToFit()
+            label.translatesAutoresizingMaskIntoConstraints = false
+            return label
     
+    }
     override   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
     {
         if editingStyle == .delete
         {
             let manager = LGRecordsManager()
+            
             records.remove(at: indexPath.row)
             manager.updateRecords(newRecords: records)
             tableView.reloadData()
@@ -136,35 +185,37 @@ class RecordsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if (indexPath.section == 0) {
-            return 40
-        } else {
+//        if (indexPath.section == 0) {
+//            return 40
+//        } else {
             return 80
-        }
+//        }
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
+        return 40
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //      This is the Sponsor cell
-        if (indexPath.section == 0) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: BannerTableViewCellIdentifier, for: indexPath) as! TitleBackgroundTableViewCell
-            
-            cell.backgroundImageView.image = UIImage(named: "icn_sponsor")
-            
-            return cell
-        } else {
-            
+//        if (indexPath.section == 0) {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: BannerTableViewCellIdentifier, for: indexPath) as! TitleBackgroundTableViewCell
+//            
+//            cell.backgroundImageView.image = UIImage(named: "icn_sponsor")
+//            
+//            return cell
+//        } else {
+        
             self.tableView.register(RecordTableViewCell.self, forCellReuseIdentifier: RecordTableViewCellIdentifier)
             
             let cell = tableView.dequeueReusableCell(withIdentifier: RecordTableViewCellIdentifier, for: indexPath) as! RecordTableViewCell
-            let record = records[indexPath.row]
-            let timeString = LGTimeHelper.sharedInstance.timefromTimeInterval(timeInterval: record.timeElapsed)
+        let recordDate = recordDates[indexPath.section]
+        let recordsFoundinDate = recordsInDates[recordDate]
+            let record = recordsFoundinDate?[indexPath.row]
+            let timeString = LGTimeHelper.sharedInstance.timefromTimeInterval(timeInterval: (record?.timeElapsed)!)
             cell.timeElapsedlabel.text = timeString
-            cell.titlelabel.text = record.title.capitalized
-            let caloriesInt = Int(record.calories.rounded(.down))
+            cell.titlelabel.text = record?.title.capitalized
+            let caloriesInt = Int((record?.calories.rounded(.down))!)
            
             if caloriesInt <= 0 {
                 cell.calorieslabel.isHidden = true
@@ -177,12 +228,15 @@ class RecordsTableViewController: UITableViewController {
            
             cell.backCardView.backgroundColor = randomColor(hue: .random, luminosity: .light)
             return cell
-        }
+//        }
         
     }
    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
    selectedRecordIndexPath = indexPath
-    selectedRecord = records[indexPath.row]
+    let recordDate = recordDates[indexPath.section]
+    let recordsFoundinDate = recordsInDates[recordDate]
+    selectedRecord = recordsFoundinDate?[indexPath.row]
+//    selectedRecord = records[indexPath.row]
     configureSettings(record: selectedRecord)
     openSettings()
     }
