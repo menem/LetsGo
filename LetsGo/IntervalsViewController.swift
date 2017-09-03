@@ -42,7 +42,11 @@ class IntervalsViewController: UITableViewController {
         self.title = "Intervals"
         canEditMode = true
 
+        ontotalSeconds =  30.0
         
+        offtotalSeconds = 30.0
+        currentRound = 0
+        rounds = 1
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "icn_activities"), style: .plain, target: self, action: #selector(pushActivities))
         self.navigationItem.rightBarButtonItem = rightBarButton
         
