@@ -123,17 +123,19 @@ class HomeViewController: UIViewController {
             }
             
             var heightString = ""
+            var heightValue = 0.0
             self.height = userHeight as? HKQuantitySample
             if let meters = self.height?.quantity.doubleValue(for: HKUnit.meter()) {
                 let formatHeight = LengthFormatter()
                 formatHeight.isForPersonHeightUse = true
                 heightString = formatHeight.string(fromMeters: meters)
+                heightValue = meters * 100.0
             }
             
             DispatchQueue.main.async(execute: { () -> Void in
                print("Menem's Height is \(heightString)")
                 let userDefaults = UserDefaults.standard
-                userDefaults.set(heightString, forKey: "userHeight")
+                userDefaults.set(heightValue, forKey: "userHeight")
                 userDefaults.synchronize()
             })
         })
@@ -150,21 +152,21 @@ class HomeViewController: UIViewController {
             }
             
             var WeightString = ""
-            var WeightValue = 0.0
+            var weightValue = 0.0
             self.Weight = userWeight as? HKQuantitySample
             if let gram = self.Weight?.quantity.doubleValue(for: HKUnit.gram()) {
                 let formatWeight = MassFormatter()
                 formatWeight.isForPersonMassUse = true
                 WeightString = formatWeight.string(fromKilograms: gram/1000)
-                WeightValue = gram/1000.0
+                weightValue = gram/1000.0
                
             }
             
                         DispatchQueue.main.async(execute: { () -> Void in
                             print("Menem's Weight is \(WeightString)")
                             let userDefaults = UserDefaults.standard
-                            print("Menem's Weight is (Without Unit) \(WeightValue)")
-                            userDefaults.set(WeightValue, forKey: "userWeight")
+                            print("Menem's Weight is (Without Unit) \(weightValue)")
+                            userDefaults.set(weightValue, forKey: "userWeight")
                             userDefaults.synchronize()
                         })
         })

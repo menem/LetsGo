@@ -18,7 +18,7 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    
+    var pastelView: PastelView!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         UIApplication.shared.isIdleTimerDisabled = true
@@ -44,8 +44,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window!.rootViewController = navViewController
             window!.makeKeyAndVisible()
             self.confirgureSiren()
-            if !isNightMode {
-              setApplicationBackground()
+             setApplicationBackground()
+            if isNightMode {
+             pastelView.alpha = 0
             }
            
             
@@ -81,8 +82,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window!.rootViewController = navViewController
                 self.window!.makeKeyAndVisible()
                 self.confirgureSiren()
-                if !isNightMode {
-                    self.setApplicationBackground()
+                self.setApplicationBackground()
+                if isNightMode {
+                    self.pastelView.alpha = 0
                 }
                 
             }
@@ -100,8 +102,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window!.rootViewController = navViewController
             window!.makeKeyAndVisible()
             self.confirgureSiren()
-            if !isNightMode {
-                setApplicationBackground()
+            setApplicationBackground()
+            if isNightMode {
+                pastelView.alpha = 0
             }
             
             UserDefaults.standard.set(true, forKey: "launchedBefore")
@@ -132,8 +135,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.makeKeyAndVisible()
         self.confirgureSiren()
         
-        if !isNightMode {
-            setApplicationBackground()
+        setApplicationBackground()
+        if isNightMode {
+            pastelView.alpha = 0
         }
         return true
     }
@@ -144,7 +148,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let originY = screenFrame.origin.y - 84
         let height = screenFrame.height + 120
         let width = screenFrame.width
-        let pastelView = PastelView(frame: CGRect(x: originX, y: originY, width: width, height: height))
+        pastelView = PastelView(frame: CGRect(x: originX, y: originY, width: width, height: height))
         pastelView.startPastelPoint = .bottomLeft
         pastelView.endPastelPoint = .topRight
         pastelView.animationDuration = 3.0
@@ -158,6 +162,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         pastelView.startAnimation()
         UIApplication.shared.keyWindow?.insertSubview(pastelView, at: 0)
+        
     }
     func setAppearance() {
         
