@@ -10,6 +10,9 @@ import UIKit
 import Intents
 import Pastel
 import Onboard
+import Appirater
+import Siren
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +24,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.isIdleTimerDisabled = true
         setAppearance()
         
+        FirebaseApp.configure()
+        
+        Appirater.setAppId("1266677563")
+        Appirater.setDaysUntilPrompt(1)
+        Appirater.setUsesUntilPrompt(10)
+        Appirater.setTimeBeforeReminding(2)
+        Appirater.setSignificantEventsUntilPrompt(-1)
+        Appirater.setDebug(true)
+        
         
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
         let isNightMode = UserDefaults.standard.bool(forKey: "isNightMode")
@@ -31,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             window!.rootViewController = navViewController
             window!.makeKeyAndVisible()
+            self.confirgureSiren()
             if !isNightMode {
               setApplicationBackground()
             }
@@ -67,7 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 self.window!.rootViewController = navViewController
                 self.window!.makeKeyAndVisible()
-                
+                self.confirgureSiren()
                 if !isNightMode {
                     self.setApplicationBackground()
                 }
@@ -86,7 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             window!.rootViewController = navViewController
             window!.makeKeyAndVisible()
-            
+            self.confirgureSiren()
             if !isNightMode {
                 setApplicationBackground()
             }
@@ -117,6 +130,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window!.rootViewController = navViewController
         window!.makeKeyAndVisible()
+        self.confirgureSiren()
         
         if !isNightMode {
             setApplicationBackground()
@@ -156,5 +170,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearace.shadowImage = UIImage()
         navigationBarAppearace.setBackgroundImage(UIImage(), for: .default)
     }
+    func confirgureSiren(){
+        /* Siren code should go below window?.makeKeyAndVisible() */
+        
+        let siren = Siren.shared
+        siren.alertType = .option
+        
+        // Optional: Set this variable if you would only like to show an alert if your app has been available on the store for a few days.
+        // This default value is set to 1 to avoid this issue: https://github.com/ArtSabintsev/Siren#words-of-caution
+        // To show the update immediately after Apple has updated their JSON, set this value to 0. Not recommended due to aforementioned reason in https://github.com/ArtSabintsev/Siren#words-of-caution.
+        siren.showAlertAfterCurrentVersionHasBeenReleasedForDays = 3
+        
+        // Replace .immediately with .daily or .weekly to specify a maximum daily or weekly frequency for version checks.
+        // DO NOT CALL THIS METHOD IN didFinishLaunchingWithOptions IF YOU ALSO PLAN TO CALL IT IN applicationDidBecomeActive.
+//        siren.checkVersion(checkType: .immediately)
+    }
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        /*
+         Perform daily (.daily) or weekly (.weekly) checks for new version of your app.
+         Useful if user returns to your app from the background after extended period of time.
+         Place in applicationDidBecomeActive(_:).	*/
+        
+        Siren.shared.checkVersion(checkType: .daily)
+    }
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        /*
+         Useful if user returns to your app from the background after being sent to the
+         App Store, but doesn't update their app before coming back to your app.
+         
+         ONLY USE WITH Siren.AlertType.immediately
+         */
+        
+        Siren.shared.checkVersion(checkType: .immediately)
+    }
+
 }
 
