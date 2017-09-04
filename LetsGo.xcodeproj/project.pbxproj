@@ -55,6 +55,8 @@
 		48F023241F44696A00EED177 /* LGCountDownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F023231F44696A00EED177 /* LGCountDownTimer.swift */; };
 		48F93FA21F5C5E9700840646 /* KNSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F93FA11F5C5E9700840646 /* KNSwitcher.swift */; };
 		48F93FAB1F5DDA6100840646 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48F93FAA1F5DDA6100840646 /* GoogleService-Info.plist */; };
+		48F93FAD1F5E116100840646 /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48F93FAC1F5E116100840646 /* AppIntentVocabulary.plist */; };
+		48F93FAE1F5E116100840646 /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48F93FAC1F5E116100840646 /* AppIntentVocabulary.plist */; };
 		4C3B67DF2BC822FFDB07F9C5 /* Pods_LetsGo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14E8FA497D650EDF3219475A /* Pods_LetsGo.framework */; };
 /* End PBXBuildFile section */
 
@@ -136,6 +138,7 @@
 		48F023231F44696A00EED177 /* LGCountDownTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGCountDownTimer.swift; sourceTree = "<group>"; };
 		48F93FA11F5C5E9700840646 /* KNSwitcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KNSwitcher.swift; sourceTree = "<group>"; };
 		48F93FAA1F5DDA6100840646 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		48F93FAC1F5E116100840646 /* AppIntentVocabulary.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		5C1CAB1FD870C4C22C7A8CB9 /* Pods-LetsGo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetsGo.release.xcconfig"; path = "Pods/Target Support Files/Pods-LetsGo/Pods-LetsGo.release.xcconfig"; sourceTree = "<group>"; };
 		E8418AE36AB7D1935CE2EE43 /* Pods-LetsGo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetsGo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LetsGo/Pods-LetsGo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -215,6 +218,7 @@
 				4850E1C11F2A8552004D85A7 /* LetsGo.entitlements */,
 				48F93FAA1F5DDA6100840646 /* GoogleService-Info.plist */,
 				4850E1BB1F28EE00004D85A7 /* Info.plist */,
+				48F93FAC1F5E116100840646 /* AppIntentVocabulary.plist */,
 			);
 			name = Support;
 			path = LetsGo;
@@ -440,6 +444,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48F93FAD1F5E116100840646 /* AppIntentVocabulary.plist in Resources */,
 				4850E1BA1F28EE00004D85A7 /* LaunchScreen.storyboard in Resources */,
 				4850E1B71F28EE00004D85A7 /* Assets.xcassets in Resources */,
 				48E657AC1F2E1658007E649E /* tone.wav in Resources */,
@@ -453,6 +458,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48F93FAE1F5E116100840646 /* AppIntentVocabulary.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

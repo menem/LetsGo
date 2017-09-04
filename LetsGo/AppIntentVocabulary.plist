@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IntentPhrases</key>
+	<array>
+		<dict>
+			<key>IntentName</key>
+			<string>INEndWorkoutIntent</string>
+			<key>IntentExamples</key>
+			<array>
+				<string>Stop my timer workout</string>
+				<string>End stopwatch workout</string>
+				<string>Finish the interval counter workout</string>
+			</array>
+		</dict>
+		<dict>
+			<key>IntentName</key>
+			<string>INStartWorkoutIntent</string>
+			<key>IntentExamples</key>
+			<array>
+				<string>Start my amrap workout</string>
+				<string>letsgo workout</string>
+				<string>time my stopwatch</string>
+				<string>start a 10 mins timer</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
