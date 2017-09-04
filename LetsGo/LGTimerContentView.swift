@@ -14,7 +14,7 @@ import CountdownLabel
 
 class LGTimerContentView: UIView {
     
-    
+    var countdownDisabledOnce: Bool!
     var isRunning: Bool!
     
     lazy var timeLabel: UILabel = {
@@ -43,7 +43,6 @@ class LGTimerContentView: UIView {
     
     lazy var timerControls: LGTimerControls = {
         let timerControl = LGTimerControls()
-//        timerControl.backgroundColor = .blue
         timerControl.pauseButton.addTarget(self, action: #selector(toggleTimer), for: .touchUpInside)
         timerControl.playButton.addTarget(self, action: #selector(toggleTimer), for: .touchUpInside)
         timerControl.stopButton.addTarget(self, action: #selector(stopTimer), for: .touchUpInside)
@@ -62,20 +61,30 @@ class LGTimerContentView: UIView {
         if (timer.getCountDownTime() > 0) || (timer.timerType == MZTimerLabelTypeStopWatch) {
             if(!isRunning) {
                 isRunning = true
-                self.tintColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
-                countDownTimerLabel.isHidden = false
-                timeLabel.isHidden = true
-                countDownTimerLabel.timeLabel.setCountDownTime(minutes: 10)
-                countDownTimerLabel.timeLabel.start()
+                if countdownDisabledOnce{
+                    self.tintColor = #colorLiteral(red: 0, green: 0.7402182221, blue: 0.7307808995, alpha: 1)
+                    timerControls.isHidden = false
+                    countDownTimerLabel.isHidden = true
+                    timeLabel.isHidden = false
+                    timer.start()
+                    
+                }else{
+                    self.tintColor = #colorLiteral(red: 0.9765378833, green: 0.8906318545, blue: 0.4612582326, alpha: 1)
+                    countDownTimerLabel.isHidden = false
+                    timeLabel.isHidden = true
+                    countDownTimerLabel.timeLabel.setCountDownTime(minutes: 10)
+                    countDownTimerLabel.timeLabel.start()
+                }
             }else{
                 timer.pause()
                 self.tintColor = #colorLiteral(red: 0.5015509129, green: 0.5780293345, blue: 0.8545677066, alpha: 1)
                 isRunning = false
             }
+            countdownDisabledOnce = false
             LGSoundHelper.sharedInstance.playSoundfor(state: .start)
             configureRunningControls()
         }else{
-            
+            countdownDisabledOnce = false
             return
         }
     }
@@ -94,28 +103,29 @@ class LGTimerContentView: UIView {
     
     func configureRunningControls() {
         if(isRunning) {
-            UIView.animate(withDuration: 0.3, animations: { 
+            UIView.animate(withDuration: 0.3, animations: {
                 self.timerControls.playButton.alpha = 0
                 self.timerControls.pauseButton.alpha = 1
                 self.timerControls.stopButton.alpha = 1
             })
-
+            
         }else{
-             UIView.animate(withDuration: 0.3, animations: {
-            self.timerControls.playButton.alpha = 1
-            self.timerControls.pauseButton.alpha = 0
-            self.timerControls.stopButton.alpha = 0
-                })
+            UIView.animate(withDuration: 0.3, animations: {
+                self.timerControls.playButton.alpha = 1
+                self.timerControls.pauseButton.alpha = 0
+                self.timerControls.stopButton.alpha = 0
+            })
         }
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
         isRunning = false
+        countdownDisabledOnce = false
         configureRunningControls()
         self.addSubview(timeLabel)
         self.addSubview(timerControls)
         self.addSubview(countDownTimerLabel)
-
+        
         setNeedsUpdateConstraints()
     }
     

@@ -34,7 +34,7 @@ class ActivityViewController: UIViewController {
     var totalTimeCounted: TimeInterval!
     var currentTimeCounted: TimeInterval!
     var tableView: UITableView!
-
+    var isActivityPaused: Bool!
     override func viewWillDisappear(_ animated: Bool) {
 //        self.saveRecord()
         self.timeContentView.stopTimer()
@@ -43,11 +43,13 @@ class ActivityViewController: UIViewController {
         super.viewDidLoad()
         
         timeContentView = LGTimerContentView()
-       
+        isActivityPaused = false
+        
         self.timeContentView.timer.delegate = self
         self.timeContentView.timerControls.playButton.addTarget(self, action:#selector(startActivity), for: .touchUpInside)
         self.timeContentView.timerControls.stopButton.addTarget(self, action: #selector(saveRecord), for: .touchUpInside)
-        self.timeContentView.timerControls.playButton.addTarget(self, action: #selector(startRecording), for: .touchUpInside)
+//        self.timeContentView.timerControls.playButton.addTarget(self, action: #selector(startRecording), for: .touchUpInside)
+        self.timeContentView.timerControls.pauseButton.addTarget(self, action: #selector(pauseActivity), for: .touchUpInside)
 //        self.timeContentView.timerControls.playButton.contentEdgeInsets = UIEdgeInsets(top: 12, left: 16, bottom: 12, right: 16)
         self.timeContentView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -109,7 +111,10 @@ class ActivityViewController: UIViewController {
         }
         }
     }
-    
+    func pauseActivity() {
+    isActivityPaused = true
+        self.timeContentView.countdownDisabledOnce = true
+    }
     func loadTimers() {
         let timeManager = LGTimerManager()
         timers = timeManager.loadTimers(activity: activity)
@@ -117,6 +122,7 @@ class ActivityViewController: UIViewController {
         timeContentView.timer.setCountDownTime(calculateTotalTime())
     }
     func openSettings(){
+        if canEditMode {
         timerNameTextField = LGTextField(frame: CGRect(x: 0, y: 0, width: 300, height: 40))
         timerNameTextField.autocapitalizationType = .none
         timerNameTextField.autocorrectionType = .no
@@ -139,6 +145,7 @@ class ActivityViewController: UIViewController {
         popupController.theme.shouldDismissOnBackgroundTouch = true
         popupController.present(animated: true)
         popupController.delegate = self
+        }
     }
     
     func dismissPopUp() {
@@ -147,8 +154,32 @@ class ActivityViewController: UIViewController {
         self.popupController?.dismiss(animated: true)
     }
 
-    
+    func clearAllhighlightedCell() {
+        for timer in timers{
+        timer.isHighlighted = false
+        }
+    }
     func startActivity(){
+        self.clearAllhighlightedCell()
+        if isActivityPaused{
+            LGSoundHelper.sharedInstance.speak(text:self.timers[self.currentlyPlaying].title)
+            LGSoundHelper.sharedInstance.playSoundfor(state: .start)
+            timeContentView.timer.addTimeCounted(byTime: 2)
+            timeContentView.timer.start()
+             canEditMode = false
+            isActivityPaused = false
+            return
+           
+        }else{
+//            if isActivityPaused{
+            
+//                isActivityPaused = false
+//                return
+            
+//            }
+            canEditMode = false
+            totalTimeCounted = 0
+            currentTimeCounted = 0
         if timers.count > 0 {
         currentlyPlaying = 0
         timeContentView.timer.setCountDownTime((timers.first?.duration)!+10)
@@ -171,6 +202,7 @@ class ActivityViewController: UIViewController {
         LGSoundHelper.sharedInstance.playSoundfor(state: .start)
             timeContentView.timer.start()
         }
+            }
     }
     func resumeActivity(){
         let timerDuration = timers[currentlyPlaying].duration
@@ -221,6 +253,8 @@ class ActivityViewController: UIViewController {
         timeContentView.timer.start()
     }
     func saveRecord()  {
+       self.clearAllhighlightedCell()
+        tableView.reloadData()
         canEditMode = true
         promptUserforRecord()
     }
