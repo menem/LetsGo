@@ -16,11 +16,12 @@ class RecordsTableViewController: UITableViewController {
     var popupController: CNPPopupController!
     var records = [LGRecord]()
     var selectedRecord: LGRecord!
-    var selectedRecordIndexPath: IndexPath!
+    var selectedGlobalRow: Int!
     var notesTextView: UITextView!
     var recordNameTextField: LGTextField!
     var recordDates = [String]()
     var recordsInDates = [String: [LGRecord]]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,12 @@ class RecordsTableViewController: UITableViewController {
     func loadRecords(){
         let recordsManager = LGRecordsManager()
         records = recordsManager.loadRecords()
+        self.sortRecords()
+        self.tableView.reloadData()
+    }
+    
+    func sortRecords(){
+        var orderedRecords = [LGRecord]()
         var setofDates = Set<String>()
         for record in records{
             let dateFormatter = DateFormatter()
@@ -53,7 +60,7 @@ class RecordsTableViewController: UITableViewController {
         
         for recordDate in recordDates{
             var groupedRecords = [LGRecord]()
-
+            
             for record in records{
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
@@ -63,17 +70,20 @@ class RecordsTableViewController: UITableViewController {
                 let dateString = dateFormatter.string(from:date)
                 
                 if dateString == recordDate{
-                groupedRecords.append(record)
+                    groupedRecords.append(record)
+                    orderedRecords.append(record)
                 }
-             
+                
             }
             
-           recordsInDates[recordDate] = groupedRecords
+            recordsInDates[recordDate] = groupedRecords
         }
         print(recordsInDates)
         
-        self.tableView.reloadData()
+        records.removeAll()
+        records = orderedRecords
     }
+    
     func configureSettings(record: LGRecord) {
         
         recordNameTextField = LGTextField(frame: CGRect(x: 0, y: 0, width: 300, height: 40))
@@ -96,7 +106,6 @@ class RecordsTableViewController: UITableViewController {
         notesTextView.layer.borderColor = UIColor(red:0.15, green:0.16, blue:0.20, alpha:0.50).cgColor
         notesTextView.layer.cornerRadius = 5.0
         notesTextView.layer.borderWidth = 1.0
-//        notesTextView.layer.borderColor?.alpha = 0.5
         
         let closeButton = LGDoneButton(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
         closeButton.doneButton.addTarget(self, action: #selector(dismissPopUp), for: .touchUpInside)
@@ -106,8 +115,6 @@ class RecordsTableViewController: UITableViewController {
         popupController.theme.cornerRadius = 14.0
         popupController.theme.backgroundColor = #colorLiteral(red: 0.921908319, green: 0.9026622176, blue: 0.9022395015, alpha: 1)
         popupController.theme.shouldDismissOnBackgroundTouch = true
-        
-//        popupController.delegate = self
         
     }
     func openSettings(){
@@ -120,15 +127,34 @@ class RecordsTableViewController: UITableViewController {
         selectedRecord.notes = notesTextView.text
         selectedRecord.title = self.recordNameTextField.text!
         
-        records.remove(at: selectedRecordIndexPath.row)
-        records.insert(selectedRecord, at: selectedRecordIndexPath.row)
-        
+        records.remove(at: selectedGlobalRow)
+        records.insert(selectedRecord, at: selectedGlobalRow)
+
         manager.updateRecords(newRecords: records)
+        self.sortRecords()
         tableView.reloadData()
         
         self.popupController?.dismiss(animated: true)
     }
     // MARK: - Table view data source
+     func rowPositionForThisIndexPath(indexPath: IndexPath, insideThisTable theTable: UITableView)->Int{
+        
+        var i = 0
+        var rowCount = 0
+        
+        while i < indexPath.section {
+            
+            rowCount += theTable.numberOfRows(inSection: i)
+            
+            i += 1
+        }
+        
+        rowCount += indexPath.row
+        // Because the array is sorted Desendingly (to get the fresh date first)
+        // We have to reserve that row count, achieved by the next equation
+//        let rightRowPlacement = (records.count - 1) - rowCount
+        return rowCount
+    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return recordDates.count
@@ -139,35 +165,22 @@ class RecordsTableViewController: UITableViewController {
         let recordDate = recordDates[section]
         let recordsFoundinDate = recordsInDates[recordDate]
             return recordsFoundinDate!.count
-//        }
     }
     
     override  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
     {
-//        if indexPath.section != 0 {
             return true
-//        }else{
-//            return false
-//        }
-        
     }
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-//        if indexPath.section != 0 {
             return true
-//        }else{
-//            return false
-//        }
     }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
             let  label = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 40))
-//            label.setCountDownTime(minutes: 10)
-//            label.animationType = .Scale
             label.textAlignment = .center
             label.font = UIFont (name: "Betm-Regular3", size: 30)
             label.textColor = #colorLiteral(red: 0.9844431281, green: 0.9844661355, blue: 0.9844536185, alpha: 1)
-        label.text = recordDates[section]
-//            label.sizeToFit()
+            label.text = recordDates[section]
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
     
@@ -178,18 +191,15 @@ class RecordsTableViewController: UITableViewController {
         {
             let manager = LGRecordsManager()
             
-            records.remove(at: indexPath.row)
+            records.remove(at: self.rowPositionForThisIndexPath(indexPath: indexPath, insideThisTable: tableView))
             manager.updateRecords(newRecords: records)
+            self.sortRecords()
             tableView.reloadData()
         }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if (indexPath.section == 0) {
-//            return 40
-//        } else {
             return 80
-//        }
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -197,21 +207,12 @@ class RecordsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //      This is the Sponsor cell
-//        if (indexPath.section == 0) {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: BannerTableViewCellIdentifier, for: indexPath) as! TitleBackgroundTableViewCell
-//            
-//            cell.backgroundImageView.image = UIImage(named: "icn_sponsor")
-//            
-//            return cell
-//        } else {
         
             self.tableView.register(RecordTableViewCell.self, forCellReuseIdentifier: RecordTableViewCellIdentifier)
             
             let cell = tableView.dequeueReusableCell(withIdentifier: RecordTableViewCellIdentifier, for: indexPath) as! RecordTableViewCell
-        let recordDate = recordDates[indexPath.section]
-        let recordsFoundinDate = recordsInDates[recordDate]
-            let record = recordsFoundinDate?[indexPath.row]
+            let recordsSetForDate = recordsInDates[recordDates[indexPath.section]]
+            let record = recordsSetForDate?[indexPath.row]
             let timeString = LGTimeHelper.sharedInstance.timefromTimeInterval(timeInterval: (record?.timeElapsed)!)
             cell.timeElapsedlabel.text = timeString
             cell.titlelabel.text = record?.title.capitalized
@@ -228,15 +229,13 @@ class RecordsTableViewController: UITableViewController {
            
             cell.backCardView.backgroundColor = randomColor(hue: .random, luminosity: .light)
             return cell
-//        }
-        
+   
     }
    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-   selectedRecordIndexPath = indexPath
-    let recordDate = recordDates[indexPath.section]
-    let recordsFoundinDate = recordsInDates[recordDate]
-    selectedRecord = recordsFoundinDate?[indexPath.row]
-//    selectedRecord = records[indexPath.row]
+  
+    selectedGlobalRow = self.rowPositionForThisIndexPath(indexPath: indexPath, insideThisTable: tableView)
+    print ("Selected row\(selectedGlobalRow)")
+    selectedRecord = records[selectedGlobalRow]
     configureSettings(record: selectedRecord)
     openSettings()
     }
