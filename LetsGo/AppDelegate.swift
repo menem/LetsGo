@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Appirater.setDebug(true)
         
         
-        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        let launchedBefore = UserDefaults.standard.bool(forKey: "xlaunchedBefore")
         let isNightMode = UserDefaults.standard.bool(forKey: "isNightMode")
         
         if launchedBefore  {
@@ -57,21 +57,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             firstPage.iconHeight = 400
             firstPage.iconImageView.contentMode = .scaleAspectFit
-            firstPage.bodyLabel.font = UIFont(name: "BetmHairline", size: 25)
+            firstPage.bodyLabel.font = UIFont(name: "Betm-Regular3", size: 21)
             firstPage.titleLabel.font = UIFont(name: "Betm-Regular3", size: 28)
             let secondPage = OnboardingContentViewController(title: "Sophisticated yet simple", body: "Manage Activities from workouts to work, as your needs fit.", image: UIImage(named: "img_onboard_page2"), buttonText: nil ) { () -> Void in
                 // do something here when users press the button, like ask for location services permissions, register for push notifications, connect to social media, or finish the onboarding process
             }
             secondPage.iconHeight = 400
             secondPage.iconImageView.contentMode = .scaleAspectFit
-            secondPage.bodyLabel.font = UIFont(name: "BetmHairline", size: 25)
+            secondPage.bodyLabel.font = UIFont(name: "Betm-Regular3", size: 21)
             secondPage.titleLabel.font = UIFont(name: "Betm-Regular3", size: 28)
             let thirdPage = OnboardingContentViewController(title: "Keep Records", body: "Know How much Calories you burnt into your Amrap, Emom, tabata WOD.", image: UIImage(named: "img_onboard_page3"), buttonText: nil ) { () -> Void in
                 // do something here when users press the button, like ask for location services permissions, register for push notifications, connect to social media, or finish the onboarding process
             }
             thirdPage.iconHeight = 400
             thirdPage.iconImageView.contentMode = .scaleAspectFit
-            thirdPage.bodyLabel.font = UIFont(name: "BetmHairline", size: 25)
+            thirdPage.bodyLabel.font = UIFont(name: "Betm-Regular3", size: 21)
             thirdPage.titleLabel.font = UIFont(name: "Betm-Regular3", size: 28)
             
             let fourthPage = OnboardingContentViewController(title: "Alot More!", body: "Lots of Hidden features that can help you track your time with ease, you just have to find it.", image: UIImage(named: "img_onboard_page4"), buttonText: "Let's Go") { () -> Void in
@@ -90,7 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             fourthPage.iconHeight = 400
             fourthPage.iconImageView.contentMode = .scaleAspectFit
-            fourthPage.bodyLabel.font = UIFont(name: "BetmHairline", size: 25)
+            fourthPage.bodyLabel.font = UIFont(name: "Betm-Regular3", size: 21)
             fourthPage.titleLabel.font = UIFont(name: "Betm-Regular3", size: 28)
             // Image
             let onboardingVC = OnboardingViewController(backgroundImage: UIImage(named: "img_onboard_bkg"), contents: [firstPage, secondPage, thirdPage,fourthPage])

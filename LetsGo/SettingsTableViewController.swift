@@ -21,7 +21,11 @@ class SettingsTableViewController: UITableViewController {
         super.viewDidLoad()
       
         self.title = "Settings"
-
+        
+        userNightMode = false
+        userheightValue = 120
+        userWeightValue = 80
+        
         self.tableView.tableFooterView = UIView()
         self.tableView.backgroundColor = .clear
         self.tableView.separatorStyle = .none
@@ -33,19 +37,24 @@ class SettingsTableViewController: UITableViewController {
     }
     
     func loadUserSettings() {
-        
-        if let isNightModeEnabled = UserDefaults.standard.object(forKey: "isNightMode") as! Bool! {
-            userNightMode = isNightModeEnabled
+
+        guard let isNightModeEnabled = UserDefaults.standard.object(forKey: "isNightMode") as! Bool! else {
+            userNightMode = false
+            return
         }
+        userNightMode = isNightModeEnabled
         
-        if let userHeight = UserDefaults.standard.object(forKey: "userHeight") as! Double! {
-            userheightValue = userHeight
+        guard let userHeight = UserDefaults.standard.object(forKey: "userHeight") as! Double! else{
+           userheightValue = 120
+            return
         }
+         userheightValue = userHeight
         
-        if let userWeight = UserDefaults.standard.object(forKey: "userWeight") as! Double! {
-            userWeightValue = userWeight
+        guard let userWeight = UserDefaults.standard.object(forKey: "userWeight") as! Double! else{
+            userWeightValue = 80
+            return
         }
-        
+        userWeightValue = userWeight
     }
     func dismissSettings() {
     self.dismiss(animated: true, completion: nil)

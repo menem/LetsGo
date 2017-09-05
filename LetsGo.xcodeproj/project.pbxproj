@@ -263,8 +263,8 @@
 		4850E1AE1F28EE00004D85A7 /* LetsGo */ = {
 			isa = PBXGroup;
 			children = (
-				48F93FA01F5C5E8A00840646 /* Vendor */,
 				4850E1AF1F28EE00004D85A7 /* AppDelegate.swift */,
+				48F93FA01F5C5E8A00840646 /* Vendor */,
 				4825CF3C1F2FEB6F0066B40D /* Models */,
 				4825CF3D1F2FEB860066B40D /* Managers */,
 				48A31BCB1F35FA8100E919FB /* Extensions */,

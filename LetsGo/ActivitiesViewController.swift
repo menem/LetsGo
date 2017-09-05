@@ -125,7 +125,10 @@ class ActivitiesViewController: UITableViewController {
     func saveActivity() {
         if ((activityNameTextField?.text?.characters.count)! > 0) {
             let manager = LGTimerManager()
-            manager.saveActivity(title: (activityNameTextField?.text)!, type: activityType)
+            guard let selectedActivityType = activityType else{
+                return
+            }
+            manager.saveActivity(title: (activityNameTextField?.text)!, type: selectedActivityType)
         }
     }
     
