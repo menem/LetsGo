@@ -32,7 +32,7 @@ class ActivitiesViewController: UITableViewController {
         self.tableView.separatorStyle = .none
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
         self.title = "Activities"
-        
+        activityType = "workout"
         loadActivities()
         
         let addButtonImage = UIImage(named:"icn_add")
@@ -125,10 +125,7 @@ class ActivitiesViewController: UITableViewController {
     func saveActivity() {
         if ((activityNameTextField?.text?.characters.count)! > 0) {
             let manager = LGTimerManager()
-            guard let selectedActivityType = activityType else{
-                return
-            }
-            manager.saveActivity(title: (activityNameTextField?.text)!, type: selectedActivityType)
+            manager.saveActivity(title: (activityNameTextField?.text)!, type: activityType)
         }
     }
     
