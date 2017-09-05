@@ -55,8 +55,8 @@ class SwitchTableViewCell: UITableViewCell {
             
             modeSwitch.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -20 ),
             modeSwitch.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            modeSwitch.widthAnchor.constraint(equalToConstant: 90),
-            modeSwitch.heightAnchor.constraint(equalToConstant: 30),
+            modeSwitch.widthAnchor.constraint(equalToConstant: 100),
+            modeSwitch.heightAnchor.constraint(equalToConstant: 35),
             
             ])
     }

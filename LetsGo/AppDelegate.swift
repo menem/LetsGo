@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Appirater.setDebug(true)
         
         
-        let launchedBefore = UserDefaults.standard.bool(forKey: "xlaunchedBefore")
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
         let isNightMode = UserDefaults.standard.bool(forKey: "isNightMode")
         
         if launchedBefore  {

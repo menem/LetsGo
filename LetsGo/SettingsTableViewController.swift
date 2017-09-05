@@ -16,6 +16,10 @@ class SettingsTableViewController: UITableViewController {
     var userheightValue: Double!
     var userWeightValue: Double!
     var userNightMode: Bool!
+    var modeSwitch: KNSwitcher!
+    var userHeightSelector: ODMSwipeSelector!
+    var userWeightSelector: ODMSwipeSelector!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +38,7 @@ class SettingsTableViewController: UITableViewController {
         self.navigationItem.leftBarButtonItem = leftBarButton
          LogScreenLoad()
         loadUserSettings()
+    
     }
     
     func loadUserSettings() {
@@ -55,11 +60,21 @@ class SettingsTableViewController: UITableViewController {
             return
         }
         userWeightValue = userWeight
+            tableView.reloadData()
     }
     func dismissSettings() {
     self.dismiss(animated: true, completion: nil)
     }
-    
+    override func viewDidDisappear(_ animated: Bool) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(modeSwitch.on, forKey: "isNightMode")
+        userDefaults.set(self.userHeightSelector.value, forKey: "userHeight")
+        userDefaults.set(self.userWeightSelector.value, forKey: "userWeight")
+
+        userDefaults.synchronize()
+
+        super.viewWillDisappear(animated)
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -80,39 +95,29 @@ class SettingsTableViewController: UITableViewController {
             self.tableView.register(MeasurementTableViewCell.self, forCellReuseIdentifier: MeasurementTableViewCellIdentifier)
             let cell = tableView.dequeueReusableCell(withIdentifier: MeasurementTableViewCellIdentifier, for: indexPath) as! MeasurementTableViewCell
             cell.measurementSelector.title = "Height (Cm)"
-//            cell.measurementSelector.value = 150
+            cell.measurementSelector.value = Float(userheightValue)
             cell.measurementSelector.unit = .float
             cell.measurementSelector.minValue = 100
             cell.measurementSelector.maxValue = 300
             cell.measurementSelector.incrementValue = 1
             cell.measurementSelector.maxIncrementValue = 15
-            
-            
-                if userheightValue > 1 {
-                    cell.measurementSelector.value = Float(userheightValue)
-                }else{
-                    cell.measurementSelector.value = 150
-                }
-            
+            self.userHeightSelector = cell.measurementSelector
+
             return cell
         case 2:
             self.tableView.register(MeasurementTableViewCell.self, forCellReuseIdentifier: MeasurementTableViewCellIdentifier)
             let cell = tableView.dequeueReusableCell(withIdentifier: MeasurementTableViewCellIdentifier, for: indexPath) as! MeasurementTableViewCell
             cell.measurementSelector.title = "Weight (Kg)"
-//            cell.measurementSelector.value = 80
+            cell.measurementSelector.value = Float(userWeightValue)
             cell.measurementSelector.unit = .float
             cell.measurementSelector.minValue = 20
             cell.measurementSelector.maxValue = 250
             cell.measurementSelector.incrementValue = 1
             cell.measurementSelector.maxIncrementValue = 15
             cell.measurementSelector.delegate = self 
+            self.userWeightSelector = cell.measurementSelector
             
-            if userWeightValue > 1 {
-                cell.measurementSelector.value = Float(userWeightValue)
-            }else{
-                cell.measurementSelector.value = 80
-            }
-            
+
             return cell
         default:
             self.tableView.register(SwitchTableViewCell.self, forCellReuseIdentifier: SwitchTableViewCellIdentifier)
@@ -120,7 +125,8 @@ class SettingsTableViewController: UITableViewController {
             cell.titlelabel.text = "Night Mode"
             cell.modeSwitch.delegate = self
             cell.modeSwitch.on = userNightMode
-            
+            cell.modeSwitch.animationSwitcherButton()
+            self.modeSwitch = cell.modeSwitch
             return cell
         }
 
@@ -134,15 +140,18 @@ extension SettingsTableViewController : ODMSwipeSelectorDelegate {
     func swipeSelector(_ swipeSelector: ODMSwipeSelector!, didChangeToValue value: Float) {
         
         let userDefaults = UserDefaults.standard
+        
         if swipeSelector.title == "Height (Cm)" {
             if Float(userheightValue) != value {
-                 userDefaults.set(value, forKey: "userHeight")
+                userheightValue = Double(value)
+                 userDefaults.set(userheightValue, forKey: "userHeight")
                  userDefaults.synchronize()
             }
            
         }else{
             if Float(userWeightValue) != value {
-                 userDefaults.set(value, forKey: "userWeight")
+                userWeightValue = Double(value)
+                 userDefaults.set(userWeightValue, forKey: "userWeight")
                 userDefaults.synchronize()
             }
            
@@ -153,13 +162,11 @@ extension SettingsTableViewController : ODMSwipeSelectorDelegate {
 extension SettingsTableViewController : KNSwitcherChangeValueDelegate {
     func switcherDidChangeValue(switcher:KNSwitcher, value: Bool) {
         if value {
-            if userNightMode != value {
+            
                 let userDefaults = UserDefaults.standard
                 userDefaults.set(value, forKey: "isNightMode")
                 userDefaults.synchronize()
                 userNightMode = value
-            }
-
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             if value {
