@@ -27,7 +27,8 @@ class TimerViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
+
         canEditMode = true
         
         self.tableView.tableFooterView = UIView()
@@ -43,7 +44,7 @@ class TimerViewController: UITableViewController {
 
         
         configureSettings()
-        
+        LogScreenLoad()
     }
     
     

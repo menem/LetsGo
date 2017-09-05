@@ -11,6 +11,7 @@ import Pastel
 import Intents
 import HealthKit
 
+
 class HomeViewController: UIViewController {
     var scrollView: UIScrollView?
     var pageControl : UIPageControl!
@@ -26,6 +27,9 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+      
+        
+        
         getHealthKitPermission()
         setHeight()
         setWeight()
@@ -76,7 +80,7 @@ class HomeViewController: UIViewController {
         
         let leftBarButton = UIBarButtonItem(image: UIImage(named: "icn_records"), style: .plain, target: self, action: #selector(pushRecords))
         self.navigationItem.leftBarButtonItem = leftBarButton
-        
+        LogScreenLoad()
     }
     func pushModalSettings(){
         print("Settings ya ma3alem")
@@ -133,10 +137,11 @@ class HomeViewController: UIViewController {
             }
             
             DispatchQueue.main.async(execute: { () -> Void in
-               print("Menem's Height is \(heightString)")
+                if heightValue > 40 {
                 let userDefaults = UserDefaults.standard
                 userDefaults.set(heightValue, forKey: "userHeight")
-                userDefaults.synchronize()
+                    userDefaults.synchronize()
+                }
             })
         })
         
@@ -163,11 +168,11 @@ class HomeViewController: UIViewController {
             }
             
                         DispatchQueue.main.async(execute: { () -> Void in
-                            print("Menem's Weight is \(WeightString)")
+                            if weightValue > 15{
                             let userDefaults = UserDefaults.standard
-                            print("Menem's Weight is (Without Unit) \(weightValue)")
                             userDefaults.set(weightValue, forKey: "userWeight")
                             userDefaults.synchronize()
+                            }
                         })
         })
         

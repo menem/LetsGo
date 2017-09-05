@@ -25,7 +25,7 @@ class RecordsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         self.tableView.tableFooterView = UIView()
         self.tableView.backgroundColor = .clear
         self.tableView.separatorStyle = .none
@@ -33,7 +33,7 @@ class RecordsTableViewController: UITableViewController {
         self.title = "Records"
         
         loadRecords()
-     
+      LogScreenLoad()
     }
     
     func loadRecords(){

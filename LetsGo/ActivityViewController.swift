@@ -41,6 +41,7 @@ class ActivityViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         
         timeContentView = LGTimerContentView()
         isActivityPaused = false
@@ -95,6 +96,7 @@ class ActivityViewController: UIViewController {
 //        startRecording()
 //        startActivity()
 //        timeContentView.timer.setCountDownTime(calculateTotalTime())
+         LogScreenLoad()
     }
     func toggleEditingMode(){
         if canEditMode {

@@ -33,6 +33,7 @@ class IntervalsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         self.tableView.tableFooterView = UIView()
         self.tableView.backgroundColor =  .clear
         self.tableView.separatorStyle = .none
@@ -49,7 +50,7 @@ class IntervalsViewController: UITableViewController {
         rounds = 1
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "icn_activities"), style: .plain, target: self, action: #selector(pushActivities))
         self.navigationItem.rightBarButtonItem = rightBarButton
-        
+         LogScreenLoad()
     }
     
     func pushActivities(){

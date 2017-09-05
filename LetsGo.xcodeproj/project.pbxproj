@@ -57,6 +57,7 @@
 		48F93FAB1F5DDA6100840646 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48F93FAA1F5DDA6100840646 /* GoogleService-Info.plist */; };
 		48F93FAD1F5E116100840646 /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48F93FAC1F5E116100840646 /* AppIntentVocabulary.plist */; };
 		48F93FAE1F5E116100840646 /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48F93FAC1F5E116100840646 /* AppIntentVocabulary.plist */; };
+		48F93FB01F5E167500840646 /* UIViewController+Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F93FAF1F5E167500840646 /* UIViewController+Analytics.swift */; };
 		4C3B67DF2BC822FFDB07F9C5 /* Pods_LetsGo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14E8FA497D650EDF3219475A /* Pods_LetsGo.framework */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +140,7 @@
 		48F93FA11F5C5E9700840646 /* KNSwitcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KNSwitcher.swift; sourceTree = "<group>"; };
 		48F93FAA1F5DDA6100840646 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		48F93FAC1F5E116100840646 /* AppIntentVocabulary.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		48F93FAF1F5E167500840646 /* UIViewController+Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Analytics.swift"; sourceTree = "<group>"; };
 		5C1CAB1FD870C4C22C7A8CB9 /* Pods-LetsGo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetsGo.release.xcconfig"; path = "Pods/Target Support Files/Pods-LetsGo/Pods-LetsGo.release.xcconfig"; sourceTree = "<group>"; };
 		E8418AE36AB7D1935CE2EE43 /* Pods-LetsGo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetsGo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LetsGo/Pods-LetsGo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -318,6 +320,7 @@
 			children = (
 				48A31BC71F35FA5400E919FB /* LGTextField+BottomBorder.swift */,
 				48A31BC81F35FA5400E919FB /* LGTextField+PlaceholderTextColor.swift */,
+				48F93FAF1F5E167500840646 /* UIViewController+Analytics.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 				48A31BC91F35FA5400E919FB /* LGTextField+BottomBorder.swift in Sources */,
 				4850E1B01F28EE00004D85A7 /* AppDelegate.swift in Sources */,
 				48A31BB01F32253500E919FB /* LGTimeManager.swift in Sources */,
+				48F93FB01F5E167500840646 /* UIViewController+Analytics.swift in Sources */,
 				48A31BB91F333EB900E919FB /* ActivityTableViewCell.swift in Sources */,
 				48B3965D1F3BBF970084F5DC /* StopwatchViewController.swift in Sources */,
 				48F0231E1F3FC36000EED177 /* IntervalsViewController.swift in Sources */,

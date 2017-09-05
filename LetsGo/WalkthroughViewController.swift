@@ -12,7 +12,7 @@ class WalkthroughViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+         
         let firstPage = OnboardingContentViewController(title: "Page Title", body: "Page body goes here.", image: UIImage(named: "img_onboard_page1"), buttonText: "Text For Button") { () -> Void in
             // do something here when users press the button, like ask for location services permissions, register for push notifications, connect to social media, or finish the onboarding process
         }

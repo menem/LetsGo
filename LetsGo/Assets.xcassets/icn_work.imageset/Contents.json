@@ -2,16 +2,16 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "workspace.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "workspace (1).png",
+      "filename" : "job-search.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "job-search (1).png",
       "scale" : "3x"
     }
   ],

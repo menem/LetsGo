@@ -38,7 +38,7 @@ class ActivitiesViewController: UITableViewController {
         let addButtonImage = UIImage(named:"icn_add")
         let addBarButtonItem  = UIBarButtonItem(image: addButtonImage, style: .plain, target: self, action: #selector(openSettings))
         self.navigationItem.rightBarButtonItem = addBarButtonItem
-        
+         LogScreenLoad()
     }
     
     override  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool

@@ -20,7 +20,7 @@ class StopwatchViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         self.tableView.tableFooterView = UIView()
         self.tableView.backgroundColor =  .clear
         self.tableView.separatorStyle = .none
@@ -33,6 +33,7 @@ class StopwatchViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = rightBarButton
         
           totalTimeCounted = 0
+         LogScreenLoad()
     }
     
     func pushActivities(){

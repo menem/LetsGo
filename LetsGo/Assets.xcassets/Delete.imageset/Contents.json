@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "cross (1).png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Delete.png",
+      "filename" : "cross.png",
       "scale" : "2x"
     },
     {

@@ -25,7 +25,11 @@ class LGRecord: NSObject, NSCoding {
         self.isWorkout = isWorkout
         if isWorkout{
             if let userWeight = UserDefaults.standard.object(forKey: "userWeight") as! Double! {
-             self.calories = 0.0175 * Double(KCrossfitMET) * userWeight * (time/60)
+                if userWeight > 1 {
+                    self.calories = 0.0175 * Double(KCrossfitMET) * userWeight * (time/60)
+                }else{
+                    self.calories = 0.0175 * Double(KCrossfitMET) * 90 * (time/60)
+                }
             }else{
                 self.calories = 0.0175 * Double(KCrossfitMET) * 90 * (time/60)
             }
