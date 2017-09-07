@@ -32,18 +32,30 @@ class ActivitiesViewController: UITableViewController {
         self.tableView.separatorStyle = .none
         self.tableView.register(TitleBackgroundTableViewCell.self, forCellReuseIdentifier: BannerTableViewCellIdentifier)
         self.title = "Activities"
-        
+        activityType = "workout"
         loadActivities()
         
         let addButtonImage = UIImage(named:"icn_add")
         let addBarButtonItem  = UIBarButtonItem(image: addButtonImage, style: .plain, target: self, action: #selector(openSettings))
         self.navigationItem.rightBarButtonItem = addBarButtonItem
-        
+         LogScreenLoad()
     }
     
     override  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
     {
-        return true
+        if indexPath.section != 0 {
+            return true
+        }else{
+            return false
+        }
+        
+    }
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section != 0 {
+            return true
+        }else{
+            return false
+        }
     }
     
     override   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
@@ -203,12 +215,12 @@ class ActivitiesViewController: UITableViewController {
 extension ActivitiesViewController : CNPPopupControllerDelegate {
     
     func popupControllerWillDismiss(_ controller: CNPPopupController) {
-        print("Popup controller will be dismissed")
+//        print("Popup controller will be dismissed")
         
     }
     
     func popupControllerDidPresent(_ controller: CNPPopupController) {
-        print("Popup controller presented")
+//        print("Popup controller presented")
     }
     
 }

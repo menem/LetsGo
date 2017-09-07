@@ -34,25 +34,25 @@ class IntentHandler: INExtension, INStartWorkoutIntentHandling, INPauseWorkoutIn
     }
     
     func handle(endWorkout intent: INEndWorkoutIntent, completion: @escaping (INEndWorkoutIntentResponse) -> Void) {
-        print("Ending Service")
+//        print("Ending Service")
         let result = INEndWorkoutIntentResponse(code: .ready, userActivity: nil)
         completion(result)
     }
     
     func handle(pauseWorkout intent: INPauseWorkoutIntent, completion: @escaping (INPauseWorkoutIntentResponse) -> Void) {
-        print("Pausing Service")
+//        print("Pausing Service")
         let result = INPauseWorkoutIntentResponse(code: .ready, userActivity: nil)
         completion(result)
     }
     
     func handle(cancelWorkout intent: INCancelWorkoutIntent, completion: @escaping (INCancelWorkoutIntentResponse) -> Void) {
-        print("Cancel Service")
+//        print("Cancel Service")
         let result = INCancelWorkoutIntentResponse(code: .ready, userActivity: nil)
         completion(result)
     }
     
     func handle(resumeWorkout intent: INResumeWorkoutIntent, completion: @escaping (INResumeWorkoutIntentResponse) -> Void) {
-        print("Resume Service")
+//        print("Resume Service")
         let result = INResumeWorkoutIntentResponse(code: .ready, userActivity: nil)
         completion(result)
     }

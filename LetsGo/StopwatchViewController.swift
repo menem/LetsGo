@@ -8,6 +8,7 @@
 import UIKit
 import MZTimerLabel
 import CNPPopupController
+import NYAlertViewController
 
 class StopwatchViewController: UITableViewController {
     
@@ -19,7 +20,7 @@ class StopwatchViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         self.tableView.tableFooterView = UIView()
         self.tableView.backgroundColor =  .clear
         self.tableView.separatorStyle = .none
@@ -32,13 +33,57 @@ class StopwatchViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = rightBarButton
         
           totalTimeCounted = 0
+         LogScreenLoad()
     }
     
     func pushActivities(){
         let activitiesViewController = ActivitiesViewController()
         self.navigationController?.pushViewController(activitiesViewController, animated: true)
     }
-    
+    func promptUserforRecord(){
+        let alertViewController = NYAlertViewController()
+        
+        // Set a title and message
+        alertViewController.title = "Save Record?"
+        alertViewController.message = "Do you wish to save this stopwatch time as a workout in your records?"
+        
+        // Customize appearance as desired
+        alertViewController.buttonCornerRadius = 20.0
+        alertViewController.view.tintColor = self.view.tintColor
+        
+        alertViewController.titleFont = UIFont(name: "AvenirNext-Bold", size: 19.0)
+        alertViewController.messageFont = UIFont(name: "AvenirNext-Medium", size: 16.0)
+        alertViewController.cancelButtonTitleFont = UIFont(name: "AvenirNext-Medium", size: 16.0)
+        alertViewController.cancelButtonTitleFont = UIFont(name: "AvenirNext-Medium", size: 16.0)
+        
+        alertViewController.swipeDismissalGestureEnabled = true
+        alertViewController.backgroundTapDismissalGestureEnabled = true
+        
+        // Add alert actions
+        let cancelAction = NYAlertAction(
+            title: "Cancel",
+            style: .destructive,
+            handler: { (action: NYAlertAction!) -> Void in
+                self.dismiss(animated: true, completion: nil)
+        }
+        )
+        
+        let doneAction = NYAlertAction(
+            title: "Okay",
+            style: .default,
+            handler: { (action: NYAlertAction!) -> Void in
+                let manager = LGRecordsManager()
+                manager.saveRecord(title: "Stopwatch", timer: self.totalTimeCounted, isWorkout: true)
+                self.dismiss(animated: true, completion: nil)
+        }
+        )
+        
+        alertViewController.addAction(cancelAction)
+        alertViewController.addAction(doneAction)
+        // Present the alert view controller
+        self.present(alertViewController, animated: true, completion: nil)
+    }
+
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -90,6 +135,13 @@ class StopwatchViewController: UITableViewController {
         self.popupController?.dismiss(animated: true)
     }
     
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section != 0 {
+            return true
+        }else{
+            return false
+        }
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.section == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: BannerTableViewCellIdentifier, for: indexPath) as! TitleBackgroundTableViewCell
@@ -124,8 +176,8 @@ class StopwatchViewController: UITableViewController {
     }
     
     func saveRecord()  {
-        let manager = LGRecordsManager()
-        manager.saveRecord(title: "Stopwatch", timer: totalTimeCounted)
+         promptUserforRecord()
+
     }
 }
 
@@ -149,14 +201,14 @@ extension StopwatchViewController: MZTimerLabelDelegate {
 extension StopwatchViewController : CNPPopupControllerDelegate {
     
     func popupControllerWillDismiss(_ controller: CNPPopupController) {
-        print("Popup controller will be dismissed")
+//        print("Popup controller will be dismissed")
         let minutesInSeconds = Double(self.durationSelector.minutesLabel.text!)! * 60
         let totalSeconds = minutesInSeconds + Double(self.durationSelector.secondsLabel.text!)!
         self.timeContentView.timer.setCountDownTime(totalSeconds)
     }
     
     func popupControllerDidPresent(_ controller: CNPPopupController) {
-        print("Popup controller presented")
+//        print("Popup controller presented")
     }
     
 }

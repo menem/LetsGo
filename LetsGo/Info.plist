@@ -15,17 +15,17 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.0.0</string>
 	<key>CFBundleVersion</key>
-	<string>100</string>
+	<string>230</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSHealthShareUsageDescription</key>
-	<string>to calculate calories in workout</string>
+	<string>LetsGo Uses your Body measurements to calculate calories for workouts (Everything is stored on your Device)</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>to calculate calories in workout</string>
+	<string>LetsGo Adds your workouts to your Activities and Burned calories (Everything is stored on your Device)</string>
 	<key>NSSiriUsageDescription</key>
-	<string>Control workout with voice</string>
+	<string>Start and End your Quick Timers with the help of Siri</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>BetmHairline.otf</string>

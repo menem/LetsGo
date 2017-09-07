@@ -9,6 +9,8 @@
 import UIKit
 import Pastel
 import Intents
+import HealthKit
+
 
 class HomeViewController: UIViewController {
     var scrollView: UIScrollView?
@@ -18,9 +20,23 @@ class HomeViewController: UIViewController {
     let timerViewController = TimerViewController()
     let stopViewController = StopwatchViewController()
     let intervalsViewController = IntervalsViewController()
+    let healthManager:HealthKitManager = HealthKitManager()
+    var height: HKQuantitySample?
+    var Weight: HKQuantitySample?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+      
+        
+        
+        getHealthKitPermission()
+        setHeight()
+        setWeight()
+        let swipeupforsetting = UISwipeGestureRecognizer(target: self, action: #selector(pushModalSettings))
+        swipeupforsetting.direction = .up
+        self.view.addGestureRecognizer(swipeupforsetting)
+        
         let screenFrame = UIScreen.main.bounds
         
         scrollView = UIScrollView(frame: screenFrame)
@@ -64,10 +80,29 @@ class HomeViewController: UIViewController {
         
         let leftBarButton = UIBarButtonItem(image: UIImage(named: "icn_records"), style: .plain, target: self, action: #selector(pushRecords))
         self.navigationItem.leftBarButtonItem = leftBarButton
-        
+        LogScreenLoad()
+    }
+    func pushModalSettings(){
+        print("Settings ya ma3alem")
+        let settingsViewController = SettingsTableViewController()
+        let navViewController = UINavigationController(rootViewController: settingsViewController)
+        self.present(navViewController, animated: true, completion: nil)
+    }
+    func getHealthKitPermission() {
+        healthManager.authorizeHealthKit { (authorized,  error) -> Void in
+            if authorized {
+                
+                self.setHeight()
+            } else {
+                if error != nil {
+                }
+//                print("Permission denied.")
+            }
+        }
     }
     
     func pushActivities(){
+//         healthManager.saveDistance(distanceRecorded: 0.1, date: NSDate())
         let activitiesViewController = ActivitiesViewController()
         self.navigationController?.pushViewController(activitiesViewController, animated: true)
     }
@@ -81,6 +116,68 @@ class HomeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func setHeight() {
+        let heightSample = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.height)
+        self.healthManager.getHeight(sampleType: heightSample!, completion: { (userHeight, error) -> Void in
+            
+            if( error != nil ) {
+//                print("Error: \(String(describing: error?.localizedDescription))")
+                return
+            }
+            
+            var heightString = ""
+            var heightValue = 0.0
+            self.height = userHeight as? HKQuantitySample
+            if let meters = self.height?.quantity.doubleValue(for: HKUnit.meter()) {
+                let formatHeight = LengthFormatter()
+                formatHeight.isForPersonHeightUse = true
+                heightString = formatHeight.string(fromMeters: meters)
+                heightValue = meters * 100.0
+            }
+            
+            DispatchQueue.main.async(execute: { () -> Void in
+                if heightValue > 40 {
+                let userDefaults = UserDefaults.standard
+                userDefaults.set(heightValue, forKey: "userHeight")
+                    userDefaults.synchronize()
+                }
+            })
+        })
+        
+    }
+    
+    func setWeight() {
+        let WeightSample = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)
+        self.healthManager.getWeight(sampleType: WeightSample!, completion: { (userWeight, error) -> Void in
+            
+            if( error != nil ) {
+                //                print("Error: \(String(describing: error?.localizedDescription))")
+                return
+            }
+            
+            var WeightString = ""
+            var weightValue = 0.0
+            self.Weight = userWeight as? HKQuantitySample
+            if let gram = self.Weight?.quantity.doubleValue(for: HKUnit.gram()) {
+                let formatWeight = MassFormatter()
+                formatWeight.isForPersonMassUse = true
+                WeightString = formatWeight.string(fromKilograms: gram/1000)
+                weightValue = gram/1000.0
+               
+            }
+            
+                        DispatchQueue.main.async(execute: { () -> Void in
+                            if weightValue > 15{
+                            let userDefaults = UserDefaults.standard
+                            userDefaults.set(weightValue, forKey: "userWeight")
+                            userDefaults.synchronize()
+                            }
+                        })
+        })
+        
+    }
+
     
     func configurePageControl() {
         // The total number of pages that are available is based on how many available colors we have.

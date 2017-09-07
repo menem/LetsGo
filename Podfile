@@ -12,5 +12,11 @@ pod 'CNPPopupController'
 pod 'CountdownLabel'
 pod "Pastel"
 pod "LETimeIntervalPicker"
+pod 'NYAlertViewController'
+pod 'Onboard'
+pod "ODMSwipeSelector"
+pod 'Firebase/Core'
+pod "Appirater"
+pod 'Siren'
 
 end
